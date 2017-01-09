@@ -67,7 +67,7 @@
       </counter>
       <counter>
         <item-type type-id="" type="AbstractElementGroup" />
-        <value>66</value>
+        <value>50</value>
       </counter>
       <counter>
         <item-type type-id="" type="UniversalConnector" />
@@ -182,7 +182,7 @@
         <abstract-items />
         <layer name="Default" visible="true" enabled="true" locked="false" />
       </diagram>
-      <diagram type="uml-sequence" id="pbd296f22cabf422aa3fa6225303a436b_531537943" name="SequenceDiagram1" order-index="2" expanded="true" overview-order-index="0" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-special-indicators="false" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false" view-location="347,-50">
+      <diagram type="uml-sequence" id="pbd296f22cabf422aa3fa6225303a436b_531537943" name="SequenceDiagram1" order-index="2" expanded="true" overview-order-index="0" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-special-indicators="false" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false" view-location="328,-54">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -194,7 +194,7 @@
           </authors>
           <description />
           <creation-date>12/14/2016 17:47:49</creation-date>
-          <change-date>01/09/2017 17:49:45</change-date>
+          <change-date>01/09/2017 17:48:47</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
@@ -275,7 +275,7 @@
           <item id="di137171655931448544" cid="AB009" type="activation-bar" name="ExecutionOccurrence8" style-class="" owner="di662173126223427066" visibility="package" change-tracking-state="added" creator="P80c1d614ec6b47baa73afd80d38bc993" creation-date="12/14/2016 17:55:27">
             <style class="default" />
           </item>
-          <item id="di315030888212528070" cid="LL004" type="lifeline" name="Gestion" style-class="" visibility="package" change-tracking-state="added" creator="P80c1d614ec6b47baa73afd80d38bc993" creation-date="12/14/2016 17:51:08">
+          <item id="di315030888212528070" cid="LL004" type="lifeline" name="Reserva" style-class="" visibility="package" change-tracking-state="added" creator="P80c1d614ec6b47baa73afd80d38bc993" creation-date="12/14/2016 17:51:08">
             <style class="default" />
             <lifeline classifier-name="" is-active="false" is-multi-object="false" />
           </item>
@@ -477,12 +477,6 @@
             <style class="default" />
             <activation-bar lifeline-ref="di904913270362724298" />
           </item>
-          <item id="di444072892142046484" cid="SM014" type="sequence-action" name="Message14" style-class="" visibility="package" change-tracking-state="added" creator="P80c1d614ec6b47baa73afd80d38bc993" creation-date="12/14/2016 17:55:03">
-            <style class="default" />
-            <sequence-action type="call" message="" is-asynchronous="false" from="di604045133857136459" to="di332966291756313970" return-value="" assign-to-variable="">
-              <parameters />
-            </sequence-action>
-          </item>
           <item id="di230441069492147539" cid="SM014" type="sequence-action" name="Message14" style-class="" visibility="package" change-tracking-state="added" creator="P80c1d614ec6b47baa73afd80d38bc993" creation-date="12/14/2016 17:55:03">
             <style class="default" />
             <sequence-action type="call" message="" is-asynchronous="false" from="di604045133857136459" to="di332966291756313970" return-value="" assign-to-variable="">
@@ -522,18 +516,6 @@
           <item id="di754251511344277434" cid="AB014" type="activation-bar" name="ExecutionOccurrence13" style-class="" owner="di910111461924359341" visibility="package" change-tracking-state="added" creator="P80c1d614ec6b47baa73afd80d38bc993" creation-date="12/14/2016 17:55:50">
             <style class="default" />
             <activation-bar lifeline-ref="di910111461924359341" />
-          </item>
-          <item id="di964684629763826957" cid="SM014" type="sequence-action" name="Message14" style-class="" visibility="package" change-tracking-state="added" creator="P80c1d614ec6b47baa73afd80d38bc993" creation-date="12/14/2016 17:55:03">
-            <style class="default" />
-            <sequence-action type="call" message="" is-asynchronous="false" from="di604045133857136459" to="di332966291756313970" return-value="" assign-to-variable="">
-              <parameters />
-            </sequence-action>
-          </item>
-          <item id="di449129426615643930" cid="SM014" type="sequence-action" name="Message14" style-class="" visibility="package" change-tracking-state="added" creator="P80c1d614ec6b47baa73afd80d38bc993" creation-date="12/14/2016 17:55:03">
-            <style class="default" />
-            <sequence-action type="call" message="" is-asynchronous="false" from="di604045133857136459" to="di332966291756313970" return-value="" assign-to-variable="">
-              <parameters />
-            </sequence-action>
           </item>
         </abstract-items>
         <layer name="Default" visible="true" enabled="true" locked="false">
@@ -708,18 +690,6 @@
           </item>
           <item id="di230441069492147539" iid="f5d89c425bf047778e1cb835794e8bcd" creation-date="12/14/2016 17:55:03" order-index="4" type="sequence-action">
             <layout x1="579" y1="205" x2="1173" y2="205" ax="579" ay="190" awidth="594" aheight="20" x="579" y="190" width="594" height="20" message-x="101" message-y="-9" />
-            <sequence-action from="di604045133857136459" to="di332966291756313970" show-sequence-number="false" />
-          </item>
-          <item id="di444072892142046484" iid="fa413372b2c043ae9182e53429228321" creation-date="12/14/2016 17:55:03" order-index="4" type="sequence-action">
-            <layout x1="579" y1="300" x2="1173" y2="300" ax="579" ay="285" awidth="594" aheight="20" x="579" y="285" width="594" height="20" message-x="101" message-y="-9" />
-            <sequence-action from="di604045133857136459" to="di332966291756313970" show-sequence-number="false" />
-          </item>
-          <item id="di964684629763826957" iid="d92ceffb38904aed8b97a729c7f28aae" creation-date="12/14/2016 17:55:03" order-index="4" type="sequence-action">
-            <layout x1="579" y1="415" x2="1173" y2="415" ax="579" ay="400" awidth="594" aheight="20" x="579" y="400" width="594" height="20" message-x="101" message-y="-9" />
-            <sequence-action from="di604045133857136459" to="di332966291756313970" show-sequence-number="false" />
-          </item>
-          <item id="di449129426615643930" iid="f66f87b5072443f386ca4a9e7a784c28" creation-date="12/14/2016 17:55:03" order-index="4" type="sequence-action">
-            <layout x1="579" y1="489" x2="1173" y2="489" ax="579" ay="474" awidth="594" aheight="20" x="579" y="474" width="594" height="20" message-x="101" message-y="-9" />
             <sequence-action from="di604045133857136459" to="di332966291756313970" show-sequence-number="false" />
           </item>
         </layer>
