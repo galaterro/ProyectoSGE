@@ -116,7 +116,7 @@ CREATE TABLE admin(
   fecha_inicio DATETIME,
   cargo varchar,
   id_cine int
-)
+);
 
 CREATE TABLE reserva(
     id_reserva INT primary key auto_increment,
@@ -125,5 +125,5 @@ CREATE TABLE reserva(
     id_butaca: INT,
     id_cliente INT,
     id_sala INT
-)
+);
 
