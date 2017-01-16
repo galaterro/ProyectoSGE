@@ -63,8 +63,8 @@ create table Pelicula(
     edad_acceso int
 );
 
- create table empleado{
-     id_empleado int  primary key auto_increment,
+ create table empleado(
+     id_empleado  int  primary key auto_increment,
      dni varchar(9),
      nombre varchar(20),
      apellidos varchar(30),
@@ -72,27 +72,49 @@ create table Pelicula(
      fecha_inicio date,
      cargo varchar(30),
      id_cine int
- };
+ );
 
- create table cabecera_pedido{
-     id_pedido int primary key auto_increment,
-     fecha_pedido date.
-     importe_total_sin_iva decimal,
-     iva int,
-     importe_total_con_iva decimal
- };
+ create table cabecera_pedido (
+   id_pedido             INT PRIMARY KEY AUTO_INCREMENT,
+   fecha_pedido          DATE ,
+   importe_total_sin_iva DECIMAL,
+   iva                   INT,
+   importe_total_con_iva DECIMAL
+ );
 
- create table cuerpo_pedido{
-     id_pedido int,
-     id_producto int,
-     descrip_producto varchar,
-     cantidad int
- };
+ create table cuerpo_pedido (
+   id_pedido        INT,
+   id_producto      INT,
+   descrip_producto VARCHAR,
+   cantidad         INT
+ );
 
- create table Producto{
-     id_producto int primary key auto_increment,
-     descripcion varchar,
-     precio_producto decimal,
-     precio_venta decimal,
-     nombre_producto varchar
- };
+ create table Producto (
+   id_producto     INT PRIMARY KEY AUTO_INCREMENT,
+   descripcion     VARCHAR,
+   precio_producto DECIMAL,
+   precio_venta    DECIMAL,
+   nombre_producto VARCHAR
+ );
+
+CREATE TABLE  proveedor(
+  id_proveedor INT PRIMARY KEY AUTO_INCREMENT,
+  cif VARCHAR,
+  nombre VARCHAR,
+  apellidos VARCHAR,
+  telefono INT,
+  poblacion VARCHAR,
+  cp INT
+);
+
+CREATE TABLE admin(
+  id_admin INT PRIMARY KEY AUTO_INCREMENT,
+  dni VARCHAR,
+  nombre VARCHAR,
+  apellidos VARCHAR,
+  telefono INT,
+  fecha_inicio DATETIME,
+  cargo varchar,
+  id_cine int
+)
+
