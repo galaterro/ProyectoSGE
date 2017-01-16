@@ -30,7 +30,7 @@ create table Cuerpo_factura_cliente (
 
  create table Entrada (
      id_entrada int  primary key auto_increment, /* Tiene que ser autoincremental. */
-     precio_entrada decimal,
+     precio_entrada decimal
      /* Clave foránea: id_pelicula int foreign key references Pelicula(id_pelicula) */
  );
 
@@ -90,7 +90,7 @@ create table Cabecera_pedido (
 );
 
 create table Cuerpo_pedido (
-    id_cuerpo_pedido int,
+    id_cuerpo_pedido int primary key,
     id_producto int,
     descrip_producto varchar,
     cantidad int
@@ -104,7 +104,7 @@ create table Producto (
     nombre_producto varchar
 );
 
-CREATE TABLE Proveedor (
+create table Proveedor (
     id_proveedor int primary key,
     cif_proveedor varchar,
     nombre_proveedor varchar,
@@ -114,7 +114,7 @@ CREATE TABLE Proveedor (
     cp_proveedor int
 );
 
-CREATE TABLE Administrador (
+create table Administrador (
     id_admin int primary key,
     dni_admin varchar,
     nombre_admin varchar,
@@ -125,7 +125,7 @@ CREATE TABLE Administrador (
     id_cine int
 )
 
-CREATE TABLE Reserva (
+create table Reserva (
     id_reserva int primary key auto_increment,
     id_pelicula int, 
     id_sesion int,
