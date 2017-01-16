@@ -92,36 +92,36 @@ create table Cabecera_pedido (
 create table Cuerpo_pedido (
     id_cuerpo_pedido int primary key,
     id_producto int,
-    descrip_producto varchar,
+    descrip_producto varchar(50),
     cantidad int
 );
 
 create table Producto (
     id_producto int primary key, 
-    descripcion_producto varchar,
+    descripcion_producto varchar(50),
     precio_producto decimal,
     precio_venta decimal,
-    nombre_producto varchar
+    nombre_producto varchar(30)
 );
 
 create table Proveedor (
     id_proveedor int primary key,
-    cif_proveedor varchar,
-    nombre_proveedor varchar,
-    apellidos_proveedor varchar,
+    cif_proveedor varchar(9),
+    nombre_proveedor varchar(30),
+    apellidos_proveedor varchar(30),
     telefono_proveedor int,
-    poblacion_proveedor varchar,
+    poblacion_proveedor varchar(30),
     cp_proveedor int
 );
 
 create table Administrador (
     id_admin int primary key,
-    dni_admin varchar,
-    nombre_admin varchar,
-    apellidos_admin varchar,
+    dni_admin varchar(9),
+    nombre_admin varchar(30),
+    apellidos_admin varchar(50),
     telefono_admin int,
     fecha_inicio_admin date,
-    cargo_admin varchar,
+    cargo_admin varchar(50),
     id_cine int
 )
 
