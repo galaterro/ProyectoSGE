@@ -123,7 +123,7 @@ create table Administrador (
     fecha_inicio_admin date,
     cargo_admin varchar(50),
     id_cine int
-)
+);
 
 create table Reserva (
     id_reserva int primary key auto_increment,
@@ -132,4 +132,4 @@ create table Reserva (
     id_butaca int,
     id_cliente int,
     id_sala int
-)
+);
