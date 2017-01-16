@@ -90,7 +90,7 @@ create table Pelicula(
  );
 
  create table Producto (
-   id_producto     INT PRIMARY KEY AUTO_INCREMENT,
+   id_producto     INT PRIMARY KEY,
    descripcion     VARCHAR,
    precio_producto DECIMAL,
    precio_venta    DECIMAL,
@@ -116,5 +116,14 @@ CREATE TABLE admin(
   fecha_inicio DATETIME,
   cargo varchar,
   id_cine int
+)
+
+CREATE TABLE reserva(
+    id_reserva INT primary key auto_increment,
+    id_pelicula INT, 
+    id_sesion: INT,
+    id_butaca: INT,
+    id_cliente INT,
+    id_sala INT
 )
 
