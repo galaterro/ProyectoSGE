@@ -16,9 +16,9 @@ public class Cine {
     private String cif_cine;
     private String dir_cine;
     private String pob_cine;
-    private String codPos_cine;
+    private int codPos_cine;
 
-    public Cine(int id_cine, String nombre_cina, String cif_cine, String dir_cine, String pob_cine, String codPos_cine) {
+    public Cine(int id_cine, String nombre_cina, String cif_cine, String dir_cine, String pob_cine, int codPos_cine) {
         this.id_cine = id_cine;
         this.nombre_cine = nombre_cina;
         this.cif_cine = cif_cine;
@@ -67,11 +67,11 @@ public class Cine {
         this.pob_cine = pob_cine;
     }
 
-    public String getCodPos_cine() {
+    public int getCodPos_cine() {
         return codPos_cine;
     }
 
-    public void setCodPos_cine(String codPos_cine) {
+    public void setCodPos_cine(int codPos_cine) {
         this.codPos_cine = codPos_cine;
     }
     
