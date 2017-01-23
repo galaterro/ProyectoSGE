@@ -6,6 +6,8 @@
 package erp.cinesaztec.persistencia;
 
 import erp.cinesaztec.modelo.Cine;
+import erp.cinesaztec.modelo.Sala;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -45,8 +47,9 @@ public class GestorBBDD {
     }
 
    
-    public static void main(String[] args) {
-        GestorBBDD g = new GestorBBDD();
+    public static void prueba() {
+
+       GestorBBDD g = new GestorBBDD();
         //Cine cine = new Cine(13,"cineXXX","123456789","calle cinex","Madrid",28400);
         CinePersistencia cineP = new CinePersistencia();
         ArrayList<Cine> alCin = new ArrayList();

@@ -66,7 +66,7 @@ public class GestorBBDD {
         c.close();
     
     }
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         GestorBBDD g = new GestorBBDD();
         try {
             g.conectarBBDD();
@@ -79,5 +79,5 @@ public class GestorBBDD {
             Logger.getLogger(GestorBBDD.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println();
         }
-    }
+    }*/
 }
