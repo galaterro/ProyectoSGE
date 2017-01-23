@@ -27,7 +27,6 @@ public class CinePersistencia {
     Cine cine;
     ArrayList<Cine> alCine = new ArrayList();
 
-    ;
     
      public void ingresarCine(Cine cine) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
