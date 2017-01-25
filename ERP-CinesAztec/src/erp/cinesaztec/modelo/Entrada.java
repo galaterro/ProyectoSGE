@@ -5,6 +5,7 @@
  */
 package erp.cinesaztec.modelo;
 
+import java.math.BigDecimal;
 import java.util.logging.Logger;
 
 /**
@@ -14,9 +15,9 @@ import java.util.logging.Logger;
 public class Entrada {
     
     private int id_entrada;
-    private float precio_entrada;
+    private double precio_entrada;
 
-    public Entrada(int id_entrada, float precio_entrada) {
+    public Entrada(int id_entrada, double precio_entrada) {
         this.id_entrada = id_entrada;
         this.precio_entrada = precio_entrada;
     }
@@ -29,11 +30,11 @@ public class Entrada {
         this.id_entrada = id_entrada;
     }
 
-    public float getPrecio_entrada() {
+    public double getPrecio_entrada() {
         return precio_entrada;
     }
 
-    public void setPrecio_entrada(float precio_entrada) {
+    public void setPrecio_entrada(double precio_entrada) {
         this.precio_entrada = precio_entrada;
     }
     
