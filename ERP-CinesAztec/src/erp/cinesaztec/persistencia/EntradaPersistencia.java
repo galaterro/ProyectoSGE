@@ -33,7 +33,7 @@ public class EntradaPersistencia {
 
         int filasAfectadas;
 
-        String sql = "insert into entrada values(" + entrada.getId_entrada()+ "," + entrada.getPrecio_entrada() + ")";
+        String sql = "insert into entrada values(" + entrada.getId_entrada()+ "," + entrada.getPrecio_entrada() + "," + entrada.getId_pelicula() + ")";
         
         c = gbd.conectarBBDD();
         st = c.createStatement();
@@ -51,7 +51,7 @@ public class EntradaPersistencia {
         st = c.createStatement();
         rs = st.executeQuery(sql);
         while (rs.next()) {
-            entrada = new Entrada(rs.getInt(1), rs.getDouble(2));
+            entrada = new Entrada(rs.getInt(1), rs.getDouble(2), rs.getInt(3));
             alEntrada.add(entrada);
            
         }
