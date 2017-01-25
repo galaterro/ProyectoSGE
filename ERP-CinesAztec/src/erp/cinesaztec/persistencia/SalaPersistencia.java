@@ -21,8 +21,6 @@ public class SalaPersistencia {
     ArrayList<Sala> alSala = new ArrayList();
 
     public void ingresarSala(Sala sala) throws SQLException, ClassNotFoundException {
-        gbd.conectarBBDD();
-
         int filasAfectadas;
 
         String sql = "insert into sala values(" + sala.getId_sala() + ",'" + sala.getNombre_sala() + "'," + sala.getNumero_butacas() + "," + sala.getId_cine() + ")";
@@ -42,7 +40,7 @@ public class SalaPersistencia {
         st = c.createStatement();
 
         rs = st.executeQuery(sql);
-        System.out.println("LasSalas son: ");
+        System.out.println("Las Salas son: ");
         while (rs.next()) {
             sala = new Sala(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
             alSala.add(sala);

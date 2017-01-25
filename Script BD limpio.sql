@@ -18,7 +18,7 @@ create table Cabecera_factura_cliente (
     importe decimal,
     iva int, /* Será una constante en la aplicación de escritorio. */
     importe_total_con_iva decimal
-    /* Clave foránea: id_cliente int foreign key references Cliente (id_cliente) */
+    /* Clave foránea:  id_cliente int foreign key references Cliente (id_cliente) */
 );
 
 create table Cuerpo_factura_cliente (

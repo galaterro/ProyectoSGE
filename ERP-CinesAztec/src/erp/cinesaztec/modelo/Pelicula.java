@@ -24,7 +24,7 @@ public class Pelicula {
         this.edad_acceso = edad_acceso;
     }
 
-    public Pelicula(int id_pelicula, String nombre_pelicula, int dur_pelicula, int edad_acceso, int id_sala) {
+    public Pelicula(int id_pelicula, int id_sala, String nombre_pelicula, int dur_pelicula, int edad_acceso) {
         this.id_pelicula = id_pelicula;
         this.nombre_pelicula = nombre_pelicula;
         this.dur_pelicula = dur_pelicula;
