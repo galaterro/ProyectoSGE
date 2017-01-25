@@ -34,7 +34,7 @@ public class SesionPersistencia {
 
         int filasAfectadas;
 
-        String sql = "insert into sesion values(" + sesion.getId_sesion()+ ",'" + sesion.getHora_sesion() + "','" + sesion.getId_pelicula()+ "','" + sesion.getId_sala() + ")";
+        String sql = "insert into sesion values(" + sesion.getId_sesion()+ ",'" + sesion.getHora_sesion() + "'," + sesion.getId_pelicula()+ "," + sesion.getId_sala() + ")";
         c = gbd.conectarBBDD();
         st = c.createStatement();
 

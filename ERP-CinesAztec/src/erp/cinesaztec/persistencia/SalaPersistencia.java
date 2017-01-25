@@ -25,7 +25,7 @@ public class SalaPersistencia {
 
         int filasAfectadas;
 
-        String sql = "insert into sala values(" + sala.getId_sala() + ",'" + sala.getNombre_sala() + "','" + sala.getNumero_butacas() + "','" + sala.getId_cine() + "'" + ")";
+        String sql = "insert into sala values(" + sala.getId_sala() + ",'" + sala.getNombre_sala() + "'," + sala.getNumero_butacas() + "," + sala.getId_cine() + ")";
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
