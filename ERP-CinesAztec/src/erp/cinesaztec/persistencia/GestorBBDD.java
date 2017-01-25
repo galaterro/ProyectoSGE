@@ -46,29 +46,4 @@ public class GestorBBDD {
         c.close();
     }
 
-   
-    public static void prueba() {
-
-       GestorBBDD g = new GestorBBDD();
-        //Cine cine = new Cine(13,"cineXXX","123456789","calle cinex","Madrid",28400);
-        CinePersistencia cineP = new CinePersistencia();
-        ArrayList<Cine> alCin = new ArrayList();
-        try {
-            g.conectarBBDD();
-            //cineP.ingresarCine(cine);
-            alCin = cineP.listarCines();
-
-            for (Cine cine1 : alCin) {
-                System.out.println(cine1.getId_cine()+" "+cine1.getDir_cine());
-            }
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GestorBBDD.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("aqui");
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            Logger.getLogger(GestorBBDD.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
-    }
 }
