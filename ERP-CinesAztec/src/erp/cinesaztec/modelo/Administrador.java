@@ -29,6 +29,22 @@ public class Administrador extends Empleado {
         this.usuario_admin = usuario_admin;
         this.contraseña_admin = contraseña_admin;
     }
+
+    public String getUsuario_admin() {
+        return usuario_admin;
+    }
+
+    public void setUsuario_admin(String usuario_admin) {
+        this.usuario_admin = usuario_admin;
+    }
+
+    public String getContraseña_admin() {
+        return contraseña_admin;
+    }
+
+    public void setContraseña_admin(String contraseña_admin) {
+        this.contraseña_admin = contraseña_admin;
+    }
     
     
 
