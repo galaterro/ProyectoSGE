@@ -32,7 +32,7 @@ public class EmpleadoPersistencia {
 
         int filasAfectadas;
 
-        String sql = "insert into sesion values(" + empleado.getId_empleado() + ",'" + empleado.getDni_empleado() + "','" 
+        String sql = "insert into empleado values(" + empleado.getId_empleado() + ",'" + empleado.getDni_empleado() + "','"
                 + empleado.getNombre_empleado()+ "','" + empleado.getApellidos_empleado()+ "'," + empleado.getTelefono_empleado() + 
                 ",'" + empleado.getFecha_inicio() + "','" + empleado.getCargo_empleado() + "'," + empleado.getId_cine() + ")";
         c = gbd.conectarBBDD();
@@ -43,15 +43,33 @@ public class EmpleadoPersistencia {
         gbd.cerrarConexionBBDD();
     }
 
-    public ArrayList listarSesion() throws ClassNotFoundException, SQLException {
+    public ArrayList listarEmpleados() throws ClassNotFoundException, SQLException {
         gbd.conectarBBDD();
 
-        String sql = "select * from cine";
+        String sql = "select * from empleado";
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
         rs = st.executeQuery(sql);
-        System.out.println("Los cines son: ");
+        System.out.println("Los empleados son: ");
+        while (rs.next()) {
+            empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
+                    rs.getString(7), rs.getInt(8));
+            alEmpleado.add(empleado);
+        }
+        gbd.cerrarConexionBBDD();
+        return alEmpleado;
+    }
+
+    public ArrayList buscarEmpleado(String dni_aux) throws ClassNotFoundException, SQLException {
+        gbd.conectarBBDD();
+
+        String sql = "select * from empleado WHERE dni_emp = '%" + dni_aux + "%'";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+
+        rs = st.executeQuery(sql);
+        System.out.println("Los empleados son: ");
         while (rs.next()) {
             empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
                     rs.getString(7), rs.getInt(8));

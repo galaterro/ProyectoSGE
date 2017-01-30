@@ -36,7 +36,7 @@ public class PeliculaPersistencia {
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
-        System.out.println("Las Salas son: ");
+        System.out.println("Las Peliculas son: ");
         while (rs.next()) {
             pelicula = new Pelicula(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
             alPelicula.add(pelicula);

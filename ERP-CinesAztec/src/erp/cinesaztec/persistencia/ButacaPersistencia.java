@@ -52,4 +52,21 @@ public class ButacaPersistencia {
         gbd.cerrarConexionBBDD();
         return alButaca;
     }
+
+    public ArrayList buscarButaca(int numero_aux) throws ClassNotFoundException, SQLException {
+        gbd.conectarBBDD();
+
+        String sql = "select * from  butaca WHERE numero_fila = '" + numero_aux + "'";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+
+        rs = st.executeQuery(sql);
+        System.out.println("Las butacas son: ");
+        while (rs.next()) {
+            butaca = new Butaca(rs.getInt(1), rs.getInt(2), rs.getInt(3));
+            alButaca.add(butaca);
+        }
+        gbd.cerrarConexionBBDD();
+        return alButaca;
+    }
 }

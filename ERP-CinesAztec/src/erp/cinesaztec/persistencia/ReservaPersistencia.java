@@ -31,7 +31,7 @@ public class ReservaPersistencia {
 
         int filasAfectadas;
 
-        String sql = "insert into sala values(" + reserva.getId_reserva()+ ",'" + reserva.getId_pelicula()+ "','" + reserva.getId_sesion() + "','" + reserva.getId_butaca() + "','" + reserva.getId_cliente() + "','" + reserva.getId_sala() + ")";
+        String sql = "insert into reserva values(" + reserva.getId_reserva()+ ",'" + reserva.getId_pelicula()+ "','" + reserva.getId_sesion() + "','" + reserva.getId_butaca() + "','" + reserva.getId_cliente() + "','" + reserva.getId_sala() + ")";
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
@@ -43,12 +43,12 @@ public class ReservaPersistencia {
     public ArrayList listarSalas() throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
 
-        String sql = "select * from sala";
+        String sql = "select * from reserva";
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
         rs = st.executeQuery(sql);
-        System.out.println("LasSalas son: ");
+        System.out.println("Las reservas son: ");
         while (rs.next()) {
             reserva = new Reserva(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6));
             alReserva.add(reserva);

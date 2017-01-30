@@ -38,7 +38,7 @@ public class ProductoPersistencia {
         st = c.createStatement();
 
         rs = st.executeQuery(sql);
-        System.out.println("Las Salas son: ");
+        System.out.println("Los Productos son: ");
         while (rs.next()) {
             producto = new Producto(rs.getInt(1), rs.getString(2), (Float) rs.getBigDecimal(3).floatValue(), rs.getBigDecimal(4).floatValue(), rs.getString(5));
             alProducto.add(producto);

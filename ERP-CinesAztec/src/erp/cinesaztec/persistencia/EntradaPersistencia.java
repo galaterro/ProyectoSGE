@@ -59,4 +59,16 @@ public class EntradaPersistencia {
         return alEntrada;
 
     }
+    public Entrada buscarEntradas(int id_aux) throws SQLException, ClassNotFoundException {
+        gbd.conectarBBDD();
+
+        String sql = "SELECT * FROM entrada WHERE id_entrada = '" + id_aux + "'";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        rs.next();
+        entrada = new Entrada(rs.getInt(1), rs.getDouble(2), rs.getInt(3));
+        gbd.cerrarConexionBBDD();
+        return entrada;
+    }
 }
