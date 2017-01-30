@@ -24,8 +24,8 @@ public class Ejecutador {
         try {
             
                 
-             p = new Proveedor(3, "12344", "Tipo", "Puesto", 5487, "Madrid", 28500);
-             pp.ingresarProveedor(p);
+//             p = new Proveedor(3, "12344", "Tipo", "Puesto", 5487, "Madrid", 28500);
+//             pp.ingresarProveedor(p);
              
              alP = pp.listarProveedores();
              
