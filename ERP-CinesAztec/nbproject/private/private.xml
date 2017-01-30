@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/juanxxiii/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/persistencia/AdministradorPersistencia.java</file>
+            <file>file:/C:/Users/juanxxiii/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/Controlador/Ejecutador.java</file>
+            <file>file:/C:/Users/juanxxiii/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/persistencia/EmpleadoPersistencia.java</file>
+            <file>file:/C:/Users/juanxxiii/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/modelo/Pelicula.java</file>
+            <file>file:/C:/Users/juanxxiii/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/modelo/Entrada.java</file>
+            <file>file:/C:/Users/juanxxiii/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/persistencia/PeliculaPersistencia.java</file>
+            <file>file:/C:/Users/juanxxiii/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/persistencia/EntradaPersistencia.java</file>
+            <file>file:/C:/Users/juanxxiii/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/persistencia/ButacaPersistencia.java</file>
+            <file>file:/C:/Users/juanxxiii/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/modelo/Empleado.java</file>
+            <file>file:/C:/Users/juanxxiii/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/modelo/Butaca.java</file>
+            <file>file:/C:/Users/juanxxiii/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/modelo/Administrador.java</file>
+        </group>
     </open-files>
 </project-private>
