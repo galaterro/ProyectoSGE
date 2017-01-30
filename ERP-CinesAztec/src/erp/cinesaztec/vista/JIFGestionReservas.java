@@ -3,22 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erp.cineaztec.vista;
+package erp.cinesaztec.vista;
 
 /**
  *
  * @author allen
  */
-public class JIFGestionCines extends javax.swing.JInternalFrame {
+public class JIFGestionReservas extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form JIFGestionCines
+     * Creates new form JIFGestionReservas
      */
-    public JIFGestionCines() {
+    public JIFGestionReservas() {
         initComponents();
         this.setSize(790,700);
-        this.setTitle("Gestión Cines");
-        this.setVisible(true);
+        this.setTitle("Gestión Reservas");
     }
 
     /**

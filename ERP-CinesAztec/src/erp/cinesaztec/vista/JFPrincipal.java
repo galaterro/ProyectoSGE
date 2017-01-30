@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erp.cineaztec.vista;
+package erp.cinesaztec.vista;
 
 import javax.swing.JOptionPane;
 
@@ -14,8 +14,17 @@ import javax.swing.JOptionPane;
 public class JFPrincipal extends javax.swing.JFrame {
 
     
-    JIFGestionCines jifGestionCines= new JIFGestionCines();
-    private String usuario;
+    JIFGestionCines jifGestionCines = new JIFGestionCines();
+    JIFGestionEmpleados jifGestionEmpleados = new JIFGestionEmpleados();
+    JIFGestionClientes jifGestionClientes = new JIFGestionClientes();
+    JIFGestionProveedores jifGestionProveedores = new JIFGestionProveedores();
+    JIFGestionPedidos jifGestionPedidos = new JIFGestionPedidos();
+    JIFGestionSesiones jifGestionSesiones = new JIFGestionSesiones();
+    JIFGestionPeliculas jifGestionPeliculas = new JIFGestionPeliculas();
+    JIFGestionReservas jifGestionReservas = new JIFGestionReservas();
+    JIFGestionSalas jifGestionSalas = new JIFGestionSalas();
+    JIFGestionProductos jifGestionProductos = new JIFGestionProductos();
+    JIFGestionButacas jifGestionButacas = new JIFGestionButacas();
     /**
      * Creates new form JFPrincipal
      */
@@ -24,7 +33,6 @@ public class JFPrincipal extends javax.swing.JFrame {
         this.setSize(800, 700);
         this.setTitle("Cines Aztec ERP");
         this.add(jdpEscritorio);
-        usuario = JOptionPane.showInputDialog("Ingrese su usuario:");
         this.setVisible(true);
     }
 
@@ -42,8 +50,8 @@ public class JFPrincipal extends javax.swing.JFrame {
         jmModulos = new javax.swing.JMenu();
         jmiGestionCines = new javax.swing.JMenuItem();
         jmiGestionEmpleados = new javax.swing.JMenuItem();
+        jmiGestionClientes = new javax.swing.JMenuItem();
         jmiGestionProveedores = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jmiGestionPedidos = new javax.swing.JMenuItem();
         jmiGestionSesiones = new javax.swing.JMenuItem();
         jmiGestionPeliculas = new javax.swing.JMenuItem();
@@ -79,33 +87,83 @@ public class JFPrincipal extends javax.swing.JFrame {
         jmModulos.add(jmiGestionCines);
 
         jmiGestionEmpleados.setText("Gestión Empleados");
+        jmiGestionEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGestionEmpleadosActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiGestionEmpleados);
 
-        jmiGestionProveedores.setText("Gestión Clientes");
+        jmiGestionClientes.setText("Gestión Clientes");
+        jmiGestionClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGestionClientesActionPerformed(evt);
+            }
+        });
+        jmModulos.add(jmiGestionClientes);
+
+        jmiGestionProveedores.setText("Gestión Proveedores");
+        jmiGestionProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGestionProveedoresActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiGestionProveedores);
 
-        jMenuItem1.setText("Gestión Proveedores");
-        jmModulos.add(jMenuItem1);
-
         jmiGestionPedidos.setText("Gestión Pedidos");
+        jmiGestionPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGestionPedidosActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiGestionPedidos);
 
         jmiGestionSesiones.setText("Gestión Sesiones");
+        jmiGestionSesiones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGestionSesionesActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiGestionSesiones);
 
         jmiGestionPeliculas.setText("Gestión Peliculas");
+        jmiGestionPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGestionPeliculasActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiGestionPeliculas);
 
         jmiGestionReservas.setText("Gestión Reservas");
+        jmiGestionReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGestionReservasActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiGestionReservas);
 
         jmiGestionSalas.setText("Gestión Salas");
+        jmiGestionSalas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGestionSalasActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiGestionSalas);
 
         jmiGestionProductos.setText("Gestión Productos");
+        jmiGestionProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGestionProductosActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiGestionProductos);
 
         jmiGestionButacas.setText("Gestión Butacas");
+        jmiGestionButacas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGestionButacasActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiGestionButacas);
 
         jMenuBar1.add(jmModulos);
@@ -122,6 +180,56 @@ public class JFPrincipal extends javax.swing.JFrame {
         jdpEscritorio.add(jifGestionCines);
         jifGestionCines.show();
     }//GEN-LAST:event_jmiGestionCinesActionPerformed
+
+    private void jmiGestionEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionEmpleadosActionPerformed
+        jdpEscritorio.add(jifGestionEmpleados);
+        jifGestionEmpleados.show();
+    }//GEN-LAST:event_jmiGestionEmpleadosActionPerformed
+
+    private void jmiGestionClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionClientesActionPerformed
+        jdpEscritorio.add(jifGestionClientes);
+        jifGestionClientes.show();
+    }//GEN-LAST:event_jmiGestionClientesActionPerformed
+
+    private void jmiGestionProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionProveedoresActionPerformed
+        jdpEscritorio.add(jifGestionProveedores);
+        jifGestionProveedores.show();
+    }//GEN-LAST:event_jmiGestionProveedoresActionPerformed
+
+    private void jmiGestionPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionPedidosActionPerformed
+        jdpEscritorio.add(jifGestionPedidos);
+        jifGestionPedidos.show();
+    }//GEN-LAST:event_jmiGestionPedidosActionPerformed
+
+    private void jmiGestionSesionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionSesionesActionPerformed
+        jdpEscritorio.add(jifGestionSesiones);
+        jifGestionSesiones.show();
+    }//GEN-LAST:event_jmiGestionSesionesActionPerformed
+
+    private void jmiGestionPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionPeliculasActionPerformed
+        jdpEscritorio.add(jifGestionPeliculas);
+        jifGestionPeliculas.show();
+    }//GEN-LAST:event_jmiGestionPeliculasActionPerformed
+
+    private void jmiGestionReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionReservasActionPerformed
+        jdpEscritorio.add(jifGestionReservas);
+        jifGestionReservas.show();
+    }//GEN-LAST:event_jmiGestionReservasActionPerformed
+
+    private void jmiGestionSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionSalasActionPerformed
+        jdpEscritorio.add(jifGestionSalas);
+        jifGestionSalas.show();
+    }//GEN-LAST:event_jmiGestionSalasActionPerformed
+
+    private void jmiGestionProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionProductosActionPerformed
+        jdpEscritorio.add(jifGestionProductos);
+        jifGestionProductos.show();
+    }//GEN-LAST:event_jmiGestionProductosActionPerformed
+
+    private void jmiGestionButacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionButacasActionPerformed
+        jdpEscritorio.add(jifGestionButacas);
+        jifGestionButacas.show();
+    }//GEN-LAST:event_jmiGestionButacasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,11 +269,11 @@ public class JFPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JDesktopPane jdpEscritorio;
     private javax.swing.JMenu jmModulos;
     private javax.swing.JMenuItem jmiGestionButacas;
     private javax.swing.JMenuItem jmiGestionCines;
+    private javax.swing.JMenuItem jmiGestionClientes;
     private javax.swing.JMenuItem jmiGestionEmpleados;
     private javax.swing.JMenuItem jmiGestionPedidos;
     private javax.swing.JMenuItem jmiGestionPeliculas;
