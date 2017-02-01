@@ -45,5 +45,19 @@ class PeliculaPersistencia {
         return alPelicula;
 
     }
+    
+    
+    public Pelicula buscarPelicula(String nombre_aux) throws SQLException, ClassNotFoundException {
+        gbd.conectarBBDD();
+        String sql = "SELECT * FROM PRODUCTO WHERE nombre_pelicula= '" + nombre_aux + "'";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        rs.next();
+        pelicula = new Pelicula(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
+        gbd.cerrarConexionBBDD();
+        return pelicula;
+    }
+
 
 }

@@ -54,4 +54,16 @@ class SesionPersistencia {
         gbd.cerrarConexionBBDD();
         return alSesion;
     }
+    
+    public Sesion buscarSesiones(int id_aux) throws SQLException, ClassNotFoundException {
+        gbd.conectarBBDD();
+        String sql = "SELECT * FROM SESION WHERE id_sesion= '" + id_aux + "'";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        rs.next();
+        sesion = new Sesion(rs.getInt(1), rs.getDate(2), rs.getInt(3), rs.getInt(4));
+        gbd.cerrarConexionBBDD();
+        return sesion;
+    }
 }

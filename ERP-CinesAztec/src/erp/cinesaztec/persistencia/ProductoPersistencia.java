@@ -47,5 +47,17 @@ class ProductoPersistencia {
         return alProducto;
 
     }
+    
+    public Producto buscarProducto(String nombre_aux) throws SQLException, ClassNotFoundException {
+        gbd.conectarBBDD();
+        String sql = "SELECT * FROM PRODUCTO WHERE nombre_producto= '" + nombre_aux + "'";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        rs.next();
+        producto = new Producto(rs.getInt(1), rs.getString(2), rs.getBigDecimal(3).floatValue(), rs.getBigDecimal(4).floatValue(), rs.getString(5));
+        gbd.cerrarConexionBBDD();
+        return producto;
+    }
 
 }

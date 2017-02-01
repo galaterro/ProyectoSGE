@@ -58,4 +58,16 @@ public class ProveedorPersistencia {
         return alProveedor;
 
     }
+    
+    public Proveedor buscarProveedor(String cif_aux) throws SQLException, ClassNotFoundException {
+        gbd.conectarBBDD();
+        String sql = "SELECT * FROM PROVEEDOR WHERE cif_proveedor= '" + cif_aux + "'";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        rs.next();
+        proveedor = new Proveedor(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7));
+        gbd.cerrarConexionBBDD();
+        return proveedor;
+    }
 }

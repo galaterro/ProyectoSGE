@@ -48,5 +48,17 @@ public class SalaPersistencia {
         return alSala;
 
     }
+    
+    public Sala buscarSala(int id_aux) throws SQLException, ClassNotFoundException {
+        gbd.conectarBBDD();
+        String sql = "SELECT * FROM SALA WHERE id_sala= '" + id_aux + "'";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        rs.next();
+        sala = new Sala(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
+        gbd.cerrarConexionBBDD();
+        return sala;
+    }
 
 }

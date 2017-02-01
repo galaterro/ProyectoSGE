@@ -57,5 +57,17 @@ class ReservaPersistencia {
         return alReserva;
 
     }
+    
+    public Reserva buscarReserva(int id_aux) throws SQLException, ClassNotFoundException {
+        gbd.conectarBBDD();
+        String sql = "SELECT * FROM RESERVA WHERE id_reserva = '" + id_aux + "'";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        rs.next();
+        reserva = new Reserva(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4),rs.getInt(5), rs.getInt(6));
+        gbd.cerrarConexionBBDD();
+        return reserva;
+    }
 
 }
