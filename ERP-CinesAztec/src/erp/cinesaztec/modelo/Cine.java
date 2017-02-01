@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package erp.cinesaztec.modelo;
 
 /**
- *
- * @author allen
+ * Clase dedicada al modelo de Cine.
+ * 
+ * @author Cine Aztec Team
  */
 public class Cine {
     
@@ -18,15 +14,19 @@ public class Cine {
     private String pob_cine;
     private int codPos_cine;
 
-    public Cine(int id_cine, String nombre_cina, String cif_cine, String dir_cine, String pob_cine, int codPos_cine) {
+    /* Constructor. */
+    
+    public Cine(int id_cine, String nombre_cine, String cif_cine, String dir_cine, String pob_cine, int codPos_cine) {
         this.id_cine = id_cine;
-        this.nombre_cine = nombre_cina;
+        this.nombre_cine = nombre_cine;
         this.cif_cine = cif_cine;
         this.dir_cine = dir_cine;
         this.pob_cine = pob_cine;
         this.codPos_cine = codPos_cine;
     }
 
+    /* Getters y Setters. */
+    
     public int getId_cine() {
         return id_cine;
     }
@@ -74,6 +74,4 @@ public class Cine {
     public void setCodPos_cine(int codPos_cine) {
         this.codPos_cine = codPos_cine;
     }
-    
-    
 }

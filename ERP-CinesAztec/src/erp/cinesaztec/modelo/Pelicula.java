@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package erp.cinesaztec.modelo;
 
 /**
- *
- * @author allen
+ * Clase dedicada al modelo de Película.
+ * 
+ * @author Cine Aztec Team
  */
 public class Pelicula {
     
@@ -16,7 +12,10 @@ public class Pelicula {
     private int dur_pelicula;
     private int edad_acceso;
     private int id_sala;
-
+    
+    /* Esta clase tiene 2 constructores distintos: uno con id_sala y otro sin él
+    por ser clave foránea, y así poder manejarlo dependiendo de la necesidad. */
+    
     public Pelicula(int id_pelicula, String nombre_pelicula, int dur_pelicula, int edad_acceso) {
         this.id_pelicula = id_pelicula;
         this.nombre_pelicula = nombre_pelicula;
@@ -31,7 +30,9 @@ public class Pelicula {
         this.edad_acceso = edad_acceso;
         this.id_sala = id_sala;
     }
-
+    
+    /* Getters y Setters. */
+    
     public int getId_pelicula() {
         return id_pelicula;
     }
@@ -71,7 +72,4 @@ public class Pelicula {
     public void setId_sala(int id_sala) {
         this.id_sala = id_sala;
     }
-    
-    
-    
 }

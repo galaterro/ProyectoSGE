@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package erp.cinesaztec.modelo;
 
 /**
- *
- * @author allen
+ * Clase dedicada al modelo de Reserva. Todos sus campos, a excepción de id_reserva,
+ * son de clases ajenas a ésta (Película, Sesión, Butaca, Cliente y Sala).
+ * 
+ * @author Cine Aztec Team
  */
 public class Reserva {
     
@@ -18,6 +15,8 @@ public class Reserva {
     private int id_cliente;
     private int id_sala;
 
+    /* Constructor. */
+    
     public Reserva(int id_reserva, int id_pelicula, int id_sesion, int id_butaca, int id_cliente, int id_sala) {
         this.id_reserva = id_reserva;
         this.id_pelicula = id_pelicula;
@@ -27,6 +26,8 @@ public class Reserva {
         this.id_sala = id_sala;
     }
 
+    /* Getters y Setters. */
+    
     public int getId_reserva() {
         return id_reserva;
     }
@@ -73,7 +74,5 @@ public class Reserva {
 
     public void setId_sala(int id_sala) {
         this.id_sala = id_sala;
-    }
-    
-    
+    } 
 }

@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package erp.cinesaztec.modelo;
 
 /**
- *
- * @author allen
+ * Clase dedicada al modelo de Sala.
+ * 
+ * @author Cine Aztec Team
  */
 public class Sala {
     
@@ -16,6 +12,8 @@ public class Sala {
     private int numero_butacas;
     private int id_cine;
 
+    /* Constructor. */
+    
     public Sala(int id_sala, String nombre_sala, int numero_butacas, int id_cine) {
         this.id_sala = id_sala;
         this.nombre_sala = nombre_sala;
@@ -23,6 +21,8 @@ public class Sala {
         this.id_cine = id_cine;
     }
 
+    /* Getters y Setters. */
+    
     public int getId_sala() {
         return id_sala;
     }
@@ -54,5 +54,4 @@ public class Sala {
     public void setId_cine(int id_cine) {
         this.id_cine = id_cine;
     }
-    
 }

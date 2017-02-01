@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package erp.cinesaztec.modelo;
 
 import java.sql.Date;
 
 /**
- *
- * @author allen
+ * Clase dedicada al modelo de Empleado.
+ * 
+ * @author Cine Aztec Team
  */
 public class Empleado {
     
@@ -18,10 +14,13 @@ public class Empleado {
     private String nombre_empleado;
     private String apellidos_empleado;
     private int telefono_empleado;
-    private Date fecha_inicio;  //se importa Date SQL
+    private Date fecha_inicio;  /* Para recoger el tipo Date de SQL. */
     private String cargo_empleado;
-    private int id_cine; //clave foranea
+    private int id_cine;
 
+    /* Esta clase tiene 2 constructores distintos: uno con id_cine y otro sin él
+    por ser clave foránea, y así poder manejarlo dependiendo de la necesidad. */
+    
     public Empleado(int id_empleado, String dni_empleado, String nombre_empleado, String apellidos_empleado, int telefono_empleado, Date fecha_inicio, String cargo_empleado, int id_cine) {
         this.id_empleado = id_empleado;
         this.dni_empleado = dni_empleado;
@@ -33,9 +32,7 @@ public class Empleado {
         this.id_cine = id_cine;
     }
 
-    
-
-    Empleado(int id_empleado, String dni_empleado, String nombre_empleado, String apellidos_empleado, int telefono_empleado, Date fecha_inicio, String cargo_empleado) {
+    public Empleado(int id_empleado, String dni_empleado, String nombre_empleado, String apellidos_empleado, int telefono_empleado, Date fecha_inicio, String cargo_empleado) {
         this.id_empleado = id_empleado;
         this.dni_empleado = dni_empleado;
         this.nombre_empleado = nombre_empleado;
@@ -44,7 +41,8 @@ public class Empleado {
         this.fecha_inicio = fecha_inicio;
         this.cargo_empleado = cargo_empleado;
     }
-
+    
+    /* Getters y Setters. */
     
     public int getId_empleado() {
         return id_empleado;
@@ -109,8 +107,4 @@ public class Empleado {
     public void setId_cine(int id_cine) {
         this.id_cine = id_cine;
     }
-    
-    
-    
-    
 }

@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package erp.cinesaztec.modelo;
 
 /**
- *
- * @author allen
+ * Clase dedicada al modelo de Proveedor.
+ * 
+ * @author Cine Aztec Team
  */
 public class Proveedor {
     
@@ -19,6 +15,8 @@ public class Proveedor {
     private String pob_proveedor;
     private int codPos_proveedor;
 
+    /* Constructor. */
+    
     public Proveedor(int id_proveedor, String cif_proveedor, String nombre_proveedor, String apellidos_proveedor, int telefono_proveedor, String pob_proveedor, int codPos_proveedor) {
         this.id_proveedor = id_proveedor;
         this.cif_proveedor = cif_proveedor;
@@ -29,6 +27,8 @@ public class Proveedor {
         this.codPos_proveedor = codPos_proveedor;
     }
 
+    /* Getters y Setters. */
+    
     public int getId_proveedor() {
         return id_proveedor;
     }
@@ -83,7 +83,5 @@ public class Proveedor {
 
     public void setCodPos_proveedor(int codPos_proveedor) {
         this.codPos_proveedor = codPos_proveedor;
-    }
-    
-    
+    } 
 }

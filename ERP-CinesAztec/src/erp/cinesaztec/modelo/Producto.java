@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package erp.cinesaztec.modelo;
 
 /**
- *
- * @author allen
+ * Clase dedicada al modelo de Producto.
+ * 
+ * @author Cine Aztec Team
  */
 public class Producto {
     
@@ -17,6 +13,8 @@ public class Producto {
     private float precio_venta;
     private String nombre_producto;
 
+    /* Constructor. */
+    
     public Producto(int id_producto, String desc_producto, float precio_producto, float precio_venta, String nombre_producto) {
         this.id_producto = id_producto;
         this.desc_producto = desc_producto;
@@ -25,6 +23,8 @@ public class Producto {
         this.nombre_producto = nombre_producto;
     }
 
+    /* Getters y Setters. */
+    
     public int getId_producto() {
         return id_producto;
     }
@@ -63,7 +63,5 @@ public class Producto {
 
     public void setNombre_producto(String nombre_producto) {
         this.nombre_producto = nombre_producto;
-    }
-    
-    
+    } 
 }

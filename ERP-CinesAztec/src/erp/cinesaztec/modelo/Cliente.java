@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package erp.cinesaztec.modelo;
 
 /**
- *
- * @author allen
+ * Clase dedicada al modelo de Cliente.
+ * 
+ * @author Cine Aztec Team
  */
 public class Cliente {
     private int id_cliente;
@@ -20,6 +16,8 @@ public class Cliente {
     private String usuario_cliente;
     private String contraseña_cliente;
 
+    /* Constructor. */
+    
     public Cliente(int id_cliente, String dni_cliente, String nombre_cliente, String apellidos_cliente, int telefono_cliente, int codpos_cliente, int puntos, String usuario_cliente, String contraseña_cliente) {
         this.id_cliente = id_cliente;
         this.dni_cliente = dni_cliente;
@@ -31,7 +29,9 @@ public class Cliente {
         this.usuario_cliente = usuario_cliente;
         this.contraseña_cliente = contraseña_cliente;
     }
-
+    
+    /* Getters y Setters. */
+    
     public int getId_cliente() {
         return id_cliente;
     }
@@ -103,7 +103,4 @@ public class Cliente {
     public void setContraseña_cliente(String contraseña_cliente) {
         this.contraseña_cliente = contraseña_cliente;
     }
-   
-    
-    
 }
