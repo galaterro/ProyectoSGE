@@ -17,14 +17,14 @@ import java.util.ArrayList;
  *
  * @author juanxxiii
  */
-public class AdministradorPersistencia {
-    GestorBBDD gbd = new GestorBBDD();
+class AdministradorPersistencia {
+    private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
     private Connection c;
     private Administrador administrador ;
-    ArrayList<Administrador> alAdministrador = new ArrayList();
+    private ArrayList<Administrador> alAdministrador = new ArrayList();
     
     public void ingresarAdministrador(Administrador administrador) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();

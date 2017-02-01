@@ -35,7 +35,7 @@ public class Empleado {
 
     
 
-    public Empleado(int id_empleado, String dni_empleado, String nombre_empleado, String apellidos_empleado, int telefono_empleado, Date fecha_inicio, String cargo_empleado) {
+    Empleado(int id_empleado, String dni_empleado, String nombre_empleado, String apellidos_empleado, int telefono_empleado, Date fecha_inicio, String cargo_empleado) {
         this.id_empleado = id_empleado;
         this.dni_empleado = dni_empleado;
         this.nombre_empleado = nombre_empleado;

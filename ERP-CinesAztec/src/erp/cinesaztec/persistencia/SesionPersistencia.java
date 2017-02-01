@@ -18,15 +18,15 @@ import java.util.ArrayList;
  *
  * @author juanxxiii
  */
-public class SesionPersistencia {
+class SesionPersistencia {
     
-    GestorBBDD gbd = new GestorBBDD();
+    private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
     private Connection c;
-    Sesion sesion;
-    ArrayList<Sesion> alSesion = new ArrayList();
+    private Sesion sesion;
+    private ArrayList<Sesion> alSesion = new ArrayList();
 
     
      public void ingresarSesion(Sesion sesion) throws SQLException, ClassNotFoundException {

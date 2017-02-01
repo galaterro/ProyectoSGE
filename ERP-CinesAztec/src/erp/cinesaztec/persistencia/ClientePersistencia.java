@@ -1,6 +1,5 @@
 package erp.cinesaztec.persistencia;
 
-import erp.cinesaztec.modelo.Butaca;
 import erp.cinesaztec.modelo.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,14 +12,14 @@ import java.util.ArrayList;
  *
  * @author juanxxiiiTarde
  */
-public class ClientePersistencia {
-    GestorBBDD gbd = new GestorBBDD();
+class ClientePersistencia {
+    private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
     private Connection c;
     private Cliente cliente;
-    ArrayList<Cliente> alCliente = new ArrayList();
+    private ArrayList<Cliente> alCliente = new ArrayList();
     
     public void ingresarCliente(Cliente cliente) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();

@@ -17,14 +17,14 @@ import java.util.ArrayList;
  *
  * @author juanxxiii
  */
-public class ReservaPersistencia {
-    GestorBBDD gbd = new GestorBBDD();
+class ReservaPersistencia {
+    private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
     private Connection c;
-    Reserva reserva;
-    ArrayList<Reserva> alReserva = new ArrayList();
+    private Reserva reserva;
+    private ArrayList<Reserva> alReserva = new ArrayList();
 
     public void ingresarReserva(Reserva reserva) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();

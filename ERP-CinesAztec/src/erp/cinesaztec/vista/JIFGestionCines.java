@@ -5,13 +5,11 @@
  */
 package erp.cinesaztec.vista;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author allen
  */
-public class JIFGestionCines extends javax.swing.JInternalFrame {
+class JIFGestionCines extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form JIFGestionCines

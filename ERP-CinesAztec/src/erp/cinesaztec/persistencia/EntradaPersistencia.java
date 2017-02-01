@@ -7,7 +7,7 @@ package erp.cinesaztec.persistencia;
 
 
 import erp.cinesaztec.modelo.Entrada;
-import erp.cinesaztec.modelo.Sala;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,13 +20,13 @@ import java.util.ArrayList;
  * @author allen
  */
 public class EntradaPersistencia {
-    GestorBBDD gbd = new GestorBBDD();
+    private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
     private Connection c;
-    Entrada entrada;
-    ArrayList<Entrada> alEntrada = new ArrayList();
+    private Entrada entrada;
+    private ArrayList<Entrada> alEntrada = new ArrayList();
     
     public void ingresarEntrada(Entrada entrada) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();

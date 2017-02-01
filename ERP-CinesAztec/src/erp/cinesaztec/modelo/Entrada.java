@@ -5,9 +5,6 @@
  */
 package erp.cinesaztec.modelo;
 
-import java.math.BigDecimal;
-import java.util.logging.Logger;
-
 /**
  *
  * @author allen

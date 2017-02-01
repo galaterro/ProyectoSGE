@@ -2,23 +2,22 @@ package erp.cinesaztec.persistencia;
 
 
 
-import erp.cinesaztec.modelo.Cine;
 import erp.cinesaztec.modelo.Sala;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 /**
- * Created by juanxxiii on 23/01/2017.
+ * Created by Galaterro on 23/01/2017.
  */
 public class SalaPersistencia {
-    GestorBBDD gbd = new GestorBBDD();
+    private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
     private Connection c;
-    Sala sala;
-    ArrayList<Sala> alSala = new ArrayList();
+    private Sala sala;
+    private ArrayList<Sala> alSala = new ArrayList();
 
     public void ingresarSala(Sala sala) throws SQLException, ClassNotFoundException {
         int filasAfectadas;

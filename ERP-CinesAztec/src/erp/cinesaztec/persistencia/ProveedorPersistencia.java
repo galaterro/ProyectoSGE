@@ -5,7 +5,6 @@
  */
 package erp.cinesaztec.persistencia;
 
-import erp.cinesaztec.modelo.Entrada;
 import erp.cinesaztec.modelo.Proveedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,13 +18,13 @@ import java.util.ArrayList;
  * @author allen
  */
 public class ProveedorPersistencia {
-    GestorBBDD gbd = new GestorBBDD();
+    private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
     private Connection c;
-    Proveedor proveedor;
-    ArrayList<Proveedor> alProveedor = new ArrayList();
+    private Proveedor proveedor;
+    private ArrayList<Proveedor> alProveedor = new ArrayList();
     
     
     public void ingresarProveedor(Proveedor proveedor) throws SQLException, ClassNotFoundException {

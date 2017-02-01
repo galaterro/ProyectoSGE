@@ -17,15 +17,15 @@ import java.util.ArrayList;
  *
  * @author allen
  */
-public class CinePersistencia {
+class CinePersistencia {
 
-    GestorBBDD gbd = new GestorBBDD();
+    private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
     private Connection c;
-    Cine cine;
-    ArrayList<Cine> alCine = new ArrayList();
+    private Cine cine;
+    private ArrayList<Cine> alCine = new ArrayList();
 
     
      public void ingresarCine(Cine cine) throws SQLException, ClassNotFoundException {

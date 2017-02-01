@@ -12,15 +12,15 @@ import java.util.ArrayList;
  *
  * @author juanxxiiiTarde
  */
-public class ButacaPersistencia {
+class ButacaPersistencia {
     
-    GestorBBDD gbd = new GestorBBDD();
+    private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
     private Connection c;
     private Butaca butaca;
-    ArrayList<Butaca> alButaca = new ArrayList();
+    private ArrayList<Butaca> alButaca = new ArrayList();
     
     public void ingresarButaca(Butaca butaca) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();

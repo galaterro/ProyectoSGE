@@ -17,14 +17,14 @@ import java.util.ArrayList;
  *
  * @author juanxxiii
  */
-public class EmpleadoPersistencia {
-     GestorBBDD gbd = new GestorBBDD();
+class EmpleadoPersistencia {
+     private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
     private Connection c;
-    Empleado empleado;
-    ArrayList<Empleado> alEmpleado = new ArrayList();
+    private Empleado empleado;
+    private ArrayList<Empleado> alEmpleado = new ArrayList();
 
     
      public void ingresarEmpleado(Empleado empleado) throws SQLException, ClassNotFoundException {

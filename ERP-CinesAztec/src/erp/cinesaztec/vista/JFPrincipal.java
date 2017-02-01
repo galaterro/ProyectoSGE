@@ -5,30 +5,28 @@
  */
 package erp.cinesaztec.vista;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author allen
  */
-public class JFPrincipal extends javax.swing.JFrame {
+class JFPrincipal extends javax.swing.JFrame {
 
     
-    JIFGestionCines jifGestionCines = new JIFGestionCines();
-    JIFGestionEmpleados jifGestionEmpleados = new JIFGestionEmpleados();
-    JIFGestionClientes jifGestionClientes = new JIFGestionClientes();
-    JIFGestionProveedores jifGestionProveedores = new JIFGestionProveedores();
-    JIFGestionPedidos jifGestionPedidos = new JIFGestionPedidos();
-    JIFGestionSesiones jifGestionSesiones = new JIFGestionSesiones();
-    JIFGestionPeliculas jifGestionPeliculas = new JIFGestionPeliculas();
-    JIFGestionReservas jifGestionReservas = new JIFGestionReservas();
-    JIFGestionSalas jifGestionSalas = new JIFGestionSalas();
-    JIFGestionProductos jifGestionProductos = new JIFGestionProductos();
-    JIFGestionButacas jifGestionButacas = new JIFGestionButacas();
+    private JIFGestionCines jifGestionCines = new JIFGestionCines();
+    private JIFGestionEmpleados jifGestionEmpleados = new JIFGestionEmpleados();
+    private JIFGestionClientes jifGestionClientes = new JIFGestionClientes();
+    private JIFGestionProveedores jifGestionProveedores = new JIFGestionProveedores();
+    private JIFGestionPedidos jifGestionPedidos = new JIFGestionPedidos();
+    private JIFGestionSesiones jifGestionSesiones = new JIFGestionSesiones();
+    private JIFGestionPeliculas jifGestionPeliculas = new JIFGestionPeliculas();
+    private JIFGestionReservas jifGestionReservas = new JIFGestionReservas();
+    private JIFGestionSalas jifGestionSalas = new JIFGestionSalas();
+    private JIFGestionProductos jifGestionProductos = new JIFGestionProductos();
+    private JIFGestionButacas jifGestionButacas = new JIFGestionButacas();
     /**
      * Creates new form JFPrincipal
      */
-    public JFPrincipal() {
+    private JFPrincipal() {
         initComponents();
         this.setSize(800, 700);
         this.setTitle("Cines Aztec ERP");

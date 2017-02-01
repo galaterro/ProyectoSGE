@@ -9,7 +9,7 @@ package erp.cinesaztec.vista;
  *
  * @author allen
  */
-public class JIFGestionButacas extends javax.swing.JInternalFrame {
+class JIFGestionButacas extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form JIFGestionButacas

@@ -1,20 +1,17 @@
 package erp.cinesaztec.Controlador;
 
-import erp.cinesaztec.modelo.Entrada;
 import erp.cinesaztec.modelo.Proveedor;
-import erp.cinesaztec.modelo.Sala;
 import erp.cinesaztec.persistencia.EntradaPersistencia;
 import erp.cinesaztec.persistencia.ProveedorPersistencia;
 import erp.cinesaztec.persistencia.SalaPersistencia;
-import java.math.BigDecimal;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Created by juanxxiii on 23/01/2017.
+ * Created by Galaterro on 23/01/2017.
  */
-public class Ejecutador {
+class Ejecutador {
     public static void main(String[] args) {
         SalaPersistencia sp = new SalaPersistencia();
         EntradaPersistencia ep = new EntradaPersistencia();

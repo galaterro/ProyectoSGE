@@ -6,16 +6,16 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- * Created by juanxxiii on 25/01/2017.
+ * Created by Galaterro on 25/01/2017.
  */
-public class PeliculaPersistencia {
-    GestorBBDD gbd = new GestorBBDD();
+class PeliculaPersistencia {
+    private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
     private Connection c;
-    Pelicula pelicula;
-    ArrayList<Pelicula> alPelicula = new ArrayList();
+    private Pelicula pelicula;
+    private ArrayList<Pelicula> alPelicula = new ArrayList();
 
     public void ingresarPelicula(Pelicula pelicula) throws SQLException, ClassNotFoundException {
         int filasAfectadas;
