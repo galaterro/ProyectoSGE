@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author juanxxiiiTarde
  */
-class ButacaPersistencia {
+public class ButacaPersistencia {
     
     private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Galaterro on 25/01/2017.
  */
-class ProductoPersistencia {
+public class ProductoPersistencia {
 
     private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar

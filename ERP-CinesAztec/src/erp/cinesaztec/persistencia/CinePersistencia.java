@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author allen
  */
-class CinePersistencia {
+public class CinePersistencia {
 
     private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar

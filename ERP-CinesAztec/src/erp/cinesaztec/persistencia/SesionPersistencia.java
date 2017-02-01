@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author juanxxiii
  */
-class SesionPersistencia {
+public class SesionPersistencia {
     
     private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar

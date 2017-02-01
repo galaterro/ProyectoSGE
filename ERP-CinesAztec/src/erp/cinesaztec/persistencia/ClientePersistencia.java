@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author juanxxiiiTarde
  */
-class ClientePersistencia {
+public class ClientePersistencia {
     private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado

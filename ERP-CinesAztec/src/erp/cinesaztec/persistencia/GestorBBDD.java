@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author allen
  */
-class GestorBBDD {
+public class GestorBBDD {
     
     private Connection c;//Conexión
     
