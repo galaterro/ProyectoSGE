@@ -10,14 +10,12 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-
 /**
  *
  * @author allen
  */
 class JFPrincipal extends javax.swing.JFrame {
 
-    
     private JIFGestionCines jifGestionCines = new JIFGestionCines();
     private JIFGestionEmpleados jifGestionEmpleados = new JIFGestionEmpleados();
     private JIFGestionClientes jifGestionClientes = new JIFGestionClientes();
@@ -29,6 +27,7 @@ class JFPrincipal extends javax.swing.JFrame {
     private JIFGestionSalas jifGestionSalas = new JIFGestionSalas();
     private JIFGestionProductos jifGestionProductos = new JIFGestionProductos();
     private JIFGestionButacas jifGestionButacas = new JIFGestionButacas();
+
     /**
      * Creates new form JFPrincipal
      */
@@ -182,8 +181,12 @@ class JFPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiGestionCinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionCinesActionPerformed
-        jdpEscritorio.add(jifGestionCines);
-        jifGestionCines.show();
+//        jdpEscritorio.add(jifGestionCines);
+//        jifGestionCines.show();
+        if (!jifGestionCines.isDisplayable()) {
+            jdpEscritorio.add(jifGestionCines);
+            jifGestionCines.show();
+        }
     }//GEN-LAST:event_jmiGestionCinesActionPerformed
 
     private void jmiGestionEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionEmpleadosActionPerformed
@@ -262,12 +265,12 @@ class JFPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JFPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        try{
+        try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
-        }catch(ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
         } catch (InstantiationException ex) {
-           
-    }   catch (IllegalAccessException ex) {
+
+        } catch (IllegalAccessException ex) {
             Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);

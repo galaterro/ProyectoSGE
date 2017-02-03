@@ -31,77 +31,136 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jtBarraMenu = new javax.swing.JToolBar();
-        jbAltaCine = new javax.swing.JButton();
-        jbtBajaCines = new javax.swing.JButton();
-        jbModificacionCine = new javax.swing.JButton();
-        jbConsultaCine = new javax.swing.JButton();
+        jtpFondo = new javax.swing.JTabbedPane();
+        jtpConsulta = new javax.swing.JTabbedPane();
+        jpConsulta = new javax.swing.JPanel();
+        lbTitulo = new javax.swing.JLabel();
+        lbNombreConsulta = new javax.swing.JLabel();
+        jtfNombreConsulta = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtaConsulta = new javax.swing.JTable();
+        jbAceptarConsulta = new javax.swing.JButton();
+        jtpModificar = new javax.swing.JTabbedPane();
+        jtpActualizar = new javax.swing.JTabbedPane();
+        jtpEliminar = new javax.swing.JTabbedPane();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-
-        jtBarraMenu.setRollover(true);
-
-        jbAltaCine.setText("Alta");
-        jbAltaCine.setFocusable(false);
-        jbAltaCine.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jbAltaCine.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jbAltaCine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAltaCineActionPerformed(evt);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameDeactivated(evt);
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
-        jtBarraMenu.add(jbAltaCine);
 
-        jbtBajaCines.setText("Baja");
-        jbtBajaCines.setFocusable(false);
-        jbtBajaCines.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jbtBajaCines.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jtBarraMenu.add(jbtBajaCines);
+        lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTitulo.setText("Ingrese el nombre del cine o pulce Aceptar:");
 
-        jbModificacionCine.setText("Modificación");
-        jbModificacionCine.setFocusable(false);
-        jbModificacionCine.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jbModificacionCine.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jtBarraMenu.add(jbModificacionCine);
+        lbNombreConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbNombreConsulta.setText("Nombre:");
 
-        jbConsultaCine.setText("Consulta");
-        jbConsultaCine.setFocusable(false);
-        jbConsultaCine.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jbConsultaCine.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jtBarraMenu.add(jbConsultaCine);
+        jtaConsulta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jtaConsulta);
+
+        jbAceptarConsulta.setText("Aceptar");
+
+        javax.swing.GroupLayout jpConsultaLayout = new javax.swing.GroupLayout(jpConsulta);
+        jpConsulta.setLayout(jpConsultaLayout);
+        jpConsultaLayout.setHorizontalGroup(
+            jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpConsultaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+                    .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jpConsultaLayout.createSequentialGroup()
+                        .addComponent(lbNombreConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfNombreConsulta))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jbAceptarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jpConsultaLayout.setVerticalGroup(
+            jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpConsultaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNombreConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNombreConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jbAceptarConsulta)
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+
+        jtpConsulta.addTab("tab1", jpConsulta);
+
+        jtpFondo.addTab("Consulta", jtpConsulta);
+        jtpFondo.addTab("Modificar", jtpModificar);
+        jtpFondo.addTab("Actualizar", jtpActualizar);
+        jtpFondo.addTab("Eliminiar", jtpEliminar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jtBarraMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jtpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 957, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jtBarraMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 462, Short.MAX_VALUE))
+            .addComponent(jtpFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbAltaCineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaCineActionPerformed
-       
-    }//GEN-LAST:event_jbAltaCineActionPerformed
+    private void formInternalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameDeactivated
+        
+    }//GEN-LAST:event_formInternalFrameDeactivated
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbAltaCine;
-    private javax.swing.JButton jbConsultaCine;
-    private javax.swing.JButton jbModificacionCine;
-    private javax.swing.JButton jbtBajaCines;
-    private javax.swing.JToolBar jtBarraMenu;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbAceptarConsulta;
+    private javax.swing.JPanel jpConsulta;
+    private javax.swing.JTable jtaConsulta;
+    private javax.swing.JTextField jtfNombreConsulta;
+    private javax.swing.JTabbedPane jtpActualizar;
+    private javax.swing.JTabbedPane jtpConsulta;
+    private javax.swing.JTabbedPane jtpEliminar;
+    private javax.swing.JTabbedPane jtpFondo;
+    private javax.swing.JTabbedPane jtpModificar;
+    private javax.swing.JLabel lbNombreConsulta;
+    private javax.swing.JLabel lbTitulo;
     // End of variables declaration//GEN-END:variables
 }
