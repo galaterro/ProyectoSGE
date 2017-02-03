@@ -31,8 +31,8 @@ class AdministradorPersistencia {
 
         int filasAfectadas;
 
-        String sql = "insert into administrador values('" + administrador.getUsuario_admin()
-                +"','" + administrador.getContraseña_admin() + "'," + administrador.getId_empleado() +
+        String sql = "insert into administrador values('" + administrador.getUsuario_empleado()
+                +"','" + administrador.getPassword_empleado()+ "'," + administrador.getId_empleado() +
                 ", '"+ administrador.getDni_empleado() + "', '" + administrador.getNombre_empleado() +
                 "','" + administrador.getApellidos_empleado() + "'," + administrador.getTelefono_empleado()
                 + ", '" + administrador.getFecha_inicio() + "','" + administrador.getCargo_empleado() + "'," 
@@ -55,16 +55,16 @@ class AdministradorPersistencia {
         rs = st.executeQuery(sql);
         System.out.println("Los Administradores son: ");
         while (rs.next()) {
-            administrador = new Administrador(rs.getString(1), rs.getString(2), rs.getInt(3),
+            administrador = new Administrador(rs.getInt(3),
                     rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getDate(8),
-                    rs.getString(9), rs.getInt(10));
+                    rs.getString(9), rs.getInt(10),rs.getString(1), rs.getString(2));
             alAdministrador.add(administrador);
         }
         gbd.cerrarConexionBBDD();
         return alAdministrador;
     }
 
-    public ArrayList buscarAdmin(String dni_aux) throws SQLException, ClassNotFoundException {
+    public Administrador buscarAdmin(String dni_aux) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
 
         String sql = "select * from  administrador WHERE dni_admin = '%" + dni_aux + "%'";
@@ -72,12 +72,11 @@ class AdministradorPersistencia {
         st = c.createStatement();
         rs = st.executeQuery(sql);
         while (rs.next()) {
-            administrador = new Administrador(rs.getString(1), rs.getString(2), rs.getInt(3),
+            administrador = new Administrador(rs.getInt(3),
                     rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getDate(8),
-                    rs.getString(9), rs.getInt(10));
-            alAdministrador.add(administrador);
+                    rs.getString(9), rs.getInt(10), rs.getString(1), rs.getString(2));
         }
         gbd.cerrarConexionBBDD();
-        return alAdministrador;
+        return administrador;
     }
 }

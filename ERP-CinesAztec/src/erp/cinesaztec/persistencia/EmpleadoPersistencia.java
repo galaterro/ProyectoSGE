@@ -34,7 +34,7 @@ class EmpleadoPersistencia {
 
         String sql = "insert into empleado values(" + empleado.getId_empleado() + ",'" + empleado.getDni_empleado() + "','"
                 + empleado.getNombre_empleado()+ "','" + empleado.getApellidos_empleado()+ "'," + empleado.getTelefono_empleado() + 
-                ",'" + empleado.getFecha_inicio() + "','" + empleado.getCargo_empleado() + "'," + empleado.getId_cine() + ")";
+                ",'" + empleado.getFecha_inicio() + "','" + empleado.getCargo_empleado() + "'," + empleado.getId_cine() + "'," + empleado.getUsuario_empleado() + "'," + empleado.getPassword_empleado() + ")";
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
@@ -54,14 +54,14 @@ class EmpleadoPersistencia {
         System.out.println("Los empleados son: ");
         while (rs.next()) {
             empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
-                    rs.getString(7), rs.getInt(8));
+                    rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));
             alEmpleado.add(empleado);
         }
         gbd.cerrarConexionBBDD();
         return alEmpleado;
     }
 
-    public ArrayList buscarEmpleado(String dni_aux) throws ClassNotFoundException, SQLException {
+    public Empleado buscarEmpleado(String dni_aux) throws ClassNotFoundException, SQLException {
         gbd.conectarBBDD();
 
         String sql = "select * from empleado WHERE dni_emp = '%" + dni_aux + "%'";
@@ -72,10 +72,10 @@ class EmpleadoPersistencia {
         System.out.println("Los empleados son: ");
         while (rs.next()) {
             empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
-                    rs.getString(7), rs.getInt(8));
-            alEmpleado.add(empleado);
+                    rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));
+            
         }
         gbd.cerrarConexionBBDD();
-        return alEmpleado;
+        return empleado;
     }
 }
