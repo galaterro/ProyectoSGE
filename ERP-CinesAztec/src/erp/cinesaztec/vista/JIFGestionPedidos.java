@@ -16,7 +16,7 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
      */
     public JIFGestionPedidos() {
         initComponents();
-        this.setSize(790,700);
+        this.setSize(990, 700);
         this.setTitle("Gestión Pedidos");
     }
 

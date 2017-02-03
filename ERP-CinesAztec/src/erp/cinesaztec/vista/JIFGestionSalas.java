@@ -16,7 +16,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
      */
     public JIFGestionSalas() {
         initComponents();
-        this.setSize(790,700);
+        this.setSize(990, 700);
         this.setTitle("Gestión Salas");
     }
 

@@ -16,7 +16,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
      */
     public JIFGestionProductos() {
         initComponents();
-        this.setSize(790,700);
+        this.setSize(990, 700);
         this.setTitle("Gestión Productos");
     }
 

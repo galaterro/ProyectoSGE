@@ -16,7 +16,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
      */
     public JIFGestionClientes() {
         initComponents();
-        this.setSize(790,700);
+        this.setSize(990, 700);
         this.setTitle("Gestión Clientes");
     }
 

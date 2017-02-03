@@ -16,7 +16,7 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
      */
     public JIFGestionProveedores() {
         initComponents();
-        this.setSize(790,700);
+        this.setSize(990, 700);
         this.setTitle("Gestión Proveedores");
     }
 

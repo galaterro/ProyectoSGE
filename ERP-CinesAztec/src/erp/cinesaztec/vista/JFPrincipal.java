@@ -5,6 +5,12 @@
  */
 package erp.cinesaztec.vista;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+
 /**
  *
  * @author allen
@@ -29,7 +35,7 @@ class JFPrincipal extends javax.swing.JFrame {
     JFPrincipal() {
         initComponents();
         //this.setSize(800, 700);
-        this.setSize(1200, 700);
+        this.setSize(1000, 700);
         this.setTitle("Cines Aztec ERP");
         this.add(jdpEscritorio);
         this.setVisible(true);
@@ -256,6 +262,16 @@ class JFPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JFPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        try{
+            UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
+        }catch(ClassNotFoundException ex){
+        } catch (InstantiationException ex) {
+           
+    }   catch (IllegalAccessException ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

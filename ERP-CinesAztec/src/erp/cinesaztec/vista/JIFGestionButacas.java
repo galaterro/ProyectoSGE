@@ -16,7 +16,7 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
      */
     public JIFGestionButacas() {
         initComponents();
-        this.setSize(790,700);
+        this.setSize(990, 700);
         this.setTitle("Gestión Butacas");
     }
 

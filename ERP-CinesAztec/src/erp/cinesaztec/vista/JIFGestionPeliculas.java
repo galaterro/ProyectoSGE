@@ -16,7 +16,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
      */
     public JIFGestionPeliculas() {
         initComponents();
-        this.setSize(790,700);
+        this.setSize(990, 700);
         this.setTitle("Gestión Peliculas");
     }
 

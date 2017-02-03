@@ -18,8 +18,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
      */
     public JIFGestionCines() {
         initComponents();
-        
-        this.setSize(1190,700);
+        this.setSize(990, 700);
         this.setTitle("Gestión Cines");
     }
 
@@ -80,14 +79,14 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jtBarraMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                .addComponent(jtBarraMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jtBarraMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 253, Short.MAX_VALUE))
+                .addGap(0, 462, Short.MAX_VALUE))
         );
 
         pack();

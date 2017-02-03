@@ -16,7 +16,7 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
      */
     public JIFGestionReservas() {
         initComponents();
-        this.setSize(790,700);
+        this.setSize(990, 700);
         this.setTitle("Gestión Reservas");
     }
 

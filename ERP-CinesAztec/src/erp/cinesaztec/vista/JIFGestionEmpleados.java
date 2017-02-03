@@ -16,7 +16,7 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
      */
     public JIFGestionEmpleados() {
         initComponents();
-        this.setSize(790,700);
+        this.setSize(990, 700);
         this.setTitle("Gestión Empleados");
     }
 
