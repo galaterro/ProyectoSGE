@@ -5,18 +5,21 @@
  */
 package erp.cinesaztec.vista;
 
+
 /**
  *
  * @author allen
  */
 class JIFGestionCines extends javax.swing.JInternalFrame {
 
+    
     /**
      * Creates new form JIFGestionCines
      */
     public JIFGestionCines() {
         initComponents();
-        this.setSize(790,700);
+        
+        this.setSize(1190,700);
         this.setTitle("Gestión Cines");
     }
 

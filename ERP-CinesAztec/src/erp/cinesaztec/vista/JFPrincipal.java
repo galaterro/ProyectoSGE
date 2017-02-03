@@ -26,9 +26,10 @@ class JFPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form JFPrincipal
      */
-    private JFPrincipal() {
+    JFPrincipal() {
         initComponents();
-        this.setSize(800, 700);
+        //this.setSize(800, 700);
+        this.setSize(1200, 700);
         this.setTitle("Cines Aztec ERP");
         this.add(jdpEscritorio);
         this.setVisible(true);
