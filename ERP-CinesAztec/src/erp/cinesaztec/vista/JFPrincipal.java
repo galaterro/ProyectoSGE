@@ -37,6 +37,7 @@ class JFPrincipal extends javax.swing.JFrame {
         this.setSize(1000, 700);
         this.setTitle("Cines Aztec ERP");
         this.add(jdpEscritorio);
+        this.setResizable(false);
         this.setVisible(true);
     }
 

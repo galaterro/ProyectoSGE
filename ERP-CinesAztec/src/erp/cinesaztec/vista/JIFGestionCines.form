@@ -36,7 +36,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jtpFondo" alignment="0" pref="363" max="32767" attributes="0"/>
+          <Component id="jtpFondo" alignment="0" pref="396" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -59,8 +59,8 @@
             <Container class="javax.swing.JPanel" name="jpConsulta">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="tab1">
-                    <Property name="tabTitle" type="java.lang.String" value="tab1"/>
+                  <JTabbedPaneConstraints tabName="">
+                    <Property name="tabTitle" type="java.lang.String" value=""/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -101,7 +101,7 @@
                           <Component id="jScrollPane1" min="-2" pref="90" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jbAceptarConsulta" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="79" max="32767" attributes="0"/>
+                          <EmptySpace pref="112" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -161,23 +161,300 @@
           </Constraints>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jpModificar">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="">
+                    <Property name="tabTitle" type="java.lang.String" value=""/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jlCodigoPostal" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                                      <Component id="jlPoblacionCine" min="-2" pref="243" max="-2" attributes="0"/>
+                                      <Component id="jlDireccionCine" min="-2" pref="182" max="-2" attributes="0"/>
+                                      <Component id="jlCifCine" min="-2" pref="182" max="-2" attributes="0"/>
+                                      <Component id="jlNombreActual" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jlCIfBuscador" min="-2" pref="239" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jlNombreCine" min="-2" pref="239" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jtfNombreCine" min="-2" pref="403" max="-2" attributes="0"/>
+                                      <Component id="jtfCIfCine" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jtfIdCine" min="-2" pref="117" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jbtBuscarCine" min="-2" pref="91" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jlDireccionActual" min="-2" pref="316" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jlPoblacionActual" min="-2" pref="113" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jlCodigoPostalActual" min="-2" pref="115" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace pref="110" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jtfPoblacionCine" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jtfCodigoPostal" min="-2" pref="110" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="316" max="-2" attributes="0"/>
+                                                  <Component id="jbtModificar" min="-2" pref="84" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jtfDireccionCine" min="-2" pref="510" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jlNombreResultado" min="-2" pref="239" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Component id="jlDireccionResultado" min="-2" pref="316" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jlPoblacionResultado" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="483" max="-2" attributes="0"/>
+                                  <Component id="jlCodigoPostalResultado" min="-2" pref="115" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jlCIfBuscador" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jtfIdCine" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbtBuscarCine" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jlNombreActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jlDireccionActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jlPoblacionActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jlCodigoPostalActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jlPoblacionResultado" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jlCodigoPostalResultado" min="-2" pref="17" max="-2" attributes="0"/>
+                                  <EmptySpace min="225" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jlDireccionResultado" max="32767" attributes="0"/>
+                                      <Component id="jlNombreResultado" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="jlCifCine" min="-2" pref="22" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="jtfNombreCine" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jlNombreCine" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jtfCIfCine" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jlDireccionCine" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                              <Component id="jtfDireccionCine" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jlPoblacionCine" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                              <Component id="jtfPoblacionCine" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jlCodigoPostal" min="-2" pref="23" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jtfCodigoPostal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jbtModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jlNombreCine">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCifCine">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="CIF:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCIfBuscador">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Ingrece el CIF del cine que desea modificar:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlDireccionCine">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlPoblacionCine">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Poblaci&#xf3;n:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCodigoPostal">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="C&#xf3;digo Postal:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfIdCine">
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfNombreCine">
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfCIfCine">
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfDireccionCine">
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfPoblacionCine">
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfCodigoPostal">
+                </Component>
+                <Component class="javax.swing.JButton" name="jbtModificar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jbtBuscarCine">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlNombreActual">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nombre Actual:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlDireccionActual">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Direcci&#xf3;n Actual:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlPoblacionActual">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Poblaci&#xf3;n Actual:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCodigoPostalActual">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="C&#xf3;digo postal Actual:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlNombreResultado">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlDireccionResultado">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlPoblacionResultado">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCodigoPostalResultado">
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
         </Container>
-        <Container class="javax.swing.JTabbedPane" name="jtpActualizar">
+        <Container class="javax.swing.JTabbedPane" name="jtpAltaCine">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Actualizar">
-                <Property name="tabTitle" type="java.lang.String" value="Actualizar"/>
+              <JTabbedPaneConstraints tabName="Alta">
+                <Property name="tabTitle" type="java.lang.String" value="Alta"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jpAltaCine">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="">
+                    <Property name="tabTitle" type="java.lang.String" value=""/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="947" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="340" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
+          </SubComponents>
         </Container>
         <Container class="javax.swing.JTabbedPane" name="jtpEliminar">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Eliminiar">
-                <Property name="tabTitle" type="java.lang.String" value="Eliminiar"/>
+              <JTabbedPaneConstraints tabName="Eliminar">
+                <Property name="tabTitle" type="java.lang.String" value="Eliminar"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

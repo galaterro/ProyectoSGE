@@ -5,20 +5,19 @@
  */
 package erp.cinesaztec.vista;
 
-
 /**
  *
  * @author allen
  */
 class JIFGestionCines extends javax.swing.JInternalFrame {
 
-    
     /**
      * Creates new form JIFGestionCines
      */
     public JIFGestionCines() {
         initComponents();
         this.setSize(990, 700);
+        this.setResizable(false);
         this.setTitle("Gestión Cines");
     }
 
@@ -41,7 +40,31 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jtaConsulta = new javax.swing.JTable();
         jbAceptarConsulta = new javax.swing.JButton();
         jtpModificar = new javax.swing.JTabbedPane();
-        jtpActualizar = new javax.swing.JTabbedPane();
+        jpModificar = new javax.swing.JPanel();
+        jlNombreCine = new javax.swing.JLabel();
+        jlCifCine = new javax.swing.JLabel();
+        jlCIfBuscador = new javax.swing.JLabel();
+        jlDireccionCine = new javax.swing.JLabel();
+        jlPoblacionCine = new javax.swing.JLabel();
+        jlCodigoPostal = new javax.swing.JLabel();
+        jtfIdCine = new javax.swing.JTextField();
+        jtfNombreCine = new javax.swing.JTextField();
+        jtfCIfCine = new javax.swing.JTextField();
+        jtfDireccionCine = new javax.swing.JTextField();
+        jtfPoblacionCine = new javax.swing.JTextField();
+        jtfCodigoPostal = new javax.swing.JTextField();
+        jbtModificar = new javax.swing.JButton();
+        jbtBuscarCine = new javax.swing.JButton();
+        jlNombreActual = new javax.swing.JLabel();
+        jlDireccionActual = new javax.swing.JLabel();
+        jlPoblacionActual = new javax.swing.JLabel();
+        jlCodigoPostalActual = new javax.swing.JLabel();
+        jlNombreResultado = new javax.swing.JLabel();
+        jlDireccionResultado = new javax.swing.JLabel();
+        jlPoblacionResultado = new javax.swing.JLabel();
+        jlCodigoPostalResultado = new javax.swing.JLabel();
+        jtpAltaCine = new javax.swing.JTabbedPane();
+        jpAltaCine = new javax.swing.JPanel();
         jtpEliminar = new javax.swing.JTabbedPane();
 
         setClosable(true);
@@ -118,15 +141,176 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbAceptarConsulta)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
-        jtpConsulta.addTab("tab1", jpConsulta);
+        jtpConsulta.addTab("", jpConsulta);
 
         jtpFondo.addTab("Consulta", jtpConsulta);
+
+        jlNombreCine.setText("Nombre:");
+
+        jlCifCine.setText("CIF:");
+
+        jlCIfBuscador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCIfBuscador.setText("Ingrece el CIF del cine que desea modificar:");
+
+        jlDireccionCine.setText("Dirección:");
+
+        jlPoblacionCine.setText("Población:");
+
+        jlCodigoPostal.setText("Código Postal:");
+
+        jbtModificar.setText("Modificar");
+
+        jbtBuscarCine.setText("Buscar");
+
+        jlNombreActual.setText("Nombre Actual:");
+
+        jlDireccionActual.setText("Dirección Actual:");
+
+        jlPoblacionActual.setText("Población Actual:");
+
+        jlCodigoPostalActual.setText("Código postal Actual:");
+
+        javax.swing.GroupLayout jpModificarLayout = new javax.swing.GroupLayout(jpModificar);
+        jpModificar.setLayout(jpModificarLayout);
+        jpModificarLayout.setHorizontalGroup(
+            jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpModificarLayout.createSequentialGroup()
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jlCIfBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(8, 8, 8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
+                        .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfCIfCine, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addComponent(jtfIdCine, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbtBuscarCine, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(110, Short.MAX_VALUE))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addComponent(jtfPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jpModificarLayout.createSequentialGroup()
+                                        .addComponent(jtfCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(316, 316, 316)
+                                        .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jtfDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))))
+            .addGroup(jpModificarLayout.createSequentialGroup()
+                .addComponent(jlNombreResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jlDireccionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlPoblacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGap(483, 483, 483)
+                        .addComponent(jlCodigoPostalResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jpModificarLayout.setVerticalGroup(
+            jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpModificarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlCIfBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIdCine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtBuscarCine))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jlPoblacionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addComponent(jlCodigoPostalResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlDireccionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlNombreResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
+                                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
+                                        .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(jpModificarLayout.createSequentialGroup()
+                                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jtfNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtfCIfCine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24)))
+                                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jlDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jlPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jlCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
+                                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jtfCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jbtModificar))
+                                .addContainerGap())))))
+        );
+
+        jtpModificar.addTab("", jpModificar);
+
         jtpFondo.addTab("Modificar", jtpModificar);
-        jtpFondo.addTab("Actualizar", jtpActualizar);
-        jtpFondo.addTab("Eliminiar", jtpEliminar);
+
+        javax.swing.GroupLayout jpAltaCineLayout = new javax.swing.GroupLayout(jpAltaCine);
+        jpAltaCine.setLayout(jpAltaCineLayout);
+        jpAltaCineLayout.setHorizontalGroup(
+            jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 947, Short.MAX_VALUE)
+        );
+        jpAltaCineLayout.setVerticalGroup(
+            jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 340, Short.MAX_VALUE)
+        );
+
+        jtpAltaCine.addTab("", jpAltaCine);
+
+        jtpFondo.addTab("Alta", jtpAltaCine);
+        jtpFondo.addTab("Eliminar", jtpEliminar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,24 +322,48 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtpFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+            .addComponent(jtpFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameDeactivated
-        
+
     }//GEN-LAST:event_formInternalFrameDeactivated
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAceptarConsulta;
+    private javax.swing.JButton jbtBuscarCine;
+    private javax.swing.JButton jbtModificar;
+    private javax.swing.JLabel jlCIfBuscador;
+    private javax.swing.JLabel jlCifCine;
+    private javax.swing.JLabel jlCodigoPostal;
+    private javax.swing.JLabel jlCodigoPostalActual;
+    private javax.swing.JLabel jlCodigoPostalResultado;
+    private javax.swing.JLabel jlDireccionActual;
+    private javax.swing.JLabel jlDireccionCine;
+    private javax.swing.JLabel jlDireccionResultado;
+    private javax.swing.JLabel jlNombreActual;
+    private javax.swing.JLabel jlNombreCine;
+    private javax.swing.JLabel jlNombreResultado;
+    private javax.swing.JLabel jlPoblacionActual;
+    private javax.swing.JLabel jlPoblacionCine;
+    private javax.swing.JLabel jlPoblacionResultado;
+    private javax.swing.JPanel jpAltaCine;
     private javax.swing.JPanel jpConsulta;
+    private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
+    private javax.swing.JTextField jtfCIfCine;
+    private javax.swing.JTextField jtfCodigoPostal;
+    private javax.swing.JTextField jtfDireccionCine;
+    private javax.swing.JTextField jtfIdCine;
+    private javax.swing.JTextField jtfNombreCine;
     private javax.swing.JTextField jtfNombreConsulta;
-    private javax.swing.JTabbedPane jtpActualizar;
+    private javax.swing.JTextField jtfPoblacionCine;
+    private javax.swing.JTabbedPane jtpAltaCine;
     private javax.swing.JTabbedPane jtpConsulta;
     private javax.swing.JTabbedPane jtpEliminar;
     private javax.swing.JTabbedPane jtpFondo;
