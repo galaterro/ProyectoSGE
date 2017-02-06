@@ -160,7 +160,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
 
         jlCifCine.setText("CIF:");
 
-        jlCIfBuscador.setText("Ingrece el CIF del cine que desea modificar:");
+        jlCIfBuscador.setText("Ingrese el CIF del cine que desea modificar:");
 
         jlDireccionCine.setText("Dirección:");
 
@@ -328,6 +328,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         
         cargarCines();
     }//GEN-LAST:event_jbtBuscarCineActionPerformed
+    
     public void cargarCines(){
         String nombreBuscador = jtfCifBuscador.getText();
              

@@ -306,7 +306,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCIfBuscador">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ingrece el CIF del cine que desea modificar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el CIF del cine que desea modificar:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccionCine">
