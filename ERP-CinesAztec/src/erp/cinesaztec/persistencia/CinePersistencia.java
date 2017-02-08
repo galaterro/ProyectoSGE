@@ -45,7 +45,6 @@ public class CinePersistencia {
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
-        System.out.println("Los cines son: ");
         while (rs.next()) {
             cine = new Cine(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
             alCine.add(cine);
@@ -54,7 +53,7 @@ public class CinePersistencia {
         return alCine;
     }
 
-    public ArrayList buscarCine(String cif) throws ClassNotFoundException, SQLException {
+    public Cine buscarCine(String cif) throws ClassNotFoundException, SQLException {
         //gbd.conectarBBDD();
 
         String sql = "select * from cine WHERE cif_cine = "+ cif;
@@ -64,10 +63,10 @@ public class CinePersistencia {
         rs = st.executeQuery(sql);
         while (rs.next()) {
             cine = new Cine(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
-            alCine.add(cine);
+
         }
         gbd.cerrarConexionBBDD();
-        return alCine;
+        return cine;
     }
     public void eliminarCine(String cif)throws ClassNotFoundException, SQLException {
          gbd.conectarBBDD();       
