@@ -110,7 +110,7 @@
                 <Component class="javax.swing.JLabel" name="lbTitulo">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Ingrese el CIF del cine o pulse Aceptar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el CIF del cine o pulse Aceptar para b&#xfa;squeda completar:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCifConsulta">

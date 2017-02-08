@@ -134,7 +134,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         });
 
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitulo.setText("Ingrese el CIF del cine o pulse Aceptar:");
+        lbTitulo.setText("Ingrese el CIF del cine o pulse Aceptar para búsqueda completar:");
 
         jlCifConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCifConsulta.setText("CIF:");
@@ -529,7 +529,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
     public void consultaCine() {
         String cifBuscador = jtfCifConsulta.getText();
-        
+
         if (cifBuscador.equals("")) {
 
             try {
@@ -546,20 +546,19 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "NO SE HA PODIDO CARGAR EL CINE");
-
             }
 
         } else {
             try {
-                alCine = cp.buscarCine(cifBuscador);
-                dtm.setRowCount(alCine.size());
-                for (int i = 0; i < alCine.size(); i++) {
-                    jtaConsulta.setValueAt(alCine.get(i).getNombre_cine(), i, 0);
-                    jtaConsulta.setValueAt(alCine.get(i).getCif_cine(), i, 1);
-                    jtaConsulta.setValueAt(alCine.get(i).getDir_cine(), i, 2);
-                    jtaConsulta.setValueAt(alCine.get(i).getPob_cine(), i, 3);
-                    jtaConsulta.setValueAt(alCine.get(i).getCodPos_cine(), i, 4);
-                }
+                cine = cp.buscarCine(cifBuscador);
+                dtm.setRowCount(1);
+                // for (int i = 0; i < alCine.size(); i++) {
+                jtaConsulta.setValueAt(cine.getNombre_cine(), 0, 0);
+                jtaConsulta.setValueAt(cine.getCif_cine(), 0, 1);
+                jtaConsulta.setValueAt(cine.getDir_cine(), 0, 2);
+                jtaConsulta.setValueAt(cine.getPob_cine(), 0, 3);
+                jtaConsulta.setValueAt(cine.getCodPos_cine(), 0, 4);
+                //}
 
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
@@ -571,35 +570,31 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
 
     public void cargarCineModificar() {
         String cifBuscador = jtfCifBuscador.getText();
-        alCine = new ArrayList();
+
         try {
-            alCine = cp.buscarCine(cifBuscador);
+            cine = cp.buscarCine(cifBuscador);
+            jlNombreResultado.setText(cine.getNombre_cine());
+            jlDireccionResultado.setText(cine.getDir_cine());
+            Integer codPos = cine.getCodPos_cine();
+            jlCodigoPostalResultado.setText(codPos.toString());
+            jlPoblacionResultado.setText(cine.getPob_cine());
 
-            for (Cine cine : alCine) {
-                jlNombreResultado.setText(cine.getNombre_cine());
-                jlDireccionResultado.setText(cine.getDir_cine());
-                Integer codPos = cine.getCodPos_cine();
-
-                jlCodigoPostalResultado.setText(codPos.toString());
-                jlPoblacionResultado.setText(cine.getPob_cine());
-                
-                
-                 jtfNombreCine.setText(jlNombreResultado.getText());
-                 jtfCIfCine.setText(jtfCifBuscador.getText());
-                 jtfDireccionCine.setText(jlDireccionResultado.getText());
-                 jtfPoblacionCine.setText(jlPoblacionResultado.getText());
-                 jtfCodigoPostal.setText(jlCodigoPostalResultado.getText());
-            }
+            jtfNombreCine.setText(jlNombreResultado.getText());
+            jtfCIfCine.setText(jtfCifBuscador.getText());
+            jtfDireccionCine.setText(jlDireccionResultado.getText());
+            jtfPoblacionCine.setText(jlPoblacionResultado.getText());
+            jtfCodigoPostal.setText(jlCodigoPostalResultado.getText());
 
         } catch (ClassNotFoundException ex) {
-            System.out.println("aqui");
+             JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
         } catch (SQLException ex) {
-            System.out.println("2");
+            JOptionPane.showMessageDialog(null, "NO SE HAN PODIDO CARGAR LOS CINES");
         }
+
+//
     }
-    
-    public void modificarCine(){
-        
+
+    public void modificarCine() {
 
         String nombreNuevo = jtfNombreCine.getText();
         String cifNuevo = jtfCIfCine.getText();
@@ -607,14 +602,9 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         String poblacion = jtfPoblacionCine.getText();
         String codPos = jtfCodigoPostal.getText();
         int codigoPostal = Integer.parseInt(codPos);
-        
-        
-        
-        cine = new Cine(nombreNuevo,cifNuevo,direccionNueva,poblacion,codigoPostal);
-        
-        
-        
-    
+
+        cine = new Cine(nombreNuevo, cifNuevo, direccionNueva, poblacion, codigoPostal);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
