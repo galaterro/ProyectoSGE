@@ -29,20 +29,56 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jtpFondoSalas = new javax.swing.JTabbedPane();
+        jtpConsultar = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jtpModificar = new javax.swing.JTabbedPane();
+        jtpAlta = new javax.swing.JTabbedPane();
+        jtpEliminar = new javax.swing.JTabbedPane();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Ingrese el código de identificación de la sala y pulse aceptar");
+        jLabel1.setFocusable(false);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addContainerGap(409, Short.MAX_VALUE))
+        );
+
+        jtpConsultar.addTab("", jPanel1);
+
+        jtpFondoSalas.addTab("Consultar", jtpConsultar);
+        jtpFondoSalas.addTab("Modificar", jtpModificar);
+        jtpFondoSalas.addTab("Alta", jtpAlta);
+        jtpFondoSalas.addTab("Eliminar", jtpEliminar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jtpFondoSalas)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jtpFondoSalas)
         );
 
         pack();
@@ -50,5 +86,12 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTabbedPane jtpAlta;
+    private javax.swing.JTabbedPane jtpConsultar;
+    private javax.swing.JTabbedPane jtpEliminar;
+    private javax.swing.JTabbedPane jtpFondoSalas;
+    private javax.swing.JTabbedPane jtpModificar;
     // End of variables declaration//GEN-END:variables
 }

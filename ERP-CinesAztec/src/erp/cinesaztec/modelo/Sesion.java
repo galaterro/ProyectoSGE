@@ -1,6 +1,6 @@
 package erp.cinesaztec.modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Clase dedicada al modelo de Sesión.
@@ -23,8 +23,8 @@ public class Sesion {
         this.hora_sesion = hora_sesion;
     }
 
-    public Sesion(int id_sesion, Date hora_sesion, int id_pelicula, int id_sala) {
-        this.id_sesion = id_sesion;
+    public Sesion(Date hora_sesion, int id_pelicula, int id_sala) {
+
         this.hora_sesion = hora_sesion;
         this.id_pelicula = id_pelicula;
         this.id_sala = id_sala;

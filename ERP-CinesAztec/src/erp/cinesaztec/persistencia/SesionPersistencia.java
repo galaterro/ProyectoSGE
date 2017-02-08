@@ -32,7 +32,7 @@ public class SesionPersistencia {
      public void ingresarSesion(Sesion sesion) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
         int filasAfectadas;
-        String sql = "insert into sesion values(" + sesion.getId_sesion()+ ",'" + sesion.getHora_sesion() + "'," + sesion.getId_pelicula()+ "," + sesion.getId_sala() + ")";
+        String sql = "insert into sesion values('" + sesion.getHora_sesion() + "'," + sesion.getId_pelicula()+ "," + sesion.getId_sala() + ")";
         c = gbd.conectarBBDD();
         st = c.createStatement();
         filasAfectadas = st.executeUpdate(sql);
@@ -48,7 +48,7 @@ public class SesionPersistencia {
         rs = st.executeQuery(sql);
         System.out.println("Las sesiones son: ");
         while (rs.next()) {
-            sesion = new Sesion(rs.getInt(1), rs.getDate(2), rs.getInt(3), rs.getInt(4));
+            sesion = new Sesion(rs.getDate(2), rs.getInt(3), rs.getInt(4));
             alSesion.add(sesion);
         }
         gbd.cerrarConexionBBDD();
@@ -62,7 +62,7 @@ public class SesionPersistencia {
         st = c.createStatement();
         rs = st.executeQuery(sql);
         rs.next();
-        sesion = new Sesion(rs.getInt(1), rs.getDate(2), rs.getInt(3), rs.getInt(4));
+        sesion = new Sesion( rs.getDate(2), rs.getInt(3), rs.getInt(4));
         gbd.cerrarConexionBBDD();
         return sesion;
     }
