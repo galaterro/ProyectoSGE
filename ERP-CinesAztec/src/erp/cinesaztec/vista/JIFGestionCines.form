@@ -74,9 +74,9 @@
                               <Component id="jScrollPane1" pref="927" max="32767" attributes="0"/>
                               <Component id="lbTitulo" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="lbNombreConsulta" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <Component id="jlCifConsulta" min="-2" pref="113" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfNombreConsulta" max="32767" attributes="0"/>
+                                  <Component id="jtfCifConsulta" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -94,8 +94,8 @@
                           <Component id="lbTitulo" min="-2" pref="27" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbNombreConsulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfNombreConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlCifConsulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jtfCifConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="90" max="-2" attributes="0"/>
@@ -110,16 +110,16 @@
                 <Component class="javax.swing.JLabel" name="lbTitulo">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Ingrese el nombre del cine o pulce Aceptar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el CIF del cine o pulse Aceptar:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lbNombreConsulta">
+                <Component class="javax.swing.JLabel" name="jlCifConsulta">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                    <Property name="text" type="java.lang.String" value="CIF:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfNombreConsulta">
+                <Component class="javax.swing.JTextField" name="jtfCifConsulta">
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
@@ -146,6 +146,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Aceptar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAceptarConsultaActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -224,7 +227,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jtfCifBuscador" min="-2" pref="136" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jbtBuscarCine" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="jbtBuscarCineModificar" min="-2" pref="91" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="85" max="32767" attributes="0"/>
@@ -238,7 +241,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCIfBuscador" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="jtfCifBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbtBuscarCine" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbtBuscarCineModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -341,12 +344,12 @@
                     <Property name="text" type="java.lang.String" value="Modificar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jbtBuscarCine">
+                <Component class="javax.swing.JButton" name="jbtBuscarCineModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtBuscarCineActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtBuscarCineModificarActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlNombreActual">
@@ -406,19 +409,6 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jlCodPostal" alignment="0" pref="221" max="32767" attributes="0"/>
-                                      <Component id="jlPoblacion" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jlDireccion" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtfDireccionNueva" min="-2" pref="440" max="-2" attributes="0"/>
-                                      <Component id="jtfCodPosNuevo" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                                      <Component id="jtfPoblacionNueva" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jlNombre" min="-2" pref="222" max="-2" attributes="0"/>
@@ -431,13 +421,24 @@
                                       <Component id="jtfCifNuevo" min="-2" pref="296" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="jbAltaCine" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jlCodPostal" alignment="0" pref="221" max="32767" attributes="0"/>
+                                          <Component id="jlPoblacion" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jlDireccion" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jtfDireccionNueva" min="-2" pref="440" max="-2" attributes="0"/>
+                                          <Component id="jtfCodPosNuevo" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+                                          <Component id="jtfPoblacionNueva" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace pref="268" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jbtAceptar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -470,8 +471,8 @@
                               <Component id="jtfCodPosNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jbtAceptar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="113" max="32767" attributes="0"/>
+                          <Component id="jbAltaCine" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="117" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -512,12 +513,12 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfCodPosNuevo">
                 </Component>
-                <Component class="javax.swing.JButton" name="jbtAceptar">
+                <Component class="javax.swing.JButton" name="jbAltaCine">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Aceptar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtAceptarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAltaCineActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -534,6 +535,129 @@
           </Constraints>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jpFondoEleminar">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="">
+                    <Property name="tabTitle" type="java.lang.String" value=""/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jlCifCineEliminar" min="-2" pref="226" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jtfCifCineEliminar" min="-2" pref="358" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jbAceptarCifEleiminar" min="-2" pref="126" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jlCineAEliminar" alignment="0" min="-2" pref="602" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jlNombreCineAEliminar" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jlDireccionCineAELiminar" min="-2" pref="406" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jlPobCineAEliminar" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jlCodPosCineAEliminar" min="-2" pref="133" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="79" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jbComfirmarEliminar" min="-2" pref="115" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="jtfCifCineEliminar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlCifCineEliminar" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="jbAceptarCifEleiminar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jlCineAEliminar" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jlNombreCineAEliminar" pref="25" max="32767" attributes="0"/>
+                                      <Component id="jlDireccionCineAELiminar" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jlCodPosCineAEliminar" pref="33" max="32767" attributes="0"/>
+                                      <Component id="jlPobCineAEliminar" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jbComfirmarEliminar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="198" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jlCifCineEliminar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ingrese el CIF del cine que desee eliminar:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfCifCineEliminar">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCineAEliminar">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Va a eliminar el siguiente cine:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jbAceptarCifEleiminar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Aceptar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAceptarCifEleiminarActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlNombreCineAEliminar">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlDireccionCineAELiminar">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlPobCineAEliminar">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCodPosCineAEliminar">
+                </Component>
+                <Component class="javax.swing.JButton" name="jbComfirmarEliminar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbComfirmarEliminarActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>
