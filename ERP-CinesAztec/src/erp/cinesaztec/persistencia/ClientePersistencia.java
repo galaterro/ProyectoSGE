@@ -52,7 +52,7 @@ public class ClientePersistencia {
         return alCliente;
     }
 
-    public ArrayList buscarCliente(String dni_aux) throws ClassNotFoundException, SQLException {
+    public Cliente buscarCliente(String dni_aux) throws ClassNotFoundException, SQLException {
         gbd.conectarBBDD();
 
         String sql = "select * from cliente WHERE dni_cli = '%" + dni_aux + "%'";
@@ -63,9 +63,9 @@ public class ClientePersistencia {
 
         while (rs.next()) {
             cliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9));
-            alCliente.add(cliente);
+            
         }
         gbd.cerrarConexionBBDD();
-        return alCliente;
+        return cliente;
     }
 }

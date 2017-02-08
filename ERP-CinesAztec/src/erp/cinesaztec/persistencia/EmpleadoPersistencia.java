@@ -18,7 +18,8 @@ import java.util.ArrayList;
  * @author juanxxiii
  */
 class EmpleadoPersistencia {
-     private GestorBBDD gbd = new GestorBBDD();
+
+    private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
     private PreparedStatement ps = null;
@@ -26,15 +27,14 @@ class EmpleadoPersistencia {
     private Empleado empleado;
     private ArrayList<Empleado> alEmpleado = new ArrayList();
 
-    
-     public void ingresarEmpleado(Empleado empleado) throws SQLException, ClassNotFoundException {
+    public void ingresarEmpleado(Empleado empleado) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
 
         int filasAfectadas;
 
         String sql = "insert into empleado values(" + empleado.getId_empleado() + ",'" + empleado.getDni_empleado() + "','"
-                + empleado.getNombre_empleado()+ "','" + empleado.getApellidos_empleado()+ "'," + empleado.getTelefono_empleado() + 
-                ",'" + empleado.getFecha_inicio() + "','" + empleado.getCargo_empleado() + "'," + empleado.getId_cine() + "'," + empleado.getUsuario_empleado() + "'," + empleado.getPassword_empleado() + ")";
+                + empleado.getNombre_empleado() + "','" + empleado.getApellidos_empleado() + "'," + empleado.getTelefono_empleado()
+                + ",'" + empleado.getFecha_inicio() + "','" + empleado.getCargo_empleado() + "'," + empleado.getId_cine() + "'," + empleado.getUsuario_empleado() + "'," + empleado.getPassword_empleado() + ")";
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
@@ -73,7 +73,7 @@ class EmpleadoPersistencia {
         while (rs.next()) {
             empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
                     rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));
-            
+
         }
         gbd.cerrarConexionBBDD();
         return empleado;
