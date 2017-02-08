@@ -29,12 +29,10 @@ public class CinePersistencia {
 
     
      public void ingresarCine(Cine cine) throws SQLException, ClassNotFoundException {
-        gbd.conectarBBDD();
-
         int filasAfectadas;
 
         String sql = "insert into cine values(" + cine.getId_cine() + ",'" + cine.getNombre_cine() + "','" + cine.getCif_cine() + "','" + cine.getDir_cine() + "','" + cine.getPob_cine() + "'," + cine.getCodPos_cine() + ")";
-        //c = gbd.conectarBBDD();
+        c = gbd.conectarBBDD();
         st = c.createStatement();
 
         filasAfectadas = st.executeUpdate(sql);
@@ -43,9 +41,8 @@ public class CinePersistencia {
     }
 
     public ArrayList listarCines() throws ClassNotFoundException, SQLException {
-        gbd.conectarBBDD();
         String sql = "select * from cine";
-        //c = gbd.conectarBBDD();
+        c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
         System.out.println("Los cines son: ");
@@ -58,10 +55,10 @@ public class CinePersistencia {
     }
 
     public ArrayList buscarCine(String cif) throws ClassNotFoundException, SQLException {
-        gbd.conectarBBDD();
+        //gbd.conectarBBDD();
 
-        String sql = "select * from cine WHERE cif_cine like '%" + cif + "%'";
-        //c = gbd.conectarBBDD();
+        String sql = "select * from cine WHERE cif_cine = "+ cif;
+        c = gbd.conectarBBDD();
         st = c.createStatement();
 
         rs = st.executeQuery(sql);
