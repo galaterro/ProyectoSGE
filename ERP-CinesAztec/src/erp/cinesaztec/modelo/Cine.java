@@ -25,6 +25,15 @@ public class Cine {
         this.codPos_cine = codPos_cine;
     }
 
+    public Cine(String nombre_cine, String cif_cine, String dir_cine, String pob_cine, int codPos_cine) {
+        this.nombre_cine = nombre_cine;
+        this.cif_cine = cif_cine;
+        this.dir_cine = dir_cine;
+        this.pob_cine = pob_cine;
+        this.codPos_cine = codPos_cine;
+    }
+
+    
     /* Getters y Setters. */
     
     public int getId_cine() {
