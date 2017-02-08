@@ -610,7 +610,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         
         
         
-        cine = new Cine(20,nombreNuevo,cifNuevo,direccionNueva,poblacion,codigoPostal);
+        cine = new Cine(nombreNuevo,cifNuevo,direccionNueva,poblacion,codigoPostal);
         
         
         
