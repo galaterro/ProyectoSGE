@@ -521,11 +521,11 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAltaCineActionPerformed
 
     private void jbAceptarCifEleiminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEleiminarActionPerformed
-
+        visionarCineEliminar();
     }//GEN-LAST:event_jbAceptarCifEleiminarActionPerformed
 
     private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
-        // TODO add your handling code here:
+        eliminarCine();
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
     public void consultaCine() {
         String cifBuscador = jtfCifConsulta.getText();
@@ -604,9 +604,42 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         int codigoPostal = Integer.parseInt(codPos);
 
         cine = new Cine(nombreNuevo, cifNuevo, direccionNueva, poblacion, codigoPostal);
-
     }
-
+    
+    public void visionarCineEliminar(){
+        String cifBusca = jtfCifCineEliminar.getText();
+        try {
+            cine = cp.buscarCine(cifBusca);
+            jlCifCineEliminar.setText(cine.getCif_cine());
+            jlNombreCineAEliminar.setText(cine.getNombre_cine());
+            jlDireccionCineAELiminar.setText(cine.getDir_cine());
+            jlPobCineAEliminar.setText(cine.getPob_cine());
+            Integer codPos = cine.getCodPos_cine();
+            String codPostal = codPos.toString();
+            jlCodPosCineAEliminar.setText(codPostal);
+            
+            
+        } catch (ClassNotFoundException ex) {
+             JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO CARGAR EL CINE");
+        }
+    }
+    
+    public void eliminarCine(){
+    String cifEliminar = jtfCifCineEliminar.getText();
+        try {
+            cp.eliminarCine(cifEliminar);
+            JOptionPane.showMessageDialog(null, "CINE ELIMINADO CON ÉXITO");
+        } catch (ClassNotFoundException ex) {
+             JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ELIMINAR EL CINE");
+        }
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAceptarCifEleiminar;
