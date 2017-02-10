@@ -685,12 +685,12 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         String cifEliminar = jtfCifCineEliminar.getText();
         try {
             cp.eliminarCine(cifEliminar);
-            JOptionPane.showMessageDialog(null, "CINE ELIMINADO CON ÉXITO");
+            JOptionPane.showMessageDialog(null, "CINE ELIMINADO CON ÉXITO.");
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN.");
         } catch (SQLException ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ELIMINAR EL CINE");
+            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ELIMINAR EL CINE.");
         }
     }
 

@@ -28,14 +28,12 @@ public class CinePersistencia {
     private ArrayList<Cine> alCine = new ArrayList();
 
     public void ingresarCine(Cine cine) throws SQLException, ClassNotFoundException {
-        int filasAfectadas;
 
         String sql = "insert into cine values(" + cine.getId_cine() + ",'" + cine.getNombre_cine() + "','" + cine.getCif_cine() + "','" + cine.getDir_cine() + "','" + cine.getPob_cine() + "'," + cine.getCodPos_cine() + ")";
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
-        filasAfectadas = st.executeUpdate(sql);
-//        System.out.println("filas afectadas: " + filasAfectadas);
+        st.executeUpdate(sql);
         gbd.cerrarConexionBBDD();
     }
 
