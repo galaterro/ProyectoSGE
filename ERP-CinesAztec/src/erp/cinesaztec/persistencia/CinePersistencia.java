@@ -27,8 +27,7 @@ public class CinePersistencia {
     private Cine cine;
     private ArrayList<Cine> alCine = new ArrayList();
 
-    
-     public void ingresarCine(Cine cine) throws SQLException, ClassNotFoundException {
+    public void ingresarCine(Cine cine) throws SQLException, ClassNotFoundException {
         int filasAfectadas;
 
         String sql = "insert into cine values(" + cine.getId_cine() + ",'" + cine.getNombre_cine() + "','" + cine.getCif_cine() + "','" + cine.getDir_cine() + "','" + cine.getPob_cine() + "'," + cine.getCodPos_cine() + ")";
@@ -36,7 +35,7 @@ public class CinePersistencia {
         st = c.createStatement();
 
         filasAfectadas = st.executeUpdate(sql);
-        System.out.println("filas afectadas: " + filasAfectadas);
+//        System.out.println("filas afectadas: " + filasAfectadas);
         gbd.cerrarConexionBBDD();
     }
 
@@ -56,7 +55,7 @@ public class CinePersistencia {
     public Cine buscarCine(String cif) throws ClassNotFoundException, SQLException {
         //gbd.conectarBBDD();
 
-        String sql = "select * from cine WHERE cif_cine = "+ cif;
+        String sql = "select * from cine WHERE cif_cine = " + cif;
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
@@ -68,10 +67,12 @@ public class CinePersistencia {
         gbd.cerrarConexionBBDD();
         return cine;
     }
-    public void eliminarCine(String cif)throws ClassNotFoundException, SQLException {
-         gbd.conectarBBDD();       
-         String sql = "delete from cine where cif = "+cif;
-         st.executeUpdate(sql);
-         gbd.cerrarConexionBBDD();
+
+    public void eliminarCine(String cif) throws ClassNotFoundException, SQLException {
+        c = gbd.conectarBBDD();
+        String sql = "delete from cine where cif_cine = '" + cif + "'";
+        st = c.createStatement();
+        st.executeUpdate(sql);
+        gbd.cerrarConexionBBDD();
     }
 }

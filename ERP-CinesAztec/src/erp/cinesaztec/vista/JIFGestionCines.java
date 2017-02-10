@@ -13,6 +13,9 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,6 +45,18 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         this.setSize(990, 700);
         this.setResizable(false);
         this.setTitle("Gestión Cines");
+        jtpFondo.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (e.getSource() instanceof JTabbedPane) {
+                    reiniciarCamposConsulta();
+                    reiniciarCamposModificar();
+                    reiniciarCamposAlta();
+                    reiniciarCamposEliminar();
+                }
+            }
+        });
     }
 
     /**
@@ -130,6 +145,17 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
+
+        jtpConsulta.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jtpConsultaStateChanged(evt);
+            }
+        });
+        jtpConsulta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtpConsultaFocusLost(evt);
             }
         });
 
@@ -517,7 +543,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jbAltaCineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaCineActionPerformed
-        // TODO add your handling code here:
+        ingresarCine();
     }//GEN-LAST:event_jbAltaCineActionPerformed
 
     private void jbAceptarCifEleiminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEleiminarActionPerformed
@@ -526,7 +552,36 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
 
     private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
         eliminarCine();
+        
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
+
+    private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtpConsultaStateChanged
+
+    private void jtpConsultaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtpConsultaFocusLost
+
+    }//GEN-LAST:event_jtpConsultaFocusLost
+    public void ingresarCine(){
+        String NombreNuevo = jtfNombreNuevo.getText();
+        String cifNuevo = jtfCifNuevo.getText();
+        String dirNueva = jtfDireccionNueva.getText();
+        String poblaNueva = jtfPoblacionNueva.getText();
+        String codPos = jtfCodPosNuevo.getText();
+        int codPosNuevo = Integer.parseInt(codPos);
+        
+        cine = new Cine(NombreNuevo,cifNuevo,dirNueva,poblaNueva,codPosNuevo);
+        try {
+            cp.ingresarCine(cine);
+            JOptionPane.showMessageDialog(null, "CINE INGRESADO CON ÉXITO");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR EN CONEXÍON");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+        }
+    
+    }
+    
     public void consultaCine() {
         String cifBuscador = jtfCifConsulta.getText();
 
@@ -586,7 +641,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             jtfCodigoPostal.setText(jlCodigoPostalResultado.getText());
 
         } catch (ClassNotFoundException ex) {
-             JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "NO SE HAN PODIDO CARGAR LOS CINES");
         }
@@ -604,9 +659,10 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         int codigoPostal = Integer.parseInt(codPos);
 
         cine = new Cine(nombreNuevo, cifNuevo, direccionNueva, poblacion, codigoPostal);
+        
     }
-    
-    public void visionarCineEliminar(){
+
+    public void visionarCineEliminar() {
         String cifBusca = jtfCifCineEliminar.getText();
         try {
             cine = cp.buscarCine(cifBusca);
@@ -617,29 +673,58 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             Integer codPos = cine.getCodPos_cine();
             String codPostal = codPos.toString();
             jlCodPosCineAEliminar.setText(codPostal);
-            
-            
+
         } catch (ClassNotFoundException ex) {
-             JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "NO SE HA PODIDO CARGAR EL CINE");
         }
     }
-    
-    public void eliminarCine(){
-    String cifEliminar = jtfCifCineEliminar.getText();
+
+    public void eliminarCine() {
+        String cifEliminar = jtfCifCineEliminar.getText();
         try {
             cp.eliminarCine(cifEliminar);
             JOptionPane.showMessageDialog(null, "CINE ELIMINADO CON ÉXITO");
         } catch (ClassNotFoundException ex) {
-             JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
         } catch (SQLException ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ELIMINAR EL CINE");
         }
     }
-    
-    
+
+    public void reiniciarCamposConsulta() {
+        jtfCifConsulta.setText("");
+        dtm.setRowCount(0);
+    }
+
+    public void reiniciarCamposModificar() {
+        jtfCifBuscador.setText("");
+        jtfNombreCine.setText("");
+        jtfCIfCine.setText("");
+        jtfDireccionCine.setText("");
+        jtfPoblacionCine.setText("");
+        jtfCodigoPostal.setText("");
+        jlNombreResultado.setText("");
+        jlDireccionResultado.setText("");
+        jlPoblacionResultado.setText("");
+        jlCodigoPostalResultado.setText("");
+    }
+    public void reiniciarCamposAlta(){
+        jtfNombreNuevo.setText("");
+        jtfCifNuevo.setText("");
+        jtfDireccionNueva.setText("");
+        jtfPoblacionNueva.setText("");
+        jtfCodPosNuevo.setText("");
+    }
+    public void reiniciarCamposEliminar(){
+        jtfCifCineEliminar.setText("");
+        jlNombreCineAEliminar.setText("");
+        jlDireccionCineAELiminar.setText("");
+        jlPobCineAEliminar.setText("");
+        jlCodPosCineAEliminar.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAceptarCifEleiminar;
