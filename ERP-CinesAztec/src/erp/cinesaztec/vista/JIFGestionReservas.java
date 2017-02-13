@@ -29,26 +29,559 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jtpFondo = new javax.swing.JTabbedPane();
+        jtpConsulta = new javax.swing.JTabbedPane();
+        jpConsulta = new javax.swing.JPanel();
+        lbTitulo = new javax.swing.JLabel();
+        jlCifConsulta = new javax.swing.JLabel();
+        jtfIDConsulta = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtaConsulta = new javax.swing.JTable();
+        jbAceptarConsulta = new javax.swing.JButton();
+        jtpModificar = new javax.swing.JTabbedPane();
+        jpModificar = new javax.swing.JPanel();
+        jlNombreCine = new javax.swing.JLabel();
+        jlCifCine = new javax.swing.JLabel();
+        jlIDBuscador = new javax.swing.JLabel();
+        jlDireccionCine = new javax.swing.JLabel();
+        jlPoblacionCine = new javax.swing.JLabel();
+        jlCodigoPostal = new javax.swing.JLabel();
+        jtfIDBuscador = new javax.swing.JTextField();
+        jtfIDPeliculaModificar = new javax.swing.JTextField();
+        jtfIDSesionModificar = new javax.swing.JTextField();
+        jtfIDButacaModificar = new javax.swing.JTextField();
+        jtfIDClienteModificar = new javax.swing.JTextField();
+        jtfIDSalaModificar = new javax.swing.JTextField();
+        jbtModificar = new javax.swing.JButton();
+        jbtBuscarReservaModificar = new javax.swing.JButton();
+        jlNombreActual = new javax.swing.JLabel();
+        jlDireccionActual = new javax.swing.JLabel();
+        jlPoblacionActual = new javax.swing.JLabel();
+        jlCodigoPostalActual = new javax.swing.JLabel();
+        jlIDReservaResultado = new javax.swing.JLabel();
+        jlIDSalaResultado = new javax.swing.JLabel();
+        jlCodigoPostalActual1 = new javax.swing.JLabel();
+        jlCodigoPostalActual2 = new javax.swing.JLabel();
+        jlIDPeliculaResultado = new javax.swing.JLabel();
+        jlIDSesionResultado = new javax.swing.JLabel();
+        jlIDClienteResultado = new javax.swing.JLabel();
+        jlIDButacaResultado = new javax.swing.JLabel();
+        jtpAltaCine = new javax.swing.JTabbedPane();
+        jpAltaCine = new javax.swing.JPanel();
+        jlNombre = new javax.swing.JLabel();
+        jtfIDPeliculaAlta = new javax.swing.JTextField();
+        jlCif = new javax.swing.JLabel();
+        jtfIDSesionAlta = new javax.swing.JTextField();
+        jlDireccion = new javax.swing.JLabel();
+        jtfIDButacaAlta = new javax.swing.JTextField();
+        jlPoblacion = new javax.swing.JLabel();
+        jtfIDClienteAlta = new javax.swing.JTextField();
+        jlCodPostal = new javax.swing.JLabel();
+        jtfIDSalaAlta = new javax.swing.JTextField();
+        jbAltaReserva = new javax.swing.JButton();
+        jtpEliminar = new javax.swing.JTabbedPane();
+        jpFondoEleminar = new javax.swing.JPanel();
+        jlCifCineEliminar = new javax.swing.JLabel();
+        jtfIDReservaEliminar = new javax.swing.JTextField();
+        jlCineAEliminar = new javax.swing.JLabel();
+        jbAceptarCifEleiminar = new javax.swing.JButton();
+        jlIDReservaEliminar = new javax.swing.JLabel();
+        jbComfirmarEliminar = new javax.swing.JButton();
+        jlIDReservaEliminar1 = new javax.swing.JLabel();
+        jlIDSesionEliminar = new javax.swing.JLabel();
+        jlIDButacaEliminar = new javax.swing.JLabel();
+        jlIDSalaEliminar = new javax.swing.JLabel();
+        jlIDClienteEliminar = new javax.swing.JLabel();
+        jlIDPeliculaEliminar = new javax.swing.JLabel();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
 
+        lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTitulo.setText("Ingrese el ID de la reserva o pulse Aceptar para búsqueda completar:");
+
+        jlCifConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCifConsulta.setText("ID:");
+
+        jtaConsulta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jtaConsulta);
+
+        jbAceptarConsulta.setText("Aceptar");
+        jbAceptarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAceptarConsultaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpConsultaLayout = new javax.swing.GroupLayout(jpConsulta);
+        jpConsulta.setLayout(jpConsultaLayout);
+        jpConsultaLayout.setHorizontalGroup(
+            jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpConsultaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+                    .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jpConsultaLayout.createSequentialGroup()
+                        .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfIDConsulta))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jbAceptarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jpConsultaLayout.setVerticalGroup(
+            jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpConsultaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jbAceptarConsulta)
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+
+        jtpConsulta.addTab("", jpConsulta);
+
+        jtpFondo.addTab("Consulta", jtpConsulta);
+
+        jlNombreCine.setText("ID Película:");
+
+        jlCifCine.setText("ID Sesión:");
+
+        jlIDBuscador.setText("Ingrese el ID de la reserva que desea modificar:");
+
+        jlDireccionCine.setText("ID Butaca:");
+
+        jlPoblacionCine.setText("ID Cliente:");
+
+        jlCodigoPostal.setText("ID Sala:");
+
+        jbtModificar.setText("Modificar");
+
+        jbtBuscarReservaModificar.setText("Buscar");
+        jbtBuscarReservaModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtBuscarReservaModificarActionPerformed(evt);
+            }
+        });
+
+        jlNombreActual.setText("ID Reserva Actual:");
+
+        jlDireccionActual.setText("ID Película Actual:");
+
+        jlPoblacionActual.setText("ID Sesión Actual:");
+
+        jlCodigoPostalActual.setText("ID Butaca Actual:");
+
+        jlCodigoPostalActual1.setText("ID Cliente Actual:");
+
+        jlCodigoPostalActual2.setText("ID Sala Actual:");
+
+        javax.swing.GroupLayout jpModificarLayout = new javax.swing.GroupLayout(jpModificar);
+        jpModificar.setLayout(jpModificarLayout);
+        jpModificarLayout.setHorizontalGroup(
+            jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(202, 202, 202))
+            .addGroup(jpModificarLayout.createSequentialGroup()
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jlIDReservaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlNombreActual, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlIDPeliculaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jlIDSesionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlIDButacaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlIDClienteResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlCodigoPostalActual1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlCodigoPostalActual2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(jlIDSalaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(86, 86, 86))
+            .addGroup(jpModificarLayout.createSequentialGroup()
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtfIDSesionModificar)
+                            .addComponent(jtfIDPeliculaModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                            .addComponent(jtfIDButacaModificar)
+                            .addComponent(jtfIDClienteModificar)))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addComponent(jlCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfIDSalaModificar))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addComponent(jlIDBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfIDBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtBuscarReservaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jpModificarLayout.setVerticalGroup(
+            jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpModificarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlIDBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtBuscarReservaModificar))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCodigoPostalActual2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCodigoPostalActual1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jlIDSalaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlIDReservaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlIDPeliculaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlIDSesionResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlIDClienteResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlIDButacaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfIDSesionModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDButacaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfIDClienteModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDSalaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtModificar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jtpModificar.addTab("", jpModificar);
+
+        jtpFondo.addTab("Modificar", jtpModificar);
+
+        jlNombre.setText("ID Película:");
+
+        jlCif.setText("ID Sesión:");
+
+        jlDireccion.setText("ID Butaca:");
+
+        jlPoblacion.setText("ID Cliente:");
+
+        jlCodPostal.setText("ID Sala:");
+
+        jbAltaReserva.setText("Aceptar");
+        jbAltaReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAltaReservaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpAltaCineLayout = new javax.swing.GroupLayout(jpAltaCine);
+        jpAltaCine.setLayout(jpAltaCineLayout);
+        jpAltaCineLayout.setHorizontalGroup(
+            jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAltaCineLayout.createSequentialGroup()
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
+                            .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jtfIDPeliculaAlta))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
+                            .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jtfIDSesionAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jbAltaReserva)
+                        .addGroup(jpAltaCineLayout.createSequentialGroup()
+                            .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jlCodPostal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                                .addComponent(jlPoblacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jlDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtfIDButacaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfIDSalaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfIDClienteAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(268, Short.MAX_VALUE))
+        );
+        jpAltaCineLayout.setVerticalGroup(
+            jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAltaCineLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDPeliculaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDSesionAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDButacaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDClienteAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlCodPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDSalaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jbAltaReserva)
+                .addContainerGap(117, Short.MAX_VALUE))
+        );
+
+        jtpAltaCine.addTab("", jpAltaCine);
+
+        jtpFondo.addTab("Alta", jtpAltaCine);
+
+        jlCifCineEliminar.setText("Ingrese elID de la reserva que desee eliminar:");
+
+        jlCineAEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCineAEliminar.setText("Va a eliminar la siguiente reserva:");
+
+        jbAceptarCifEleiminar.setText("Aceptar");
+        jbAceptarCifEleiminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAceptarCifEleiminarActionPerformed(evt);
+            }
+        });
+
+        jbComfirmarEliminar.setText("Eliminar");
+        jbComfirmarEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbComfirmarEliminarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpFondoEleminarLayout = new javax.swing.GroupLayout(jpFondoEleminar);
+        jpFondoEleminar.setLayout(jpFondoEleminarLayout);
+        jpFondoEleminarLayout.setHorizontalGroup(
+            jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                                .addComponent(jlIDReservaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlIDReservaEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                                        .addComponent(jlIDPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jlIDSesionEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jlIDButacaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jlIDClienteEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbComfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlIDSalaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfIDReservaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbAceptarCifEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(191, Short.MAX_VALUE))
+        );
+        jpFondoEleminarLayout.setVerticalGroup(
+            jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jtfIDReservaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jbAceptarCifEleiminar)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlIDReservaEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlIDPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jlIDReservaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlIDSesionEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlIDButacaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlIDClienteEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlIDSalaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addComponent(jbComfirmarEliminar)
+                .addContainerGap())
+        );
+
+        jtpEliminar.addTab("", jpFondoEleminar);
+
+        jtpFondo.addTab("Eliminar", jtpEliminar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jtpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 957, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jtpFondo)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
+        
+    }//GEN-LAST:event_jbAceptarConsultaActionPerformed
+
+    private void jbtBuscarReservaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarReservaModificarActionPerformed
+
+    }//GEN-LAST:event_jbtBuscarReservaModificarActionPerformed
+
+    private void jbAltaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaReservaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbAltaReservaActionPerformed
+
+    private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
+
+    }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
+
+    private void jbAceptarCifEleiminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEleiminarActionPerformed
+
+    }//GEN-LAST:event_jbAceptarCifEleiminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbAceptarCifEleiminar;
+    private javax.swing.JButton jbAceptarConsulta;
+    private javax.swing.JButton jbAltaReserva;
+    private javax.swing.JButton jbComfirmarEliminar;
+    private javax.swing.JButton jbtBuscarReservaModificar;
+    private javax.swing.JButton jbtModificar;
+    private javax.swing.JLabel jlCif;
+    private javax.swing.JLabel jlCifCine;
+    private javax.swing.JLabel jlCifCineEliminar;
+    private javax.swing.JLabel jlCifConsulta;
+    private javax.swing.JLabel jlCineAEliminar;
+    private javax.swing.JLabel jlCodPostal;
+    private javax.swing.JLabel jlCodigoPostal;
+    private javax.swing.JLabel jlCodigoPostalActual;
+    private javax.swing.JLabel jlCodigoPostalActual1;
+    private javax.swing.JLabel jlCodigoPostalActual2;
+    private javax.swing.JLabel jlDireccion;
+    private javax.swing.JLabel jlDireccionActual;
+    private javax.swing.JLabel jlDireccionCine;
+    private javax.swing.JLabel jlIDBuscador;
+    private javax.swing.JLabel jlIDButacaEliminar;
+    private javax.swing.JLabel jlIDButacaResultado;
+    private javax.swing.JLabel jlIDClienteEliminar;
+    private javax.swing.JLabel jlIDClienteResultado;
+    private javax.swing.JLabel jlIDPeliculaEliminar;
+    private javax.swing.JLabel jlIDPeliculaResultado;
+    private javax.swing.JLabel jlIDReservaEliminar;
+    private javax.swing.JLabel jlIDReservaEliminar1;
+    private javax.swing.JLabel jlIDReservaResultado;
+    private javax.swing.JLabel jlIDSalaEliminar;
+    private javax.swing.JLabel jlIDSalaResultado;
+    private javax.swing.JLabel jlIDSesionEliminar;
+    private javax.swing.JLabel jlIDSesionResultado;
+    private javax.swing.JLabel jlNombre;
+    private javax.swing.JLabel jlNombreActual;
+    private javax.swing.JLabel jlNombreCine;
+    private javax.swing.JLabel jlPoblacion;
+    private javax.swing.JLabel jlPoblacionActual;
+    private javax.swing.JLabel jlPoblacionCine;
+    private javax.swing.JPanel jpAltaCine;
+    private javax.swing.JPanel jpConsulta;
+    private javax.swing.JPanel jpFondoEleminar;
+    private javax.swing.JPanel jpModificar;
+    private javax.swing.JTable jtaConsulta;
+    private javax.swing.JTextField jtfIDBuscador;
+    private javax.swing.JTextField jtfIDButacaAlta;
+    private javax.swing.JTextField jtfIDButacaModificar;
+    private javax.swing.JTextField jtfIDClienteAlta;
+    private javax.swing.JTextField jtfIDClienteModificar;
+    private javax.swing.JTextField jtfIDConsulta;
+    private javax.swing.JTextField jtfIDPeliculaAlta;
+    private javax.swing.JTextField jtfIDPeliculaModificar;
+    private javax.swing.JTextField jtfIDReservaEliminar;
+    private javax.swing.JTextField jtfIDSalaAlta;
+    private javax.swing.JTextField jtfIDSalaModificar;
+    private javax.swing.JTextField jtfIDSesionAlta;
+    private javax.swing.JTextField jtfIDSesionModificar;
+    private javax.swing.JTabbedPane jtpAltaCine;
+    private javax.swing.JTabbedPane jtpConsulta;
+    private javax.swing.JTabbedPane jtpEliminar;
+    private javax.swing.JTabbedPane jtpFondo;
+    private javax.swing.JTabbedPane jtpModificar;
+    private javax.swing.JLabel lbTitulo;
     // End of variables declaration//GEN-END:variables
 }
