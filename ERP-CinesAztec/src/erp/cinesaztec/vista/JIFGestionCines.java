@@ -236,6 +236,11 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jlCodigoPostal.setText("Código Postal:");
 
         jbtModificar.setText("Modificar");
+        jbtModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtModificarActionPerformed(evt);
+            }
+        });
 
         jbtBuscarCineModificar.setText("Buscar");
         jbtBuscarCineModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -552,7 +557,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
 
     private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
         eliminarCine();
-        
+
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
@@ -562,26 +567,33 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     private void jtpConsultaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtpConsultaFocusLost
 
     }//GEN-LAST:event_jtpConsultaFocusLost
-    public void ingresarCine(){
+
+    private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
+        modificarCine();
+    }//GEN-LAST:event_jbtModificarActionPerformed
+    public void ingresarCine() {
         String NombreNuevo = jtfNombreNuevo.getText();
         String cifNuevo = jtfCifNuevo.getText();
         String dirNueva = jtfDireccionNueva.getText();
         String poblaNueva = jtfPoblacionNueva.getText();
-        String codPos = jtfCodPosNuevo.getText();
-        int codPosNuevo = Integer.parseInt(codPos);
-        
-        cine = new Cine(NombreNuevo,cifNuevo,dirNueva,poblaNueva,codPosNuevo);
+        int codPosNuevo = Integer.parseInt(jtfCodPosNuevo.getText());
+
+        cine = new Cine(NombreNuevo, cifNuevo, dirNueva, poblaNueva, codPosNuevo);
         try {
             cp.ingresarCine(cine);
             JOptionPane.showMessageDialog(null, "CINE INGRESADO CON ÉXITO");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR EN CONEXÍON");
+            JOptionPane.showMessageDialog(null, "ERROR DE CONEXÍON");
+
+            System.out.println("error: " + ex);
+            ex.printStackTrace();
+
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
         }
-    
+
     }
-    
+
     public void consultaCine() {
         String cifBuscador = jtfCifConsulta.getText();
 
@@ -624,21 +636,28 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     }
 
     public void cargarCineModificar() {
+
         String cifBuscador = jtfCifBuscador.getText();
-
+        boolean existe = false;
         try {
-            cine = cp.buscarCine(cifBuscador);
-            jlNombreResultado.setText(cine.getNombre_cine());
-            jlDireccionResultado.setText(cine.getDir_cine());
-            Integer codPos = cine.getCodPos_cine();
-            jlCodigoPostalResultado.setText(codPos.toString());
-            jlPoblacionResultado.setText(cine.getPob_cine());
+            existe = cp.existeCine(cifBuscador);
 
-            jtfNombreCine.setText(jlNombreResultado.getText());
-            jtfCIfCine.setText(jtfCifBuscador.getText());
-            jtfDireccionCine.setText(jlDireccionResultado.getText());
-            jtfPoblacionCine.setText(jlPoblacionResultado.getText());
-            jtfCodigoPostal.setText(jlCodigoPostalResultado.getText());
+            if (existe) {
+                cine = cp.buscarCine(cifBuscador);
+                jlNombreResultado.setText(cine.getNombre_cine());
+                jlDireccionResultado.setText(cine.getDir_cine());
+                Integer codPos = cine.getCodPos_cine();
+                jlCodigoPostalResultado.setText(codPos.toString());
+                jlPoblacionResultado.setText(cine.getPob_cine());
+
+                jtfNombreCine.setText(jlNombreResultado.getText());
+                jtfCIfCine.setText(jtfCifBuscador.getText());
+                jtfDireccionCine.setText(jlDireccionResultado.getText());
+                jtfPoblacionCine.setText(jlPoblacionResultado.getText());
+                jtfCodigoPostal.setText(jlCodigoPostalResultado.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "EL CINE NO EXISTE");
+            }
 
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
@@ -650,16 +669,26 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     }
 
     public void modificarCine() {
+        try {
+            String cif = jtfCifBuscador.getText();
 
-        String nombreNuevo = jtfNombreCine.getText();
-        String cifNuevo = jtfCIfCine.getText();
-        String direccionNueva = jtfDireccionCine.getText();
-        String poblacion = jtfPoblacionCine.getText();
-        String codPos = jtfCodigoPostal.getText();
-        int codigoPostal = Integer.parseInt(codPos);
+            String nombreNuevo = jtfNombreCine.getText();
+            String cifNuevo = jtfCIfCine.getText();
+            String direccionNueva = jtfDireccionCine.getText();
+            String poblacion = jtfPoblacionCine.getText();
+            String codPos = jtfCodigoPostal.getText();
+            int codigoPostal = Integer.parseInt(codPos);
 
-        cine = new Cine(nombreNuevo, cifNuevo, direccionNueva, poblacion, codigoPostal);
-        
+            cine = new Cine(nombreNuevo, cifNuevo, direccionNueva, poblacion, codigoPostal);
+            cp.actualizarCine(cine, cif);
+            JOptionPane.showMessageDialog(null, "CINE ACTUALIZADO CON ÉXITO.");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ACTUALIZAR EL CINE.");
+
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN.");
+        }
     }
 
     public void visionarCineEliminar() {
@@ -711,14 +740,16 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jlPoblacionResultado.setText("");
         jlCodigoPostalResultado.setText("");
     }
-    public void reiniciarCamposAlta(){
+
+    public void reiniciarCamposAlta() {
         jtfNombreNuevo.setText("");
         jtfCifNuevo.setText("");
         jtfDireccionNueva.setText("");
         jtfPoblacionNueva.setText("");
         jtfCodPosNuevo.setText("");
     }
-    public void reiniciarCamposEliminar(){
+
+    public void reiniciarCamposEliminar() {
         jtfCifCineEliminar.setText("");
         jlNombreCineAEliminar.setText("");
         jlDireccionCineAELiminar.setText("");
