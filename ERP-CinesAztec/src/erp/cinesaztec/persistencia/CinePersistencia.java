@@ -30,7 +30,7 @@ public class CinePersistencia {
 
     public void ingresarCine(Cine cine) throws SQLException, ClassNotFoundException {
 
-        String sql = "insert into cine (nombre_cine, cif_cine, direccion_cine, poblacion_cine, cp) values(?,?,?,?,?)";
+        String sql = "insert into cine (nombre_cine, cif_cine, direccion_cine, poblacion_cine, cp_cine) values(?,?,?,?,?)";
         c = gbd.conectarBBDD();
         ps =  c.prepareStatement(sql);
         ps.setString(1, cine.getNombre_cine());
@@ -74,7 +74,7 @@ public class CinePersistencia {
     }
     public void actualizarCine(Cine cine, String cif) throws SQLException, ClassNotFoundException{
         
-        String sql= "update cine set nombre_cine = ?, cif_cine = ?, direccion_cine = ?, poblacion_cine = ?, cp = ? where cif_cine = '" + cif +"'";
+        String sql= "update cine set nombre_cine = ?, cif_cine = ?, direccion_cine = ?, poblacion_cine = ?, cp_cine = ? where cif_cine = '" + cif +"'";
         c = gbd.conectarBBDD();
         ps =  c.prepareStatement(sql);
         

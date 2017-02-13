@@ -27,7 +27,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     private CinePersistencia cp = new CinePersistencia();
     private ArrayList<Cine> alCine;
     private Cine cine;
-    private DefaultTableModel dtm = null;
+    private DefaultTableModel dtm;
 
     /**
      * Creates new form JIFGestionCines
@@ -50,7 +50,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             @Override
             public void stateChanged(ChangeEvent e) {
                 if (e.getSource() instanceof JTabbedPane) {
-                    reiniciarCamposConsulta();
+                    reiniciarCamposConsulta(dtm);
                     reiniciarCamposModificar();
                     reiniciarCamposAlta();
                     reiniciarCamposEliminar();
@@ -145,6 +145,12 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
+
+        jtpFondo.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jtpFondoStateChanged(evt);
             }
         });
 
@@ -561,7 +567,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtpConsultaStateChanged
 
     private void jtpConsultaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtpConsultaFocusLost
@@ -571,6 +577,10 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
         modificarCine();
     }//GEN-LAST:event_jbtModificarActionPerformed
+
+    private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
+//       reiniciarCamposConsulta();
+    }//GEN-LAST:event_jtpFondoStateChanged
     public void ingresarCine() {
         String NombreNuevo = jtfNombreNuevo.getText();
         String cifNuevo = jtfCifNuevo.getText();
@@ -619,13 +629,11 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             try {
                 cine = cp.buscarCine(cifBuscador);
                 dtm.setRowCount(1);
-                // for (int i = 0; i < alCine.size(); i++) {
                 jtaConsulta.setValueAt(cine.getNombre_cine(), 0, 0);
                 jtaConsulta.setValueAt(cine.getCif_cine(), 0, 1);
                 jtaConsulta.setValueAt(cine.getDir_cine(), 0, 2);
                 jtaConsulta.setValueAt(cine.getPob_cine(), 0, 3);
                 jtaConsulta.setValueAt(cine.getCodPos_cine(), 0, 4);
-                //}
 
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
@@ -723,9 +731,12 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         }
     }
 
-    public void reiniciarCamposConsulta() {
+    public void reiniciarCamposConsulta(DefaultTableModel dtm) {
         jtfCifConsulta.setText("");
-        dtm.setRowCount(0);
+        int a = dtm.getRowCount()-1;
+        for (int i = a; i >=0 ; i--) {
+            dtm.removeRow(i);
+        }
     }
 
     public void reiniciarCamposModificar() {
