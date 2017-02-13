@@ -230,7 +230,7 @@
                                   <Component id="jtfCodigoPostal" min="-2" pref="110" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jlCIfBuscador" min="-2" pref="268" max="-2" attributes="0"/>
+                                  <Component id="jlCifBuscador" min="-2" pref="268" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jtfCifBuscador" min="-2" pref="136" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -246,7 +246,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlCIfBuscador" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jlCifBuscador" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="jtfCifBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jbtBuscarCineModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -314,7 +314,7 @@
                     <Property name="text" type="java.lang.String" value="CIF:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlCIfBuscador">
+                <Component class="javax.swing.JLabel" name="jlCifBuscador">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ingrese el CIF del cine que desea modificar:"/>
                   </Properties>
