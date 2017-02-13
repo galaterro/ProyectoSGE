@@ -9,6 +9,7 @@ import erp.cinesaztec.modelo.Cine;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -29,11 +30,18 @@ public class CinePersistencia {
 
     public void ingresarCine(Cine cine) throws SQLException, ClassNotFoundException {
 
-        String sql = "insert into cine values(" + cine.getId_cine() + ",'" + cine.getNombre_cine() + "','" + cine.getCif_cine() + "','" + cine.getDir_cine() + "','" + cine.getPob_cine() + "'," + cine.getCodPos_cine() + ")";
+        String sql = "insert into cine (nombre_cine, cif_cine, direccion_cine, poblacion_cine, cp) values(?,?,?,?,?)";
         c = gbd.conectarBBDD();
-        st = c.createStatement();
-
-        st.executeUpdate(sql);
+        ps =  c.prepareStatement(sql);
+        ps.setString(1, cine.getNombre_cine());
+        ps.setString(2, cine.getCif_cine());
+        ps.setString(3, cine.getDir_cine());
+        ps.setString(4, cine.getPob_cine());
+        ps.setInt(5, cine.getCodPos_cine());
+        
+        ps.executeUpdate();
+        ps.close();
+       
         gbd.cerrarConexionBBDD();
     }
 
@@ -51,9 +59,8 @@ public class CinePersistencia {
     }
 
     public Cine buscarCine(String cif) throws ClassNotFoundException, SQLException {
-        //gbd.conectarBBDD();
 
-        String sql = "select * from cine WHERE cif_cine = " + cif;
+        String sql = "select * from cine where cif_cine = " + cif;
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
@@ -65,6 +72,22 @@ public class CinePersistencia {
         gbd.cerrarConexionBBDD();
         return cine;
     }
+    public void actualizarCine(Cine cine, String cif) throws SQLException, ClassNotFoundException{
+        
+        String sql= "update cine set nombre_cine = ?, cif_cine = ?, direccion_cine = ?, poblacion_cine = ?, cp = ? where cif_cine = '" + cif +"'";
+        c = gbd.conectarBBDD();
+        ps =  c.prepareStatement(sql);
+        
+        ps.setString(1, cine.getNombre_cine());
+        ps.setString(2, cine.getCif_cine());
+        ps.setString(3, cine.getDir_cine());
+        ps.setString(4, cine.getPob_cine());
+        ps.setInt(5, cine.getCodPos_cine());
+        
+        ps.executeUpdate();
+        ps.close();
+        gbd.cerrarConexionBBDD();
+    }
 
     public void eliminarCine(String cif) throws ClassNotFoundException, SQLException {
         c = gbd.conectarBBDD();
@@ -73,4 +96,21 @@ public class CinePersistencia {
         st.executeUpdate(sql);
         gbd.cerrarConexionBBDD();
     }
+    
+    public boolean existeCine(String cif) throws SQLException, ClassNotFoundException{
+        boolean encontrado = false;
+        String sql = "Select * FROM cine WHERE cif_cine = ?";
+        c = gbd.conectarBBDD();
+        ps = (PreparedStatement) c.prepareStatement(sql);
+        ps.setString(1, cif);
+        rs = ps.executeQuery();
+        
+        while(rs.next()){
+            encontrado = true;
+        }
+        ps.close();
+        gbd.cerrarConexionBBDD();
+        return encontrado;
+    }
+   
 }
