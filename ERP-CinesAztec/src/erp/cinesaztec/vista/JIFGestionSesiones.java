@@ -550,7 +550,6 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
                 int cif = Integer.parseInt(cifBuscador);
                 sesion = sp.buscarSesiones(cif);
                 dtm.setRowCount(1);
-                // for (int i = 0; i < alCine.size(); i++) {
                 jtaConsulta.setValueAt(sesion.getId_sesion(), 0, 0);
                 jtaConsulta.setValueAt(sesion.getHora_sesion(), 0, 1);
                 jtaConsulta.setValueAt(sesion.getId_pelicula(), 0, 2);

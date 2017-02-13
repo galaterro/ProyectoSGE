@@ -27,15 +27,16 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     private CinePersistencia cp = new CinePersistencia();
     private ArrayList<Cine> alCine;
     private Cine cine;
-    private DefaultTableModel dtm;
+    private Vector vCine = new Vector();
+    private DefaultTableModel dtm = new DefaultTableModel(vCine, 0);;
 
     /**
      * Creates new form JIFGestionCines
      */
     public JIFGestionCines() {
         initComponents();
-        Vector vCine = new Vector();
-        dtm = new DefaultTableModel(vCine, 0);
+       // Vector vCine = new Vector();
+        //dtm = new DefaultTableModel(vCine, 0);
         vCine.add("Nombre:");
         vCine.add("CIF:");
         vCine.add("DIRECCIÓN:");
@@ -50,7 +51,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             @Override
             public void stateChanged(ChangeEvent e) {
                 if (e.getSource() instanceof JTabbedPane) {
-                    reiniciarCamposConsulta(dtm);
+                    reiniciarCamposConsulta();
                     reiniciarCamposModificar();
                     reiniciarCamposAlta();
                     reiniciarCamposEliminar();
@@ -610,6 +611,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         if (cifBuscador.equals("")) {
 
             try {
+                reiniciarCamposConsulta();
                 alCine = cp.listarCines();
                 dtm.setRowCount(alCine.size());
                 for (int i = 0; i < alCine.size(); i++) {
@@ -627,6 +629,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
 
         } else {
             try {
+                reiniciarCamposConsulta();
                 cine = cp.buscarCine(cifBuscador);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(cine.getNombre_cine(), 0, 0);
@@ -666,7 +669,6 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "EL CINE NO EXISTE");
             }
-
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
         } catch (SQLException ex) {
@@ -731,11 +733,11 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         }
     }
 
-    public void reiniciarCamposConsulta(DefaultTableModel dtm) {
+    public void reiniciarCamposConsulta() {
         jtfCifConsulta.setText("");
-        int a = dtm.getRowCount()-1;
-        for (int i = a; i >=0 ; i--) {
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
             dtm.removeRow(i);
+            i -= 1;
         }
     }
 
