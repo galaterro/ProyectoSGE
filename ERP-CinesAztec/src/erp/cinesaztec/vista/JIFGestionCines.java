@@ -19,8 +19,9 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * JInternalFrame dedicado a gestión de cines.
  *
- * @author allen
+ * @author Cine Aztec Team
  */
 class JIFGestionCines extends javax.swing.JInternalFrame {
 
@@ -29,22 +30,20 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     private Cine cine;
     private DefaultTableModel dtm = null;
 
-    /**
-     * Creates new form JIFGestionCines
-     */
     public JIFGestionCines() {
         initComponents();
         Vector vCine = new Vector();
         dtm = new DefaultTableModel(vCine, 0);
-        vCine.add("Nombre:");
-        vCine.add("CIF:");
-        vCine.add("DIRECCIÓN:");
-        vCine.add("POBLACIÓN:");
-        vCine.add("CÓDIGO POSTAL:");
+        vCine.add("Nombre cine:");
+        vCine.add("CIF cine:");
+        vCine.add("Durección cine:");
+        vCine.add("Población cine:");
+        vCine.add("Código postal cine:");
         jtaConsulta.setModel(dtm);
         this.setSize(990, 700);
         this.setResizable(false);
         this.setTitle("Gestión Cines");
+        /* Se añade un Listener para analizar cuándo se recibe algún cambio de ventana en esta ventana. */
         jtpFondo.addChangeListener(new ChangeListener() {
 
             @Override
@@ -557,11 +556,10 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
 
     private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
         eliminarCine();
-
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtpConsultaStateChanged
 
     private void jtpConsultaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtpConsultaFocusLost
@@ -571,34 +569,38 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
         modificarCine();
     }//GEN-LAST:event_jbtModificarActionPerformed
+
+    /**
+     * Método usado para conectar con el método de mismo nombre en
+     * CinePersistencia e ingresar un nuevo cine.
+     */
     public void ingresarCine() {
-        String NombreNuevo = jtfNombreNuevo.getText();
+        String nombreNuevo = jtfNombreNuevo.getText();
         String cifNuevo = jtfCifNuevo.getText();
         String dirNueva = jtfDireccionNueva.getText();
         String poblaNueva = jtfPoblacionNueva.getText();
         int codPosNuevo = Integer.parseInt(jtfCodPosNuevo.getText());
 
-        cine = new Cine(NombreNuevo, cifNuevo, dirNueva, poblaNueva, codPosNuevo);
+        cine = new Cine(nombreNuevo, cifNuevo, dirNueva, poblaNueva, codPosNuevo);
         try {
             cp.ingresarCine(cine);
-            JOptionPane.showMessageDialog(null, "CINE INGRESADO CON ÉXITO");
+            JOptionPane.showMessageDialog(null, "Cine ingresado con éxito.");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR DE CONEXÍON");
-
-            System.out.println("error: " + ex);
-            ex.printStackTrace();
-
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo cine.\nPruebe de nuevo.");
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
         }
-
     }
 
+    /**
+     * Método usado para conectar con el método de mismo nombre en
+     * CinePersistencia.
+     */
     public void consultaCine() {
         String cifBuscador = jtfCifConsulta.getText();
 
         if (cifBuscador.equals("")) {
-
+            /* Búsqueda general de cines. */
             try {
                 alCine = cp.listarCines();
                 dtm.setRowCount(alCine.size());
@@ -610,62 +612,59 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
                     jtaConsulta.setValueAt(alCine.get(i).getCodPos_cine(), i, 4);
                 }
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar ningún cine.\nPruebe de nuevo.");
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "NO SE HA PODIDO CARGAR EL CINE");
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
             }
-
         } else {
+            /* Búsqueda específica de cine por CIF. */
             try {
                 cine = cp.buscarCine(cifBuscador);
                 dtm.setRowCount(1);
-                // for (int i = 0; i < alCine.size(); i++) {
                 jtaConsulta.setValueAt(cine.getNombre_cine(), 0, 0);
                 jtaConsulta.setValueAt(cine.getCif_cine(), 0, 1);
                 jtaConsulta.setValueAt(cine.getDir_cine(), 0, 2);
                 jtaConsulta.setValueAt(cine.getPob_cine(), 0, 3);
                 jtaConsulta.setValueAt(cine.getCodPos_cine(), 0, 4);
-                //}
-
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "NO SE HAN PODIDO CARGAR LOS CINES");
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
             }
         }
     }
 
     public void cargarCineModificar() {
-
         String cifBuscador = jtfCifBuscador.getText();
         boolean existe = false;
-        try {
-            existe = cp.existeCine(cifBuscador);
+        if (cifBuscador.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un CIF válido.");
+        } else {
+            try {
+                existe = cp.existeCine(cifBuscador);
+                if (existe) {
+                    cine = cp.buscarCine(cifBuscador);
+                    jlNombreResultado.setText(cine.getNombre_cine());
+                    jlDireccionResultado.setText(cine.getDir_cine());
+                    Integer codPos = cine.getCodPos_cine();
+                    jlCodigoPostalResultado.setText(codPos.toString());
+                    jlPoblacionResultado.setText(cine.getPob_cine());
 
-            if (existe) {
-                cine = cp.buscarCine(cifBuscador);
-                jlNombreResultado.setText(cine.getNombre_cine());
-                jlDireccionResultado.setText(cine.getDir_cine());
-                Integer codPos = cine.getCodPos_cine();
-                jlCodigoPostalResultado.setText(codPos.toString());
-                jlPoblacionResultado.setText(cine.getPob_cine());
-
-                jtfNombreCine.setText(jlNombreResultado.getText());
-                jtfCIfCine.setText(jtfCifBuscador.getText());
-                jtfDireccionCine.setText(jlDireccionResultado.getText());
-                jtfPoblacionCine.setText(jlPoblacionResultado.getText());
-                jtfCodigoPostal.setText(jlCodigoPostalResultado.getText());
-            } else {
-                JOptionPane.showMessageDialog(null, "EL CINE NO EXISTE");
+                    jtfNombreCine.setText(jlNombreResultado.getText());
+                    jtfCIfCine.setText(jtfCifBuscador.getText());
+                    jtfDireccionCine.setText(jlDireccionResultado.getText());
+                    jtfPoblacionCine.setText(jlPoblacionResultado.getText());
+                    jtfCodigoPostal.setText(jlCodigoPostalResultado.getText());
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existe el cine seleccionado.\nPruebe de nuevo.");
+                    jtfCifBuscador.setText("");
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el cine solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
             }
-
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "NO SE HAN PODIDO CARGAR LOS CINES");
         }
-
-//
     }
 
     public void modificarCine() {
