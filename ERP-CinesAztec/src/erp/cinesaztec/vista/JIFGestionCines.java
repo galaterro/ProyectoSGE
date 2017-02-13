@@ -114,16 +114,16 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jtfCodPosNuevo = new javax.swing.JTextField();
         jbAltaCine = new javax.swing.JButton();
         jtpEliminar = new javax.swing.JTabbedPane();
-        jpFondoEleminar = new javax.swing.JPanel();
+        jpFondoEliminar = new javax.swing.JPanel();
         jlCifCineEliminar = new javax.swing.JLabel();
         jtfCifCineEliminar = new javax.swing.JTextField();
         jlCineAEliminar = new javax.swing.JLabel();
-        jbAceptarCifEleiminar = new javax.swing.JButton();
+        jbAceptarCifEliminar = new javax.swing.JButton();
         jlNombreCineAEliminar = new javax.swing.JLabel();
         jlDireccionCineAELiminar = new javax.swing.JLabel();
         jlPobCineAEliminar = new javax.swing.JLabel();
         jlCodPosCineAEliminar = new javax.swing.JLabel();
-        jbComfirmarEliminar = new javax.swing.JButton();
+        jbConfirmarEliminar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -235,6 +235,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jlCodigoPostal.setText("Código Postal:");
 
         jbtModificar.setText("Modificar");
+        jbtModificar.setEnabled(false);
         jbtModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtModificarActionPerformed(evt);
@@ -442,35 +443,36 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jlCineAEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCineAEliminar.setText("Va a eliminar el siguiente cine:");
 
-        jbAceptarCifEleiminar.setText("Aceptar");
-        jbAceptarCifEleiminar.addActionListener(new java.awt.event.ActionListener() {
+        jbAceptarCifEliminar.setText("Aceptar");
+        jbAceptarCifEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAceptarCifEleiminarActionPerformed(evt);
+                jbAceptarCifEliminarActionPerformed(evt);
             }
         });
 
-        jbComfirmarEliminar.setText("Eliminar");
-        jbComfirmarEliminar.addActionListener(new java.awt.event.ActionListener() {
+        jbConfirmarEliminar.setText("Eliminar");
+        jbConfirmarEliminar.setEnabled(false);
+        jbConfirmarEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbComfirmarEliminarActionPerformed(evt);
+                jbConfirmarEliminarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jpFondoEleminarLayout = new javax.swing.GroupLayout(jpFondoEleminar);
-        jpFondoEleminar.setLayout(jpFondoEleminarLayout);
-        jpFondoEleminarLayout.setHorizontalGroup(
-            jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+        javax.swing.GroupLayout jpFondoEliminarLayout = new javax.swing.GroupLayout(jpFondoEliminar);
+        jpFondoEliminar.setLayout(jpFondoEliminarLayout);
+        jpFondoEliminarLayout.setHorizontalGroup(
+            jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpFondoEliminarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
                         .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jbAceptarCifEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbAceptarCifEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
                         .addComponent(jlNombreCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jlDireccionCineAELiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -479,41 +481,41 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(79, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEleminarLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEliminarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbComfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbConfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(197, 197, 197))
         );
-        jpFondoEleminarLayout.setVerticalGroup(
-            jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+        jpFondoEliminarLayout.setVerticalGroup(
+            jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpFondoEliminarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(jbAceptarCifEleiminar)))
+                        .addComponent(jbAceptarCifEliminar)))
                 .addGap(18, 18, 18)
                 .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jlNombreCineAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                             .addComponent(jlDireccionCineAELiminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEleminarLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEliminarLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                             .addComponent(jlPobCineAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
-                .addComponent(jbComfirmarEliminar)
+                .addComponent(jbConfirmarEliminar)
                 .addContainerGap(198, Short.MAX_VALUE))
         );
 
-        jtpEliminar.addTab("", jpFondoEleminar);
+        jtpEliminar.addTab("", jpFondoEliminar);
 
         jtpFondo.addTab("Eliminar", jtpEliminar);
 
@@ -534,11 +536,9 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameDeactivated
-
     }//GEN-LAST:event_formInternalFrameDeactivated
 
     private void jbtBuscarCineModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarCineModificarActionPerformed
-
         cargarCineModificar();
     }//GEN-LAST:event_jbtBuscarCineModificarActionPerformed
 
@@ -550,20 +550,18 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         ingresarCine();
     }//GEN-LAST:event_jbAltaCineActionPerformed
 
-    private void jbAceptarCifEleiminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEleiminarActionPerformed
-        visionarCineEliminar();
-    }//GEN-LAST:event_jbAceptarCifEleiminarActionPerformed
+    private void jbAceptarCifEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEliminarActionPerformed
+        cargarCineEliminar();
+    }//GEN-LAST:event_jbAceptarCifEliminarActionPerformed
 
-    private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
+    private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
         eliminarCine();
-    }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
+    }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
-
     }//GEN-LAST:event_jtpConsultaStateChanged
 
     private void jtpConsultaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtpConsultaFocusLost
-
     }//GEN-LAST:event_jtpConsultaFocusLost
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
@@ -571,8 +569,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbtModificarActionPerformed
 
     /**
-     * Método usado para conectar con el método de mismo nombre en
-     * CinePersistencia e ingresar un nuevo cine.
+     * Método usado para ingresar un nuevo cine.
      */
     public void ingresarCine() {
         String nombreNuevo = jtfNombreNuevo.getText();
@@ -593,8 +590,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     }
 
     /**
-     * Método usado para conectar con el método de mismo nombre en
-     * CinePersistencia.
+     * Método usado para consultar los cines.
      */
     public void consultaCine() {
         String cifBuscador = jtfCifConsulta.getText();
@@ -634,6 +630,10 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         }
     }
 
+    /**
+     * Método usado específicamente para recoger los cines existentes en la
+     * ventana Modificar.
+     */
     public void cargarCineModificar() {
         String cifBuscador = jtfCifBuscador.getText();
         boolean existe = false;
@@ -655,78 +655,97 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
                     jtfDireccionCine.setText(jlDireccionResultado.getText());
                     jtfPoblacionCine.setText(jlPoblacionResultado.getText());
                     jtfCodigoPostal.setText(jlCodigoPostalResultado.getText());
+                    jbtModificar.setEnabled(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "No existe el cine seleccionado.\nPruebe de nuevo.");
+                    JOptionPane.showMessageDialog(null, "No existe el cine con el CIF seleccionado.\nPruebe de nuevo.");
                     jtfCifBuscador.setText("");
                 }
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el cine solicitado.\nPruebe de nuevo.");
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
             }
         }
     }
 
+    /**
+     * Método usado para modificar un cine.
+     */
     public void modificarCine() {
         try {
             String cif = jtfCifBuscador.getText();
-
             String nombreNuevo = jtfNombreCine.getText();
             String cifNuevo = jtfCIfCine.getText();
             String direccionNueva = jtfDireccionCine.getText();
             String poblacion = jtfPoblacionCine.getText();
             String codPos = jtfCodigoPostal.getText();
             int codigoPostal = Integer.parseInt(codPos);
-
             cine = new Cine(nombreNuevo, cifNuevo, direccionNueva, poblacion, codigoPostal);
             cp.actualizarCine(cine, cif);
-            JOptionPane.showMessageDialog(null, "CINE ACTUALIZADO CON ÉXITO.");
-
+            JOptionPane.showMessageDialog(null, "Cine actualizado con éxito.");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ACTUALIZAR EL CINE.");
-
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN.");
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el cine solicitado.\nPruebe de nuevo.");
         }
     }
 
-    public void visionarCineEliminar() {
+    /**
+     * Método usado específicamente para recoger los cines existentes en la
+     * ventana Eliminar.
+     */
+    public void cargarCineEliminar() {
         String cifBusca = jtfCifCineEliminar.getText();
-        try {
-            cine = cp.buscarCine(cifBusca);
-            jlCifCineEliminar.setText(cine.getCif_cine());
-            jlNombreCineAEliminar.setText(cine.getNombre_cine());
-            jlDireccionCineAELiminar.setText(cine.getDir_cine());
-            jlPobCineAEliminar.setText(cine.getPob_cine());
-            Integer codPos = cine.getCodPos_cine();
-            String codPostal = codPos.toString();
-            jlCodPosCineAEliminar.setText(codPostal);
 
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO CARGAR EL CINE");
+        if (cifBusca.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un CIF válido.");
+        } else {
+            try {
+                cine = cp.buscarCine(cifBusca);
+                jlNombreCineAEliminar.setText(cine.getNombre_cine());
+                jlDireccionCineAELiminar.setText(cine.getDir_cine());
+                jlPobCineAEliminar.setText(cine.getPob_cine());
+                Integer codPos = cine.getCodPos_cine();
+                String codPostal = codPos.toString();
+                jlCodPosCineAEliminar.setText(codPostal);
+                jbConfirmarEliminar.setEnabled(true);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
         }
     }
 
+    /**
+     * Método usado para eliminar un cine.
+     */
     public void eliminarCine() {
         String cifEliminar = jtfCifCineEliminar.getText();
         try {
             cp.eliminarCine(cifEliminar);
-            JOptionPane.showMessageDialog(null, "CINE ELIMINADO CON ÉXITO.");
+            JOptionPane.showMessageDialog(null, "Cine eliminado con éxito.");
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN.");
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el cine solicitado.\nPruebe de nuevo.");
         } catch (SQLException ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ELIMINAR EL CINE.");
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
     }
 
+    /**
+     * Método usado para reiniciar los campos de la ventana Consulta cuando se
+     * produce un cambio de ventana.
+     */
     public void reiniciarCamposConsulta() {
         jtfCifConsulta.setText("");
         dtm.setRowCount(0);
     }
 
+    /**
+     * Método usado para reiniciar los campos de la ventana Modificar cuando se
+     * produce un cambio de ventana.
+     */
     public void reiniciarCamposModificar() {
         jtfCifBuscador.setText("");
         jtfNombreCine.setText("");
@@ -740,6 +759,10 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jlCodigoPostalResultado.setText("");
     }
 
+    /**
+     * Método usado para reiniciar los campos de la ventana Alta cuando se
+     * produce un cambio de ventana.
+     */
     public void reiniciarCamposAlta() {
         jtfNombreNuevo.setText("");
         jtfCifNuevo.setText("");
@@ -748,6 +771,10 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jtfCodPosNuevo.setText("");
     }
 
+    /**
+     * Método usado para reiniciar los campos de la ventana Eliminar cuando se
+     * produce un cambio de ventana.
+     */
     public void reiniciarCamposEliminar() {
         jtfCifCineEliminar.setText("");
         jlNombreCineAEliminar.setText("");
@@ -755,12 +782,13 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jlPobCineAEliminar.setText("");
         jlCodPosCineAEliminar.setText("");
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbAceptarCifEleiminar;
+    private javax.swing.JButton jbAceptarCifEliminar;
     private javax.swing.JButton jbAceptarConsulta;
     private javax.swing.JButton jbAltaCine;
-    private javax.swing.JButton jbComfirmarEliminar;
+    private javax.swing.JButton jbConfirmarEliminar;
     private javax.swing.JButton jbtBuscarCineModificar;
     private javax.swing.JButton jbtModificar;
     private javax.swing.JLabel jlCIfBuscador;
@@ -791,7 +819,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlPoblacionResultado;
     private javax.swing.JPanel jpAltaCine;
     private javax.swing.JPanel jpConsulta;
-    private javax.swing.JPanel jpFondoEleminar;
+    private javax.swing.JPanel jpFondoEliminar;
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
     private javax.swing.JTextField jtfCIfCine;
