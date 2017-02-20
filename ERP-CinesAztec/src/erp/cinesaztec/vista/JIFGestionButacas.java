@@ -29,26 +29,465 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jtpFondo = new javax.swing.JTabbedPane();
+        jtpConsulta = new javax.swing.JTabbedPane();
+        jpConsulta = new javax.swing.JPanel();
+        lbTitulo = new javax.swing.JLabel();
+        jlCifConsulta = new javax.swing.JLabel();
+        jtfIdConsulta = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtaConsulta = new javax.swing.JTable();
+        jbAceptarConsulta = new javax.swing.JButton();
+        jtpModificar = new javax.swing.JTabbedPane();
+        jpModificar = new javax.swing.JPanel();
+        jlNombreCine = new javax.swing.JLabel();
+        jlCifCine = new javax.swing.JLabel();
+        jlCifBuscador = new javax.swing.JLabel();
+        jtfIdBuscador = new javax.swing.JTextField();
+        jtfNumeroButaca = new javax.swing.JTextField();
+        jtfIDButaca = new javax.swing.JTextField();
+        jbtModificar = new javax.swing.JButton();
+        jbtBuscarButacaModificar = new javax.swing.JButton();
+        jlNombreActual = new javax.swing.JLabel();
+        jlDireccionActual = new javax.swing.JLabel();
+        jlNumeroFilaResultado = new javax.swing.JLabel();
+        jlIDSalaResultado = new javax.swing.JLabel();
+        jlPoblacionResultado = new javax.swing.JLabel();
+        jlCodigoPostalResultado = new javax.swing.JLabel();
+        jtpAltaCine = new javax.swing.JTabbedPane();
+        jpAltaCine = new javax.swing.JPanel();
+        jlNombre = new javax.swing.JLabel();
+        jtfNumeroFilaNuevo = new javax.swing.JTextField();
+        jlCif = new javax.swing.JLabel();
+        jtfIDSalaNuevo = new javax.swing.JTextField();
+        jbAltaButaca = new javax.swing.JButton();
+        jtpEliminar = new javax.swing.JTabbedPane();
+        jpFondoEliminar = new javax.swing.JPanel();
+        jlCifCineEliminar = new javax.swing.JLabel();
+        jtfIDButacaEliminar = new javax.swing.JTextField();
+        jlCineAEliminar = new javax.swing.JLabel();
+        jbAceptarIDEliminar = new javax.swing.JButton();
+        jlIDButacaAEliminar = new javax.swing.JLabel();
+        jlNumeroFilaButacaAELiminar = new javax.swing.JLabel();
+        jlIDSalaButacaAEliminar = new javax.swing.JLabel();
+        jlCodPosCineAEliminar = new javax.swing.JLabel();
+        jbConfirmarEliminar = new javax.swing.JButton();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
 
+        jtpFondo.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jtpFondoStateChanged(evt);
+            }
+        });
+
+        jtpConsulta.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jtpConsultaStateChanged(evt);
+            }
+        });
+        jtpConsulta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtpConsultaFocusLost(evt);
+            }
+        });
+
+        lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTitulo.setText("Ingrese el ID de la butaca o pulse Aceptar para búsqueda completar:");
+
+        jlCifConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCifConsulta.setText("ID:");
+
+        jtaConsulta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jtaConsulta);
+
+        jbAceptarConsulta.setText("Aceptar");
+        jbAceptarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAceptarConsultaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpConsultaLayout = new javax.swing.GroupLayout(jpConsulta);
+        jpConsulta.setLayout(jpConsultaLayout);
+        jpConsultaLayout.setHorizontalGroup(
+            jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpConsultaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+                    .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jpConsultaLayout.createSequentialGroup()
+                        .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfIdConsulta))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jbAceptarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jpConsultaLayout.setVerticalGroup(
+            jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpConsultaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIdConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jbAceptarConsulta)
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+
+        jtpConsulta.addTab("", jpConsulta);
+
+        jtpFondo.addTab("Consulta", jtpConsulta);
+
+        jlNombreCine.setText("Número/ Fila:");
+
+        jlCifCine.setText("ID Sala:");
+
+        jlCifBuscador.setText("Ingrese el ID de la butaca que desea modificar:");
+
+        jbtModificar.setText("Modificar");
+        jbtModificar.setEnabled(false);
+        jbtModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtModificarActionPerformed(evt);
+            }
+        });
+
+        jbtBuscarButacaModificar.setText("Buscar");
+        jbtBuscarButacaModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtBuscarButacaModificarActionPerformed(evt);
+            }
+        });
+
+        jlNombreActual.setText("Número/ Fila Actual:");
+
+        jlDireccionActual.setText("ID Sala Actual:");
+
+        javax.swing.GroupLayout jpModificarLayout = new javax.swing.GroupLayout(jpModificar);
+        jpModificar.setLayout(jpModificarLayout);
+        jpModificarLayout.setHorizontalGroup(
+            jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(202, 202, 202))
+            .addGroup(jpModificarLayout.createSequentialGroup()
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(126, 126, 126)
+                        .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addComponent(jlNumeroFilaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlIDSalaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jlPoblacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jlCodigoPostalResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfIDButaca, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfNumeroButaca, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addComponent(jlCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtBuscarButacaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(110, Short.MAX_VALUE))
+        );
+        jpModificarLayout.setVerticalGroup(
+            jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpModificarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtBuscarButacaModificar))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlCodigoPostalResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                            .addComponent(jlPoblacionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlIDSalaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jlNumeroFilaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNumeroButaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfIDButaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(120, 120, 120)
+                .addComponent(jbtModificar)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        jtpModificar.addTab("", jpModificar);
+
+        jtpFondo.addTab("Modificar", jtpModificar);
+
+        jlNombre.setText("Número/ Fila:");
+
+        jlCif.setText("ID Sala:");
+
+        jbAltaButaca.setText("Aceptar");
+        jbAltaButaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAltaButacaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpAltaCineLayout = new javax.swing.GroupLayout(jpAltaCine);
+        jpAltaCine.setLayout(jpAltaCineLayout);
+        jpAltaCineLayout.setHorizontalGroup(
+            jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAltaCineLayout.createSequentialGroup()
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
+                        .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfNumeroFilaNuevo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
+                        .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfIDSalaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(412, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAltaCineLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbAltaButaca)
+                .addGap(271, 271, 271))
+        );
+        jpAltaCineLayout.setVerticalGroup(
+            jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAltaCineLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNumeroFilaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDSalaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jbAltaButaca)
+                .addContainerGap(240, Short.MAX_VALUE))
+        );
+
+        jtpAltaCine.addTab("", jpAltaCine);
+
+        jtpFondo.addTab("Alta", jtpAltaCine);
+
+        jlCifCineEliminar.setText("Ingrese el ID de la Butaca que desee eliminar:");
+
+        jlCineAEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCineAEliminar.setText("Va a eliminarla siguiente butaca:");
+
+        jbAceptarIDEliminar.setText("Aceptar");
+        jbAceptarIDEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAceptarIDEliminarActionPerformed(evt);
+            }
+        });
+
+        jbConfirmarEliminar.setText("Eliminar");
+        jbConfirmarEliminar.setEnabled(false);
+        jbConfirmarEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConfirmarEliminarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpFondoEliminarLayout = new javax.swing.GroupLayout(jpFondoEliminar);
+        jpFondoEliminar.setLayout(jpFondoEliminarLayout);
+        jpFondoEliminarLayout.setHorizontalGroup(
+            jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpFondoEliminarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
+                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfIDButacaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbAceptarIDEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
+                        .addComponent(jlIDButacaAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlNumeroFilaButacaAELiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlIDSalaButacaAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(282, 282, 282)
+                        .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(79, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEliminarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbConfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(197, 197, 197))
+        );
+        jpFondoEliminarLayout.setVerticalGroup(
+            jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpFondoEliminarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jtfIDButacaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jbAceptarIDEliminar)))
+                .addGap(18, 18, 18)
+                .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlIDButacaAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                            .addComponent(jlNumeroFilaButacaAELiminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlIDSalaButacaAEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEliminarLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jbConfirmarEliminar)
+                .addContainerGap(194, Short.MAX_VALUE))
+        );
+
+        jtpEliminar.addTab("", jpFondoEliminar);
+
+        jtpFondo.addTab("Eliminar", jtpEliminar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jtpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 957, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jtpFondo)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
+        
+    }//GEN-LAST:event_jbAceptarConsultaActionPerformed
+
+    private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
+
+    }//GEN-LAST:event_jtpConsultaStateChanged
+
+    private void jtpConsultaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtpConsultaFocusLost
+
+    }//GEN-LAST:event_jtpConsultaFocusLost
+
+    private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
+        
+    }//GEN-LAST:event_jbtModificarActionPerformed
+
+    private void jbtBuscarButacaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarButacaModificarActionPerformed
+        
+    }//GEN-LAST:event_jbtBuscarButacaModificarActionPerformed
+
+    private void jbAltaButacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaButacaActionPerformed
+        
+    }//GEN-LAST:event_jbAltaButacaActionPerformed
+
+    private void jbAceptarIDEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarIDEliminarActionPerformed
+        
+    }//GEN-LAST:event_jbAceptarIDEliminarActionPerformed
+
+    private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
+        
+    }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
+
+    private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
+
+    }//GEN-LAST:event_jtpFondoStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbAceptarConsulta;
+    private javax.swing.JButton jbAceptarIDEliminar;
+    private javax.swing.JButton jbAltaButaca;
+    private javax.swing.JButton jbConfirmarEliminar;
+    private javax.swing.JButton jbtBuscarButacaModificar;
+    private javax.swing.JButton jbtModificar;
+    private javax.swing.JLabel jlCif;
+    private javax.swing.JLabel jlCifBuscador;
+    private javax.swing.JLabel jlCifCine;
+    private javax.swing.JLabel jlCifCineEliminar;
+    private javax.swing.JLabel jlCifConsulta;
+    private javax.swing.JLabel jlCineAEliminar;
+    private javax.swing.JLabel jlCodPosCineAEliminar;
+    private javax.swing.JLabel jlCodigoPostalResultado;
+    private javax.swing.JLabel jlDireccionActual;
+    private javax.swing.JLabel jlIDButacaAEliminar;
+    private javax.swing.JLabel jlIDSalaButacaAEliminar;
+    private javax.swing.JLabel jlIDSalaResultado;
+    private javax.swing.JLabel jlNombre;
+    private javax.swing.JLabel jlNombreActual;
+    private javax.swing.JLabel jlNombreCine;
+    private javax.swing.JLabel jlNumeroFilaButacaAELiminar;
+    private javax.swing.JLabel jlNumeroFilaResultado;
+    private javax.swing.JLabel jlPoblacionResultado;
+    private javax.swing.JPanel jpAltaCine;
+    private javax.swing.JPanel jpConsulta;
+    private javax.swing.JPanel jpFondoEliminar;
+    private javax.swing.JPanel jpModificar;
+    private javax.swing.JTable jtaConsulta;
+    private javax.swing.JTextField jtfIDButaca;
+    private javax.swing.JTextField jtfIDButacaEliminar;
+    private javax.swing.JTextField jtfIDSalaNuevo;
+    private javax.swing.JTextField jtfIdBuscador;
+    private javax.swing.JTextField jtfIdConsulta;
+    private javax.swing.JTextField jtfNumeroButaca;
+    private javax.swing.JTextField jtfNumeroFilaNuevo;
+    private javax.swing.JTabbedPane jtpAltaCine;
+    private javax.swing.JTabbedPane jtpConsulta;
+    private javax.swing.JTabbedPane jtpEliminar;
+    private javax.swing.JTabbedPane jtpFondo;
+    private javax.swing.JTabbedPane jtpModificar;
+    private javax.swing.JLabel lbTitulo;
     // End of variables declaration//GEN-END:variables
 }
