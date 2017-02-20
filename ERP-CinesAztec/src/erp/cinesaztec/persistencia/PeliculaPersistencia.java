@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * Created by Galaterro on 25/01/2017.
  */
 public class PeliculaPersistencia {
+
     private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
@@ -18,46 +19,45 @@ public class PeliculaPersistencia {
     private ArrayList<Pelicula> alPelicula = new ArrayList();
 
     public void ingresarPelicula(Pelicula pelicula) throws SQLException, ClassNotFoundException {
-        int filasAfectadas;
 
-        String sql = "insert into pelicula values(" + pelicula.getId_pelicula() + "," + pelicula.getId_sala() + ",'" + pelicula.getNombre_pelicula() + "'," + pelicula.getDur_pelicula()+ "," + pelicula.getEdad_acceso() + ")";
+        String sql = "insert into pelicula (id_sala, nombre_pelicula, duracion_pelicula, edad_acceso) values (?,?,?,?)";
         c = gbd.conectarBBDD();
-        st = c.createStatement();
+        ps = c.prepareStatement(sql);
+        ps.setInt(1, 1);
+        ps.setString(2, pelicula.getNombre_pelicula());
+        ps.setInt(3, pelicula.getDur_pelicula());
+        ps.setInt(4, pelicula.getEdad_acceso());
+        ps.executeUpdate();
+        ps.close();
 
-        filasAfectadas = st.executeUpdate(sql);
-        System.out.println("filas afectadas: " + filasAfectadas);
         gbd.cerrarConexionBBDD();
     }
 
     public ArrayList listarPelicula() throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-
         String sql = "select * from pelicula";
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
-        System.out.println("Las Peliculas son: ");
         while (rs.next()) {
-            pelicula = new Pelicula(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
+            pelicula = new Pelicula(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
             alPelicula.add(pelicula);
         }
         gbd.cerrarConexionBBDD();
         return alPelicula;
 
     }
-    
-    
-    public Pelicula buscarPelicula(String nombre_aux) throws SQLException, ClassNotFoundException {
+
+    public Pelicula buscarPelicula(int id) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-        String sql = "SELECT * FROM PRODUCTO WHERE nombre_pelicula= '" + nombre_aux + "'";
+        String sql = "SELECT * FROM pelicula WHERE id_pelicula= " + id + "";
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
         rs.next();
-        pelicula = new Pelicula(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
+        pelicula = new Pelicula(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
         gbd.cerrarConexionBBDD();
         return pelicula;
     }
-
 
 }

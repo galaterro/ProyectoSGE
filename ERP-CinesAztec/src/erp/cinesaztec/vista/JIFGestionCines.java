@@ -589,13 +589,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtpFondoStateChanged
 
     private void jtfNombreNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreNuevoActionPerformed
-        if (jtfNombreNuevo.getText().compareToIgnoreCase("") != 0) {
-            contadorModificadosAlta++;
-        } else {
-            if (contadorModificadosAlta == 1) {
-                contadorModificadosAlta--;
-            }
-        }
+        
     }//GEN-LAST:event_jtfNombreNuevoActionPerformed
 
     private void jtfNombreNuevoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreNuevoKeyPressed

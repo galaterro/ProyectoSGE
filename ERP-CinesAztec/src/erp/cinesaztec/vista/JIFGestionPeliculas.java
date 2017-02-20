@@ -5,19 +5,58 @@
  */
 package erp.cinesaztec.vista;
 
+import erp.cinesaztec.modelo.Pelicula;
+import erp.cinesaztec.persistencia.PeliculaPersistencia;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author allen
  */
 class JIFGestionPeliculas extends javax.swing.JInternalFrame {
 
+    private PeliculaPersistencia pp = new PeliculaPersistencia();
+    private ArrayList<Pelicula> alPelicula;
+    private Pelicula pelicula;
+    private Vector vPelicula = new Vector();
+    private DefaultTableModel dtm = new DefaultTableModel(vPelicula, 0);
+    private int contadorModificadosAlta = 0;
+
     /**
      * Creates new form JIFGestionPeliculas
      */
     public JIFGestionPeliculas() {
         initComponents();
-        this.setSize(990, 700);
         this.setTitle("Gestión Peliculas");
+        vPelicula.add("Nombre Pelicula:");
+        vPelicula.add("ID  Pelicula:");
+        vPelicula.add("Duración Pelicula:");
+        vPelicula.add("Edad Acceso:");
+        jtaConsulta.setModel(dtm);
+        this.setSize(990, 700);
+        this.setResizable(false);
+
+        jtpFondo.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (e.getSource() instanceof JTabbedPane) {
+                    reiniciarCamposConsulta();
+//                    reiniciarCamposModificar();
+//                    reiniciarCamposAlta();
+//                    reiniciarCamposEliminar();
+                }
+            }
+        });
     }
 
     /**
@@ -453,7 +492,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
-        
+        consultaCine();
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
@@ -465,17 +504,18 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtpConsultaFocusLost
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
-        
+
     }//GEN-LAST:event_jbtModificarActionPerformed
 
     private void jbtBuscarPeliculaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarPeliculaModificarActionPerformed
     }//GEN-LAST:event_jbtBuscarPeliculaModificarActionPerformed
 
     private void jbAltaPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaPeliculaActionPerformed
+        ingresarPelicula();
     }//GEN-LAST:event_jbAltaPeliculaActionPerformed
 
     private void jbAceptarIdEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarIdEliminarActionPerformed
-        
+
     }//GEN-LAST:event_jbAceptarIdEliminarActionPerformed
 
     private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
@@ -484,7 +524,69 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
 
     }//GEN-LAST:event_jtpFondoStateChanged
+    public void consultaCine() {
+        String idBuscador = jtfIdConsulta.getText();
 
+        if (idBuscador.equals("")) {
+            /* Búsqueda general de peliculas. */
+            try {
+                reiniciarCamposConsulta();
+                alPelicula = pp.listarPelicula();
+                dtm.setRowCount(alPelicula.size());
+                for (int i = 0; i < alPelicula.size(); i++) {
+                    jtaConsulta.setValueAt(alPelicula.get(i).getNombre_pelicula(), i, 0);
+                    jtaConsulta.setValueAt(alPelicula.get(i).getId_pelicula(), i, 1);
+                    jtaConsulta.setValueAt(alPelicula.get(i).getDur_pelicula(), i, 2);
+                    jtaConsulta.setValueAt(alPelicula.get(i).getEdad_acceso(), i, 3);
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar ningúna película.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        } else {
+            /* Búsqueda específica de cine por CIF. */
+            int id_Buscador = Integer.parseInt(idBuscador);
+            try {
+                reiniciarCamposConsulta();
+                pelicula = pp.buscarPelicula(id_Buscador);
+                dtm.setRowCount(1);
+                jtaConsulta.setValueAt(pelicula.getNombre_pelicula(), 0, 0);
+                jtaConsulta.setValueAt(pelicula.getId_pelicula(), 0, 1);
+                jtaConsulta.setValueAt(pelicula.getDur_pelicula(), 0, 2);
+                jtaConsulta.setValueAt(pelicula.getEdad_acceso(), 0, 3);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la pelicaula solicitada.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
+    }
+
+    public void reiniciarCamposConsulta() {
+        jtfIdConsulta.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
+
+    public void ingresarPelicula() {
+        try {
+            String nombreNuevo = jtfNombreNuevoAlta.getText();
+            int duracion = Integer.parseInt(jtfDuracionNuevoAlta.getText());
+            int edadAcceso = Integer.parseInt(jtfEdadAccesoNuevaAlta.getText());
+
+            pelicula = new Pelicula(nombreNuevo, duracion, edadAcceso);
+            pp.ingresarPelicula(pelicula);
+            JOptionPane.showMessageDialog(null, "Pelicula ingresado con éxito.");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar la nueva pelicula.\nPruebe de nuevo.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

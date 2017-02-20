@@ -23,12 +23,10 @@ public class Pelicula {
         this.edad_acceso = edad_acceso;
     }
 
-    public Pelicula(int id_pelicula, int id_sala, String nombre_pelicula, int dur_pelicula, int edad_acceso) {
-        this.id_pelicula = id_pelicula;
+    public Pelicula( String nombre_pelicula, int dur_pelicula, int edad_acceso) {
         this.nombre_pelicula = nombre_pelicula;
         this.dur_pelicula = dur_pelicula;
         this.edad_acceso = edad_acceso;
-        this.id_sala = id_sala;
     }
     
     /* Getters y Setters. */
