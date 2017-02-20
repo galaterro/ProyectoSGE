@@ -585,9 +585,6 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         modificarCine();
     }//GEN-LAST:event_jbtModificarActionPerformed
 
-    /**
-     * Método usado para ingresar un nuevo cine.
-     */
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
     }//GEN-LAST:event_jtpFondoStateChanged
 
@@ -609,8 +606,6 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
      * Método usado para ingresar un nuevo cine.
      */
     public void ingresarCine() {
-        
-
         if (jtfNombreNuevo.getText().compareToIgnoreCase("") == 0) {
             JOptionPane.showMessageDialog(null, "Inserte un nombre válido.");
         } else {
@@ -634,8 +629,8 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
                             cine = new Cine(nombreNuevo, cifNuevo, dirNueva, poblaNueva, codPosNuevo);
                             try {
                                 cp.ingresarCine(cine);
-                                JOptionPane.showMessageDialog(null, "Cine ingresado con éxito.");
                                 reiniciarCamposAlta();
+                                JOptionPane.showMessageDialog(null, "Cine ingresado con éxito.");
                             } catch (SQLException ex) {
                                 JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo cine.\nPruebe de nuevo.");
                             } catch (ClassNotFoundException ex) {
