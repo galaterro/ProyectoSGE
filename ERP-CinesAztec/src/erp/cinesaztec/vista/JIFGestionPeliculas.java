@@ -453,7 +453,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
-        consultaCine();
+        
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
@@ -465,23 +465,20 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtpConsultaFocusLost
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
-        modificarCine();
+        
     }//GEN-LAST:event_jbtModificarActionPerformed
 
     private void jbtBuscarPeliculaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarPeliculaModificarActionPerformed
-        cargarCineModificar();
     }//GEN-LAST:event_jbtBuscarPeliculaModificarActionPerformed
 
     private void jbAltaPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaPeliculaActionPerformed
-        ingresarCine();
     }//GEN-LAST:event_jbAltaPeliculaActionPerformed
 
     private void jbAceptarIdEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarIdEliminarActionPerformed
-        cargarCineEliminar();
+        
     }//GEN-LAST:event_jbAceptarIdEliminarActionPerformed
 
     private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
-        eliminarCine();
     }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
 
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
