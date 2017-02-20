@@ -14,7 +14,8 @@ public class Cine {
     private String pob_cine;
     private int codPos_cine;
 
-    /* Constructor. */
+    /* Esta clase tiene 2 constructores distintos: uno con id_cine, y otro sin 
+    id_cine por ser clave foránea, y así poder manejarlo dependiendo de la necesidad. */
     
     public Cine(int id_cine, String nombre_cine, String cif_cine, String dir_cine, String pob_cine, int codPos_cine) {
         this.id_cine = id_cine;
