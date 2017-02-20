@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package erp.cinesaztec.persistencia;
 
 import erp.cinesaztec.modelo.Cine;
@@ -15,36 +10,40 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
+ * Clase dedicada a las operaciones en BD relacionadas con Cine.
  *
- * @author allen
+ * @author Cine Aztec Team
  */
 public class CinePersistencia {
 
     private GestorBBDD gbd = new GestorBBDD();
-    private Statement st = null;//sentencia a ejecutar
-    private ResultSet rs = null;//resultado
+    private Statement st = null;
+    private ResultSet rs = null;
     private PreparedStatement ps = null;
     private Connection c;
     private Cine cine;
     private ArrayList<Cine> alCine = new ArrayList();
+    
 
+    /* Usado para añadir un nuevo Cine. */
     public void ingresarCine(Cine cine) throws SQLException, ClassNotFoundException {
 
-        String sql = "insert into cine (nombre_cine, cif_cine, direccion_cine, poblacion_cine, cp_cine) values(?,?,?,?,?)";
+        String sql = "insert into cine (nombre_cine, cif_cine, direccion_cine, poblacion_cine, cp_cine) values (?,?,?,?,?)";
         c = gbd.conectarBBDD();
-        ps =  c.prepareStatement(sql);
+        ps = c.prepareStatement(sql);
         ps.setString(1, cine.getNombre_cine());
         ps.setString(2, cine.getCif_cine());
         ps.setString(3, cine.getDir_cine());
         ps.setString(4, cine.getPob_cine());
         ps.setInt(5, cine.getCodPos_cine());
-        
+
         ps.executeUpdate();
         ps.close();
-       
+
         gbd.cerrarConexionBBDD();
     }
 
+    /* Usado para devolver un listado de los Cines existentes. */
     public ArrayList listarCines() throws ClassNotFoundException, SQLException {
         String sql = "select * from cine";
         c = gbd.conectarBBDD();
@@ -58,6 +57,7 @@ public class CinePersistencia {
         return alCine;
     }
 
+    /* Usado para buscar un Cine específico por su CIF. */
     public Cine buscarCine(String cif) throws ClassNotFoundException, SQLException {
 
         String sql = "select * from cine where cif_cine = " + cif;
@@ -72,23 +72,26 @@ public class CinePersistencia {
         gbd.cerrarConexionBBDD();
         return cine;
     }
-    public void actualizarCine(Cine cine, String cif) throws SQLException, ClassNotFoundException{
-        
-        String sql= "update cine set nombre_cine = ?, cif_cine = ?, direccion_cine = ?, poblacion_cine = ?, cp_cine = ? where cif_cine = '" + cif +"'";
+
+    /* Usado para modificar los datos de un Cine existente. */
+    public void actualizarCine(Cine cine, String cif) throws SQLException, ClassNotFoundException {
+
+        String sql = "update cine set nombre_cine = ?, cif_cine = ?, direccion_cine = ?, poblacion_cine = ?, cp_cine = ? where cif_cine = '" + cif + "'";
         c = gbd.conectarBBDD();
-        ps =  c.prepareStatement(sql);
-        
+        ps = c.prepareStatement(sql);
+
         ps.setString(1, cine.getNombre_cine());
         ps.setString(2, cine.getCif_cine());
         ps.setString(3, cine.getDir_cine());
         ps.setString(4, cine.getPob_cine());
         ps.setInt(5, cine.getCodPos_cine());
-        
+
         ps.executeUpdate();
         ps.close();
         gbd.cerrarConexionBBDD();
     }
 
+    /* Usado para eliminar un Cine. */
     public void eliminarCine(String cif) throws ClassNotFoundException, SQLException {
         c = gbd.conectarBBDD();
         String sql = "delete from cine where cif_cine = '" + cif + "'";
@@ -96,21 +99,21 @@ public class CinePersistencia {
         st.executeUpdate(sql);
         gbd.cerrarConexionBBDD();
     }
-    
-    public boolean existeCine(String cif) throws SQLException, ClassNotFoundException{
+
+    /* Usado para analizar si existe un Cine con el CIF facilitado. */
+    public boolean existeCine(String cif) throws SQLException, ClassNotFoundException {
         boolean encontrado = false;
-        String sql = "Select * FROM cine WHERE cif_cine = ?";
+        String sql = "select * from cine where cif_cine = ?";
         c = gbd.conectarBBDD();
         ps = (PreparedStatement) c.prepareStatement(sql);
         ps.setString(1, cif);
         rs = ps.executeQuery();
-        
-        while(rs.next()){
+
+        while (rs.next()) {
             encontrado = true;
         }
         ps.close();
         gbd.cerrarConexionBBDD();
         return encontrado;
     }
-   
 }
