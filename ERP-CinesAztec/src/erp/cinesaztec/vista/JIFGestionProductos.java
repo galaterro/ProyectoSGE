@@ -60,8 +60,8 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         jlDescripcionResultado = new javax.swing.JLabel();
         jlPrecioProductoResultado = new javax.swing.JLabel();
         jlPrecioVentaResultado = new javax.swing.JLabel();
-        jtpAltaCine = new javax.swing.JTabbedPane();
-        jpAltaCine = new javax.swing.JPanel();
+        jtpAltaProducto = new javax.swing.JTabbedPane();
+        jpAltaProducto = new javax.swing.JPanel();
         jlNombre = new javax.swing.JLabel();
         jtfNombreNuevo = new javax.swing.JTextField();
         jlCif = new javax.swing.JLabel();
@@ -74,14 +74,15 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         jtpEliminar = new javax.swing.JTabbedPane();
         jpFondoEleminar = new javax.swing.JPanel();
         jlCifCineEliminar = new javax.swing.JLabel();
-        jtfCifCineEliminar = new javax.swing.JTextField();
+        jtfIDProductoEliminar = new javax.swing.JTextField();
         jlCineAEliminar = new javax.swing.JLabel();
         jbAceptarCifEleiminar = new javax.swing.JButton();
-        jlNombreCineAEliminar = new javax.swing.JLabel();
-        jlDireccionCineAELiminar = new javax.swing.JLabel();
-        jlPobCineAEliminar = new javax.swing.JLabel();
-        jlCodPosCineAEliminar = new javax.swing.JLabel();
+        jlIDProductoAEliminar = new javax.swing.JLabel();
+        jlNombreProductoAEliminar = new javax.swing.JLabel();
+        jlPrecioProductoAEliminar = new javax.swing.JLabel();
+        jlPrecioVentaProductoAEliminar = new javax.swing.JLabel();
         jbComfirmarEliminar = new javax.swing.JButton();
+        jlDescripcionProductoAEliminar = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -236,11 +237,12 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                     .addComponent(jtfIDBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtBuscarProductoModificar))
                 .addGap(18, 18, 18)
-                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -291,50 +293,50 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout jpAltaCineLayout = new javax.swing.GroupLayout(jpAltaCine);
-        jpAltaCine.setLayout(jpAltaCineLayout);
-        jpAltaCineLayout.setHorizontalGroup(
-            jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAltaCineLayout.createSequentialGroup()
-                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
+        javax.swing.GroupLayout jpAltaProductoLayout = new javax.swing.GroupLayout(jpAltaProducto);
+        jpAltaProducto.setLayout(jpAltaProductoLayout);
+        jpAltaProductoLayout.setHorizontalGroup(
+            jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAltaProductoLayout.createSequentialGroup()
+                .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaProductoLayout.createSequentialGroup()
                             .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jtfNombreNuevo))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaProductoLayout.createSequentialGroup()
                             .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jtfDescripcionNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jbAltaProducto)
-                        .addGroup(jpAltaCineLayout.createSequentialGroup()
-                            .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jpAltaProductoLayout.createSequentialGroup()
+                            .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jlPoblacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jlDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
                             .addGap(18, 18, 18)
-                            .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jtfPrecioProductoNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jtfPrecioVentaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(268, Short.MAX_VALUE))
         );
-        jpAltaCineLayout.setVerticalGroup(
-            jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAltaCineLayout.createSequentialGroup()
+        jpAltaProductoLayout.setVerticalGroup(
+            jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAltaProductoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfNombreNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfDescripcionNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfPrecioProductoNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfPrecioVentaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
@@ -342,14 +344,14 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                 .addContainerGap(116, Short.MAX_VALUE))
         );
 
-        jtpAltaCine.addTab("", jpAltaCine);
+        jtpAltaProducto.addTab("", jpAltaProducto);
 
-        jtpFondo.addTab("Alta", jtpAltaCine);
+        jtpFondo.addTab("Alta", jtpAltaProducto);
 
-        jlCifCineEliminar.setText("Ingrese el CIF del cine que desee eliminar:");
+        jlCifCineEliminar.setText("Ingrese el ID del producto que desee eliminar:");
 
         jlCineAEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlCineAEliminar.setText("Va a eliminar el siguiente cine:");
+        jlCineAEliminar.setText("Va a eliminar el siguiente producto:");
 
         jbAceptarCifEleiminar.setText("Aceptar");
         jbAceptarCifEleiminar.addActionListener(new java.awt.event.ActionListener() {
@@ -371,27 +373,27 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoEleminarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbAceptarCifEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                        .addComponent(jlNombreCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlDireccionCineAELiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlPobCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(79, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEleminarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbComfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197))
+                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbComfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                            .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jtfIDProductoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jbAceptarCifEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                            .addComponent(jlIDProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jlNombreProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jlPrecioProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jlPrecioVentaProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jlDescripcionProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         jpFondoEleminarLayout.setVerticalGroup(
             jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,27 +401,24 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfIDProductoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpFondoEleminarLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(jbAceptarCifEleiminar)))
                 .addGap(18, 18, 18)
                 .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlNombreCineAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                            .addComponent(jlDireccionCineAELiminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEleminarLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                            .addComponent(jlPobCineAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
+                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlPrecioVentaProductoAEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jlIDProductoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                        .addComponent(jlNombreProductoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlPrecioProductoAEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jlDescripcionProductoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
                 .addComponent(jbComfirmarEliminar)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         jtpEliminar.addTab("", jpFondoEleminar);
@@ -477,41 +476,42 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCifCineEliminar;
     private javax.swing.JLabel jlCifConsulta;
     private javax.swing.JLabel jlCineAEliminar;
-    private javax.swing.JLabel jlCodPosCineAEliminar;
     private javax.swing.JLabel jlCodigoPostalActual;
+    private javax.swing.JLabel jlDescripcionProductoAEliminar;
     private javax.swing.JLabel jlDescripcionResultado;
     private javax.swing.JLabel jlDireccion;
     private javax.swing.JLabel jlDireccionActual;
     private javax.swing.JLabel jlDireccionCine;
-    private javax.swing.JLabel jlDireccionCineAELiminar;
+    private javax.swing.JLabel jlIDProductoAEliminar;
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlNombreActual;
     private javax.swing.JLabel jlNombreCine;
-    private javax.swing.JLabel jlNombreCineAEliminar;
+    private javax.swing.JLabel jlNombreProductoAEliminar;
     private javax.swing.JLabel jlNombreResultado;
-    private javax.swing.JLabel jlPobCineAEliminar;
     private javax.swing.JLabel jlPoblacion;
     private javax.swing.JLabel jlPoblacionActual;
     private javax.swing.JLabel jlPoblacionCine;
+    private javax.swing.JLabel jlPrecioProductoAEliminar;
     private javax.swing.JLabel jlPrecioProductoResultado;
+    private javax.swing.JLabel jlPrecioVentaProductoAEliminar;
     private javax.swing.JLabel jlPrecioVentaResultado;
-    private javax.swing.JPanel jpAltaCine;
+    private javax.swing.JPanel jpAltaProducto;
     private javax.swing.JPanel jpConsulta;
     private javax.swing.JPanel jpFondoEleminar;
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
-    private javax.swing.JTextField jtfCifCineEliminar;
     private javax.swing.JTextField jtfDescripcionNueva;
     private javax.swing.JTextField jtfDescripcionProducto;
     private javax.swing.JTextField jtfIDBuscador;
     private javax.swing.JTextField jtfIDConsulta;
+    private javax.swing.JTextField jtfIDProductoEliminar;
     private javax.swing.JTextField jtfNombreCine;
     private javax.swing.JTextField jtfNombreNuevo;
     private javax.swing.JTextField jtfPrecioProducto;
     private javax.swing.JTextField jtfPrecioProductoNueva;
     private javax.swing.JTextField jtfPrecioVentaNueva;
     private javax.swing.JTextField jtfVentaProducto;
-    private javax.swing.JTabbedPane jtpAltaCine;
+    private javax.swing.JTabbedPane jtpAltaProducto;
     private javax.swing.JTabbedPane jtpConsulta;
     private javax.swing.JTabbedPane jtpEliminar;
     private javax.swing.JTabbedPane jtpFondo;
