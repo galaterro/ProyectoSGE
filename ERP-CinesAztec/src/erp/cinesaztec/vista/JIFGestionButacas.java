@@ -60,7 +60,7 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
         jtfNumeroFilaNuevo = new javax.swing.JTextField();
         jlCif = new javax.swing.JLabel();
         jtfIDSalaNuevo = new javax.swing.JTextField();
-        jbAltaCine = new javax.swing.JButton();
+        jbAltaButaca = new javax.swing.JButton();
         jtpEliminar = new javax.swing.JTabbedPane();
         jpFondoEliminar = new javax.swing.JPanel();
         jlCifCineEliminar = new javax.swing.JLabel();
@@ -265,10 +265,10 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
 
         jlCif.setText("ID Sala:");
 
-        jbAltaCine.setText("Aceptar");
-        jbAltaCine.addActionListener(new java.awt.event.ActionListener() {
+        jbAltaButaca.setText("Aceptar");
+        jbAltaButaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAltaCineActionPerformed(evt);
+                jbAltaButacaActionPerformed(evt);
             }
         });
 
@@ -289,7 +289,7 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
                 .addContainerGap(412, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAltaCineLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jbAltaCine)
+                .addComponent(jbAltaButaca)
                 .addGap(271, 271, 271))
         );
         jpAltaCineLayout.setVerticalGroup(
@@ -304,7 +304,7 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
                     .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfIDSalaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jbAltaCine)
+                .addComponent(jbAltaButaca)
                 .addContainerGap(240, Short.MAX_VALUE))
         );
 
@@ -409,7 +409,7 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
-        consultaCine();
+        
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
@@ -421,23 +421,23 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtpConsultaFocusLost
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
-        modificarCine();
+        
     }//GEN-LAST:event_jbtModificarActionPerformed
 
     private void jbtBuscarButacaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarButacaModificarActionPerformed
-        cargarCineModificar();
+        
     }//GEN-LAST:event_jbtBuscarButacaModificarActionPerformed
 
-    private void jbAltaCineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaCineActionPerformed
-        ingresarCine();
-    }//GEN-LAST:event_jbAltaCineActionPerformed
+    private void jbAltaButacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaButacaActionPerformed
+        
+    }//GEN-LAST:event_jbAltaButacaActionPerformed
 
     private void jbAceptarIDEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarIDEliminarActionPerformed
-        cargarCineEliminar();
+        
     }//GEN-LAST:event_jbAceptarIDEliminarActionPerformed
 
     private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
-        eliminarCine();
+        
     }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
 
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
@@ -449,7 +449,7 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAceptarConsulta;
     private javax.swing.JButton jbAceptarIDEliminar;
-    private javax.swing.JButton jbAltaCine;
+    private javax.swing.JButton jbAltaButaca;
     private javax.swing.JButton jbConfirmarEliminar;
     private javax.swing.JButton jbtBuscarButacaModificar;
     private javax.swing.JButton jbtModificar;

@@ -371,7 +371,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jbAltaCine" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbAltaButaca" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -390,7 +390,7 @@
                               <Component id="jtfIDSalaNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jbAltaCine" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbAltaButaca" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="240" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -411,12 +411,12 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfIDSalaNuevo">
                 </Component>
-                <Component class="javax.swing.JButton" name="jbAltaCine">
+                <Component class="javax.swing.JButton" name="jbAltaButaca">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Aceptar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAltaCineActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAltaButacaActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
