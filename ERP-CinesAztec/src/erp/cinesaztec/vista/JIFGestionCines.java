@@ -30,6 +30,9 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     private Cine cine;
     private Vector vCine = new Vector();
     private DefaultTableModel dtm = new DefaultTableModel(vCine, 0);
+    private int contadorModificadosAlta = 0;
+
+    /* Se usa para contar cuántos TextField están modificados y desbloquear el botón en el debido momento. */
 
     public JIFGestionCines() {
         initComponents();
@@ -364,6 +367,17 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
 
         jlNombre.setText("Nombre:");
 
+        jtfNombreNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNombreNuevoActionPerformed(evt);
+            }
+        });
+        jtfNombreNuevo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfNombreNuevoKeyPressed(evt);
+            }
+        });
+
         jlCif.setText("CIF:");
 
         jlDireccion.setText("Dirección:");
@@ -577,21 +591,60 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
     }//GEN-LAST:event_jtpFondoStateChanged
 
-    public void ingresarCine() {
-        String nombreNuevo = jtfNombreNuevo.getText();
-        String cifNuevo = jtfCifNuevo.getText();
-        String dirNueva = jtfDireccionNueva.getText();
-        String poblaNueva = jtfPoblacionNueva.getText();
-        int codPosNuevo = Integer.parseInt(jtfCodPosNuevo.getText());
+    private void jtfNombreNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreNuevoActionPerformed
+        if (jtfNombreNuevo.getText().compareToIgnoreCase("") != 0) {
+            contadorModificadosAlta++;
+        } else {
+            if (contadorModificadosAlta == 1) {
+                contadorModificadosAlta--;
+            }
+        }
+    }//GEN-LAST:event_jtfNombreNuevoActionPerformed
 
-        cine = new Cine(nombreNuevo, cifNuevo, dirNueva, poblaNueva, codPosNuevo);
-        try {
-            cp.ingresarCine(cine);
-            JOptionPane.showMessageDialog(null, "Cine ingresado con éxito.");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo cine.\nPruebe de nuevo.");
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+    private void jtfNombreNuevoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreNuevoKeyPressed
+
+    }//GEN-LAST:event_jtfNombreNuevoKeyPressed
+
+    /**
+     * Método usado para ingresar un nuevo cine.
+     */
+    public void ingresarCine() {
+        
+
+        if (jtfNombreNuevo.getText().compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Inserte un nombre válido.");
+        } else {
+            if (jtfCifNuevo.getText().compareToIgnoreCase("") == 0) {
+                JOptionPane.showMessageDialog(null, "Inserte un CIF válido.");
+            } else {
+                if (jtfDireccionNueva.getText().compareToIgnoreCase("") == 0) {
+                    JOptionPane.showMessageDialog(null, "Inserte una dirección válida.");
+                } else {
+                    if (jtfPoblacionNueva.getText().compareToIgnoreCase("") == 0) {
+                        JOptionPane.showMessageDialog(null, "Inserte una población válida.");
+                    } else {
+                        if (jtfCodPosNuevo.getText().compareToIgnoreCase("") == 0) {
+                            JOptionPane.showMessageDialog(null, "Inserte un código postal válido.");
+                        } else {
+                            String nombreNuevo = jtfNombreNuevo.getText();
+                            String cifNuevo = jtfCifNuevo.getText();
+                            String dirNueva = jtfDireccionNueva.getText();
+                            String poblaNueva = jtfPoblacionNueva.getText();
+                            int codPosNuevo = Integer.parseInt(jtfCodPosNuevo.getText());
+                            cine = new Cine(nombreNuevo, cifNuevo, dirNueva, poblaNueva, codPosNuevo);
+                            try {
+                                cp.ingresarCine(cine);
+                                JOptionPane.showMessageDialog(null, "Cine ingresado con éxito.");
+                                reiniciarCamposAlta();
+                            } catch (SQLException ex) {
+                                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo cine.\nPruebe de nuevo.");
+                            } catch (ClassNotFoundException ex) {
+                                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
