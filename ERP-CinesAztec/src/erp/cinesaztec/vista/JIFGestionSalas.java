@@ -64,19 +64,19 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         jlNombreCine = new javax.swing.JLabel();
         jlCifCine = new javax.swing.JLabel();
         jlCIfBuscador = new javax.swing.JLabel();
-        jlDireccionCine = new javax.swing.JLabel();
-        jtfCifBuscador = new javax.swing.JTextField();
-        jtfNombreSala = new javax.swing.JTextField();
-        jtfNumeroButacas = new javax.swing.JTextField();
-        jtfIDCine = new javax.swing.JTextField();
+        jlIdSaaCine = new javax.swing.JLabel();
+        jtfIdBuscador = new javax.swing.JTextField();
+        jtfNombreSalaModificar = new javax.swing.JTextField();
+        jtfNumeroButacasModificar = new javax.swing.JTextField();
+        jtfIdSalaCineModificar = new javax.swing.JTextField();
         jbtModificar = new javax.swing.JButton();
         jbtBuscarSalaModificar = new javax.swing.JButton();
+        jlIdActual = new javax.swing.JLabel();
         jlNombreActual = new javax.swing.JLabel();
-        jlDireccionActual = new javax.swing.JLabel();
-        jlPoblacionActual = new javax.swing.JLabel();
+        jlButacasActual = new javax.swing.JLabel();
+        jlIdResultado = new javax.swing.JLabel();
         jlNombreResultado = new javax.swing.JLabel();
-        jlNumeroResultado = new javax.swing.JLabel();
-        jlCineResultado = new javax.swing.JLabel();
+        jlNumButacasResultado = new javax.swing.JLabel();
         jtpAltaCine = new javax.swing.JTabbedPane();
         jpAltaCine = new javax.swing.JPanel();
         jlNombre = new javax.swing.JLabel();
@@ -173,7 +173,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
 
         jlCIfBuscador.setText("Ingrese el ID de la sala que desea modificar:");
 
-        jlDireccionCine.setText("ID Cine");
+        jlIdSaaCine.setText("ID Cine:");
 
         jbtModificar.setText("Modificar");
 
@@ -184,11 +184,11 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
             }
         });
 
-        jlNombreActual.setText("Nombre Actual:");
+        jlIdActual.setText("Id Actual:");
 
-        jlDireccionActual.setText("Número de butacas Actual:");
+        jlNombreActual.setText("Nombre  actual de la sala:");
 
-        jlPoblacionActual.setText("Cine Actual:");
+        jlButacasActual.setText("Nº  Butacas actual.");
 
         javax.swing.GroupLayout jpModificarLayout = new javax.swing.GroupLayout(jpModificar);
         jpModificar.setLayout(jpModificarLayout);
@@ -201,31 +201,31 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
             .addGroup(jpModificarLayout.createSequentialGroup()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlIdActual, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(126, 126, 126)
-                        .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlButacasActual, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlNombreResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlIdResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jlNumeroResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlNombreResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jlCineResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlNumButacasResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlIdSaaCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(22, 22, 22)
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfIDCine, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfNumeroButacas, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfNombreSala, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfIdSalaCineModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfNumeroButacasModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfNombreSalaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addComponent(jlCIfBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbtBuscarSalaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(176, Short.MAX_VALUE))
@@ -236,34 +236,34 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCIfBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtBuscarSalaModificar))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlIdActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlButacasActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlCineResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                            .addComponent(jlNumeroResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jlNumButacasResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                            .addComponent(jlNombreResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jlNombreResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jlIdResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNombreSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNombreSalaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfNumeroButacas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNumeroButacasModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfIDCine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlIdSaaCine, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIdSalaCineModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(82, 82, 82)
                 .addComponent(jbtModificar)
                 .addContainerGap(117, Short.MAX_VALUE))
@@ -451,9 +451,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
     private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
 
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
-
-    
-    
+ 
     private void crearSala(){
         
         String nombreNuevo = jtfNombreNuevo.getText();
@@ -509,6 +507,58 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
             }
         }
     }
+    
+    public void cargarCineModificar() {
+        String idBuscador = jtfIdBuscador.getText();
+        boolean existe = false;
+        if (idBuscador.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
+        } else {
+            try {
+                int id_busca = Integer.parseInt(idBuscador);
+                existe = sp.existeSala(id_busca);
+                if (existe) {
+                    sala = sp.buscarSala(id_busca);
+//                    String id_Cine = String.valueOf(sala.getId_cine());
+//                    jlIdResultado.setText(id_Cine);
+                    jlNombreResultado.setText(sala.getNombre_sala());
+                    String numButacas = String.valueOf(sala.getNumero_butacas());
+                    jlNumButacasResultado.setText(numButacas);
+
+                   // jtfIdSalaCineModificar.setText(jlIdResultado.getText());
+                    jtfNombreSalaModificar.setText(jlNombreResultado.getText());
+                    jtfNumeroButacasModificar.setText(jlNumButacasResultado.getText());
+                    
+                    jbtModificar.setEnabled(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existe el cine con el CIF seleccionado.\nPruebe de nuevo.");
+                    jtfIdBuscador.setText("");
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
+    }
+     public void modificarSala() {
+        //try {
+   
+            String nombreNuevo = jtfNombreSalaModificar.getText();
+            String numButacasNuevo = jtfNumeroButacasModificar.getText();
+            int numBut = Integer.parseInt(numButacasNuevo);
+            
+           
+            sala = new Sala (nombreNuevo, numBut);
+//            sp.
+//            cp.actualizarCine(cine, cif);
+//            JOptionPane.showMessageDialog(null, "Cine actualizado con éxito.");
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+//        } catch (ClassNotFoundException ex) {
+//            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el cine solicitado.\nPruebe de nuevo.");
+        //}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
@@ -518,39 +568,39 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbComfirmarEliminar;
     private javax.swing.JButton jbtBuscarSalaModificar;
     private javax.swing.JButton jbtModificar;
+    private javax.swing.JLabel jlButacasActual;
     private javax.swing.JLabel jlCIfBuscador;
     private javax.swing.JLabel jlCif;
     private javax.swing.JLabel jlCifCine;
     private javax.swing.JLabel jlCifCineEliminar;
     private javax.swing.JLabel jlCifConsulta;
     private javax.swing.JLabel jlCineAEliminar;
-    private javax.swing.JLabel jlCineResultado;
     private javax.swing.JLabel jlDireccion;
-    private javax.swing.JLabel jlDireccionActual;
-    private javax.swing.JLabel jlDireccionCine;
     private javax.swing.JLabel jlIDCineAEliminar;
     private javax.swing.JLabel jlIDSalaAEliminar;
+    private javax.swing.JLabel jlIdActual;
+    private javax.swing.JLabel jlIdResultado;
+    private javax.swing.JLabel jlIdSaaCine;
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlNombreActual;
     private javax.swing.JLabel jlNombreCine;
     private javax.swing.JLabel jlNombreResultado;
     private javax.swing.JLabel jlNombreSalaAEliminar;
+    private javax.swing.JLabel jlNumButacasResultado;
     private javax.swing.JLabel jlNumeroButacasAELiminar;
-    private javax.swing.JLabel jlNumeroResultado;
-    private javax.swing.JLabel jlPoblacionActual;
     private javax.swing.JPanel jpAltaCine;
     private javax.swing.JPanel jpConsulta;
     private javax.swing.JPanel jpFondoEleminar;
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTextField jtIdConsultaSala;
     private javax.swing.JTable jtaConsulta;
-    private javax.swing.JTextField jtfCifBuscador;
     private javax.swing.JTextField jtfCifCineEliminar;
-    private javax.swing.JTextField jtfIDCine;
+    private javax.swing.JTextField jtfIdBuscador;
     private javax.swing.JTextField jtfIdCineNueva;
+    private javax.swing.JTextField jtfIdSalaCineModificar;
     private javax.swing.JTextField jtfNombreNuevo;
-    private javax.swing.JTextField jtfNombreSala;
-    private javax.swing.JTextField jtfNumeroButacas;
+    private javax.swing.JTextField jtfNombreSalaModificar;
+    private javax.swing.JTextField jtfNumeroButacasModificar;
     private javax.swing.JTextField jtfNumeroButacasNuevo;
     private javax.swing.JTabbedPane jtpAltaCine;
     private javax.swing.JTabbedPane jtpConsulta;

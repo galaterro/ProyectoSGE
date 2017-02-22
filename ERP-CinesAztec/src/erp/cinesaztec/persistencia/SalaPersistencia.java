@@ -58,5 +58,22 @@ public class SalaPersistencia {
         gbd.cerrarConexionBBDD();
         return sala;
     }
+    
+    /* Usado para analizar si existe una Sala con el ID facilitado. */
+    public boolean existeSala(int id) throws SQLException, ClassNotFoundException {
+        boolean encontrado = false;
+        String sql = "select * from sala where id_sala = ?";
+        c = gbd.conectarBBDD();
+        ps = (PreparedStatement) c.prepareStatement(sql);
+        ps.setInt(1, id);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            encontrado = true;
+        }
+        ps.close();
+        gbd.cerrarConexionBBDD();
+        return encontrado;
+    }
 
 }
