@@ -9,9 +9,9 @@ import javax.swing.table.DefaultTableModel;
  */
 class JIFGestionPedidos extends javax.swing.JInternalFrame {
     
-    private PedidoPersistencia cp = new PedidoPersistencia();
-    private ArrayList<Cine> alCine;
-    private Pedido pedido;
+//    private PedidoPersistencia cp = new PedidoPersistencia();
+//    private ArrayList<Cine> alCine;
+//    private Pedido pedido;
     private Vector vCine = new Vector();
     private DefaultTableModel dtm = new DefaultTableModel(vCine, 0);
     private int contadorModificadosAlta = 0;
@@ -495,7 +495,7 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
-        consultaCine();
+       // consultaCine();
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
@@ -507,11 +507,11 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtpConsultaFocusLost
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
-        modificarCine();
+        //modificarCine();
     }//GEN-LAST:event_jbtModificarActionPerformed
 
     private void jbtBuscarCineModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarCineModificarActionPerformed
-        cargarCineModificar();
+       // cargarCineModificar();
     }//GEN-LAST:event_jbtBuscarCineModificarActionPerformed
 
     private void jtfNombreNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreNuevoActionPerformed
@@ -529,15 +529,15 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfNombreNuevoKeyPressed
 
     private void jbAltaCineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaCineActionPerformed
-        ingresarCine();
+        //ingresarCine();
     }//GEN-LAST:event_jbAltaCineActionPerformed
 
     private void jbAceptarCifEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEliminarActionPerformed
-        cargarCineEliminar();
+       // cargarCineEliminar();
     }//GEN-LAST:event_jbAceptarCifEliminarActionPerformed
 
     private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
-        eliminarCine();
+       // eliminarCine();
     }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
 
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
