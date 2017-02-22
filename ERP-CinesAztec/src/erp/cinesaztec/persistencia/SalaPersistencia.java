@@ -20,14 +20,18 @@ public class SalaPersistencia {
     private ArrayList<Sala> alSala = new ArrayList();
 
     public void ingresarSala(Sala sala) throws SQLException, ClassNotFoundException {
-        int filasAfectadas;
-
-        String sql = "insert into sala values(" + sala.getId_sala() + ",'" + sala.getNombre_sala() + "'," + sala.getNumero_butacas() + "," + sala.getId_cine() + ")";
+        
+        String sql = "insert into sala values(nombre_sala, numero_butacas) VALUES (?,?,?)";
         c = gbd.conectarBBDD();
+        ps = c.prepareStatement(sql);
+        ps.setString(1, sala.getNombre_sala());
+        ps.setInt(2, sala.getNumero_butacas());
+        
         st = c.createStatement();
 
-        filasAfectadas = st.executeUpdate(sql);
-        System.out.println("filas afectadas: " + filasAfectadas);
+        ps.executeUpdate();
+        ps.close();
+
         gbd.cerrarConexionBBDD();
     }
 

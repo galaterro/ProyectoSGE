@@ -89,7 +89,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         jtpEliminar = new javax.swing.JTabbedPane();
         jpFondoEleminar = new javax.swing.JPanel();
         jlCifCineEliminar = new javax.swing.JLabel();
-        jtfCifCineEliminar = new javax.swing.JTextField();
+        jtfidSalaEliminar = new javax.swing.JTextField();
         jlCineAEliminar = new javax.swing.JLabel();
         jbAceptarCifEleiminar = new javax.swing.JButton();
         jlIDSalaAEliminar = new javax.swing.JLabel();
@@ -364,7 +364,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
                             .addGroup(jpFondoEleminarLayout.createSequentialGroup()
                                 .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfidSalaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jbAceptarCifEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -389,7 +389,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfidSalaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpFondoEleminarLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
@@ -558,7 +558,45 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
 //        } catch (ClassNotFoundException ex) {
 //            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el cine solicitado.\nPruebe de nuevo.");
         //}
+     }
+        public void cargarSalaEliminar() {
+        String idSala = jtfidSalaEliminar.getText();
+
+        if (idSala.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
+        } else {
+            try {
+                int nIdSala = Integer.parseInt(idSala);
+                sala = sp.buscarSala(nIdSala);
+                jlIDSalaAEliminar.setText(Integer.toString(sala.getId_sala()));
+                jlNombreSalaAEliminar.setText(sala.getNombre_sala());
+                jlNumeroButacasAELiminar.setText(Integer.toString(sala.getNumero_butacas()));
+                jlIDCineAEliminar.setText(Integer.toString(sala.getId_sala()));
+                
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
     }
+
+    /**
+     * Método usado para eliminar una Sala.
+     */
+    /*public void eliminarSala() {
+        String idSala = jtfidSalaEliminar.getText();
+        try {
+            sp.eliminarSala(idSala);
+            JOptionPane.showMessageDialog(null, "Cine eliminado con éxito.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el cine solicitado.\nPruebe de nuevo.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+        }
+    }*/
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
@@ -594,7 +632,6 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTextField jtIdConsultaSala;
     private javax.swing.JTable jtaConsulta;
-    private javax.swing.JTextField jtfCifCineEliminar;
     private javax.swing.JTextField jtfIdBuscador;
     private javax.swing.JTextField jtfIdCineNueva;
     private javax.swing.JTextField jtfIdSalaCineModificar;
@@ -602,6 +639,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfNombreSalaModificar;
     private javax.swing.JTextField jtfNumeroButacasModificar;
     private javax.swing.JTextField jtfNumeroButacasNuevo;
+    private javax.swing.JTextField jtfidSalaEliminar;
     private javax.swing.JTabbedPane jtpAltaCine;
     private javax.swing.JTabbedPane jtpConsulta;
     private javax.swing.JTabbedPane jtpEliminar;
