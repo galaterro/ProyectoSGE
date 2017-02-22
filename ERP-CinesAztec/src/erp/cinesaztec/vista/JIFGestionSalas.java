@@ -441,7 +441,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbtBuscarSalaModificarActionPerformed
 
     private void jbAltaSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaSalaActionPerformed
-        // TODO add your handling code here:
+        crearSala();
     }//GEN-LAST:event_jbAltaSalaActionPerformed
 
     private void jbAceptarCifEleiminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEleiminarActionPerformed
@@ -452,6 +452,26 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
 
+    
+    
+    private void crearSala(){
+        
+        String nombreNuevo = jtfNombreNuevo.getText();
+        int numeroButacas = Integer.parseInt(jtfNumeroButacasNuevo.getText());
+        int idCine = Integer.parseInt(jtfIdCineNueva.getText());
+        
+        sala = new Sala(nombreNuevo, numeroButacas, idCine);
+        try {
+            sp.ingresarSala(sala);
+            JOptionPane.showMessageDialog(null, "Cine ingresado con éxito.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo cine.\nPruebe de nuevo.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        }
+    }
+    
+    
     public void consultaSala() {
         String idBuscador = jtIdConsultaSala.getText();
 

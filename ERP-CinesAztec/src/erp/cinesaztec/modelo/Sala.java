@@ -21,6 +21,13 @@ public class Sala {
         this.id_cine = id_cine;
     }
 
+    public Sala(String nombre_sala, int numero_butacas, int id_cine) {
+        this.nombre_sala = nombre_sala;
+        this.numero_butacas = numero_butacas;
+        this.id_cine = id_cine;
+    }
+
+    
     /* Getters y Setters. */
     
     public int getId_sala() {
