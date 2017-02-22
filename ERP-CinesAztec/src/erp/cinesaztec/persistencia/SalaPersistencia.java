@@ -37,9 +37,7 @@ public class SalaPersistencia {
         String sql = "select * from sala";
         c = gbd.conectarBBDD();
         st = c.createStatement();
-
         rs = st.executeQuery(sql);
-        System.out.println("Las Salas son: ");
         while (rs.next()) {
             sala = new Sala(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
             alSala.add(sala);
@@ -51,7 +49,7 @@ public class SalaPersistencia {
     
     public Sala buscarSala(int id_aux) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-        String sql = "SELECT * FROM SALA WHERE id_sala= '" + id_aux + "'";
+        String sql = "SELECT * FROM sala WHERE id_sala= " + id_aux;
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);

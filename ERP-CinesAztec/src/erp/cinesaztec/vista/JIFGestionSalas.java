@@ -5,18 +5,39 @@
  */
 package erp.cinesaztec.vista;
 
+import erp.cinesaztec.modelo.Sala;
+import erp.cinesaztec.persistencia.SalaPersistencia;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author allen
  */
 class JIFGestionSalas extends javax.swing.JInternalFrame {
 
+    private SalaPersistencia sp = new SalaPersistencia();
+    private ArrayList<Sala> alSala;
+    private Sala sala;
+    private Vector vSala = new Vector();
+    private DefaultTableModel dtm = new DefaultTableModel(vSala, 0);
     /**
      * Creates new form JIFGestionSalas
      */
     public JIFGestionSalas() {
         initComponents();
+//        Vector vSala = new Vector();
+//        DefaultTableModel dtm = new DefaultTableModel(vSala, 0);
+        vSala.add("ID Sala:");
+        vSala.add("Nombre Sala:");
+        vSala.add("Número de Butacas:");
+        vSala.add("ID Cine:");
+        jtaConsulta.setModel(dtm);
         this.setSize(990, 700);
+        this.setResizable(false);
         this.setTitle("Gestión Salas");
     }
 
@@ -34,7 +55,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         jpConsulta = new javax.swing.JPanel();
         lbTitulo = new javax.swing.JLabel();
         jlCifConsulta = new javax.swing.JLabel();
-        jtfCifConsulta = new javax.swing.JTextField();
+        jtIdConsultaSala = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaConsulta = new javax.swing.JTable();
         jbAceptarConsulta = new javax.swing.JButton();
@@ -120,7 +141,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
                     .addGroup(jpConsultaLayout.createSequentialGroup()
                         .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfCifConsulta))
+                        .addComponent(jtIdConsultaSala))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jbAceptarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -134,7 +155,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtIdConsultaSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -411,12 +432,12 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
-        
+        consultaSala();
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jbtBuscarSalaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarSalaModificarActionPerformed
 
-        
+
     }//GEN-LAST:event_jbtBuscarSalaModificarActionPerformed
 
     private void jbAltaSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaSalaActionPerformed
@@ -424,13 +445,50 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAltaSalaActionPerformed
 
     private void jbAceptarCifEleiminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEleiminarActionPerformed
-        
+
     }//GEN-LAST:event_jbAceptarCifEleiminarActionPerformed
 
     private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
-        
+
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
 
+    public void consultaSala() {
+        String idBuscador = jtIdConsultaSala.getText();
+
+        if (idBuscador.equals("")) {
+            /* Búsqueda general de cines. */
+            try {
+                //reiniciarCamposConsulta();
+                alSala = sp.listarSalas();
+                dtm.setRowCount(alSala.size());
+                for (int i = 0; i < alSala.size(); i++) {
+                    jtaConsulta.setValueAt(alSala.get(i).getId_sala(), i, 0);
+                    jtaConsulta.setValueAt(alSala.get(i).getNombre_sala(), i, 1);
+                    jtaConsulta.setValueAt(alSala.get(i).getNumero_butacas(), i, 2);
+                    jtaConsulta.setValueAt(alSala.get(i).getId_cine(), i, 3);
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar ningún cine.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        } else {
+            try {
+                //reiniciarCamposConsulta();
+                int id_buscador = Integer.parseInt(idBuscador);
+                sala = sp.buscarSala(id_buscador);
+                dtm.setRowCount(1);
+                jtaConsulta.setValueAt(sala.getId_sala(), 0, 0);
+                jtaConsulta.setValueAt(sala.getNombre_sala(), 0, 1);
+                jtaConsulta.setValueAt(sala.getNumero_butacas(), 0, 2);
+                jtaConsulta.setValueAt(sala.getId_cine(), 0, 3);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
@@ -464,10 +522,10 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpConsulta;
     private javax.swing.JPanel jpFondoEleminar;
     private javax.swing.JPanel jpModificar;
+    private javax.swing.JTextField jtIdConsultaSala;
     private javax.swing.JTable jtaConsulta;
     private javax.swing.JTextField jtfCifBuscador;
     private javax.swing.JTextField jtfCifCineEliminar;
-    private javax.swing.JTextField jtfCifConsulta;
     private javax.swing.JTextField jtfIDCine;
     private javax.swing.JTextField jtfIdCineNueva;
     private javax.swing.JTextField jtfNombreNuevo;
