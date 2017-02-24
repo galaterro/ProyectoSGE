@@ -50,6 +50,22 @@ public class SalaPersistencia {
         return alSala;
 
     }
+    public int consultarIdCine(String nombre) throws ClassNotFoundException, SQLException{
+    
+        gbd.conectarBBDD();
+        int id=0;
+        String sql = "SELECT id_cine FROM cine WHERE lower(nombre) = lower(?)";
+        c = gbd.conectarBBDD();
+        ps = (PreparedStatement) c.prepareStatement(sql);
+        ps.setString(1, nombre);
+        gbd.cerrarConexionBBDD();
+        while(rs.next()){
+            id = rs.getInt(1);
+
+        }
+       
+        return id;
+    }
     
     public Sala buscarSala(int id_aux) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
