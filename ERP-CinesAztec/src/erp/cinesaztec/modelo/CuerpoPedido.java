@@ -1,7 +1,7 @@
 package erp.cinesaztec.modelo;
 
 /**
- *  Clase dedicada al modelo de Cuerpo de Pedido.
+ * Clase dedicada al modelo de Cuerpo de Pedido.
  * 
  * @author Cine Aztec Team
  */
