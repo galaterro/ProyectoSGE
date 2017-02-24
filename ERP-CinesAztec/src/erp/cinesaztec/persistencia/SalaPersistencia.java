@@ -54,7 +54,7 @@ public class SalaPersistencia {
     
         gbd.conectarBBDD();
         int id=0;
-        String sql = "SELECT id_cine FROM cine WHERE lower(nombre) = lower(?)";
+        String sql = "SELECT id_cine FROM cine WHERE lower(nombre_cine) = lower(?)";
         c = gbd.conectarBBDD();
         ps = (PreparedStatement) c.prepareStatement(sql);
         ps.setString(1, nombre);
@@ -65,6 +65,21 @@ public class SalaPersistencia {
         }
        
         return id;
+    }
+    public void actualizarSala(Sala sala, String nombre) throws SQLException, ClassNotFoundException {
+
+        String sql = "update sala set nombre_sala = ?, numero_butacas = ?, id_cine = ? where nombre =? ";
+        c = gbd.conectarBBDD();
+        ps = c.prepareStatement(sql);
+
+        ps.setString(1, sala.getNombre_sala());
+        ps.setInt(2, sala.getNumero_butacas());
+        ps.setInt(3, sala.getId_cine());
+        
+
+        ps.executeUpdate();
+        ps.close();
+        gbd.cerrarConexionBBDD();
     }
     
     public Sala buscarSala(int id_aux) throws SQLException, ClassNotFoundException {

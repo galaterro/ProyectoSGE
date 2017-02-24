@@ -176,7 +176,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jbtModificar" min="-2" pref="84" max="-2" attributes="0"/>
+                          <Component id="jbtSalaModificar" min="-2" pref="84" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -264,7 +264,7 @@
                               <Component id="jtfIdSalaCineModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                          <Component id="jbtModificar" min="-2" max="-2" attributes="0"/>
+                          <Component id="jbtSalaModificar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="117" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -299,10 +299,13 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfIdSalaCineModificar">
                 </Component>
-                <Component class="javax.swing.JButton" name="jbtModificar">
+                <Component class="javax.swing.JButton" name="jbtSalaModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Modificar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtSalaModificarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jbtBuscarSalaModificar">
                   <Properties>
