@@ -199,7 +199,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jlNombreCine" alignment="0" min="-2" pref="239" max="-2" attributes="0"/>
                                       <Component id="jlCifCine" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                                      <Component id="jlIdSaaCine" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                                      <Component id="jlNombreSalaCine" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -260,7 +260,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlIdSaaCine" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="jlNombreSalaCine" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="jtfIdSalaCineModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
@@ -273,7 +273,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jlNombreCine">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Sala:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCifCine">
@@ -286,9 +286,9 @@
                     <Property name="text" type="java.lang.String" value="Ingrese el ID de la sala que desea modificar:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlIdSaaCine">
+                <Component class="javax.swing.JLabel" name="jlNombreSalaCine">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Cine:"/>
+                    <Property name="text" type="java.lang.String" value="Id Cine:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfIdBuscador">
@@ -475,37 +475,39 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jlCifCineEliminar" min="-2" pref="226" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jtfidSalaEliminar" min="-2" pref="358" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jlIDSalaAEliminar" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jlNombreSalaAEliminar" min="-2" pref="262" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jlCineAEliminar" alignment="0" min="-2" pref="602" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="403" max="-2" attributes="0"/>
+                                              <Component id="jlNumeroButacasAELiminar" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jlCifCineEliminar" max="32767" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jtfidSalaEliminar" min="-2" pref="289" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jlIDCineAEliminar" min="-2" pref="88" max="-2" attributes="0"/>
                                           <Component id="jbAceptarCifEleiminar" min="-2" pref="126" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jlCineAEliminar" alignment="0" min="-2" pref="602" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jlIDSalaAEliminar" min="-2" pref="105" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jlNombreSalaAEliminar" min="-2" pref="262" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jlNumeroButacasAELiminar" min="-2" pref="160" max="-2" attributes="0"/>
-                                      </Group>
                                   </Group>
-                                  <EmptySpace pref="191" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jlIDCineAEliminar" alignment="1" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="jbComfirmarEliminar" min="-2" pref="115" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jbComfirmarEliminar" min="-2" pref="115" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace pref="191" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -525,23 +527,18 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jlCineAEliminar" min="-2" pref="26" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jlIDSalaAEliminar" alignment="0" pref="25" max="32767" attributes="0"/>
-                                      <Component id="jlNombreSalaAEliminar" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jlNumeroButacasAELiminar" alignment="1" max="32767" attributes="0"/>
-                                  </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jlNombreSalaAEliminar" pref="25" max="32767" attributes="0"/>
+                                  <Component id="jlIDSalaAEliminar" alignment="0" pref="25" max="32767" attributes="0"/>
+                                  <Component id="jlIDCineAEliminar" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jlIDCineAEliminar" min="-2" pref="33" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jlNumeroButacasAELiminar" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jbComfirmarEliminar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="294" max="32767" attributes="0"/>
+                          <EmptySpace pref="298" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
