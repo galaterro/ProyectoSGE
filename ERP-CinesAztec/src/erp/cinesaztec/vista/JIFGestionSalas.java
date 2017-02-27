@@ -13,6 +13,9 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,6 +43,18 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         this.setSize(990, 700);
         this.setResizable(false);
         this.setTitle("Gestión Salas");
+        jtpFondo.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (e.getSource() instanceof JTabbedPane) {
+                    reiniciarCamposConsulta();
+                    reiniciarCamposModificar();
+                    reiniciarCamposAlta();
+                    reiniciarCamposEliminar();
+                }
+            }
+        });
     }
 
     /**
@@ -177,6 +192,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         jlNombreSalaCine.setText("Id Cine:");
 
         jbtSalaModificar.setText("Modificar");
+        jbtSalaModificar.setEnabled(false);
         jbtSalaModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtSalaModificarActionPerformed(evt);
@@ -525,8 +541,8 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Ingrese un nombre válido.");
         } else {
             try {
-                int id_busca = Integer.parseInt(nombreBuscador);
-                existe = sp.existeSala(id_busca);
+                sala = sp.buscarSala(nombreBuscador);
+                existe = sp.existeSala(sala.getId_sala());
                 if (existe) {
                     sala = sp.buscarSala(nombreBuscador);
 
@@ -575,7 +591,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Ingrese un nombre válido.");
         } else {
             try {
-
+                
                 sala = sp.buscarSala(nombreSala);
 
                 jlIDSalaAEliminar.setText(Integer.toString(sala.getId_sala()));
@@ -608,6 +624,57 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
+    }
+    
+    /**
+     * Método usado para reiniciar los campos de la ventana Consulta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposConsulta() {
+        jtNombreConsultaSala.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
+    
+    /**
+     * Método usado para reiniciar los campos de la ventana Modificar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposModificar(){
+        jtfnombreBuscador.setText("");
+        jtfNombreSalaModificar.setText("");
+        jtfNumeroButacasModificar.setText("");
+        jtfIdSalaCineModificar.setText("");
+        
+        jlIdResultado.setText("");
+        jlNombreResultado.setText("");
+        jlNumButacasResultado.setText("");
+        jbtSalaModificar.setEnabled(false);
+    }
+    
+    /**
+     * Método usado para reiniciar los campos de la ventana Alta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposAlta() {
+        jtfNombreNuevo.setText("");
+        jtfNumeroButacasNuevo.setText("");
+        jtfNombreCineNuevo.setText("");
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Eliminar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposEliminar() {
+        jtfNombreSalaEliminar.setText("");
+        jlIDSalaAEliminar.setText("");
+        jlNombreSalaAEliminar.setText("");
+        jlNumeroButacasAELiminar.setText("");
+        jlIDCineAEliminar.setText("");
+        jbComfirmarEliminar.setEnabled(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
