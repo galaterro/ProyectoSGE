@@ -48,10 +48,10 @@ public class SalaPersistencia {
     public int consultarIdCine(String nombre) throws ClassNotFoundException, SQLException {
 
         int id = 0;
-        String sql = "SELECT id_cine FROM cine WHERE lower(nombre_cine) = lower(?)";
+        String sql = "SELECT id_cine FROM cine WHERE lower(nombre_cine) = lower('"+nombre+"')";
         c = gbd.conectarBBDD();
-        ps = (PreparedStatement) c.prepareStatement(sql);
-        ps.setString(1, nombre);
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
         while (rs.next()) {
             id = rs.getInt(1);
         }
@@ -90,9 +90,9 @@ public class SalaPersistencia {
         gbd.cerrarConexionBBDD();
     }
 
-    public Sala buscarSala(int id_aux) throws SQLException, ClassNotFoundException {
+    public Sala buscarSala(String nombre) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-        String sql = "SELECT * FROM sala WHERE id_sala= " + id_aux;
+        String sql = "SELECT * FROM sala WHERE lower(nombre_sala) = lower('" + nombre +"')";
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
@@ -125,6 +125,10 @@ public class SalaPersistencia {
         st = c.createStatement();
         st.executeUpdate(sql);
         gbd.cerrarConexionBBDD();
+    }
+
+    public int cargarSalaPorId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -60,7 +60,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         jtpConsultar = new javax.swing.JTabbedPane();
         jpConsulta = new javax.swing.JPanel();
         lbTitulo = new javax.swing.JLabel();
-        jlCifConsulta = new javax.swing.JLabel();
+        jlNombreConsulta = new javax.swing.JLabel();
         jtfIDConsulta = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaConsulta = new javax.swing.JTable();
@@ -113,8 +113,8 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitulo.setText("Ingrese el ID de la sesión o pulse Aceptar para búsqueda completar:");
 
-        jlCifConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlCifConsulta.setText("ID:");
+        jlNombreConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlNombreConsulta.setText("Nombre:");
 
         jtaConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,7 +146,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
                     .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jpConsultaLayout.createSequentialGroup()
-                        .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlNombreConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jtfIDConsulta))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultaLayout.createSequentialGroup()
@@ -161,7 +161,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
                 .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlNombreConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfIDConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -547,7 +547,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
             SimpleDateFormat parser = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
             Date date = parser.parse(hora_sesion);
             
-            sesion = new Sesion(date, id_pelicula, id_sala);
+          //  sesion = new Sesion(date, id_pelicula, id_sala);
             try {
                 sp.ingresarSesion(sesion);
             } catch (SQLException | ClassNotFoundException ex) {
@@ -610,7 +610,6 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCif;
     private javax.swing.JLabel jlCifCine;
     private javax.swing.JLabel jlCifCineEliminar;
-    private javax.swing.JLabel jlCifConsulta;
     private javax.swing.JLabel jlCineAEliminar;
     private javax.swing.JLabel jlCodPosCineAEliminar;
     private javax.swing.JLabel jlDireccion;
@@ -622,6 +621,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlNombreActual;
     private javax.swing.JLabel jlNombreCine;
+    private javax.swing.JLabel jlNombreConsulta;
     private javax.swing.JLabel jlPeliculaEliminar;
     private javax.swing.JLabel jlPeliculaNueva;
     private javax.swing.JLabel jlPoblacionActual;

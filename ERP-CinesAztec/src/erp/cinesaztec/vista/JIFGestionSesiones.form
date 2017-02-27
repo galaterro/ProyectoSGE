@@ -68,7 +68,7 @@
                               <Component id="jScrollPane1" alignment="0" pref="927" max="32767" attributes="0"/>
                               <Component id="lbTitulo" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlCifConsulta" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <Component id="jlNombreConsulta" min="-2" pref="113" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jtfIDConsulta" max="32767" attributes="0"/>
                               </Group>
@@ -88,7 +88,7 @@
                           <Component id="lbTitulo" min="-2" pref="27" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlCifConsulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jlNombreConsulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               <Component id="jtfIDConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -107,10 +107,10 @@
                     <Property name="text" type="java.lang.String" value="Ingrese el ID de la sesi&#xf3;n o pulse Aceptar para b&#xfa;squeda completar:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlCifConsulta">
+                <Component class="javax.swing.JLabel" name="jlNombreConsulta">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="ID:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfIDConsulta">

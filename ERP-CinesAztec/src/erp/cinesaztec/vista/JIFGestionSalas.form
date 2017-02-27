@@ -73,7 +73,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlCifConsulta" min="-2" pref="113" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtIdConsultaSala" max="32767" attributes="0"/>
+                                  <Component id="jtNombreConsultaSala" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -92,7 +92,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCifConsulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtIdConsultaSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtNombreConsultaSala" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="90" max="-2" attributes="0"/>
@@ -107,16 +107,16 @@
                 <Component class="javax.swing.JLabel" name="lbTitulo">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Ingrese el ID de la sala o pulse Aceptar para b&#xfa;squeda completar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el nombre de la sala o pulse Aceptar para consultar todas:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCifConsulta">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="ID:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtIdConsultaSala">
+                <Component class="javax.swing.JTextField" name="jtNombreConsultaSala">
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
@@ -211,7 +211,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlCIfBuscador" min="-2" pref="268" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfIdBuscador" min="-2" pref="136" max="-2" attributes="0"/>
+                                  <Component id="jtfnombreBuscador" min="-2" pref="136" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jbtBuscarSalaModificar" min="-2" pref="91" max="-2" attributes="0"/>
                               </Group>
@@ -226,7 +226,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCIfBuscador" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jtfIdBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfnombreBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jbtBuscarSalaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -283,7 +283,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCIfBuscador">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ingrese el ID de la sala que desea modificar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el nombre de la sala que desea modificar:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlNombreSalaCine">
@@ -291,7 +291,7 @@
                     <Property name="text" type="java.lang.String" value="Id Cine:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIdBuscador">
+                <Component class="javax.swing.JTextField" name="jtfnombreBuscador">
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfNombreSalaModificar">
                 </Component>
@@ -382,7 +382,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jlDireccion" min="-2" pref="221" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jtfIdCineNueva" min="-2" pref="440" max="-2" attributes="0"/>
+                                      <Component id="jtfNombreCineNuevo" min="-2" pref="440" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -406,7 +406,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlDireccion" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jtfIdCineNueva" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfNombreCineNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                           <Component id="jbAltaSala" min="-2" max="-2" attributes="0"/>
@@ -432,10 +432,10 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccion">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Cine:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Cine:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIdCineNueva">
+                <Component class="javax.swing.JTextField" name="jtfNombreCineNuevo">
                 </Component>
                 <Component class="javax.swing.JButton" name="jbAltaSala">
                   <Properties>
@@ -492,7 +492,7 @@
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jlCifCineEliminar" max="32767" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jtfidSalaEliminar" min="-2" pref="289" max="-2" attributes="0"/>
+                                              <Component id="jtfNombreSalaEliminar" min="-2" pref="289" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -517,7 +517,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="jtfidSalaEliminar" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jtfNombreSalaEliminar" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlCifCineEliminar" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -546,10 +546,10 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jlCifCineEliminar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ingrese el ID de la sala que desee eliminar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el nombre de la sala que desee eliminar:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfidSalaEliminar">
+                <Component class="javax.swing.JTextField" name="jtfNombreSalaEliminar">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCineAEliminar">
                   <Properties>
