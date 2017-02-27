@@ -85,10 +85,10 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
         jlDuracionPelicula = new javax.swing.JLabel();
         jlEdad = new javax.swing.JLabel();
         jtfIdBuscador = new javax.swing.JTextField();
-        jtfNombrePelicula = new javax.swing.JTextField();
-        jtfIdPelicula = new javax.swing.JTextField();
-        jtfDuraciónPelicula = new javax.swing.JTextField();
-        jtfEdadAcceso = new javax.swing.JTextField();
+        jtfNombrePeliculaModificar = new javax.swing.JTextField();
+        jtfIdPeliculaModificar = new javax.swing.JTextField();
+        jtfDuraciónPeliculaModificar = new javax.swing.JTextField();
+        jtfEdadAccesoModificar = new javax.swing.JTextField();
         jbtModificar = new javax.swing.JButton();
         jbtBuscarPeliculaModificar = new javax.swing.JButton();
         jlNombreActual = new javax.swing.JLabel();
@@ -96,17 +96,17 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
         jlDuracionActual = new javax.swing.JLabel();
         jlEdadAccesoActual = new javax.swing.JLabel();
         jlNombreResultado = new javax.swing.JLabel();
-        jlDireccionResultado = new javax.swing.JLabel();
-        jlPoblacionResultado = new javax.swing.JLabel();
-        jlCodigoPostalResultado = new javax.swing.JLabel();
+        jlIdResultado = new javax.swing.JLabel();
+        jlDuracionResultado = new javax.swing.JLabel();
+        jlEdadAccesoResultado = new javax.swing.JLabel();
         jtpAltaCine = new javax.swing.JTabbedPane();
         jpAltaCine = new javax.swing.JPanel();
         jlNombreAlta = new javax.swing.JLabel();
-        jtfNombreNuevoAlta = new javax.swing.JTextField();
+        jtfNombreNuevoAltaPelicula = new javax.swing.JTextField();
         jlDuracionAlta = new javax.swing.JLabel();
-        jtfDuracionNuevoAlta = new javax.swing.JTextField();
+        jtfDuracionNuevoAltaPelicula = new javax.swing.JTextField();
         jlEdadAcceso = new javax.swing.JLabel();
-        jtfEdadAccesoNuevaAlta = new javax.swing.JTextField();
+        jtfEdadAccesoNuevaAltaPelicula = new javax.swing.JTextField();
         jbAltaPelicula = new javax.swing.JButton();
         jtpEliminar = new javax.swing.JTabbedPane();
         jpFondoEliminar = new javax.swing.JPanel();
@@ -249,22 +249,6 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
             .addGroup(jpModificarLayout.createSequentialGroup()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(126, 126, 126)
-                        .addComponent(jlIdActual, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlDuracionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlEdadAccesoActual, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlNombreResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlDireccionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jlPoblacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jlCodigoPostalResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpModificarLayout.createSequentialGroup()
                                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,17 +260,37 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                                 .addComponent(jlEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfDuraciónPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfIdPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfNombrePelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfEdadAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfDuraciónPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfIdPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfNombrePeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfEdadAccesoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jtfIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jbtBuscarPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                        .addComponent(jbtBuscarPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpModificarLayout.createSequentialGroup()
+                                .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(126, 126, 126)
+                                .addComponent(jlIdActual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpModificarLayout.createSequentialGroup()
+                                .addComponent(jlNombreResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlIdResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addComponent(jlDuracionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlEdadAccesoResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addComponent(jlDuracionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlEdadAccesoActual, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         jpModificarLayout.setVerticalGroup(
             jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,31 +310,31 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlCodigoPostalResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                            .addComponent(jlPoblacionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlDireccionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jlEdadAccesoResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                            .addComponent(jlDuracionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlIdResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jlNombreResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombrePelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNombrePelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNombrePeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfIdPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIdPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jjIdPeliculaCine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDuracionPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfDuraciónPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDuraciónPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfEdadAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfEdadAccesoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addComponent(jbtModificar)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jtpModificar.addTab("", jpModificar);
@@ -360,17 +364,17 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
                             .addComponent(jlNombreAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jtfNombreNuevoAlta))
+                            .addComponent(jtfNombreNuevoAltaPelicula))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
                             .addComponent(jlDuracionAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jtfDuracionNuevoAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfDuracionNuevoAltaPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jbAltaPelicula)
                         .addGroup(jpAltaCineLayout.createSequentialGroup()
                             .addComponent(jlEdadAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jtfEdadAccesoNuevaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jtfEdadAccesoNuevaAltaPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(268, Short.MAX_VALUE))
         );
         jpAltaCineLayout.setVerticalGroup(
@@ -379,15 +383,15 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombreAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNombreNuevoAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNombreNuevoAltaPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDuracionAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfDuracionNuevoAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDuracionNuevoAltaPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlEdadAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfEdadAccesoNuevaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfEdadAccesoNuevaAltaPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jbAltaPelicula)
                 .addContainerGap(196, Short.MAX_VALUE))
@@ -425,18 +429,18 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoEliminarLayout.createSequentialGroup()
-                        .addComponent(jlIdPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlIdPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfIdPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfIdPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbAceptarIdEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jlPeliAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpFondoEliminarLayout.createSequentialGroup()
-                        .addComponent(jlNombrePeliculaAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlNombrePeliculaAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jlDuracionPeliculaAELiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlDuracionPeliculaAELiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jlEdadAccesoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jlEdadAccesoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(191, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEliminarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -456,18 +460,14 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                         .addComponent(jbAceptarIdEliminar)))
                 .addGap(18, 18, 18)
                 .addComponent(jlPeliAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlNombrePeliculaAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                            .addComponent(jlDuracionPeliculaAELiminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEliminarLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jlEdadAccesoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlNombrePeliculaAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(jlDuracionPeliculaAELiminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlEdadAccesoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jbConfirmarEliminar)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         jtpEliminar.addTab("", jpFondoEliminar);
@@ -492,7 +492,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
-        consultaCine();
+        consultaPelicula();
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
@@ -504,10 +504,11 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtpConsultaFocusLost
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
-
+        actualizarPelicula();
     }//GEN-LAST:event_jbtModificarActionPerformed
 
     private void jbtBuscarPeliculaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarPeliculaModificarActionPerformed
+        MostrarPeliculaActualizar();
     }//GEN-LAST:event_jbtBuscarPeliculaModificarActionPerformed
 
     private void jbAltaPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaPeliculaActionPerformed
@@ -515,16 +516,17 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAltaPeliculaActionPerformed
 
     private void jbAceptarIdEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarIdEliminarActionPerformed
-
+        cargarPeliculaEliminar();
     }//GEN-LAST:event_jbAceptarIdEliminarActionPerformed
 
     private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
+        eliminarPelicula();
     }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
 
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
 
     }//GEN-LAST:event_jtpFondoStateChanged
-    public void consultaCine() {
+    public void consultaPelicula() {
         String idBuscador = jtfIdConsulta.getText();
 
         if (idBuscador.equals("")) {
@@ -555,6 +557,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                 jtaConsulta.setValueAt(pelicula.getId_pelicula(), 0, 1);
                 jtaConsulta.setValueAt(pelicula.getDur_pelicula(), 0, 2);
                 jtaConsulta.setValueAt(pelicula.getEdad_acceso(), 0, 3);
+
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la pelicaula solicitada.\nPruebe de nuevo.");
             } catch (SQLException ex) {
@@ -573,9 +576,9 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
 
     public void ingresarPelicula() {
         try {
-            String nombreNuevo = jtfNombreNuevoAlta.getText();
-            int duracion = Integer.parseInt(jtfDuracionNuevoAlta.getText());
-            int edadAcceso = Integer.parseInt(jtfEdadAccesoNuevaAlta.getText());
+            String nombreNuevo = jtfNombreNuevoAltaPelicula.getText();
+            int duracion = Integer.parseInt(jtfDuracionNuevoAltaPelicula.getText());
+            int edadAcceso = Integer.parseInt(jtfEdadAccesoNuevaAltaPelicula.getText());
 
             pelicula = new Pelicula(nombreNuevo, duracion, edadAcceso);
             pp.ingresarPelicula(pelicula);
@@ -583,6 +586,74 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar la nueva pelicula.\nPruebe de nuevo.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        }
+    }
+
+    public void eliminarPelicula() {
+        int id_pelicula_eliminar = Integer.parseInt(jtfIdPeliculaEliminar.getText());
+
+        try {
+            pp.eliminarPelicula(id_pelicula_eliminar);
+            JOptionPane.showMessageDialog(null, "Pelicula eliminada con éxito.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar la pelicula solicitada.\nPruebe de nuevo.");
+        }
+    }
+
+    public void cargarPeliculaEliminar() {
+        int id_pelicula_eliminar = Integer.parseInt(jtfIdPeliculaEliminar.getText());
+
+        try {
+            pelicula = pp.buscarPelicula(id_pelicula_eliminar);
+            jlNombrePeliculaAEliminar.setText("Nombre: " + pelicula.getNombre_pelicula());
+            jlDuracionPeliculaAELiminar.setText("Duración: " + String.valueOf(pelicula.getDur_pelicula()));
+            jlEdadAccesoAEliminar.setText("Edad Acceso: " + String.valueOf(pelicula.getEdad_acceso()));
+            jbConfirmarEliminar.setEnabled(true);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar la pelicula solicitada.\nPruebe de nuevo.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        }
+    }
+
+    public void MostrarPeliculaActualizar() {
+        int id_pelicula_actualizar = Integer.parseInt(jtfIdBuscador.getText());
+        try {
+            pelicula = pp.buscarPelicula(id_pelicula_actualizar);
+
+            jlNombreResultado.setText(pelicula.getNombre_pelicula());
+            jlIdResultado.setText(String.valueOf(pelicula.getId_pelicula()));
+            jlDuracionResultado.setText(String.valueOf(pelicula.getDur_pelicula()));
+            jlEdadAccesoResultado.setText(String.valueOf(pelicula.getEdad_acceso()));
+
+            jtfNombrePeliculaModificar.setText(pelicula.getNombre_pelicula());
+            jtfIdPeliculaModificar.setText(String.valueOf(pelicula.getId_pelicula()));
+            jtfDuraciónPeliculaModificar.setText(String.valueOf(pelicula.getDur_pelicula()));
+            jtfEdadAccesoModificar.setText(String.valueOf(pelicula.getEdad_acceso()));
+            jbtModificar.setEnabled(true);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido mostarar la pelicula a modificar.\nPruebe de nuevo.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        }
+    }
+
+    public void actualizarPelicula() {
+
+        String nombreNuevo = jtfNombrePeliculaModificar.getText();
+        int duracionNueva = Integer.parseInt(jtfDuraciónPeliculaModificar.getText());
+        int edadAccesoNueva = Integer.parseInt(jtfEdadAccesoModificar.getText());
+        int id_pelicula = Integer.parseInt(jtfIdPeliculaModificar.getText());
+        pelicula = new Pelicula(id_pelicula, nombreNuevo, duracionNueva, edadAccesoNueva);
+        try {
+            pp.actualizarPelicula(pelicula);
+            JOptionPane.showMessageDialog(null, "Pelicula actualizada con éxito.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar la pelicula solicitada.\nPruebe de nuevo.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
         }
@@ -597,42 +668,42 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbtBuscarPeliculaModificar;
     private javax.swing.JButton jbtModificar;
     private javax.swing.JLabel jjIdPeliculaCine;
-    private javax.swing.JLabel jlCodigoPostalResultado;
-    private javax.swing.JLabel jlDireccionResultado;
     private javax.swing.JLabel jlDuracionActual;
     private javax.swing.JLabel jlDuracionAlta;
     private javax.swing.JLabel jlDuracionPelicula;
     private javax.swing.JLabel jlDuracionPeliculaAELiminar;
+    private javax.swing.JLabel jlDuracionResultado;
     private javax.swing.JLabel jlEdad;
     private javax.swing.JLabel jlEdadAcceso;
     private javax.swing.JLabel jlEdadAccesoAEliminar;
     private javax.swing.JLabel jlEdadAccesoActual;
+    private javax.swing.JLabel jlEdadAccesoResultado;
     private javax.swing.JLabel jlIdActual;
     private javax.swing.JLabel jlIdBuscador;
     private javax.swing.JLabel jlIdConsulta;
     private javax.swing.JLabel jlIdPeliculaEliminar;
+    private javax.swing.JLabel jlIdResultado;
     private javax.swing.JLabel jlNombreActual;
     private javax.swing.JLabel jlNombreAlta;
     private javax.swing.JLabel jlNombrePelicula;
     private javax.swing.JLabel jlNombrePeliculaAEliminar;
     private javax.swing.JLabel jlNombreResultado;
     private javax.swing.JLabel jlPeliAEliminar;
-    private javax.swing.JLabel jlPoblacionResultado;
     private javax.swing.JPanel jpAltaCine;
     private javax.swing.JPanel jpConsulta;
     private javax.swing.JPanel jpFondoEliminar;
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
-    private javax.swing.JTextField jtfDuracionNuevoAlta;
-    private javax.swing.JTextField jtfDuraciónPelicula;
-    private javax.swing.JTextField jtfEdadAcceso;
-    private javax.swing.JTextField jtfEdadAccesoNuevaAlta;
+    private javax.swing.JTextField jtfDuracionNuevoAltaPelicula;
+    private javax.swing.JTextField jtfDuraciónPeliculaModificar;
+    private javax.swing.JTextField jtfEdadAccesoModificar;
+    private javax.swing.JTextField jtfEdadAccesoNuevaAltaPelicula;
     private javax.swing.JTextField jtfIdBuscador;
     private javax.swing.JTextField jtfIdConsulta;
-    private javax.swing.JTextField jtfIdPelicula;
     private javax.swing.JTextField jtfIdPeliculaEliminar;
-    private javax.swing.JTextField jtfNombreNuevoAlta;
-    private javax.swing.JTextField jtfNombrePelicula;
+    private javax.swing.JTextField jtfIdPeliculaModificar;
+    private javax.swing.JTextField jtfNombreNuevoAltaPelicula;
+    private javax.swing.JTextField jtfNombrePeliculaModificar;
     private javax.swing.JTabbedPane jtpAltaCine;
     private javax.swing.JTabbedPane jtpConsulta;
     private javax.swing.JTabbedPane jtpEliminar;
