@@ -114,7 +114,7 @@
                 <Component class="javax.swing.JLabel" name="lbTitulo">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Ingrese el CIF del cliente o pulse Aceptar para b&#xfa;squeda completar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el CIF del cliente o pulse Aceptar para completar:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCifConsulta">
@@ -274,10 +274,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jtfCPCliente" pref="181" max="32767" attributes="0"/>
-                                  <Component id="jtfCifCliente" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jtfCPCliente" pref="403" max="32767" attributes="0"/>
+                              <Component id="jtfCifCliente" max="32767" attributes="0"/>
                               <Component id="jtfUsuarioCliente" alignment="0" pref="403" max="32767" attributes="0"/>
                               <Component id="jtfContrasemiaCliente" alignment="0" max="32767" attributes="0"/>
                               <Component id="jtfPuntosCliente" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>

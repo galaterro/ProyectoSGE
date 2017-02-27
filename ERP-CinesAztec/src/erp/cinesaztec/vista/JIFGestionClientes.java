@@ -135,7 +135,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
         });
 
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitulo.setText("Ingrese el CIF del cliente o pulse Aceptar para búsqueda completar:");
+        lbTitulo.setText("Ingrese el CIF del cliente o pulse Aceptar para completar:");
 
         jlCifConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCifConsulta.setText("CIF:");
@@ -322,9 +322,8 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
                     .addComponent(jlDireccionCine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jtfCPCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                        .addComponent(jtfCifCliente))
+                    .addComponent(jtfCPCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                    .addComponent(jtfCifCliente)
                     .addComponent(jtfUsuarioCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
                     .addComponent(jtfContrasemiaCliente)
                     .addComponent(jtfPuntosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
