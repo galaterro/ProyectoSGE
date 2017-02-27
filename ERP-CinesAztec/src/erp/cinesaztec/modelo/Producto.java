@@ -23,6 +23,15 @@ public class Producto {
         this.nombre_producto = nombre_producto;
     }
 
+    public Producto(String desc_producto, float precio_producto, float precio_venta, String nombre_producto) {
+        this.desc_producto = desc_producto;
+        this.precio_producto = precio_producto;
+        this.precio_venta = precio_venta;
+        this.nombre_producto = nombre_producto;
+    }
+    
+    
+
     /* Getters y Setters. */
     
     public int getId_producto() {
