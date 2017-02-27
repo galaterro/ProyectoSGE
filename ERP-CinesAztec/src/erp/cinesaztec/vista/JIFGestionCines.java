@@ -810,6 +810,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jlDireccionResultado.setText("");
         jlPoblacionResultado.setText("");
         jlCodigoPostalResultado.setText("");
+        jbtModificar.setEnabled(false);
     }
 
     /**
@@ -834,6 +835,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jlDireccionCineAELiminar.setText("");
         jlPobCineAEliminar.setText("");
         jlCodPosCineAEliminar.setText("");
+        jbConfirmarEliminar.setEnabled(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
