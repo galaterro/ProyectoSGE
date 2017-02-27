@@ -18,6 +18,7 @@ import java.util.ArrayList;
  * @author allen
  */
 public class ProveedorPersistencia {
+
     private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
     private ResultSet rs = null;//resultado
@@ -26,48 +27,61 @@ public class ProveedorPersistencia {
     private Proveedor proveedor;
     private ArrayList<Proveedor> alProveedor = new ArrayList();
     
-    
     public void ingresarProveedor(Proveedor proveedor) throws SQLException, ClassNotFoundException {
-        gbd.conectarBBDD();
-
-        int filasAfectadas;
-
-        String sql = "insert into proveedor values("+proveedor.getId_proveedor()+ ",'" + proveedor.getCif_proveedor() + "','" + proveedor.getNombre_proveedor() +"','"+proveedor.getApellidos_proveedor()+"',"+proveedor.getTelefono_proveedor()+",'"+proveedor.getPob_proveedor()+"',"+proveedor.getCodPos_proveedor()+")";
         
+        String sql = "insert into proveedor (cif_proveedor, nombre_proveedor, apellidos_proveedor, telefono_proveedor, poblacion_proveedor, cp_proveedor, id_cine) values (?,?,?,?,?,?,?)";
         c = gbd.conectarBBDD();
-        st = c.createStatement();
-
-        filasAfectadas = st.executeUpdate(sql);
-        System.out.println("filas afectadas: " + filasAfectadas);
+        ps = c.prepareStatement(sql);
+        ps.setString(1, proveedor.getCif_proveedor());
+        ps.setString(2, proveedor.getNombre_proveedor());
+        ps.setString(3, proveedor.getApellidos_proveedor());
+        ps.setInt(4, proveedor.getTelefono_proveedor());
+        ps.setString(5, proveedor.getPob_proveedor());
+        ps.setInt(6, proveedor.getCodPos_proveedor());
+        ps.setInt(7, proveedor.getId_cine());
+        ps.executeUpdate();
+        ps.close();
         gbd.cerrarConexionBBDD();
     }
     
     public ArrayList listarProveedores() throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-
+        
         String sql = "select * from proveedor";
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
         while (rs.next()) {
-            proveedor = new Proveedor(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7));
+            proveedor = new Proveedor(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getInt(8));
             alProveedor.add(proveedor);
-           
+            
         }
         gbd.cerrarConexionBBDD();
         return alProveedor;
-
+        
     }
     
     public Proveedor buscarProveedor(String cif_aux) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-        String sql = "SELECT * FROM PROVEEDOR WHERE cif_proveedor= '" + cif_aux + "'";
+        String sql = "SELECT * FROM proveedor WHERE cif_proveedor = '" + cif_aux + "'";
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
         rs.next();
-        proveedor = new Proveedor(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7));
+        proveedor = new Proveedor(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getInt(8));
         gbd.cerrarConexionBBDD();
         return proveedor;
+    }
+    
+     public int buscarIdCinePorNombre(String nombre) throws ClassNotFoundException, SQLException{
+        int id_Cine = 0;
+        String sql = "SELECT id_cine FROM cine WHERE lower(nombre_cine) = lower('" + nombre + "')";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        rs.next();
+        id_Cine = rs.getInt(1);
+        gbd.cerrarConexionBBDD();
+        return id_Cine;
     }
 }

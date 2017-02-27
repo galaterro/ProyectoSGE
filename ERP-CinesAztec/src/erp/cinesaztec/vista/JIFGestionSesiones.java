@@ -5,7 +5,6 @@
  */
 package erp.cinesaztec.vista;
 
-
 import erp.cinesaztec.modelo.Sesion;
 import erp.cinesaztec.persistencia.SesionPersistencia;
 import java.sql.SQLException;
@@ -27,10 +26,12 @@ import javax.swing.table.DefaultTableModel;
  * @author allen
  */
 class JIFGestionSesiones extends javax.swing.JInternalFrame {
+
     SesionPersistencia sp = new SesionPersistencia();
     Sesion sesion;
     ArrayList<Sesion> alSesion = new ArrayList();
     private DefaultTableModel dtm = null;
+
     /**
      * Creates new form JIFGestionSesiones
      */
@@ -111,10 +112,10 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         setResizable(true);
 
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitulo.setText("Ingrese el ID de la sesión o pulse Aceptar para búsqueda completar:");
+        lbTitulo.setText("Ingrese el ID de la sesión o pulse Aceptar para búsqueda completa:");
 
         jlNombreConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlNombreConsulta.setText("Nombre:");
+        jlNombreConsulta.setText("ID:");
 
         jtaConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -475,91 +476,86 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbtBuscarModificarActionPerformed
 
     private void jbAltaCineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaCineActionPerformed
-       crearSesion();
+        crearSesion();
     }//GEN-LAST:event_jbAltaCineActionPerformed
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
         modificarSesion();
     }//GEN-LAST:event_jbtModificarActionPerformed
 
-    
-    
-    
-     private void crearSesion() {
+    private void crearSesion() {
+        try {
 
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+            int idPelicula = Integer.parseInt(jtfPeliculaAlta.getText());
+            Date horaSesion = format.parse(jtfHoraAlta.getText());
+            java.sql.Date hora = new java.sql.Date(horaSesion.getTime());
+
+            int idSala = Integer.parseInt(jtfSalaAlta.getText());
+
+            sesion = new Sesion(hora, idPelicula, idSala);
             try {
-                
-                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-                int idPelicula = Integer.parseInt(jtfPeliculaAlta.getText());
-                Date horaSesion = format.parse(jtfHoraAlta.getText());
-                java.sql.Date hora = new java.sql.Date(horaSesion.getTime());
-                
-                int idSala = Integer.parseInt(jtfSalaAlta.getText());
-                
-                sesion = new Sesion(hora, idPelicula,  idSala);
-                try {
-                    sp.ingresarSesion(sesion);
-                    JOptionPane.showMessageDialog(null, "Sesion ingresado con éxito.");
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo cine.\nPruebe de nuevo.");
-                    System.out.println(ex);
-                } catch (ClassNotFoundException ex) {
-                    JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
-                }
-                
-            } catch (ParseException ex) {
-                Logger.getLogger(JIFGestionSesiones.class.getName()).log(Level.SEVERE,null, ex);
+                sp.ingresarSesion(sesion);
+                JOptionPane.showMessageDialog(null, "Sesion ingresado con éxito.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo cine.\nPruebe de nuevo.");
+                System.out.println(ex);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
             }
-       
+
+        } catch (ParseException ex) {
+            Logger.getLogger(JIFGestionSesiones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
-    public void cargarSesion(){
+
+    public void cargarSesion() {
         int idSesionBuscador = Integer.parseInt(jtfCifBuscador.getText());
-             
+
         try {
             sesion = sp.buscarSesiones(idSesionBuscador);
-            
+
             for (Sesion sesion : alSesion) {
                 Integer id_sala = sesion.getId_sala();
                 Integer id_pelicula = sesion.getId_sesion();
                 Date hora_sesion = sesion.getHora_sesion();
-                
-                
+
                 jlPeliculaNueva.setText(id_sala.toString());
                 jlSalaNueva.setText(id_pelicula.toString());
                 jlHoraNueva.setText(hora_sesion.toString());
             }
-            
+
         } catch (ClassNotFoundException ex) {
             System.out.println("aqui");
         } catch (SQLException ex) {
             System.out.println("2");
         }
-        
-    
+
     }
-    
-    public void modificarSesion(){
-        
+
+    public void modificarSesion() {
+
         try {
             int id_sala = Integer.parseInt(jtfSalaModificar.getText());
             int id_pelicula = Integer.parseInt(jtfPeliculaModificar.getText());
             String hora_sesion = jtfHoraModificar.getText();
             SimpleDateFormat parser = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
             Date date = parser.parse(hora_sesion);
-            
-          //  sesion = new Sesion(date, id_pelicula, id_sala);
+
+            //  sesion = new Sesion(date, id_pelicula, id_sala);
             try {
                 sp.ingresarSesion(sesion);
             } catch (SQLException | ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null,"Error al modificar la sesión", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error al modificar la sesión", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null,"Error al modificar la fecha", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al modificar la fecha", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     public void consultaSesiones() {
-            
+
         String cifBuscador = jtfCifBuscador.getText();
 
         if (cifBuscador.equals("")) {

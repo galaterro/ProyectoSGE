@@ -14,10 +14,11 @@ public class Proveedor {
     private int telefono_proveedor;
     private String pob_proveedor;
     private int codPos_proveedor;
+    private int id_cine;
 
     /* Constructor. */
-    
-    public Proveedor(int id_proveedor, String cif_proveedor, String nombre_proveedor, String apellidos_proveedor, int telefono_proveedor, String pob_proveedor, int codPos_proveedor) {
+
+    public Proveedor(int id_proveedor, String cif_proveedor, String nombre_proveedor, String apellidos_proveedor, int telefono_proveedor, String pob_proveedor, int codPos_proveedor, int id_cine) {
         this.id_proveedor = id_proveedor;
         this.cif_proveedor = cif_proveedor;
         this.nombre_proveedor = nombre_proveedor;
@@ -25,6 +26,18 @@ public class Proveedor {
         this.telefono_proveedor = telefono_proveedor;
         this.pob_proveedor = pob_proveedor;
         this.codPos_proveedor = codPos_proveedor;
+        this.id_cine = id_cine;
+    }
+    
+    
+    public Proveedor(String cif_proveedor, String nombre_proveedor, String apellidos_proveedor, int telefono_proveedor, String pob_proveedor, int codPos_proveedor, int id_cine) {
+        this.cif_proveedor = cif_proveedor;
+        this.nombre_proveedor = nombre_proveedor;
+        this.apellidos_proveedor = apellidos_proveedor;
+        this.telefono_proveedor = telefono_proveedor;
+        this.pob_proveedor = pob_proveedor;
+        this.codPos_proveedor = codPos_proveedor;
+        this.id_cine = id_cine;
     }
 
     /* Getters y Setters. */
@@ -84,4 +97,14 @@ public class Proveedor {
     public void setCodPos_proveedor(int codPos_proveedor) {
         this.codPos_proveedor = codPos_proveedor;
     } 
+
+    public int getId_cine() {
+        return id_cine;
+    }
+
+    public void setId_cine(int id_cine) {
+        this.id_cine = id_cine;
+    }
+    
+    
 }

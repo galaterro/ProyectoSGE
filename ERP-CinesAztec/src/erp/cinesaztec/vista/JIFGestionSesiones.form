@@ -104,13 +104,13 @@
                 <Component class="javax.swing.JLabel" name="lbTitulo">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Ingrese el ID de la sesi&#xf3;n o pulse Aceptar para b&#xfa;squeda completar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el ID de la sesi&#xf3;n o pulse Aceptar para b&#xfa;squeda completa:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlNombreConsulta">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                    <Property name="text" type="java.lang.String" value="ID:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfIDConsulta">
