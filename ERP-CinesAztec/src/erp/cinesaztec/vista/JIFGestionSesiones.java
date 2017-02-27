@@ -489,7 +489,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
 
             try {
                 
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
                 int idPelicula = Integer.parseInt(jtfPeliculaAlta.getText());
                 Date horaSesion = format.parse(jtfHoraAlta.getText());
                 java.sql.Date hora = new java.sql.Date(horaSesion.getTime());

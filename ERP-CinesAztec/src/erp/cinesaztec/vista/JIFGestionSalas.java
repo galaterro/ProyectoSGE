@@ -352,6 +352,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         });
 
         jbComfirmarEliminar.setText("Eliminar");
+        jbComfirmarEliminar.setEnabled(false);
         jbComfirmarEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbComfirmarEliminarActionPerformed(evt);
@@ -582,7 +583,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
                 jlNombreSalaAEliminar.setText(sala.getNombre_sala());
                 jlNumeroButacasAELiminar.setText(Integer.toString(sala.getNumero_butacas()));
                 jlIDCineAEliminar.setText(Integer.toString(sala.getId_cine()));
-
+                jbComfirmarEliminar.setEnabled(true);
 
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
@@ -601,7 +602,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         try {
             sala = sp.buscarSala(nombreSalaEliminar);
             sp.eliminarSala(sala.getId_sala());
-            JOptionPane.showMessageDialog(null, "Cine eliminado con éxito.");
+            JOptionPane.showMessageDialog(null, "Sala eliminada con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el cine solicitado.\nPruebe de nuevo.");
         } catch (SQLException ex) {

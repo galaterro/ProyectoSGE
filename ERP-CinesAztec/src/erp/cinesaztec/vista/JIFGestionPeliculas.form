@@ -81,7 +81,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlIdConsulta" min="-2" pref="113" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfIdConsulta" max="32767" attributes="0"/>
+                                  <Component id="jtfINombreConsulta" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -100,7 +100,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlIdConsulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfIdConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfINombreConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="90" max="-2" attributes="0"/>
@@ -115,16 +115,16 @@
                 <Component class="javax.swing.JLabel" name="lbTitulo">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Ingrese el ID de la pel&#xed;cula o pulse Aceptar para b&#xfa;squeda completa:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el nombre de la pel&#xed;cula o pulse Aceptar para mostrar todoas:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlIdConsulta">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="ID:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIdConsulta">
+                <Component class="javax.swing.JTextField" name="jtfINombreConsulta">
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
@@ -214,7 +214,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlIdBuscador" min="-2" pref="335" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfIdBuscador" min="-2" pref="136" max="-2" attributes="0"/>
+                                  <Component id="jtfNombreBuscador" min="-2" pref="136" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jbtBuscarPeliculaModificar" min="-2" pref="91" max="-2" attributes="0"/>
                               </Group>
@@ -256,7 +256,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlIdBuscador" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jtfIdBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfNombreBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jbtBuscarPeliculaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -320,7 +320,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlIdBuscador">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ingrese el ID de la pel&#xed;cula que desea modificar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el nombre de la pel&#xed;cula que desea modificar:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDuracionPelicula">
@@ -333,7 +333,7 @@
                     <Property name="text" type="java.lang.String" value="Edad Acceso:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIdBuscador">
+                <Component class="javax.swing.JTextField" name="jtfNombreBuscador">
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfNombrePeliculaModificar">
                 </Component>
@@ -528,9 +528,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlIdPeliculaEliminar" min="-2" pref="267" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfIdPeliculaEliminar" min="-2" pref="317" max="-2" attributes="0"/>
+                                  <Component id="jlNombrePeliculaEliminar" min="-2" pref="317" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="jtfNombrePeliculaEliminar" min="-2" pref="254" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jbAceptarIdEliminar" min="-2" pref="126" max="-2" attributes="0"/>
                               </Group>
@@ -558,8 +558,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="jtfIdPeliculaEliminar" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlIdPeliculaEliminar" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="jtfNombrePeliculaEliminar" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlNombrePeliculaEliminar" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -576,18 +576,18 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jbConfirmarEliminar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="198" max="32767" attributes="0"/>
+                          <EmptySpace pref="202" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlIdPeliculaEliminar">
+                <Component class="javax.swing.JLabel" name="jlNombrePeliculaEliminar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ingrese el ID de la pel&#xed;cula que desee eliminar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el nombre de la pel&#xed;cula que desee eliminar:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIdPeliculaEliminar">
+                <Component class="javax.swing.JTextField" name="jtfNombrePeliculaEliminar">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlPeliAEliminar">
                   <Properties>

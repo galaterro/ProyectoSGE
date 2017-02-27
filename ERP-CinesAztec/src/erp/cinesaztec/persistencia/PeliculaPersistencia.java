@@ -48,9 +48,9 @@ public class PeliculaPersistencia {
 
     }
 
-    public Pelicula buscarPelicula(int id) throws SQLException, ClassNotFoundException {
+    public Pelicula buscarPelicula(String nombre) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-        String sql = "SELECT * FROM pelicula WHERE id_pelicula= " + id + "";
+        String sql = "SELECT * FROM pelicula WHERE lower(nombre_pelicula) = lower('" + nombre + "')";
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);

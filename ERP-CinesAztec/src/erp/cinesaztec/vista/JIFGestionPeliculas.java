@@ -73,7 +73,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
         jpConsulta = new javax.swing.JPanel();
         lbTitulo = new javax.swing.JLabel();
         jlIdConsulta = new javax.swing.JLabel();
-        jtfIdConsulta = new javax.swing.JTextField();
+        jtfINombreConsulta = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaConsulta = new javax.swing.JTable();
         jbAceptarConsulta = new javax.swing.JButton();
@@ -84,7 +84,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
         jlIdBuscador = new javax.swing.JLabel();
         jlDuracionPelicula = new javax.swing.JLabel();
         jlEdad = new javax.swing.JLabel();
-        jtfIdBuscador = new javax.swing.JTextField();
+        jtfNombreBuscador = new javax.swing.JTextField();
         jtfNombrePeliculaModificar = new javax.swing.JTextField();
         jtfIdPeliculaModificar = new javax.swing.JTextField();
         jtfDuraciónPeliculaModificar = new javax.swing.JTextField();
@@ -110,8 +110,8 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
         jbAltaPelicula = new javax.swing.JButton();
         jtpEliminar = new javax.swing.JTabbedPane();
         jpFondoEliminar = new javax.swing.JPanel();
-        jlIdPeliculaEliminar = new javax.swing.JLabel();
-        jtfIdPeliculaEliminar = new javax.swing.JTextField();
+        jlNombrePeliculaEliminar = new javax.swing.JLabel();
+        jtfNombrePeliculaEliminar = new javax.swing.JTextField();
         jlPeliAEliminar = new javax.swing.JLabel();
         jbAceptarIdEliminar = new javax.swing.JButton();
         jlNombrePeliculaAEliminar = new javax.swing.JLabel();
@@ -142,10 +142,10 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
         });
 
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitulo.setText("Ingrese el ID de la película o pulse Aceptar para búsqueda completa:");
+        lbTitulo.setText("Ingrese el nombre de la película o pulse Aceptar para mostrar todoas:");
 
         jlIdConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIdConsulta.setText("ID:");
+        jlIdConsulta.setText("Nombre:");
 
         jtaConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -179,7 +179,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                     .addGroup(jpConsultaLayout.createSequentialGroup()
                         .addComponent(jlIdConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfIdConsulta))
+                        .addComponent(jtfINombreConsulta))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jbAceptarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -193,7 +193,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlIdConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfIdConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfINombreConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -209,7 +209,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
 
         jjIdPeliculaCine.setText("ID:");
 
-        jlIdBuscador.setText("Ingrese el ID de la película que desea modificar:");
+        jlIdBuscador.setText("Ingrese el nombre de la película que desea modificar:");
 
         jlDuracionPelicula.setText("Duración:");
 
@@ -267,7 +267,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addComponent(jlIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfNombreBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbtBuscarPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpModificarLayout.createSequentialGroup()
@@ -298,7 +298,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNombreBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtBuscarPeliculaModificar))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -401,7 +401,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
 
         jtpFondo.addTab("Alta", jtpAltaCine);
 
-        jlIdPeliculaEliminar.setText("Ingrese el ID de la película que desee eliminar:");
+        jlNombrePeliculaEliminar.setText("Ingrese el nombre de la película que desee eliminar:");
 
         jlPeliAEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlPeliAEliminar.setText("Va a eliminar la siguiente película:");
@@ -429,9 +429,9 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoEliminarLayout.createSequentialGroup()
-                        .addComponent(jlIdPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfIdPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlNombrePeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jtfNombrePeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbAceptarIdEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jlPeliAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -453,8 +453,8 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jtfIdPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlIdPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtfNombrePeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlNombrePeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpFondoEliminarLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(jbAceptarIdEliminar)))
@@ -467,7 +467,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                     .addComponent(jlEdadAccesoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jbConfirmarEliminar)
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         jtpEliminar.addTab("", jpFondoEliminar);
@@ -527,9 +527,9 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jtpFondoStateChanged
     public void consultaPelicula() {
-        String idBuscador = jtfIdConsulta.getText();
+        String nombreBuscador = jtfINombreConsulta.getText();
 
-        if (idBuscador.equals("")) {
+        if (nombreBuscador.equals("")) {
             /* Búsqueda general de peliculas. */
             try {
                 reiniciarCamposConsulta();
@@ -548,10 +548,9 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
             }
         } else {
             /* Búsqueda específica de cine por CIF. */
-            int id_Buscador = Integer.parseInt(idBuscador);
             try {
                 reiniciarCamposConsulta();
-                pelicula = pp.buscarPelicula(id_Buscador);
+                pelicula = pp.buscarPelicula(nombreBuscador);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(pelicula.getNombre_pelicula(), 0, 0);
                 jtaConsulta.setValueAt(pelicula.getId_pelicula(), 0, 1);
@@ -567,7 +566,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     }
 
     public void reiniciarCamposConsulta() {
-        jtfIdConsulta.setText("");
+        jtfINombreConsulta.setText("");
         for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
             dtm.removeRow(i);
             i -= 1;
@@ -592,10 +591,11 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     }
 
     public void eliminarPelicula() {
-        int id_pelicula_eliminar = Integer.parseInt(jtfIdPeliculaEliminar.getText());
-
+        String nombre_pelicula_eliminar = jtfNombrePeliculaEliminar.getText();
+        
         try {
-            pp.eliminarPelicula(id_pelicula_eliminar);
+            pelicula = pp.buscarPelicula(nombre_pelicula_eliminar);
+            pp.eliminarPelicula(pelicula.getId_pelicula());
             JOptionPane.showMessageDialog(null, "Pelicula eliminada con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
@@ -605,10 +605,10 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     }
 
     public void cargarPeliculaEliminar() {
-        int id_pelicula_eliminar = Integer.parseInt(jtfIdPeliculaEliminar.getText());
+        String nombreBuscador = jtfNombrePeliculaEliminar.getText();
 
         try {
-            pelicula = pp.buscarPelicula(id_pelicula_eliminar);
+            pelicula = pp.buscarPelicula(nombreBuscador);
             jlNombrePeliculaAEliminar.setText("Nombre: " + pelicula.getNombre_pelicula());
             jlDuracionPeliculaAELiminar.setText("Duración: " + String.valueOf(pelicula.getDur_pelicula()));
             jlEdadAccesoAEliminar.setText("Edad Acceso: " + String.valueOf(pelicula.getEdad_acceso()));
@@ -621,9 +621,9 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     }
 
     public void MostrarPeliculaActualizar() {
-        int id_pelicula_actualizar = Integer.parseInt(jtfIdBuscador.getText());
+        String nombreBuscador = jtfNombreBuscador.getText();
         try {
-            pelicula = pp.buscarPelicula(id_pelicula_actualizar);
+            pelicula = pp.buscarPelicula(nombreBuscador);
 
             jlNombreResultado.setText(pelicula.getNombre_pelicula());
             jlIdResultado.setText(String.valueOf(pelicula.getId_pelicula()));
@@ -681,12 +681,12 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlIdActual;
     private javax.swing.JLabel jlIdBuscador;
     private javax.swing.JLabel jlIdConsulta;
-    private javax.swing.JLabel jlIdPeliculaEliminar;
     private javax.swing.JLabel jlIdResultado;
     private javax.swing.JLabel jlNombreActual;
     private javax.swing.JLabel jlNombreAlta;
     private javax.swing.JLabel jlNombrePelicula;
     private javax.swing.JLabel jlNombrePeliculaAEliminar;
+    private javax.swing.JLabel jlNombrePeliculaEliminar;
     private javax.swing.JLabel jlNombreResultado;
     private javax.swing.JLabel jlPeliAEliminar;
     private javax.swing.JPanel jpAltaCine;
@@ -698,11 +698,11 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfDuraciónPeliculaModificar;
     private javax.swing.JTextField jtfEdadAccesoModificar;
     private javax.swing.JTextField jtfEdadAccesoNuevaAltaPelicula;
-    private javax.swing.JTextField jtfIdBuscador;
-    private javax.swing.JTextField jtfIdConsulta;
-    private javax.swing.JTextField jtfIdPeliculaEliminar;
+    private javax.swing.JTextField jtfINombreConsulta;
     private javax.swing.JTextField jtfIdPeliculaModificar;
+    private javax.swing.JTextField jtfNombreBuscador;
     private javax.swing.JTextField jtfNombreNuevoAltaPelicula;
+    private javax.swing.JTextField jtfNombrePeliculaEliminar;
     private javax.swing.JTextField jtfNombrePeliculaModificar;
     private javax.swing.JTabbedPane jtpAltaCine;
     private javax.swing.JTabbedPane jtpConsulta;

@@ -53,8 +53,8 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         jtpConsulta = new javax.swing.JTabbedPane();
         jpConsulta = new javax.swing.JPanel();
         lbTitulo = new javax.swing.JLabel();
-        jlCifConsulta = new javax.swing.JLabel();
-        jtfIDConsultaPedidos = new javax.swing.JTextField();
+        jlNombreConsulta = new javax.swing.JLabel();
+        jtfNombreConsultaPedidos = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaConsulta = new javax.swing.JTable();
         jbAceptarConsulta = new javax.swing.JButton();
@@ -65,7 +65,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         jlCIfBuscador = new javax.swing.JLabel();
         jlDireccionCine = new javax.swing.JLabel();
         jlPoblacionCine = new javax.swing.JLabel();
-        jtfIDBuscadorProducto = new javax.swing.JTextField();
+        jtfNombreBuscadorProductoModificar = new javax.swing.JTextField();
         jtfNombreProductoModificar = new javax.swing.JTextField();
         jtfDescripcionProductoModificar = new javax.swing.JTextField();
         jtfPrecioProductoModificar = new javax.swing.JTextField();
@@ -94,7 +94,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         jtpEliminar = new javax.swing.JTabbedPane();
         jpFondoEleminar = new javax.swing.JPanel();
         jlCifCineEliminar = new javax.swing.JLabel();
-        jtfIDProductoEliminar = new javax.swing.JTextField();
+        jtfNombreProductoEliminar = new javax.swing.JTextField();
         jlCineAEliminar = new javax.swing.JLabel();
         jbAceptarIdProductoEleiminar = new javax.swing.JButton();
         jlIDProductoAEliminar = new javax.swing.JLabel();
@@ -110,10 +110,10 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         setResizable(true);
 
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitulo.setText("Ingrese el ID del producto o pulse Aceptar para consultar todos los productos:");
+        lbTitulo.setText("Ingrese el nombre del producto o pulse Aceptar para consultar todos los productos:");
 
-        jlCifConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlCifConsulta.setText("ID:");
+        jlNombreConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlNombreConsulta.setText("Nombre:");
 
         jtaConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,9 +145,9 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
                     .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jpConsultaLayout.createSequentialGroup()
-                        .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlNombreConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfIDConsultaPedidos))
+                        .addComponent(jtfNombreConsultaPedidos))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jbAceptarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -160,8 +160,8 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                 .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfIDConsultaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlNombreConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNombreConsultaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -177,11 +177,17 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
 
         jlCifCine.setText("Descripción:");
 
-        jlCIfBuscador.setText("Ingrese el ID del producto que desea modificar:");
+        jlCIfBuscador.setText("Ingrese el nombre del producto que desea modificar:");
 
         jlDireccionCine.setText("Precio Producto:");
 
         jlPoblacionCine.setText("Precio Venta:");
+
+        jtfNombreBuscadorProductoModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNombreBuscadorProductoModificarActionPerformed(evt);
+            }
+        });
 
         jbtModificarProducto.setText("Modificar");
         jbtModificarProducto.setEnabled(false);
@@ -230,9 +236,10 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                                 .addComponent(jtfDescripcionProductoModificar, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jtfNombreProductoModificar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))))
                     .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlCIfBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(jlCIfBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfIDBuscadorProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfNombreBuscadorProductoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbtBuscarProductoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpModificarLayout.createSequentialGroup()
@@ -261,7 +268,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCIfBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfIDBuscadorProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNombreBuscadorProductoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtBuscarProductoModificar))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,7 +305,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                     .addComponent(jlPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addComponent(jbtModificarProducto)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jtpModificar.addTab("", jpModificar);
@@ -375,7 +382,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
 
         jtpFondo.addTab("Alta", jtpAltaProducto);
 
-        jlCifCineEliminar.setText("Ingrese el ID del producto que desee eliminar:");
+        jlCifCineEliminar.setText("Ingrese el nombre del producto que desee eliminar:");
 
         jlCineAEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCineAEliminar.setText("Va a eliminar el siguiente producto:");
@@ -407,7 +414,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                             .addGroup(jpFondoEleminarLayout.createSequentialGroup()
                                 .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jtfIDProductoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfNombreProductoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jbAceptarIdProductoEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -433,7 +440,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jtfIDProductoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfNombreProductoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpFondoEleminarLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
@@ -496,10 +503,14 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         actualizarProducto();
     }//GEN-LAST:event_jbtModificarProductoActionPerformed
 
-    public void consultaPedidos() {
-        String idBuscador = jtfIDConsultaPedidos.getText();
+    private void jtfNombreBuscadorProductoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreBuscadorProductoModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNombreBuscadorProductoModificarActionPerformed
 
-        if (idBuscador.equals("")) {
+    public void consultaPedidos() {
+        String NombreBuscador = jtfNombreConsultaPedidos.getText();
+
+        if (NombreBuscador.equals("")) {
             /* Búsqueda general de Productos. */
             try {
                 reiniciarCamposConsulta();
@@ -518,10 +529,9 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             }
         } else {
             /* Búsqueda específica de prodcuto por id. */
-            int id_Buscador = Integer.parseInt(jtfIDConsultaPedidos.getText());
             try {
                 reiniciarCamposConsulta();
-                producto = pp.buscarProducto(id_Buscador);
+                producto = pp.buscarProducto(NombreBuscador);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(producto.getNombre_producto(), 0, 0);
                 jtaConsulta.setValueAt(producto.getDesc_producto(), 0, 1);
@@ -537,7 +547,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
     }
 
     public void reiniciarCamposConsulta() {
-        jtfIDConsultaPedidos.setText("");
+        jtfNombreConsultaPedidos.setText("");
         for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
             dtm.removeRow(i);
             i -= 1;
@@ -560,12 +570,12 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el producto solicitado.\nPruebe de nuevo.");
         }
     }
-    
-    public void cargarProductoEliminar(){
-            int id_buscador = Integer.parseInt(jtfIDProductoEliminar.getText());     
+
+    public void cargarProductoEliminar() {
+        String nombreEliminar = jtfNombreProductoEliminar.getText();
         try {
-            producto = pp.buscarProducto(id_buscador);
-            
+            producto = pp.buscarProducto(nombreEliminar);
+
             jlDescripcionProductoAEliminar.setText(producto.getDesc_producto());
             jlPrecioProductoAEliminar.setText(String.valueOf(producto.getPrecio_producto()));
             jlPrecioVentaProductoAEliminar.setText(String.valueOf(producto.getPrecio_venta()));
@@ -575,14 +585,15 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido cargar  el producto solicitado para eliminar.\nPruebe de nuevo.");
-        }      
+        }
     }
-    
-    public void eliminarProducto(){
-        int id_producto_eliminar = Integer.parseInt(jtfIDProductoEliminar.getText());
+
+    public void eliminarProducto() {
+        String nombreEliminar = jtfNombreProductoEliminar.getText();
 
         try {
-            pp.eliminarProducto(id_producto_eliminar);
+            producto = pp.buscarProducto(nombreEliminar);
+            pp.eliminarProducto(producto.getId_producto());
             JOptionPane.showMessageDialog(null, "Prodcuto eliminada con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
@@ -590,23 +601,22 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el producto solicitado.\nPruebe de nuevo.");
         }
     }
-    
+
     public void MostrarProductoActualizar() {
-        int id_producto_actualizar = Integer.parseInt(jtfIDBuscadorProducto.getText());
+        String nombre_producto_actualizar = jtfNombreBuscadorProductoModificar.getText();
         try {
-            producto = pp.buscarProducto(id_producto_actualizar);
+            producto = pp.buscarProducto(nombre_producto_actualizar);
 
             jlDescripcionProductoResultado.setText(producto.getDesc_producto());
             jlPrecioProductoResultado.setText(String.valueOf(producto.getPrecio_producto()));
             jlPrecioVentaResultado.setText(String.valueOf(producto.getPrecio_venta()));
             jlNombreProductoResultado.setText(producto.getNombre_producto());
-            
-            
+
             jtfNombreProductoModificar.setText(producto.getNombre_producto());
             jtfDescripcionProductoModificar.setText(producto.getDesc_producto());
             jtfPrecioProductoModificar.setText(String.valueOf(producto.getPrecio_producto()));
             jtfVentaProductoModificar.setText(String.valueOf(producto.getPrecio_venta()));
-            
+
             jbtModificarProducto.setEnabled(true);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido mostrar el producto a modificar.\nPruebe de nuevo.");
@@ -614,17 +624,16 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
         }
     }
-    
-    public void actualizarProducto(){
-        int id_producto_actualizar = Integer.parseInt(jtfIDBuscadorProducto.getText());
+
+    public void actualizarProducto() {
         String descripcionProductoActualizar = jtfDescripcionProductoModificar.getText();
         float precioProductoActualizar = Float.parseFloat(jtfPrecioProductoModificar.getText());
         float precioVentaActualizar = Float.parseFloat(jtfVentaProductoModificar.getText());
         String nombreProductoActualizar = jtfNombreProductoModificar.getText();
-     
-        producto = new Producto(id_producto_actualizar, descripcionProductoActualizar, precioProductoActualizar, precioVentaActualizar, nombreProductoActualizar);
-        
+
         try {
+            int id_prodcuto = pp.buscarIdPorNombre(nombreProductoActualizar);
+            producto = new Producto(id_prodcuto, descripcionProductoActualizar, precioProductoActualizar, precioVentaActualizar, nombreProductoActualizar);
             pp.actualizarProducto(producto);
             JOptionPane.showMessageDialog(null, "Producto actualizado con éxito.");
         } catch (SQLException ex) {
@@ -633,8 +642,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
         }
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
@@ -648,7 +656,6 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCif;
     private javax.swing.JLabel jlCifCine;
     private javax.swing.JLabel jlCifCineEliminar;
-    private javax.swing.JLabel jlCifConsulta;
     private javax.swing.JLabel jlCineAEliminar;
     private javax.swing.JLabel jlCodigoPostalActual;
     private javax.swing.JLabel jlDescripcionProductoAEliminar;
@@ -660,6 +667,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlNombreActual;
     private javax.swing.JLabel jlNombreCine;
+    private javax.swing.JLabel jlNombreConsulta;
     private javax.swing.JLabel jlNombreProductoAEliminar;
     private javax.swing.JLabel jlNombreProductoResultado;
     private javax.swing.JLabel jlPoblacion;
@@ -676,10 +684,10 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
     private javax.swing.JTable jtaConsulta;
     private javax.swing.JTextField jtfDescripcionNuevaProducto;
     private javax.swing.JTextField jtfDescripcionProductoModificar;
-    private javax.swing.JTextField jtfIDBuscadorProducto;
-    private javax.swing.JTextField jtfIDConsultaPedidos;
-    private javax.swing.JTextField jtfIDProductoEliminar;
+    private javax.swing.JTextField jtfNombreBuscadorProductoModificar;
+    private javax.swing.JTextField jtfNombreConsultaPedidos;
     private javax.swing.JTextField jtfNombreNuevoProducto;
+    private javax.swing.JTextField jtfNombreProductoEliminar;
     private javax.swing.JTextField jtfNombreProductoModificar;
     private javax.swing.JTextField jtfPrecioNuevoProducto;
     private javax.swing.JTextField jtfPrecioProductoModificar;

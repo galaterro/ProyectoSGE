@@ -48,9 +48,9 @@ public class ProductoPersistencia {
 
     }
     
-    public Producto buscarProducto(int id_producto) throws SQLException, ClassNotFoundException {
+    public Producto buscarProducto(String nombre) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-        String sql = "SELECT * FROM producto WHERE id_producto = " + id_producto + "";
+        String sql = "SELECT * FROM producto WHERE lower(nombre_producto) = lower('" + nombre + "')";
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
@@ -84,6 +84,19 @@ public class ProductoPersistencia {
         ps.close();
         gbd.cerrarConexionBBDD();
     }
+    
+    public int buscarIdPorNombre(String nombre) throws ClassNotFoundException, SQLException{
+        int id_producto = 0;
+        String sql = "SELECT id_producto FROM producto WHERE lower(nombre_producto) = lower('" + nombre + "')";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        rs.next();
+        id_producto = rs.getInt(1);
+        gbd.cerrarConexionBBDD();
+        return id_producto;
+    }
+    
     
     /* Usado para analizar si existe una Pelicula con el ID facilitado. */
     public boolean existeProducto(int id) throws SQLException, ClassNotFoundException {

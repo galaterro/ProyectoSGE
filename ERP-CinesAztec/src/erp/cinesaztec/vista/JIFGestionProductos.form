@@ -71,9 +71,9 @@
                               <Component id="jScrollPane1" alignment="0" pref="927" max="32767" attributes="0"/>
                               <Component id="lbTitulo" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlCifConsulta" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <Component id="jlNombreConsulta" min="-2" pref="113" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfIDConsultaPedidos" max="32767" attributes="0"/>
+                                  <Component id="jtfNombreConsultaPedidos" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -91,8 +91,8 @@
                           <Component id="lbTitulo" min="-2" pref="27" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlCifConsulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfIDConsultaPedidos" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlNombreConsulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jtfNombreConsultaPedidos" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="90" max="-2" attributes="0"/>
@@ -107,16 +107,16 @@
                 <Component class="javax.swing.JLabel" name="lbTitulo">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Ingrese el ID del producto o pulse Aceptar para consultar todos los productos:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el nombre del producto o pulse Aceptar para consultar todos los productos:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlCifConsulta">
+                <Component class="javax.swing.JLabel" name="jlNombreConsulta">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="ID:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDConsultaPedidos">
+                <Component class="javax.swing.JTextField" name="jtfNombreConsultaPedidos">
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
@@ -199,9 +199,10 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlCIfBuscador" min="-2" pref="268" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                  <Component id="jlCIfBuscador" min="-2" pref="348" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfIDBuscadorProducto" min="-2" pref="136" max="-2" attributes="0"/>
+                                  <Component id="jtfNombreBuscadorProductoModificar" min="-2" pref="136" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jbtBuscarProductoModificar" min="-2" pref="91" max="-2" attributes="0"/>
                               </Group>
@@ -240,7 +241,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCIfBuscador" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jtfIDBuscadorProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfNombreBuscadorProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jbtBuscarProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -288,7 +289,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="jbtModificarProducto" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="22" max="32767" attributes="0"/>
+                          <EmptySpace pref="26" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -306,7 +307,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCIfBuscador">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ingrese el ID del producto que desea modificar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el nombre del producto que desea modificar:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccionCine">
@@ -319,7 +320,10 @@
                     <Property name="text" type="java.lang.String" value="Precio Venta:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDBuscadorProducto">
+                <Component class="javax.swing.JTextField" name="jtfNombreBuscadorProductoModificar">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfNombreBuscadorProductoModificarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfNombreProductoModificar">
                 </Component>
@@ -536,7 +540,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jlCifCineEliminar" min="-2" pref="302" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jtfIDProductoEliminar" min="-2" pref="282" max="-2" attributes="0"/>
+                                          <Component id="jtfNombreProductoEliminar" min="-2" pref="282" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jbAceptarIdProductoEleiminar" min="-2" pref="126" max="-2" attributes="0"/>
                                       </Group>
@@ -571,7 +575,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="jtfIDProductoEliminar" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jtfNombreProductoEliminar" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlCifCineEliminar" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -599,10 +603,10 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jlCifCineEliminar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ingrese el ID del producto que desee eliminar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el nombre del producto que desee eliminar:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDProductoEliminar">
+                <Component class="javax.swing.JTextField" name="jtfNombreProductoEliminar">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCineAEliminar">
                   <Properties>
