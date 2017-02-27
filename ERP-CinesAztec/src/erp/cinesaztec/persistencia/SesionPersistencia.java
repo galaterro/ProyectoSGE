@@ -31,12 +31,15 @@ public class SesionPersistencia {
     
      public void ingresarSesion(Sesion sesion) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-        int filasAfectadas;
-        String sql = "insert into sesion values('" + sesion.getHora_sesion() + "'," + sesion.getId_pelicula()+ "," + sesion.getId_sala() + ")";
+        
+        String sql = "insert into sesion values(hora_sesion, id_pelicula, id_sala) VALUES (?,?,?)";
         c = gbd.conectarBBDD();
-        st = c.createStatement();
-        filasAfectadas = st.executeUpdate(sql);
-        System.out.println("filas afectadas: " + filasAfectadas);
+        ps = c.prepareStatement(sql);
+        ps.setDate(1, sesion.getHora_sesion());
+        ps.setInt(2, sesion.getId_pelicula());
+        ps.setInt(3, sesion.getId_sala());
+        ps.executeUpdate();
+        ps.close();
         gbd.cerrarConexionBBDD();
     }
 

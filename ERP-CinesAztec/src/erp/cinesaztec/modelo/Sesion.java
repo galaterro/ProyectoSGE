@@ -1,6 +1,8 @@
 package erp.cinesaztec.modelo;
 
-import java.util.Date;
+import java.sql.Date;
+
+
 
 /**
  * Clase dedicada al modelo de Sesión.

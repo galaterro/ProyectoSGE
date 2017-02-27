@@ -9,10 +9,13 @@ package erp.cinesaztec.vista;
 import erp.cinesaztec.modelo.Sesion;
 import erp.cinesaztec.persistencia.SesionPersistencia;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import java.util.Locale;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -472,13 +475,43 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbtBuscarModificarActionPerformed
 
     private void jbAltaCineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaCineActionPerformed
-       
+       crearSesion();
     }//GEN-LAST:event_jbAltaCineActionPerformed
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
         modificarSesion();
     }//GEN-LAST:event_jbtModificarActionPerformed
 
+    
+    
+    
+     private void crearSesion() {
+
+            try {
+                
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                int idPelicula = Integer.parseInt(jtfPeliculaAlta.getText());
+                Date horaSesion = format.parse(jtfHoraAlta.getText());
+                java.sql.Date hora = new java.sql.Date(horaSesion.getTime());
+                
+                int idSala = Integer.parseInt(jtfSalaAlta.getText());
+                
+                sesion = new Sesion(hora, idPelicula,  idSala);
+                try {
+                    sp.ingresarSesion(sesion);
+                    JOptionPane.showMessageDialog(null, "Sesion ingresado con éxito.");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo cine.\nPruebe de nuevo.");
+                    System.out.println(ex);
+                } catch (ClassNotFoundException ex) {
+                    JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+                }
+                
+            } catch (ParseException ex) {
+                Logger.getLogger(JIFGestionSesiones.class.getName()).log(Level.SEVERE,null, ex);
+            }
+       
+    }
     public void cargarSesion(){
         int idSesionBuscador = Integer.parseInt(jtfCifBuscador.getText());
              
