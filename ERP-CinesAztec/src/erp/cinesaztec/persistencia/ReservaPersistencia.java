@@ -28,9 +28,7 @@ public class ReservaPersistencia {
 
     public void ingresarReserva(Reserva reserva) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-
         int filasAfectadas;
-
         String sql = "insert into reserva values(" + reserva.getId_reserva()+ ",'" + reserva.getId_pelicula()+ "','" + reserva.getId_sesion() + "','" + reserva.getId_butaca() + "','" + reserva.getId_cliente() + "','" + reserva.getId_sala() + ")";
         c = gbd.conectarBBDD();
         st = c.createStatement();
@@ -46,7 +44,6 @@ public class ReservaPersistencia {
         String sql = "select * from reserva";
         c = gbd.conectarBBDD();
         st = c.createStatement();
-
         rs = st.executeQuery(sql);
         System.out.println("Las reservas son: ");
         while (rs.next()) {
