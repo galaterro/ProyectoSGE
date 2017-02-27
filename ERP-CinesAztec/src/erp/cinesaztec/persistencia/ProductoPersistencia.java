@@ -19,14 +19,15 @@ public class ProductoPersistencia {
     private ArrayList<Producto> alProducto = new ArrayList();
 
     public void ingresarProducto(Producto producto) throws SQLException, ClassNotFoundException {
-        int filasAfectadas;
-
-        String sql = "insert into producto values(" + producto.getId_producto() + ",'" + producto.getDesc_producto() + "','" + producto.getPrecio_producto() + "','" + producto.getPrecio_venta()+ "','" + producto.getNombre_producto() + "')";
+        String sql = "insert into producto (descripcion_producto, precio_producto, precio_venta, nombre_producto) values (?,?,?,?)";
         c = gbd.conectarBBDD();
-        st = c.createStatement();
-
-        filasAfectadas = st.executeUpdate(sql);
-        System.out.println("filas afectadas: " + filasAfectadas);
+        ps = c.prepareStatement(sql);
+        ps.setString(1, producto.getDesc_producto());
+        ps.setFloat(2, producto.getPrecio_producto());
+        ps.setFloat(3, producto.getPrecio_venta());
+        ps.setString(4, producto.getNombre_producto());
+        ps.executeUpdate();
+        ps.close();
         gbd.cerrarConexionBBDD();
     }
 
@@ -37,8 +38,7 @@ public class ProductoPersistencia {
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
-        rs = st.executeQuery(sql);
-        System.out.println("Los Productos son: ");
+        rs = st.executeQuery(sql);       
         while (rs.next()) {
             producto = new Producto(rs.getInt(1), rs.getString(2), rs.getBigDecimal(3).floatValue(), rs.getBigDecimal(4).floatValue(), rs.getString(5));
             alProducto.add(producto);
@@ -48,9 +48,9 @@ public class ProductoPersistencia {
 
     }
     
-    public Producto buscarProducto(String nombre_aux) throws SQLException, ClassNotFoundException {
+    public Producto buscarProducto(int id_producto) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-        String sql = "SELECT * FROM PRODUCTO WHERE nombre_producto= '" + nombre_aux + "'";
+        String sql = "SELECT * FROM producto WHERE id_producto = " + id_producto + "";
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
@@ -59,5 +59,47 @@ public class ProductoPersistencia {
         gbd.cerrarConexionBBDD();
         return producto;
     }
+    
+    public void eliminarProducto(int id_producto) throws ClassNotFoundException, SQLException{
+        c = gbd.conectarBBDD();
+        String sql = "delete from producto where id_producto = " + id_producto;
+        st = c.createStatement();
+        st.executeUpdate(sql);
+        gbd.cerrarConexionBBDD();
+    }
+    
+    public void actualizarProducto(Producto producto) throws SQLException, ClassNotFoundException {
 
+        String sql = "update producto set descripcion_producto = ?, precio_producto = ? , precio_venta = ?, nombre_producto = ? where id_producto =?";
+        c = gbd.conectarBBDD();
+        ps = c.prepareStatement(sql);
+
+        ps.setString(1, producto.getDesc_producto());
+        ps.setFloat(2, producto.getPrecio_producto());
+        ps.setFloat(3, producto.getPrecio_venta());
+        ps.setString(4, producto.getNombre_producto());
+        ps.setInt(5, producto.getId_producto());
+
+        ps.executeUpdate();
+        ps.close();
+        gbd.cerrarConexionBBDD();
+    }
+    
+    /* Usado para analizar si existe una Pelicula con el ID facilitado. */
+    public boolean existeProducto(int id) throws SQLException, ClassNotFoundException {
+        boolean encontrado = false;
+        String sql = "select * from producto where id_producto = ?";
+        c = gbd.conectarBBDD();
+        ps = (PreparedStatement) c.prepareStatement(sql);
+        ps.setInt(1, id);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            encontrado = true;
+        }
+        ps.close();
+        gbd.cerrarConexionBBDD();
+        return encontrado;
+    }
+   
 }

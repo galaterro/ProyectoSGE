@@ -59,5 +59,49 @@ public class PeliculaPersistencia {
         gbd.cerrarConexionBBDD();
         return pelicula;
     }
+    
+    /* Usado para analizar si existe una Pelicula con el ID facilitado. */
+    public boolean existePelicula(int id) throws SQLException, ClassNotFoundException {
+        boolean encontrado = false;
+        String sql = "select * from pelicula where id_pelicula = ?";
+        c = gbd.conectarBBDD();
+        ps = (PreparedStatement) c.prepareStatement(sql);
+        ps.setInt(1, id);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            encontrado = true;
+        }
+        ps.close();
+        gbd.cerrarConexionBBDD();
+        return encontrado;
+    }
+    
+    public void eliminarPelicula(int id_pelicula) throws ClassNotFoundException, SQLException{
+        c = gbd.conectarBBDD();
+        String sql = "delete from pelicula where id_pelicula = " + id_pelicula;
+        st = c.createStatement();
+        st.executeUpdate(sql);
+        gbd.cerrarConexionBBDD();
+    }
+    
+    public void actualizarPelicula(Pelicula pelicula) throws SQLException, ClassNotFoundException {
+
+        String sql = "update pelicula set nombre_pelicula = ?, duracion_pelicula = ? , edad_acceso = ? where id_pelicula =?";
+        c = gbd.conectarBBDD();
+        ps = c.prepareStatement(sql);
+
+        ps.setString(1, pelicula.getNombre_pelicula());
+        ps.setInt(2, pelicula.getDur_pelicula());
+        ps.setInt(3, pelicula.getEdad_acceso());
+        ps.setInt(4, pelicula.getId_pelicula());
+
+        ps.executeUpdate();
+        ps.close();
+
+        System.out.println("Actualizado");
+
+        gbd.cerrarConexionBBDD();
+    }
 
 }
