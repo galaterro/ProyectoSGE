@@ -5,19 +5,39 @@
  */
 package erp.cinesaztec.vista;
 
+import erp.cinesaztec.modelo.Producto;
+import erp.cinesaztec.persistencia.ProductoPersistencia;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author allen
  */
 class JIFGestionProductos extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form JIFGestionProductos
-     */
+    private ProductoPersistencia pp = new ProductoPersistencia();
+    private ArrayList<Producto> alProducto;
+    private Producto producto;
+    private Vector vPelicula = new Vector();
+    private DefaultTableModel dtm = new DefaultTableModel(vPelicula, 0);
+    private int contadorModificadosAlta = 0;
+
     public JIFGestionProductos() {
         initComponents();
-        this.setSize(990, 700);
         this.setTitle("Gestión Productos");
+        vPelicula.add("Nombre producto:");
+        vPelicula.add("Descripción Producto:");
+        vPelicula.add("Precio producto:");
+        vPelicula.add("Precio venta:");
+        jtaConsulta.setModel(dtm);
+        this.setSize(990, 700);
+        this.setResizable(false);
     }
 
     /**
@@ -34,7 +54,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         jpConsulta = new javax.swing.JPanel();
         lbTitulo = new javax.swing.JLabel();
         jlCifConsulta = new javax.swing.JLabel();
-        jtfIDConsulta = new javax.swing.JTextField();
+        jtfIDConsultaPedidos = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaConsulta = new javax.swing.JTable();
         jbAceptarConsulta = new javax.swing.JButton();
@@ -45,38 +65,38 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         jlCIfBuscador = new javax.swing.JLabel();
         jlDireccionCine = new javax.swing.JLabel();
         jlPoblacionCine = new javax.swing.JLabel();
-        jtfIDBuscador = new javax.swing.JTextField();
-        jtfNombreCine = new javax.swing.JTextField();
-        jtfDescripcionProducto = new javax.swing.JTextField();
-        jtfPrecioProducto = new javax.swing.JTextField();
-        jtfVentaProducto = new javax.swing.JTextField();
-        jbtModificar = new javax.swing.JButton();
+        jtfIDBuscadorProducto = new javax.swing.JTextField();
+        jtfNombreProductoModificar = new javax.swing.JTextField();
+        jtfDescripcionProductoModificar = new javax.swing.JTextField();
+        jtfPrecioProductoModificar = new javax.swing.JTextField();
+        jtfVentaProductoModificar = new javax.swing.JTextField();
+        jbtModificarProducto = new javax.swing.JButton();
         jbtBuscarProductoModificar = new javax.swing.JButton();
         jlNombreActual = new javax.swing.JLabel();
         jlDireccionActual = new javax.swing.JLabel();
         jlPoblacionActual = new javax.swing.JLabel();
         jlCodigoPostalActual = new javax.swing.JLabel();
-        jlNombreResultado = new javax.swing.JLabel();
-        jlDescripcionResultado = new javax.swing.JLabel();
+        jlNombreProductoResultado = new javax.swing.JLabel();
+        jlDescripcionProductoResultado = new javax.swing.JLabel();
         jlPrecioProductoResultado = new javax.swing.JLabel();
         jlPrecioVentaResultado = new javax.swing.JLabel();
         jtpAltaProducto = new javax.swing.JTabbedPane();
         jpAltaProducto = new javax.swing.JPanel();
         jlNombre = new javax.swing.JLabel();
-        jtfNombreNuevo = new javax.swing.JTextField();
+        jtfNombreNuevoProducto = new javax.swing.JTextField();
         jlCif = new javax.swing.JLabel();
-        jtfDescripcionNueva = new javax.swing.JTextField();
+        jtfDescripcionNuevaProducto = new javax.swing.JTextField();
         jlDireccion = new javax.swing.JLabel();
-        jtfPrecioProductoNueva = new javax.swing.JTextField();
+        jtfPrecioNuevoProducto = new javax.swing.JTextField();
         jlPoblacion = new javax.swing.JLabel();
-        jtfPrecioVentaNueva = new javax.swing.JTextField();
+        jtfPrecioVentaNuevaProducto = new javax.swing.JTextField();
         jbAltaProducto = new javax.swing.JButton();
         jtpEliminar = new javax.swing.JTabbedPane();
         jpFondoEleminar = new javax.swing.JPanel();
         jlCifCineEliminar = new javax.swing.JLabel();
         jtfIDProductoEliminar = new javax.swing.JTextField();
         jlCineAEliminar = new javax.swing.JLabel();
-        jbAceptarCifEleiminar = new javax.swing.JButton();
+        jbAceptarIdProductoEleiminar = new javax.swing.JButton();
         jlIDProductoAEliminar = new javax.swing.JLabel();
         jlNombreProductoAEliminar = new javax.swing.JLabel();
         jlPrecioProductoAEliminar = new javax.swing.JLabel();
@@ -90,7 +110,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         setResizable(true);
 
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitulo.setText("Ingrese el ID del producto o pulse Aceptar para búsqueda completar:");
+        lbTitulo.setText("Ingrese el ID del producto o pulse Aceptar para consultar todos los productos:");
 
         jlCifConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCifConsulta.setText("ID:");
@@ -127,7 +147,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                     .addGroup(jpConsultaLayout.createSequentialGroup()
                         .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfIDConsulta))
+                        .addComponent(jtfIDConsultaPedidos))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jbAceptarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -141,7 +161,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfIDConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfIDConsultaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -163,7 +183,13 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
 
         jlPoblacionCine.setText("Precio Venta:");
 
-        jbtModificar.setText("Modificar");
+        jbtModificarProducto.setText("Modificar");
+        jbtModificarProducto.setEnabled(false);
+        jbtModificarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtModificarProductoActionPerformed(evt);
+            }
+        });
 
         jbtBuscarProductoModificar.setText("Buscar");
         jbtBuscarProductoModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -186,7 +212,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(202, 202, 202))
             .addGroup(jpModificarLayout.createSequentialGroup()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,22 +224,23 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                             .addComponent(jlPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfPrecioProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfDescripcionProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfVentaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfPrecioProductoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfVentaProductoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jtfDescripcionProductoModificar, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtfNombreProductoModificar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addComponent(jlCIfBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfIDBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfIDBuscadorProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbtBuscarProductoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jpModificarLayout.createSequentialGroup()
-                                .addComponent(jlNombreResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jlNombreProductoResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jlDescripcionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jlDescripcionProductoResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jpModificarLayout.createSequentialGroup()
                                 .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(126, 126, 126)
@@ -234,7 +261,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCIfBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfIDBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIDBuscadorProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtBuscarProductoModificar))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,29 +276,29 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jlPrecioVentaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                             .addComponent(jlPrecioProductoResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlDescripcionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jlDescripcionProductoResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jlNombreResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jlNombreProductoResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNombreProductoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfDescripcionProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDescripcionProductoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfPrecioProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfPrecioProductoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfVentaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfVentaProductoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
-                .addComponent(jbtModificar)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(jbtModificarProducto)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jtpModificar.addTab("", jpModificar);
@@ -303,11 +330,11 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaProductoLayout.createSequentialGroup()
                             .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jtfNombreNuevo))
+                            .addComponent(jtfNombreNuevoProducto))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaProductoLayout.createSequentialGroup()
                             .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jtfDescripcionNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfDescripcionNuevaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jbAltaProducto)
                         .addGroup(jpAltaProductoLayout.createSequentialGroup()
@@ -316,8 +343,8 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                                 .addComponent(jlDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
                             .addGap(18, 18, 18)
                             .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfPrecioProductoNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfPrecioVentaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jtfPrecioNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfPrecioVentaNuevaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(268, Short.MAX_VALUE))
         );
         jpAltaProductoLayout.setVerticalGroup(
@@ -326,19 +353,19 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNombreNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNombreNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfDescripcionNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDescripcionNuevaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfPrecioProductoNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfPrecioNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfPrecioVentaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfPrecioVentaNuevaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addComponent(jbAltaProducto)
                 .addContainerGap(116, Short.MAX_VALUE))
@@ -353,14 +380,15 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         jlCineAEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCineAEliminar.setText("Va a eliminar el siguiente producto:");
 
-        jbAceptarCifEleiminar.setText("Aceptar");
-        jbAceptarCifEleiminar.addActionListener(new java.awt.event.ActionListener() {
+        jbAceptarIdProductoEleiminar.setText("Aceptar");
+        jbAceptarIdProductoEleiminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAceptarCifEleiminarActionPerformed(evt);
+                jbAceptarIdProductoEleiminarActionPerformed(evt);
             }
         });
 
         jbComfirmarEliminar.setText("Eliminar");
+        jbComfirmarEliminar.setEnabled(false);
         jbComfirmarEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbComfirmarEliminarActionPerformed(evt);
@@ -373,27 +401,31 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoEleminarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbComfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                            .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jtfIDProductoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jbAceptarCifEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                            .addComponent(jlIDProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jlNombreProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jlPrecioProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jlPrecioVentaProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jlDescripcionProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                                .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfIDProductoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbAceptarIdProductoEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                                .addComponent(jlIDProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlNombreProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlPrecioProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlPrecioVentaProductoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(jlDescripcionProductoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
+                            .addComponent(jbComfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(186, 186, 186))))
         );
         jpFondoEleminarLayout.setVerticalGroup(
             jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -405,20 +437,19 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                         .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpFondoEleminarLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(jbAceptarCifEleiminar)))
+                        .addComponent(jbAceptarIdProductoEleiminar)))
                 .addGap(18, 18, 18)
                 .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jlPrecioVentaProductoAEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jlIDProductoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                        .addComponent(jlNombreProductoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jlPrecioProductoAEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jlIDProductoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(jlNombreProductoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlPrecioProductoAEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jlDescripcionProductoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26)
+                .addGap(27, 27, 27)
                 .addComponent(jbComfirmarEliminar)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         jtpEliminar.addTab("", jpFondoEleminar);
@@ -442,34 +473,177 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
-        
+        consultaPedidos();
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jbtBuscarProductoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarProductoModificarActionPerformed
-
+        MostrarProductoActualizar();
     }//GEN-LAST:event_jbtBuscarProductoModificarActionPerformed
 
     private void jbAltaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaProductoActionPerformed
-        // TODO add your handling code here:
+        ingresarProducto();
     }//GEN-LAST:event_jbAltaProductoActionPerformed
 
-    private void jbAceptarCifEleiminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEleiminarActionPerformed
-
-    }//GEN-LAST:event_jbAceptarCifEleiminarActionPerformed
+    private void jbAceptarIdProductoEleiminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarIdProductoEleiminarActionPerformed
+        cargarProductoEliminar();
+    }//GEN-LAST:event_jbAceptarIdProductoEleiminarActionPerformed
 
     private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
-       
+        eliminarProducto();
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
 
+    private void jbtModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarProductoActionPerformed
+        actualizarProducto();
+    }//GEN-LAST:event_jbtModificarProductoActionPerformed
+
+    public void consultaPedidos() {
+        String idBuscador = jtfIDConsultaPedidos.getText();
+
+        if (idBuscador.equals("")) {
+            /* Búsqueda general de Productos. */
+            try {
+                reiniciarCamposConsulta();
+                alProducto = pp.listarProducto();
+                dtm.setRowCount(alProducto.size());
+                for (int i = 0; i < alProducto.size(); i++) {
+                    jtaConsulta.setValueAt(alProducto.get(i).getNombre_producto(), i, 0);
+                    jtaConsulta.setValueAt(alProducto.get(i).getDesc_producto(), i, 1);
+                    jtaConsulta.setValueAt(alProducto.get(i).getPrecio_producto(), i, 2);
+                    jtaConsulta.setValueAt(alProducto.get(i).getPrecio_venta(), i, 3);
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar ningún producto.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        } else {
+            /* Búsqueda específica de prodcuto por id. */
+            int id_Buscador = Integer.parseInt(jtfIDConsultaPedidos.getText());
+            try {
+                reiniciarCamposConsulta();
+                producto = pp.buscarProducto(id_Buscador);
+                dtm.setRowCount(1);
+                jtaConsulta.setValueAt(producto.getNombre_producto(), 0, 0);
+                jtaConsulta.setValueAt(producto.getDesc_producto(), 0, 1);
+                jtaConsulta.setValueAt(producto.getPrecio_producto(), 0, 2);
+                jtaConsulta.setValueAt(producto.getPrecio_venta(), 0, 3);
+
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el producto solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
+    }
+
+    public void reiniciarCamposConsulta() {
+        jtfIDConsultaPedidos.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
+
+    public void ingresarProducto() {
+        String descripcion = jtfDescripcionNuevaProducto.getText();
+        float precio_producto = Float.parseFloat(jtfPrecioNuevoProducto.getText());
+        float precio_venta = Float.parseFloat(jtfPrecioVentaNuevaProducto.getText());
+        String nombre = jtfNombreNuevoProducto.getText();
+
+        producto = new Producto(descripcion, precio_producto, precio_venta, nombre);
+        JOptionPane.showMessageDialog(null, "Producto ingresado con éxito.");
+        try {
+            pp.ingresarProducto(producto);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el producto solicitado.\nPruebe de nuevo.");
+        }
+    }
+    
+    public void cargarProductoEliminar(){
+            int id_buscador = Integer.parseInt(jtfIDProductoEliminar.getText());     
+        try {
+            producto = pp.buscarProducto(id_buscador);
+            
+            jlDescripcionProductoAEliminar.setText(producto.getDesc_producto());
+            jlPrecioProductoAEliminar.setText(String.valueOf(producto.getPrecio_producto()));
+            jlPrecioVentaProductoAEliminar.setText(String.valueOf(producto.getPrecio_venta()));
+            jlNombreProductoAEliminar.setText(producto.getNombre_producto());
+            jbComfirmarEliminar.setEnabled(true);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido cargar  el producto solicitado para eliminar.\nPruebe de nuevo.");
+        }      
+    }
+    
+    public void eliminarProducto(){
+        int id_producto_eliminar = Integer.parseInt(jtfIDProductoEliminar.getText());
+
+        try {
+            pp.eliminarProducto(id_producto_eliminar);
+            JOptionPane.showMessageDialog(null, "Prodcuto eliminada con éxito.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el producto solicitado.\nPruebe de nuevo.");
+        }
+    }
+    
+    public void MostrarProductoActualizar() {
+        int id_producto_actualizar = Integer.parseInt(jtfIDBuscadorProducto.getText());
+        try {
+            producto = pp.buscarProducto(id_producto_actualizar);
+
+            jlDescripcionProductoResultado.setText(producto.getDesc_producto());
+            jlPrecioProductoResultado.setText(String.valueOf(producto.getPrecio_producto()));
+            jlPrecioVentaResultado.setText(String.valueOf(producto.getPrecio_venta()));
+            jlNombreProductoResultado.setText(producto.getNombre_producto());
+            
+            
+            jtfNombreProductoModificar.setText(producto.getNombre_producto());
+            jtfDescripcionProductoModificar.setText(producto.getDesc_producto());
+            jtfPrecioProductoModificar.setText(String.valueOf(producto.getPrecio_producto()));
+            jtfVentaProductoModificar.setText(String.valueOf(producto.getPrecio_venta()));
+            
+            jbtModificarProducto.setEnabled(true);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido mostrar el producto a modificar.\nPruebe de nuevo.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        }
+    }
+    
+    public void actualizarProducto(){
+        int id_producto_actualizar = Integer.parseInt(jtfIDBuscadorProducto.getText());
+        String descripcionProductoActualizar = jtfDescripcionProductoModificar.getText();
+        float precioProductoActualizar = Float.parseFloat(jtfPrecioProductoModificar.getText());
+        float precioVentaActualizar = Float.parseFloat(jtfVentaProductoModificar.getText());
+        String nombreProductoActualizar = jtfNombreProductoModificar.getText();
+     
+        producto = new Producto(id_producto_actualizar, descripcionProductoActualizar, precioProductoActualizar, precioVentaActualizar, nombreProductoActualizar);
+        
+        try {
+            pp.actualizarProducto(producto);
+            JOptionPane.showMessageDialog(null, "Producto actualizado con éxito.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el producto solicitado.\nPruebe de nuevo.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        }
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbAceptarCifEleiminar;
     private javax.swing.JButton jbAceptarConsulta;
+    private javax.swing.JButton jbAceptarIdProductoEleiminar;
     private javax.swing.JButton jbAltaProducto;
     private javax.swing.JButton jbComfirmarEliminar;
     private javax.swing.JButton jbtBuscarProductoModificar;
-    private javax.swing.JButton jbtModificar;
+    private javax.swing.JButton jbtModificarProducto;
     private javax.swing.JLabel jlCIfBuscador;
     private javax.swing.JLabel jlCif;
     private javax.swing.JLabel jlCifCine;
@@ -478,7 +652,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCineAEliminar;
     private javax.swing.JLabel jlCodigoPostalActual;
     private javax.swing.JLabel jlDescripcionProductoAEliminar;
-    private javax.swing.JLabel jlDescripcionResultado;
+    private javax.swing.JLabel jlDescripcionProductoResultado;
     private javax.swing.JLabel jlDireccion;
     private javax.swing.JLabel jlDireccionActual;
     private javax.swing.JLabel jlDireccionCine;
@@ -487,7 +661,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlNombreActual;
     private javax.swing.JLabel jlNombreCine;
     private javax.swing.JLabel jlNombreProductoAEliminar;
-    private javax.swing.JLabel jlNombreResultado;
+    private javax.swing.JLabel jlNombreProductoResultado;
     private javax.swing.JLabel jlPoblacion;
     private javax.swing.JLabel jlPoblacionActual;
     private javax.swing.JLabel jlPoblacionCine;
@@ -500,17 +674,17 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpFondoEleminar;
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
-    private javax.swing.JTextField jtfDescripcionNueva;
-    private javax.swing.JTextField jtfDescripcionProducto;
-    private javax.swing.JTextField jtfIDBuscador;
-    private javax.swing.JTextField jtfIDConsulta;
+    private javax.swing.JTextField jtfDescripcionNuevaProducto;
+    private javax.swing.JTextField jtfDescripcionProductoModificar;
+    private javax.swing.JTextField jtfIDBuscadorProducto;
+    private javax.swing.JTextField jtfIDConsultaPedidos;
     private javax.swing.JTextField jtfIDProductoEliminar;
-    private javax.swing.JTextField jtfNombreCine;
-    private javax.swing.JTextField jtfNombreNuevo;
-    private javax.swing.JTextField jtfPrecioProducto;
-    private javax.swing.JTextField jtfPrecioProductoNueva;
-    private javax.swing.JTextField jtfPrecioVentaNueva;
-    private javax.swing.JTextField jtfVentaProducto;
+    private javax.swing.JTextField jtfNombreNuevoProducto;
+    private javax.swing.JTextField jtfNombreProductoModificar;
+    private javax.swing.JTextField jtfPrecioNuevoProducto;
+    private javax.swing.JTextField jtfPrecioProductoModificar;
+    private javax.swing.JTextField jtfPrecioVentaNuevaProducto;
+    private javax.swing.JTextField jtfVentaProductoModificar;
     private javax.swing.JTabbedPane jtpAltaProducto;
     private javax.swing.JTabbedPane jtpConsulta;
     private javax.swing.JTabbedPane jtpEliminar;

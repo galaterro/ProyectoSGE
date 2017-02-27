@@ -73,7 +73,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlCifConsulta" min="-2" pref="113" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfIDConsulta" max="32767" attributes="0"/>
+                                  <Component id="jtfIDConsultaPedidos" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -92,7 +92,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCifConsulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfIDConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfIDConsultaPedidos" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="90" max="-2" attributes="0"/>
@@ -107,7 +107,7 @@
                 <Component class="javax.swing.JLabel" name="lbTitulo">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Ingrese el ID del producto o pulse Aceptar para b&#xfa;squeda completar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el ID del producto o pulse Aceptar para consultar todos los productos:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCifConsulta">
@@ -116,7 +116,7 @@
                     <Property name="text" type="java.lang.String" value="ID:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDConsulta">
+                <Component class="javax.swing.JTextField" name="jtfIDConsultaPedidos">
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
@@ -176,7 +176,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jbtModificar" min="-2" pref="84" max="-2" attributes="0"/>
+                          <Component id="jbtModificarProducto" min="-2" pref="84" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -190,25 +190,27 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtfPrecioProducto" alignment="0" min="-2" pref="510" max="-2" attributes="0"/>
-                                      <Component id="jtfDescripcionProducto" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
-                                      <Component id="jtfNombreCine" alignment="0" min="-2" pref="403" max="-2" attributes="0"/>
-                                      <Component id="jtfVentaProducto" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="jtfPrecioProductoModificar" alignment="0" min="-2" pref="510" max="-2" attributes="0"/>
+                                      <Component id="jtfVentaProductoModificar" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jtfDescripcionProductoModificar" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jtfNombreProductoModificar" alignment="0" pref="403" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlCIfBuscador" min="-2" pref="268" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfIDBuscador" min="-2" pref="136" max="-2" attributes="0"/>
+                                  <Component id="jtfIDBuscadorProducto" min="-2" pref="136" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jbtBuscarProductoModificar" min="-2" pref="91" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jlNombreResultado" min="-2" pref="239" max="-2" attributes="0"/>
+                                          <Component id="jlNombreProductoResultado" min="-2" pref="239" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jlDescripcionResultado" max="32767" attributes="0"/>
+                                          <Component id="jlDescripcionProductoResultado" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jlNombreActual" min="-2" pref="131" max="-2" attributes="0"/>
@@ -238,7 +240,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCIfBuscador" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jtfIDBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfIDBuscadorProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jbtBuscarProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -256,37 +258,37 @@
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jlPrecioVentaResultado" alignment="1" pref="21" max="32767" attributes="0"/>
                                       <Component id="jlPrecioProductoResultado" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jlDescripcionResultado" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jlDescripcionProductoResultado" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jlNombreResultado" max="32767" attributes="0"/>
+                                  <Component id="jlNombreProductoResultado" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlNombreCine" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfNombreCine" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfNombreProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtfDescripcionProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfDescripcionProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlCifCine" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlDireccionCine" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfPrecioProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfPrecioProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtfVentaProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfVentaProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlPoblacionCine" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          <Component id="jbtModificar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="14" max="32767" attributes="0"/>
+                          <Component id="jbtModificarProducto" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="22" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -317,20 +319,24 @@
                     <Property name="text" type="java.lang.String" value="Precio Venta:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDBuscador">
+                <Component class="javax.swing.JTextField" name="jtfIDBuscadorProducto">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfNombreCine">
+                <Component class="javax.swing.JTextField" name="jtfNombreProductoModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfDescripcionProducto">
+                <Component class="javax.swing.JTextField" name="jtfDescripcionProductoModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfPrecioProducto">
+                <Component class="javax.swing.JTextField" name="jtfPrecioProductoModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfVentaProducto">
+                <Component class="javax.swing.JTextField" name="jtfVentaProductoModificar">
                 </Component>
-                <Component class="javax.swing.JButton" name="jbtModificar">
+                <Component class="javax.swing.JButton" name="jbtModificarProducto">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Modificar"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtModificarProductoActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jbtBuscarProductoModificar">
                   <Properties>
@@ -360,9 +366,9 @@
                     <Property name="text" type="java.lang.String" value="Precio venta Actual:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlNombreResultado">
+                <Component class="javax.swing.JLabel" name="jlNombreProductoResultado">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlDescripcionResultado">
+                <Component class="javax.swing.JLabel" name="jlDescripcionProductoResultado">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlPrecioProductoResultado">
                 </Component>
@@ -401,12 +407,12 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jlNombre" min="-2" pref="222" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jtfNombreNuevo" max="32767" attributes="0"/>
+                                      <Component id="jtfNombreNuevoProducto" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jlCif" min="-2" pref="221" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jtfDescripcionNueva" min="-2" pref="296" max="-2" attributes="0"/>
+                                      <Component id="jtfDescripcionNuevaProducto" min="-2" pref="296" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
@@ -418,8 +424,8 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jtfPrecioProductoNueva" alignment="0" min="-2" pref="440" max="-2" attributes="0"/>
-                                          <Component id="jtfPrecioVentaNueva" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
+                                          <Component id="jtfPrecioNuevoProducto" alignment="0" min="-2" pref="440" max="-2" attributes="0"/>
+                                          <Component id="jtfPrecioVentaNuevaProducto" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -434,22 +440,22 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlNombre" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfNombreNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfNombreNuevoProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCif" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfDescripcionNueva" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfDescripcionNuevaProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlDireccion" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jtfPrecioProductoNueva" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfPrecioNuevoProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlPoblacion" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfPrecioVentaNueva" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfPrecioVentaNuevaProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           <Component id="jbAltaProducto" min="-2" max="-2" attributes="0"/>
@@ -464,28 +470,28 @@
                     <Property name="text" type="java.lang.String" value="Nombre:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfNombreNuevo">
+                <Component class="javax.swing.JTextField" name="jtfNombreNuevoProducto">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCif">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Descripci&#xf3;n:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfDescripcionNueva">
+                <Component class="javax.swing.JTextField" name="jtfDescripcionNuevaProducto">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccion">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Precio Producto:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfPrecioProductoNueva">
+                <Component class="javax.swing.JTextField" name="jtfPrecioNuevoProducto">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlPoblacion">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Precio Venta:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfPrecioVentaNueva">
+                <Component class="javax.swing.JTextField" name="jtfPrecioVentaNuevaProducto">
                 </Component>
                 <Component class="javax.swing.JButton" name="jbAltaProducto">
                   <Properties>
@@ -524,31 +530,38 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jbComfirmarEliminar" min="-2" pref="115" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jlCifCineEliminar" min="-2" pref="226" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jtfIDProductoEliminar" min="-2" pref="358" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jbAceptarCifEleiminar" min="-2" pref="126" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jlCifCineEliminar" min="-2" pref="302" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jtfIDProductoEliminar" min="-2" pref="282" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jbAceptarIdProductoEleiminar" min="-2" pref="126" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jlCineAEliminar" min="-2" pref="602" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jlCineAEliminar" alignment="0" min="-2" pref="602" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jlIDProductoAEliminar" min="-2" pref="105" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jlNombreProductoAEliminar" min="-2" pref="118" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jlPrecioProductoAEliminar" min="-2" pref="160" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jlPrecioVentaProductoAEliminar" min="-2" pref="133" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jlDescripcionProductoAEliminar" min="-2" pref="268" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jlIDProductoAEliminar" min="-2" pref="105" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jlNombreProductoAEliminar" min="-2" pref="118" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jlPrecioProductoAEliminar" min="-2" pref="160" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jlPrecioVentaProductoAEliminar" min="-2" pref="106" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                          <Component id="jlDescripcionProductoAEliminar" pref="163" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jbComfirmarEliminar" min="-2" pref="115" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="81" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -563,7 +576,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="jbAceptarCifEleiminar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jbAceptarIdProductoEleiminar" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -571,16 +584,14 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jlPrecioVentaProductoAEliminar" alignment="1" pref="25" max="32767" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jlIDProductoAEliminar" alignment="0" pref="25" max="32767" attributes="0"/>
-                                  <Component id="jlNombreProductoAEliminar" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jlPrecioProductoAEliminar" alignment="1" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jlIDProductoAEliminar" alignment="0" pref="25" max="32767" attributes="0"/>
+                              <Component id="jlNombreProductoAEliminar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jlPrecioProductoAEliminar" alignment="1" max="32767" attributes="0"/>
                               <Component id="jlDescripcionProductoAEliminar" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="jbComfirmarEliminar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="190" max="32767" attributes="0"/>
+                          <EmptySpace pref="193" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -599,12 +610,12 @@
                     <Property name="text" type="java.lang.String" value="Va a eliminar el siguiente producto:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jbAceptarCifEleiminar">
+                <Component class="javax.swing.JButton" name="jbAceptarIdProductoEleiminar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Aceptar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAceptarCifEleiminarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAceptarIdProductoEleiminarActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlIDProductoAEliminar">
@@ -618,6 +629,7 @@
                 <Component class="javax.swing.JButton" name="jbComfirmarEliminar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbComfirmarEliminarActionPerformed"/>
