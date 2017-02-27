@@ -502,7 +502,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         } else {
             try {
                 //reiniciarCamposConsulta();
-                //int id_buscador = Integer.parseInt(idBuscador);
+                //int id_buscador = Integer.parseInt(nombreBuscador);
                 sala = sp.buscarSala(idBuscador);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(sala.getId_sala(), 0, 0);
@@ -518,17 +518,17 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
     }
 
     public void cargarSalaModificar() {
-        String idBuscador = jtfnombreBuscador.getText();
+        String nombreBuscador = jtfnombreBuscador.getText();
         boolean existe = false;
         int id_cine = 0;
-        if (idBuscador.compareToIgnoreCase("") == 0) {
-            JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
+        if (nombreBuscador.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un nombre válido.");
         } else {
             try {
-                int id_busca = Integer.parseInt(idBuscador);
+                int id_busca = Integer.parseInt(nombreBuscador);
                 existe = sp.existeSala(id_busca);
                 if (existe) {
-                    sala = sp.buscarSala(idBuscador);
+                    sala = sp.buscarSala(nombreBuscador);
 
                     jlNombreResultado.setText(sala.getNombre_sala());
                     jlNumButacasResultado.setText(String.valueOf(sala.getNumero_butacas()));
@@ -571,7 +571,6 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
 
     public void cargarSalaEliminar() {
         String nombreSala = jtfNombreSalaEliminar.getText();
-        // int id_sala = Integer.parseInt(nombreSalaEliminar);
         if (nombreSala.compareToIgnoreCase("") == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese un nombre válido.");
         } else {
