@@ -23,50 +23,109 @@ public class ButacaPersistencia {
     private ArrayList<Butaca> alButaca = new ArrayList();
     
     public void ingresarButaca(Butaca butaca) throws SQLException, ClassNotFoundException {
-        gbd.conectarBBDD();
-
-        int filasAfectadas;
-
-        String sql = "insert into butaca values(" + butaca.getId_butaca() + ", " + butaca.getNumero_fila() + ", " + butaca.getId_sala() + ")";
+        String sql = "insert into butaca (numero_fila, numero_columna, id_sala) values (?,?,?)";
         c = gbd.conectarBBDD();
-        st = c.createStatement();
+        ps = c.prepareStatement(sql);
+        ps.setInt(1, butaca.getNumero_fila());
+        ps.setInt(2, butaca.getNumero_columna());
+        ps.setInt(3, butaca.getId_sala());
+        
+        ps.executeUpdate();
+        ps.close();
 
-        filasAfectadas = st.executeUpdate(sql);
-        System.out.println("Filas afectadas: " + filasAfectadas);
         gbd.cerrarConexionBBDD();
     }
 
     public ArrayList listarButacas() throws ClassNotFoundException, SQLException {
-        gbd.conectarBBDD();
-
-        String sql = "select * from  butaca";
+        String sql = "select * from butaca";
         c = gbd.conectarBBDD();
         st = c.createStatement();
-
         rs = st.executeQuery(sql);
-        System.out.println("Las butacas son: ");
         while (rs.next()) {
-            butaca = new Butaca(rs.getInt(1), rs.getInt(2), rs.getInt(3));
+            butaca = new Butaca(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4));
             alButaca.add(butaca);
         }
         gbd.cerrarConexionBBDD();
+        
         return alButaca;
     }
 
-    public Butaca buscarButaca(int numero_aux) throws ClassNotFoundException, SQLException {
-        gbd.conectarBBDD();
-
-        String sql = "select * from  butaca WHERE numero_fila = '" + numero_aux + "'";
+    public Butaca buscarButaca(int cif) throws ClassNotFoundException, SQLException {
+        String sql = "select * from butaca where id_butaca = " + cif;
         c = gbd.conectarBBDD();
         st = c.createStatement();
-
         rs = st.executeQuery(sql);
-        System.out.println("Las butacas son: ");
         while (rs.next()) {
-            butaca = new Butaca(rs.getInt(1), rs.getInt(2), rs.getInt(3));
-            
+            butaca = new Butaca(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4));  
         }
         gbd.cerrarConexionBBDD();
         return butaca;
+    }
+    
+     public void actualizarButaca(Butaca butaca, int id) throws SQLException, ClassNotFoundException {
+
+        String sql = "update butaca set numero_fila = ?, numero_columna = ?, id_sala = ? where id_butaca = " + id ;
+        c = gbd.conectarBBDD();
+        ps = c.prepareStatement(sql);
+
+        ps.setInt(1, butaca.getNumero_fila());
+        ps.setInt(2, butaca.getNumero_columna());
+        ps.setInt(3, butaca.getId_sala());
+        ps.executeUpdate();
+        ps.close();
+        gbd.cerrarConexionBBDD();
+    }
+    
+    public int consultarIdSala(String nombre) throws ClassNotFoundException, SQLException {
+
+        int id = 0;
+        String sql = "SELECT id_sala FROM sala WHERE lower(nombre_sala) = lower('" + nombre + "')";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        while (rs.next()) {
+            id = rs.getInt(1);
+        }
+        gbd.cerrarConexionBBDD();
+        return id;
+    }
+    
+    public String buscarNombreSala(int id) throws ClassNotFoundException, SQLException {
+        String nombre = null;
+        c = gbd.conectarBBDD();
+        String sql = "Select nombre_sala from sala where id_sala = " + id;
+        st =  c.createStatement();
+        rs = st.executeQuery(sql);
+        
+        while (rs.next()) {
+            nombre = rs.getString(1);
+        }
+        gbd.cerrarConexionBBDD();
+        return nombre;
+    }
+    
+     public void eliminarButaca(int id) throws ClassNotFoundException, SQLException {
+        c = gbd.conectarBBDD();
+        String sql = "delete from butaca where id_butaca = " + id ;
+        st = c.createStatement();
+        st.executeUpdate(sql);
+        gbd.cerrarConexionBBDD();
+    }
+    
+     /* Usado para analizar si existe una butaca con el id facilitado. */
+    public boolean existeButaca(int id) throws SQLException, ClassNotFoundException {
+        boolean encontrado = false;
+        String sql = "select * from butaca where id_butaca = ?";
+        c = gbd.conectarBBDD();
+        ps = (PreparedStatement) c.prepareStatement(sql);
+        ps.setInt(1, id);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            encontrado = true;
+        }
+        ps.close();
+        gbd.cerrarConexionBBDD();
+        return encontrado;
     }
 }

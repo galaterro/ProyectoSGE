@@ -5,18 +5,38 @@
  */
 package erp.cinesaztec.vista;
 
+import erp.cinesaztec.modelo.Butaca;
+import erp.cinesaztec.persistencia.ButacaPersistencia;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author allen
  */
 class JIFGestionButacas extends javax.swing.JInternalFrame {
 
+    private ButacaPersistencia bp = new ButacaPersistencia();
+    private ArrayList<Butaca> alButaca;
+    private Butaca butaca;
+    private Vector vButaca = new Vector();
+    private DefaultTableModel dtm = new DefaultTableModel(vButaca, 0);
     /**
      * Creates new form JIFGestionButacas
      */
     public JIFGestionButacas() {
         initComponents();
         this.setSize(990, 700);
+        vButaca.add("ID Butaca:");
+        vButaca.add("Número Fila:");
+        vButaca.add("Número Columna:");
+        vButaca.add("ID Sala:");
+        jtaConsulta.setModel(dtm);
+        this.setSize(990, 700);
+        this.setResizable(false);
         this.setTitle("Gestión Butacas");
     }
 
@@ -44,23 +64,29 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
         jlCifCine = new javax.swing.JLabel();
         jlCifBuscador = new javax.swing.JLabel();
         jtfIdBuscador = new javax.swing.JTextField();
-        jtfNumeroButaca = new javax.swing.JTextField();
-        jtfIDButaca = new javax.swing.JTextField();
+        jtfNumeroFilaButaca = new javax.swing.JTextField();
+        jtfNombreSalaButaca = new javax.swing.JTextField();
         jbtModificar = new javax.swing.JButton();
         jbtBuscarButacaModificar = new javax.swing.JButton();
         jlNombreActual = new javax.swing.JLabel();
         jlDireccionActual = new javax.swing.JLabel();
         jlNumeroFilaResultado = new javax.swing.JLabel();
-        jlIDSalaResultado = new javax.swing.JLabel();
+        jlNombreSalaResultado = new javax.swing.JLabel();
         jlPoblacionResultado = new javax.swing.JLabel();
         jlCodigoPostalResultado = new javax.swing.JLabel();
+        jlNombreActual1 = new javax.swing.JLabel();
+        jlNumeroColumnaResultado = new javax.swing.JLabel();
+        jlNombreCine1 = new javax.swing.JLabel();
+        jtfNumeroColumnaButaca = new javax.swing.JTextField();
         jtpAltaCine = new javax.swing.JTabbedPane();
         jpAltaCine = new javax.swing.JPanel();
         jlNombre = new javax.swing.JLabel();
         jtfNumeroFilaNuevo = new javax.swing.JTextField();
         jlCif = new javax.swing.JLabel();
-        jtfIDSalaNuevo = new javax.swing.JTextField();
+        jtfNombreSalaNuevo = new javax.swing.JTextField();
         jbAltaButaca = new javax.swing.JButton();
+        jlNombre1 = new javax.swing.JLabel();
+        jtfNumeroColumnaNuevo = new javax.swing.JTextField();
         jtpEliminar = new javax.swing.JTabbedPane();
         jpFondoEliminar = new javax.swing.JPanel();
         jlCifCineEliminar = new javax.swing.JLabel();
@@ -69,9 +95,9 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
         jbAceptarIDEliminar = new javax.swing.JButton();
         jlIDButacaAEliminar = new javax.swing.JLabel();
         jlNumeroFilaButacaAELiminar = new javax.swing.JLabel();
-        jlIDSalaButacaAEliminar = new javax.swing.JLabel();
-        jlCodPosCineAEliminar = new javax.swing.JLabel();
+        jlNombreSalaButacaAEliminar = new javax.swing.JLabel();
         jbConfirmarEliminar = new javax.swing.JButton();
+        jlNumeroColumnaButacaAELiminar = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -152,16 +178,16 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbAceptarConsulta)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         jtpConsulta.addTab("", jpConsulta);
 
         jtpFondo.addTab("Consulta", jtpConsulta);
 
-        jlNombreCine.setText("Número/ Fila:");
+        jlNombreCine.setText("Número  Fila:");
 
-        jlCifCine.setText("ID Sala:");
+        jlCifCine.setText("Nombre Sala:");
 
         jlCifBuscador.setText("Ingrese el ID de la butaca que desea modificar:");
 
@@ -180,9 +206,13 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
             }
         });
 
-        jlNombreActual.setText("Número/ Fila Actual:");
+        jlNombreActual.setText("Número Fila Actual:");
 
-        jlDireccionActual.setText("ID Sala Actual:");
+        jlDireccionActual.setText("Nombre Sala Actual:");
+
+        jlNombreActual1.setText("Número Columna Actual:");
+
+        jlNombreCine1.setText("Número  Columna:");
 
         javax.swing.GroupLayout jpModificarLayout = new javax.swing.GroupLayout(jpModificar);
         jpModificar.setLayout(jpModificarLayout);
@@ -195,32 +225,41 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
             .addGroup(jpModificarLayout.createSequentialGroup()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(126, 126, 126)
-                        .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlNumeroFilaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jpModificarLayout.createSequentialGroup()
+                                    .addComponent(jlCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jtfIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
+                                    .addComponent(jlNombreActual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jlNombreActual1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addComponent(jlNumeroFilaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlNumeroColumnaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jlIDSalaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jlPoblacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jlCodigoPostalResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addComponent(jlNombreSalaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlPoblacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jlCodigoPostalResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtBuscarButacaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlNombreCine1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(22, 22, 22)
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfIDButaca, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfNumeroButaca, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbtBuscarButacaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(110, Short.MAX_VALUE))
+                            .addComponent(jtfNumeroColumnaButaca, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfNombreSalaButaca, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfNumeroFilaButaca, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jpModificarLayout.setVerticalGroup(
             jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,37 +272,44 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlNombreActual1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jlCodigoPostalResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                             .addComponent(jlPoblacionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlIDSalaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jlNombreSalaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jlNumeroFilaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlNumeroColumnaResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlNumeroFilaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNumeroButaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNumeroFilaButaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfIDButaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlNombreCine1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNumeroColumnaButaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfNombreSalaButaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(120, 120, 120)
+                .addGap(94, 94, 94)
                 .addComponent(jbtModificar)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jtpModificar.addTab("", jpModificar);
 
         jtpFondo.addTab("Modificar", jtpModificar);
 
-        jlNombre.setText("Número/ Fila:");
+        jlNombre.setText("Número  Fila:");
 
-        jlCif.setText("ID Sala:");
+        jlCif.setText("Nombre Sala:");
 
         jbAltaButaca.setText("Aceptar");
         jbAltaButaca.addActionListener(new java.awt.event.ActionListener() {
@@ -272,25 +318,31 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
             }
         });
 
+        jlNombre1.setText("Número  Columna:");
+
         javax.swing.GroupLayout jpAltaCineLayout = new javax.swing.GroupLayout(jpAltaCine);
         jpAltaCine.setLayout(jpAltaCineLayout);
         jpAltaCineLayout.setHorizontalGroup(
             jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAltaCineLayout.createSequentialGroup()
-                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
-                        .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfNumeroFilaNuevo))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
-                        .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfIDSalaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(412, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAltaCineLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jbAltaButaca)
-                .addGap(271, 271, 271))
+                .addGap(269, 269, 269))
+            .addGroup(jpAltaCineLayout.createSequentialGroup()
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpAltaCineLayout.createSequentialGroup()
+                        .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfNumeroFilaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpAltaCineLayout.createSequentialGroup()
+                        .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfNombreSalaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfNumeroColumnaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(411, Short.MAX_VALUE))
         );
         jpAltaCineLayout.setVerticalGroup(
             jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,11 +353,15 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
                     .addComponent(jtfNumeroFilaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfIDSalaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNumeroColumnaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfNombreSalaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
                 .addComponent(jbAltaButaca)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         jtpAltaCine.addTab("", jpAltaCine);
@@ -351,10 +407,10 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jlNumeroFilaButacaAELiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jlIDSalaButacaAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(282, 282, 282)
-                        .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addComponent(jlNumeroColumnaButacaAELiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlNombreSalaButacaAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(191, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEliminarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbConfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,19 +429,16 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
                         .addComponent(jbAceptarIDEliminar)))
                 .addGap(18, 18, 18)
                 .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlIDButacaAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                            .addComponent(jlNumeroFilaButacaAELiminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlIDSalaButacaAEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEliminarLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jlIDButacaAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                        .addComponent(jlNumeroFilaButacaAELiminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlNumeroColumnaButacaAELiminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jlNombreSalaButacaAEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jbConfirmarEliminar)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         jtpEliminar.addTab("", jpFondoEliminar);
@@ -409,7 +462,7 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
-        
+        consultaButaca();
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
@@ -421,29 +474,180 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtpConsultaFocusLost
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
-        
+        modificarButaca();
     }//GEN-LAST:event_jbtModificarActionPerformed
 
     private void jbtBuscarButacaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarButacaModificarActionPerformed
-        
+        cargarButacasModificar();
     }//GEN-LAST:event_jbtBuscarButacaModificarActionPerformed
 
     private void jbAltaButacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaButacaActionPerformed
-        
+        insertarButaca();
     }//GEN-LAST:event_jbAltaButacaActionPerformed
 
     private void jbAceptarIDEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarIDEliminarActionPerformed
-        
+        cargarButacaEliminar();
     }//GEN-LAST:event_jbAceptarIDEliminarActionPerformed
 
     private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
-        
+        eliminarCine();
     }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
 
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
 
     }//GEN-LAST:event_jtpFondoStateChanged
 
+     public void consultaButaca() {
+        String idBuscador = jtfIdConsulta.getText();
+
+        if (idBuscador.equals("")) {
+            /* Búsqueda general de proveedores. */
+            try {
+                //reiniciarCamposConsulta();
+                alButaca = bp.listarButacas();
+                dtm.setRowCount(alButaca.size());
+                for (int i = 0; i < alButaca.size(); i++) {
+                    jtaConsulta.setValueAt(alButaca.get(i).getId_butaca(), i, 0);
+                    jtaConsulta.setValueAt(alButaca.get(i).getNumero_fila(), i, 1);
+                    jtaConsulta.setValueAt(alButaca.get(i).getNumero_columna(), i, 2);
+                    jtaConsulta.setValueAt(alButaca.get(i).getId_sala(), i, 3);
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar ninguna butaca.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        } else {
+            /* Búsqueda específica de proveedor por CIF. */
+            try {
+                //reiniciarCamposConsulta();
+                int idBuscar = Integer.parseInt(idBuscador);
+                butaca = bp.buscarButaca(idBuscar);
+                dtm.setRowCount(1);
+                jtaConsulta.setValueAt(butaca.getId_butaca(), 0, 0);
+                jtaConsulta.setValueAt(butaca.getNumero_fila(), 0, 1);
+                jtaConsulta.setValueAt(butaca.getNumero_columna(), 0, 2);
+                jtaConsulta.setValueAt(butaca.getId_sala(), 0, 3);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
+    }
+     
+     public void insertarButaca(){
+        int filas = Integer.parseInt(jtfNumeroFilaNuevo.getText());
+        int columna = Integer.parseInt(jtfNumeroColumnaNuevo.getText());
+        String nombreSala = jtfNombreSalaNuevo.getText();
+        try {
+            int idSala = bp.consultarIdSala(nombreSala);
+            butaca = new Butaca(filas, columna, idSala);
+            bp.ingresarButaca(butaca);
+            JOptionPane.showMessageDialog(null, "Butaca ingresado con éxito.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo butaca.\nPruebe de nuevo." + ex);
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        }
+    }
+     
+     public void cargarButacasModificar() {
+        String idBuscador = jtfIdBuscador.getText();
+        boolean existe = false;
+        if (idBuscador.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un CIF válido.");
+        } else {
+            try {
+                int idButaca = Integer.parseInt(idBuscador);
+                existe = bp.existeButaca(idButaca);
+                if (existe) {
+                    butaca = bp.buscarButaca(idButaca);
+                    Integer fila = butaca.getNumero_fila();
+                    Integer columna = butaca.getNumero_columna();
+                    Integer idSala = butaca.getId_sala();
+                    jlNumeroFilaResultado.setText(fila.toString());
+                    jlNumeroColumnaResultado.setText(columna.toString());
+                    String nombreSala = bp.buscarNombreSala(idSala);
+                    jlNombreSalaResultado.setText(nombreSala);
+                    
+                    jtfNumeroFilaButaca.setText(fila.toString());
+                    jtfNumeroColumnaButaca.setText(columna.toString());
+                    jtfNombreSalaButaca.setText(nombreSala);
+                    jbtModificar.setEnabled(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existe la butaca con el ID seleccionado.\nPruebe de nuevo." );
+                    jtfIdBuscador.setText("");
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la butaca solicitado.\nPruebe de nuevo." +ex);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." +ex);
+            }
+        }
+    }
+     
+     public void modificarButaca() {
+        try {
+            int idButaca = Integer.parseInt(jtfIdBuscador.getText());
+            //Falta coger el cine
+            int fila = Integer.parseInt(jtfNumeroFilaButaca.getText());
+            int columna = Integer.parseInt(jtfNumeroColumnaButaca.getText());
+            String nombreSala = jtfNombreSalaButaca.getText();
+            int idSala = bp.consultarIdSala(nombreSala);
+            butaca = new Butaca(fila, columna, idSala);
+            bp.actualizarButaca(butaca, idButaca);
+            JOptionPane.showMessageDialog(null, "Butaca actualizada con éxito.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." + ex);
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar la butaca solicitado.\nPruebe de nuevo.");
+        }
+    }
+     
+     public void cargarButacaEliminar() {
+        String idBusca = jtfIDButacaEliminar.getText();
+
+        if (idBusca.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
+        } else {
+            try {
+                int idButaca = Integer.parseInt(idBusca);
+                butaca = bp.buscarButaca(idButaca);
+                Integer numeroFila = butaca.getNumero_fila();
+                Integer numeroColumna = butaca.getNumero_columna();
+                Integer idSala = butaca.getId_sala();
+                jlIDButacaAEliminar.setText("ID: " + idButaca);
+                jlNumeroFilaButacaAELiminar.setText("Número Filas: " + numeroFila);
+                jlNumeroColumnaButacaAELiminar.setText("Número Columnas: " + numeroColumna);
+                String nombreSala = bp.buscarNombreSala(idSala);
+                jlNombreSalaButacaAEliminar.setText("Nombre Sala: " + nombreSala);
+                jbConfirmarEliminar.setEnabled(true);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
+    }
+
+    /**
+     * Método usado para eliminar un cine.
+     */
+    public void eliminarCine() {
+        String idEliminar = jtfIDButacaEliminar.getText();
+        try {
+            int id = Integer.parseInt(idEliminar);
+            bp.eliminarButaca(id);
+            JOptionPane.showMessageDialog(null, "Butaca eliminada con éxito.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar la butaca solicitada.\nPruebe de nuevo.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
@@ -459,15 +663,19 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCifCineEliminar;
     private javax.swing.JLabel jlCifConsulta;
     private javax.swing.JLabel jlCineAEliminar;
-    private javax.swing.JLabel jlCodPosCineAEliminar;
     private javax.swing.JLabel jlCodigoPostalResultado;
     private javax.swing.JLabel jlDireccionActual;
     private javax.swing.JLabel jlIDButacaAEliminar;
-    private javax.swing.JLabel jlIDSalaButacaAEliminar;
-    private javax.swing.JLabel jlIDSalaResultado;
     private javax.swing.JLabel jlNombre;
+    private javax.swing.JLabel jlNombre1;
     private javax.swing.JLabel jlNombreActual;
+    private javax.swing.JLabel jlNombreActual1;
     private javax.swing.JLabel jlNombreCine;
+    private javax.swing.JLabel jlNombreCine1;
+    private javax.swing.JLabel jlNombreSalaButacaAEliminar;
+    private javax.swing.JLabel jlNombreSalaResultado;
+    private javax.swing.JLabel jlNumeroColumnaButacaAELiminar;
+    private javax.swing.JLabel jlNumeroColumnaResultado;
     private javax.swing.JLabel jlNumeroFilaButacaAELiminar;
     private javax.swing.JLabel jlNumeroFilaResultado;
     private javax.swing.JLabel jlPoblacionResultado;
@@ -476,12 +684,14 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpFondoEliminar;
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
-    private javax.swing.JTextField jtfIDButaca;
     private javax.swing.JTextField jtfIDButacaEliminar;
-    private javax.swing.JTextField jtfIDSalaNuevo;
     private javax.swing.JTextField jtfIdBuscador;
     private javax.swing.JTextField jtfIdConsulta;
-    private javax.swing.JTextField jtfNumeroButaca;
+    private javax.swing.JTextField jtfNombreSalaButaca;
+    private javax.swing.JTextField jtfNombreSalaNuevo;
+    private javax.swing.JTextField jtfNumeroColumnaButaca;
+    private javax.swing.JTextField jtfNumeroColumnaNuevo;
+    private javax.swing.JTextField jtfNumeroFilaButaca;
     private javax.swing.JTextField jtfNumeroFilaNuevo;
     private javax.swing.JTabbedPane jtpAltaCine;
     private javax.swing.JTabbedPane jtpConsulta;

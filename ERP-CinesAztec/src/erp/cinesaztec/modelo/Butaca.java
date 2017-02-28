@@ -9,21 +9,28 @@ public class Butaca {
     
     private int id_butaca;
     private int numero_fila;
+    private int numero_columna;
     private int id_sala;
     
     /* Esta clase tiene 2 constructores distintos: uno con id_sala y otro sin él
     por ser clave foránea, y así poder manejarlo dependiendo de la necesidad. */
-    
-    public Butaca(int id_butaca, int numero_fila) {
-        this.id_butaca = id_butaca;
-        this.numero_fila = numero_fila;
-    }
 
-    public Butaca(int id_butaca, int numero_fila, int id_sala) {
+    public Butaca(int id_butaca, int numero_fila, int numero_columna, int id_sala) {
         this.id_butaca = id_butaca;
         this.numero_fila = numero_fila;
+        this.numero_columna = numero_columna;
         this.id_sala = id_sala;
     }
+
+    public Butaca(int numero_fila, int numero_columna, int id_sala) {
+        this.numero_fila = numero_fila;
+        this.numero_columna = numero_columna;
+        this.id_sala = id_sala;
+    }
+    
+    
+    
+    
     
     /* Getters y Setters. */
     
@@ -50,4 +57,13 @@ public class Butaca {
     public void setId_sala(int id_sala) {
         this.id_sala = id_sala;
     }
+
+    public int getNumero_columna() {
+        return numero_columna;
+    }
+
+    public void setNumero_columna(int numero_columna) {
+        this.numero_columna = numero_columna;
+    }
+    
 }
