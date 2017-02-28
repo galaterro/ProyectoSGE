@@ -72,23 +72,12 @@ public class ProveedorPersistencia {
         gbd.cerrarConexionBBDD();
         return proveedor;
     }
-    
-     public int buscarIdCinePorNombre(String nombre) throws ClassNotFoundException, SQLException{
-        int id_Cine = 0;
-        String sql = "SELECT id_cine FROM cine WHERE lower(nombre_cine) = lower('" + nombre + "')";
-        c = gbd.conectarBBDD();
-        st = c.createStatement();
-        rs = st.executeQuery(sql);
-        rs.next();
-        id_Cine = rs.getInt(1);
-        gbd.cerrarConexionBBDD();
-        return id_Cine;
-    }
+
      
       /* Usado para modificar los datos de un proveedor existente. */
-    public void actualizarCine(Proveedor proveedor, String cif) throws SQLException, ClassNotFoundException {
+    public void actualizarProveedor(Proveedor proveedor, String cif) throws SQLException, ClassNotFoundException {
 
-        String sql = "update cine set cif_proveedor = ?, nombre_proveedor= ?, apellidos_proveedor= ?, telefono_proveedor = ?, poblacion_proveedor = ?, cp_proveedor = ?, id_cine = ? where cif_cine = '" + cif + "'";
+        String sql = "update proveedor set cif_proveedor = ?, nombre_proveedor= ?, apellidos_proveedor= ?, telefono_proveedor = ?, poblacion_proveedor = ?, cp_proveedor = ?, id_cine = ? where cif_proveedor= '" + cif + "'";
         c = gbd.conectarBBDD();
         ps = c.prepareStatement(sql);
 
@@ -97,8 +86,8 @@ public class ProveedorPersistencia {
         ps.setString(3, proveedor.getApellidos_proveedor());
         ps.setInt(4, proveedor.getTelefono_proveedor());
         ps.setString(5, proveedor.getPob_proveedor());
-        ps.setInt(5, proveedor.getCodPos_proveedor());
-        ps.setInt(5, proveedor.getId_cine());
+        ps.setInt(6, proveedor.getCodPos_proveedor());
+        ps.setInt(7, proveedor.getId_cine());
         ps.executeUpdate();
         ps.close();
         gbd.cerrarConexionBBDD();
@@ -118,5 +107,41 @@ public class ProveedorPersistencia {
         ps.close();
         gbd.cerrarConexionBBDD();
         return encontrado;
+    }
+    
+    public String buscarNombreCine(int id) throws ClassNotFoundException, SQLException {
+        String nombre = null;
+        c = gbd.conectarBBDD();
+        String sql = "Select nombre_cine from cine where id_cine = " + id;
+        st =  c.createStatement();
+        rs = st.executeQuery(sql);
+        
+        while (rs.next()) {
+            nombre = rs.getString(1);
+        }
+        gbd.cerrarConexionBBDD();
+        return nombre;
+    }
+    
+     public int consultarIdCine(String nombre) throws ClassNotFoundException, SQLException {
+
+        int id = 0;
+        String sql = "SELECT id_cine FROM cine WHERE lower(nombre_cine) = lower('" + nombre + "')";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        while (rs.next()) {
+            id = rs.getInt(1);
+        }
+        gbd.cerrarConexionBBDD();
+        return id;
+    }
+     
+    public void eliminarProveedor(String cif) throws ClassNotFoundException, SQLException {
+        c = gbd.conectarBBDD();
+        String sql = "delete from proveedor where cif_proveedor = '" + cif + "'";
+        st = c.createStatement();
+        st.executeUpdate(sql);
+        gbd.cerrarConexionBBDD();
     }
 }

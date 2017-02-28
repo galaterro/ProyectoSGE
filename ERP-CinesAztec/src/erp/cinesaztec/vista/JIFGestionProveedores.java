@@ -116,12 +116,15 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
         jtfCifProveedorEliminar = new javax.swing.JTextField();
         jlCineAEliminar = new javax.swing.JLabel();
         jbAceptarCifEleiminar = new javax.swing.JButton();
+        jlIdProveedorAEliminar = new javax.swing.JLabel();
         jlNombreProveedorAEliminar = new javax.swing.JLabel();
-        jlApellidoProveedorAELiminar = new javax.swing.JLabel();
+        jlTelefonoProveedorEliminar = new javax.swing.JLabel();
         jlPobProveedorAEliminar = new javax.swing.JLabel();
-        jlCodPosProveedorAEliminar = new javax.swing.JLabel();
         jbComfirmarEliminar = new javax.swing.JButton();
-        jlTelefonoProveedorAELiminar1 = new javax.swing.JLabel();
+        jlApellidoProveedorEliminar = new javax.swing.JLabel();
+        jlCifProveedorEliminar = new javax.swing.JLabel();
+        jlCodPosProveedorEliminar = new javax.swing.JLabel();
+        jlNombreCineEliminar = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -185,7 +188,7 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbAceptarConsulta)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         jtpConsulta.addTab("", jpConsulta);
@@ -205,6 +208,11 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
         jlCodigoPostal.setText("Código Postal:");
 
         jbtModificar.setText("Modificar");
+        jbtModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtModificarActionPerformed(evt);
+            }
+        });
 
         jbtBuscarProveedorModificar.setText("Buscar");
         jbtBuscarProveedorModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -233,10 +241,6 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
         jpModificar.setLayout(jpModificarLayout);
         jpModificarLayout.setHorizontalGroup(
             jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(202, 202, 202))
             .addGroup(jpModificarLayout.createSequentialGroup()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jlNombreResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -274,12 +278,12 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
                         .addGroup(jpModificarLayout.createSequentialGroup()
                             .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jlCifCine1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(75, 75, 75)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
                             .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfTelefonoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jtfCIFProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfNombreCineModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jtfNombreCineModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfTelefonoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jpModificarLayout.createSequentialGroup()
                             .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jlCodigoPostal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -288,15 +292,19 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
                                 .addComponent(jlDireccionCine, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(18, 18, 18)
                             .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(22, 22, 22))
                                 .addComponent(jtfPoblacionProveedor)
                                 .addGroup(jpModificarLayout.createSequentialGroup()
                                     .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtfCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jtfApellidosProveedor, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jtfNombreProveedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)))
+                                            .addComponent(jtfNombreProveedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
+                                        .addComponent(jtfCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(0, 0, Short.MAX_VALUE)))))
-                    .addComponent(jLabel2))
+                    .addComponent(jlCifCine1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(180, Short.MAX_VALUE))
         );
         jpModificarLayout.setVerticalGroup(
@@ -332,14 +340,14 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
                     .addComponent(jlDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfApellidosProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtfCIFProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfNombreCineModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCifCine1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfTelefonoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -347,13 +355,17 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfPoblacionProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbtModificar)
-                .addGap(13, 13, 13))
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtModificar)
+                        .addGap(13, 13, 13))
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(35, Short.MAX_VALUE))))
         );
 
         jtpModificar.addTab("", jpModificar);
@@ -452,7 +464,7 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jlNombreCineNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jtfNombreCineNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jbAltaCine)
                 .addGap(66, 66, 66))
         );
@@ -498,20 +510,27 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
                             .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(191, Short.MAX_VALUE))
                     .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                        .addComponent(jlNombreProveedorAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jlCifProveedorEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlIdProveedorAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(jlApellidoProveedorAELiminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlTelefonoProveedorAELiminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlPobProveedorAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlCodPosProveedorAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jbComfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jlCodPosProveedorEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                    .addComponent(jlNombreProveedorAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jlNombreCineEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlApellidoProveedorEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlTelefonoProveedorEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlPobProveedorAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(118, 118, 118))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEleminarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbComfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197))
         );
         jpFondoEleminarLayout.setVerticalGroup(
             jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -527,15 +546,20 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlCodPosProveedorAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jlNombreProveedorAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(jlPobProveedorAEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jlTelefonoProveedorAELiminar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jlApellidoProveedorAELiminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlPobProveedorAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(jlTelefonoProveedorEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlApellidoProveedorEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlNombreProveedorAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlIdProveedorAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
+                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlCodPosProveedorEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCifProveedorEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlNombreCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61)
                 .addComponent(jbComfirmarEliminar)
-                .addGap(251, 251, 251))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         jtpEliminar.addTab("", jpFondoEleminar);
@@ -567,16 +591,20 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAltaCineActionPerformed
 
     private void jbAceptarCifEleiminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEleiminarActionPerformed
-
+        cargarProveedorEliminar();
     }//GEN-LAST:event_jbAceptarCifEleiminarActionPerformed
 
     private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
-
+        eliminarCine();
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
 
     private void jbtBuscarProveedorModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarProveedorModificarActionPerformed
-
+        cargarProveedorModificar();
     }//GEN-LAST:event_jbtBuscarProveedorModificarActionPerformed
+
+    private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
+        modificarProveedor();
+    }//GEN-LAST:event_jbtModificarActionPerformed
     public void consultaProveedor() {
         String cifBuscador = jtfCifConsulta.getText();
 
@@ -633,13 +661,14 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
         int codPosPro = Integer.parseInt(jtfCodPosNuevo.getText());
         String nombreCine = jtfNombreCineNuevo.getText();
         try {
-            int id_cine = pp.buscarIdCinePorNombre(nombreCine);
-            
+            int id_cine = pp.consultarIdCine(nombreCine);
             proveedor = new Proveedor(cifProveedor, nombreProveedor, apellidoProveedor, telefonoProveedor, pobProveedor, codPosPro, id_cine);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(JIFGestionProveedores.class.getName()).log(Level.SEVERE, null, ex);
+            pp.ingresarProveedor(proveedor);
+            JOptionPane.showMessageDialog(null, "Proveedor ingresado con éxito.");
         } catch (SQLException ex) {
-            Logger.getLogger(JIFGestionProveedores.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo proveedor.\nPruebe de nuevo.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
         }
     }
     
@@ -661,22 +690,82 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
                     Integer codPos = proveedor.getCodPos_proveedor();
                     jlCodigoPostalResultado.setText(codPos.toString());
                     jlPoblacionResultado.setText(proveedor.getPob_proveedor());
-                    
-                    //************* Falta buscar el id del cine por el nombre
-                    jlNombreCineResultadoModificar.setText(proveedor.getCif_proveedor());
+                    int idCine = proveedor.getId_cine();
+                    String nombreCine = pp.buscarNombreCine(idCine);
+                    jlNombreCineResultadoModificar.setText(nombreCine);
                     
 
                     jtfNombreProveedor.setText(jlNombreResultado.getText());
                     jtfApellidosProveedor.setText(jlApellidosResultado.getText());
                     jtfCIFProveedor.setText(jtfCifBuscador.getText());
+                    jtfNombreCineModificar.setText(jlNombreCineResultadoModificar.getText());
                     jtfTelefonoProveedor.setText(jlTelefonoResultado.getText());
                     jtfPoblacionProveedor.setText(jlPoblacionResultado.getText());
                     jtfCodigoPostal.setText(jlCodigoPostalResultado.getText());
                     jbtModificar.setEnabled(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "No existe el cine con el CIF seleccionado.\nPruebe de nuevo.");
+                    JOptionPane.showMessageDialog(null, "No existe el cine con el CIF seleccionado.\nPruebe de nuevo." );
                     jtfCifBuscador.setText("");
                 }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo." +ex);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." +ex);
+            }
+        }
+    }
+
+    /**
+     * Método usado para modificar un proveedor.
+     */
+    public void modificarProveedor() {
+        try {
+            //Falta coger el cine
+            String cif = jtfCifBuscador.getText();
+            String nombreNuevo = jtfNombreProveedor.getText();
+            String apellidos = jtfApellidosProveedor.getText();
+            String cifNuevo = jtfCIFProveedor.getText();
+            String telefono = jtfTelefonoProveedor.getText();
+            String nombreCine = jtfNombreCineModificar.getText();
+            int idCine = pp.consultarIdCine(nombreCine);
+            int tlf = Integer.parseInt(telefono);
+            String poblacion = jtfPoblacionProveedor.getText();
+            String codPos = jtfCodigoPostal.getText();
+            int codigoPostal = Integer.parseInt(codPos);
+            proveedor = new Proveedor(cifNuevo, nombreNuevo, apellidos, tlf, poblacion, codigoPostal, idCine);
+            pp.actualizarProveedor(proveedor, cif);
+            JOptionPane.showMessageDialog(null, "Proveedor actualizado con éxito.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." + ex);
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el cine solicitado.\nPruebe de nuevo.");
+        }
+    }
+    
+     public void cargarProveedorEliminar() {
+        String cifBusca = jtfCifProveedorEliminar.getText();
+
+        if (cifBusca.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un CIF válido.");
+        } else {
+            try {
+                proveedor = pp.buscarProveedor(cifBusca);
+                Integer id = proveedor.getId_proveedor();
+                String idProveedor = id.toString();
+                jlIdProveedorAEliminar.setText("ID: " + idProveedor);
+                jlNombreProveedorAEliminar.setText("Nombre: " + proveedor.getNombre_proveedor());
+                jlApellidoProveedorEliminar.setText("Apellidos: " + proveedor.getApellidos_proveedor());
+                Integer telefonoProveedor = proveedor.getTelefono_proveedor();
+                String telefono = telefonoProveedor.toString();
+                jlTelefonoProveedorEliminar.setText("Telefono: " + telefono);
+                jlPobProveedorAEliminar.setText("Poblacion: " + proveedor.getPob_proveedor());
+                Integer codPos = proveedor.getCodPos_proveedor();
+                String codPostal = codPos.toString();
+                jlCodPosProveedorEliminar.setText("Código postal: " + codPostal);
+                jlCifProveedorEliminar.setText("CIF: " + proveedor.getCif_proveedor());
+                String nombreCine = pp.buscarNombreCine(proveedor.getId_cine());
+                jlNombreCineEliminar.setText("Nombre cine: " + nombreCine);
+                jbAceptarCifEleiminar.setEnabled(true);
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
             } catch (SQLException ex) {
@@ -686,27 +775,18 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
     }
 
     /**
-     * Método usado para modificar un cine.
+     * Método usado para eliminar un cine.
      */
-    public void modificarCine() {
+    public void eliminarCine() {
+        String cifEliminar = jtfCifProveedorEliminar.getText();
         try {
-            //Falta coger el cine
-            String cif = jtfCifBuscador.getText();
-            String nombreNuevo = jtfNombreProveedor.getText();
-            String apellidos = jtfApellidosProveedor.getText();
-            String cifNuevo = jtfCIFProveedor.getText();
-            String telefono = jtfTelefonoProveedor.getText();
-            int tlf = Integer.parseInt(telefono);
-            String poblacion = jtfPoblacionProveedor.getText();
-            String codPos = jtfCodigoPostal.getText();
-            int codigoPostal = Integer.parseInt(codPos);
-            proveedor = new Proveedor(cifNuevo, nombreNuevo, apellidos, tlf, poblacion, codigoPostal);
-            cp.actualizarCine(cine, cif);
-            JOptionPane.showMessageDialog(null, "Cine actualizado con éxito.");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            pp.eliminarProveedor(cifEliminar);
+            JOptionPane.showMessageDialog(null, "Proveedor eliminado con éxito.");
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el cine solicitado.\nPruebe de nuevo.");
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el cine solicitado.\nPruebe de nuevo.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
     }
     
@@ -721,7 +801,7 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbComfirmarEliminar;
     private javax.swing.JButton jbtBuscarProveedorModificar;
     private javax.swing.JButton jbtModificar;
-    private javax.swing.JLabel jlApellidoProveedorAELiminar;
+    private javax.swing.JLabel jlApellidoProveedorEliminar;
     private javax.swing.JLabel jlApellidosResultado;
     private javax.swing.JLabel jlCIfBuscador;
     private javax.swing.JLabel jlCif;
@@ -730,8 +810,9 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCifCine1;
     private javax.swing.JLabel jlCifCineEliminar;
     private javax.swing.JLabel jlCifConsulta;
+    private javax.swing.JLabel jlCifProveedorEliminar;
     private javax.swing.JLabel jlCineAEliminar;
-    private javax.swing.JLabel jlCodPosProveedorAEliminar;
+    private javax.swing.JLabel jlCodPosProveedorEliminar;
     private javax.swing.JLabel jlCodPostal;
     private javax.swing.JLabel jlCodigoPostal;
     private javax.swing.JLabel jlCodigoPostalActual;
@@ -740,9 +821,11 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlDireccionActual;
     private javax.swing.JLabel jlDireccionActual1;
     private javax.swing.JLabel jlDireccionCine;
+    private javax.swing.JLabel jlIdProveedorAEliminar;
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlNombreActual;
     private javax.swing.JLabel jlNombreCine;
+    private javax.swing.JLabel jlNombreCineEliminar;
     private javax.swing.JLabel jlNombreCineNuevo;
     private javax.swing.JLabel jlNombreCineResultadoModificar;
     private javax.swing.JLabel jlNombreProveedorAEliminar;
@@ -752,7 +835,7 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlPoblacionActual;
     private javax.swing.JLabel jlPoblacionCine;
     private javax.swing.JLabel jlPoblacionResultado;
-    private javax.swing.JLabel jlTelefonoProveedorAELiminar1;
+    private javax.swing.JLabel jlTelefonoProveedorEliminar;
     private javax.swing.JLabel jlTelefonoResultado;
     private javax.swing.JPanel jpAltaCine;
     private javax.swing.JPanel jpConsulta;
