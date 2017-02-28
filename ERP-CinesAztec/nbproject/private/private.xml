@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/allen/OneDrive/Documentos/NetBeansProjects/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/vista/JIFGestionPeliculas.java</file>
-            <file>file:/C:/Users/allen/OneDrive/Documentos/NetBeansProjects/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/vista/JIFGestionCines.java</file>
-            <file>file:/C:/Users/allen/OneDrive/Documentos/NetBeansProjects/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/persistencia/PeliculaPersistencia.java</file>
-            <file>file:/C:/Users/allen/OneDrive/Documentos/NetBeansProjects/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/modelo/Pelicula.java</file>
+            <file>file:/C:/Users/bote/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/vista/JIFGestionPeliculas.java</file>
+            <file>file:/C:/Users/bote/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/persistencia/SalaPersistencia.java</file>
+            <file>file:/C:/Users/bote/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/vista/JIFGestionSesiones.java</file>
+            <file>file:/C:/Users/bote/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/vista/JIFGestionSalas.java</file>
+            <file>file:/C:/Users/bote/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/modelo/Sesion.java</file>
+            <file>file:/C:/Users/bote/Documents/GitHub/ProyectoSGE/ERP-CinesAztec/src/erp/cinesaztec/persistencia/SesionPersistencia.java</file>
         </group>
     </open-files>
 </project-private>

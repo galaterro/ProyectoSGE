@@ -191,7 +191,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jlTelefonoActual" max="32767" attributes="0"/>
+                              <Component id="jlTelefonoResultado" max="32767" attributes="0"/>
                               <Component id="jlDireccionActual1" pref="157" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -204,50 +204,59 @@
                               <Component id="jlCodigoPostalActual" pref="140" max="32767" attributes="0"/>
                               <Component id="jlCodigoPostalResultado" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlNombreCineResultadoModificar" min="-2" pref="109" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlCIfBuscador" min="-2" pref="268" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfCifBuscador" min="-2" pref="136" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jbtBuscarProveedorModificar" min="-2" pref="91" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jlCifCine" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                                      <Component id="jlCifCine1" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jlCIfBuscador" min="-2" pref="268" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jtfCifBuscador" min="-2" pref="136" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jbtBuscarProveedorModificar" min="-2" pref="91" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtfTelefonoProveedor" min="-2" pref="510" max="-2" attributes="0"/>
-                                      <Component id="jtfCIFProveedor" min="-2" pref="186" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jlCifCine" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                                          <Component id="jlCifCine1" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jtfTelefonoProveedor" min="-2" pref="510" max="-2" attributes="0"/>
+                                          <Component id="jtfCIFProveedor" min="-2" pref="186" max="-2" attributes="0"/>
+                                          <Component id="jtfNombreCineModificar" alignment="0" min="-2" pref="403" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jlCodigoPostal" max="32767" attributes="0"/>
-                                      <Component id="jlPoblacionCine" max="32767" attributes="0"/>
-                                      <Component id="jlNombreCine" alignment="1" pref="239" max="32767" attributes="0"/>
-                                      <Component id="jlDireccionCine" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtfPoblacionProveedor" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jtfCodigoPostal" min="-2" pref="110" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jtfApellidosProveedor" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jtfNombreProveedor" alignment="0" pref="403" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jlCodigoPostal" max="32767" attributes="0"/>
+                                          <Component id="jlPoblacionCine" max="32767" attributes="0"/>
+                                          <Component id="jlNombreCine" alignment="1" pref="239" max="32767" attributes="0"/>
+                                          <Component id="jlDireccionCine" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jtfPoblacionProveedor" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jtfCodigoPostal" min="-2" pref="110" max="-2" attributes="0"/>
+                                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="jtfApellidosProveedor" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jtfNombreProveedor" alignment="0" pref="403" max="32767" attributes="0"/>
+                                                  </Group>
                                               </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
+                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="180" max="32767" attributes="0"/>
                       </Group>
@@ -269,14 +278,16 @@
                               <Component id="jlPoblacionActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="jlCodigoPostalActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="jlDireccionActual1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jlNombreCineResultadoModificar" max="32767" attributes="0"/>
                               <Component id="jlCodigoPostalResultado" max="32767" attributes="0"/>
                               <Component id="jlPoblacionResultado" alignment="0" max="32767" attributes="0"/>
                               <Component id="jlNombreResultado" alignment="0" pref="21" max="32767" attributes="0"/>
                               <Component id="jlApellidosResultado" alignment="0" pref="21" max="32767" attributes="0"/>
-                              <Component id="jlTelefonoActual" alignment="0" pref="21" max="32767" attributes="0"/>
+                              <Component id="jlTelefonoResultado" alignment="0" pref="21" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -293,7 +304,12 @@
                               <Component id="jtfCIFProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlCifCine" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="40" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfNombreCineModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="10" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCifCine1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="jtfTelefonoProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -404,7 +420,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlApellidosResultado">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlTelefonoActual">
+                <Component class="javax.swing.JLabel" name="jlTelefonoResultado">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCifCine1">
                   <Properties>
@@ -412,6 +428,20 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfTelefonoProveedor">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nombre cine:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlNombreCineResultadoModificar">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nombre cine:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfNombreCineModificar">
                 </Component>
               </SubComponents>
             </Container>
