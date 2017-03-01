@@ -22,16 +22,21 @@ public class ClientePersistencia {
     private ArrayList<Cliente> alCliente = new ArrayList();
     
     public void ingresarCliente(Cliente cliente) throws SQLException, ClassNotFoundException {
-        gbd.conectarBBDD();
 
-        int filasAfectadas;
-
-        String sql = "insert into cliente values(" + cliente.getId_cliente()+ ", '" + cliente.getDni_cliente()+ "', '" + cliente.getNombre_cliente()+ "', '" + cliente.getApellidos_cliente() + "', " + cliente.getTelefono_cliente() + ", " + cliente.getCodpos_cliente() + ", " + cliente.getPuntos() + ", '" + cliente.getUsuario_cliente() + "', '" + cliente.getContraseña_cliente() + "')";
+        String sql = "insert into cliente (dni_cli, nombre_cli, apellidos_cli, telefono_cli, cp, puntos, usuario, password) values (?,?,?,?,?,?,?,?)";
         c = gbd.conectarBBDD();
-        st = c.createStatement();
-
-        filasAfectadas = st.executeUpdate(sql);
-        System.out.println("Filas afectadas: " + filasAfectadas);
+        ps = c.prepareStatement(sql);
+        ps = c.prepareStatement(sql);
+        ps.setString(1, cliente.getDni_cliente());
+        ps.setString(2, cliente.getNombre_cliente());
+        ps.setString(3, cliente.getApellidos_cliente());
+        ps.setInt(4, cliente.getTelefono_cliente());
+        ps.setInt(5, cliente.getCodpos_cliente());
+        ps.setInt(6, cliente.getPuntos());
+        ps.setString(7, cliente.getUsuario_cliente());
+        ps.setString(8, cliente.getContraseña_cliente());
+        ps.executeUpdate();
+        ps.close();
         gbd.cerrarConexionBBDD();
     }
 

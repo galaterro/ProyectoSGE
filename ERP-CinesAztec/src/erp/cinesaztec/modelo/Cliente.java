@@ -29,6 +29,19 @@ public class Cliente {
         this.usuario_cliente = usuario_cliente;
         this.contraseña_cliente = contraseña_cliente;
     }
+
+    public Cliente(String dni_cliente, String nombre_cliente, String apellidos_cliente, int telefono_cliente, int codpos_cliente, int puntos, String usuario_cliente, String contraseña_cliente) {
+        this.dni_cliente = dni_cliente;
+        this.nombre_cliente = nombre_cliente;
+        this.apellidos_cliente = apellidos_cliente;
+        this.telefono_cliente = telefono_cliente;
+        this.codpos_cliente = codpos_cliente;
+        this.puntos = puntos;
+        this.usuario_cliente = usuario_cliente;
+        this.contraseña_cliente = contraseña_cliente;
+    }
+    
+    
     
     /* Getters y Setters. */
     

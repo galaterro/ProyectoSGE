@@ -5,17 +5,41 @@
  */
 package erp.cinesaztec.vista;
 
+import erp.cinesaztec.modelo.Cliente;
+import erp.cinesaztec.modelo.Proveedor;
+import erp.cinesaztec.persistencia.ClientePersistencia;
+import erp.cinesaztec.persistencia.ProveedorPersistencia;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author allen
  */
 class JIFGestionClientes extends javax.swing.JInternalFrame {
-
+    private ClientePersistencia cp = new ClientePersistencia();
+    private ArrayList<Cliente> alCliente;
+    private Cliente cliente;
+    private Vector vCliente = new Vector();
+    private DefaultTableModel dtm = new DefaultTableModel(vCliente, 0);
     /**
      * Creates new form JIFGestionClientes
      */
     public JIFGestionClientes() {
         initComponents();
+        vCliente.add("ID Cliente:");
+        vCliente.add("CIF Cliente:");
+        vCliente.add("Nombre:");
+        vCliente.add("Apellidos:");
+        vCliente.add("Teléfono:");
+        vCliente.add("Código Postal:");
+        vCliente.add("Puntos:");
+        vCliente.add("Usuario:");
+        vCliente.add("Password:");
+        jtaConsulta.setModel(dtm);
         this.setSize(990, 700);
         this.setTitle("Gestión Clientes");
     }
@@ -34,7 +58,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
         jpConsulta = new javax.swing.JPanel();
         lbTitulo = new javax.swing.JLabel();
         jlCifConsulta = new javax.swing.JLabel();
-        jtfCifConsulta = new javax.swing.JTextField();
+        jtfCifiConsulta = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaConsulta = new javax.swing.JTable();
         jbAceptarConsulta = new javax.swing.JButton();
@@ -81,7 +105,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
         jlNombre = new javax.swing.JLabel();
         jtfNombreNuevo = new javax.swing.JTextField();
         jlCif = new javax.swing.JLabel();
-        ftfApellidoNuevo = new javax.swing.JTextField();
+        jtfApellidoNuevo = new javax.swing.JTextField();
         jlDireccion = new javax.swing.JLabel();
         jtfTelefonoNuevo = new javax.swing.JTextField();
         jlPoblacion = new javax.swing.JLabel();
@@ -172,7 +196,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
                     .addGroup(jpConsultaLayout.createSequentialGroup()
                         .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfCifConsulta))
+                        .addComponent(jtfCifiConsulta))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jbAceptarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -186,7 +210,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfCifiConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -470,7 +494,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
                                 .addGroup(jpAltaCineLayout.createSequentialGroup()
                                     .addComponent(jtfCifNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(111, 111, 111)))
-                            .addComponent(ftfApellidoNuevo))))
+                            .addComponent(jtfApellidoNuevo))))
                 .addContainerGap(400, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAltaCineLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -487,7 +511,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ftfApellidoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfApellidoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -634,7 +658,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
-        
+        consultaCliente();
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
@@ -646,6 +670,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtpConsultaFocusLost
 
     private void jbAltaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaClienteActionPerformed
+        insertarCliente();
     }//GEN-LAST:event_jbAltaClienteActionPerformed
 
     private void jbAceptarCifEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEliminarActionPerformed
@@ -671,9 +696,78 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreNuevoActionPerformed
 
+    
+     public void consultaCliente() {
+        String cifBuscador = jtfCifiConsulta.getText();
+
+        if (cifBuscador.equals("")) {
+            /* Búsqueda general de proveedores. */
+            try {
+                //reiniciarCamposConsulta();
+                alCliente = cp.listarClientes();
+                dtm.setRowCount(alCliente.size());
+                for (int i = 0; i < alCliente.size(); i++) {
+                    jtaConsulta.setValueAt(alCliente.get(i).getId_cliente(), i, 0);
+                    jtaConsulta.setValueAt(alCliente.get(i).getDni_cliente(), i, 1);
+                    jtaConsulta.setValueAt(alCliente.get(i).getNombre_cliente(), i, 2);
+                    jtaConsulta.setValueAt(alCliente.get(i).getApellidos_cliente(), i, 3);
+                    jtaConsulta.setValueAt(alCliente.get(i).getTelefono_cliente(), i, 4);
+                    jtaConsulta.setValueAt(alCliente.get(i).getCodpos_cliente(), i, 5);
+                    jtaConsulta.setValueAt(alCliente.get(i).getPuntos(), i, 6);
+                    jtaConsulta.setValueAt(alCliente.get(i).getUsuario_cliente(), i, 7);
+                    jtaConsulta.setValueAt(alCliente.get(i).getContraseña_cliente(), i, 8);
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar ningún cine.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        } else {
+            /* Búsqueda específica de proveedor por CIF. */
+            try {
+                //reiniciarCamposConsulta();
+                cliente = cp.buscarCliente(cifBuscador);
+                dtm.setRowCount(1);
+                jtaConsulta.setValueAt(cliente.getId_cliente(), 0, 0);
+                jtaConsulta.setValueAt(cliente.getDni_cliente(), 0, 1);
+                jtaConsulta.setValueAt(cliente.getNombre_cliente(), 0, 2);
+                jtaConsulta.setValueAt(cliente.getApellidos_cliente(), 0, 3);
+                jtaConsulta.setValueAt(cliente.getTelefono_cliente(), 0, 4);
+                jtaConsulta.setValueAt(cliente.getCodpos_cliente(), 0, 5);
+                jtaConsulta.setValueAt(cliente.getPuntos(), 0, 6);
+                jtaConsulta.setValueAt(cliente.getUsuario_cliente(), 0, 7);
+                jtaConsulta.setValueAt(cliente.getContraseña_cliente(), 0, 8);
+
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
+    }
+     
+    public void insertarCliente(){
+        String cifCliente = jtfCifNuevo.getText();
+        String nombreCliente = jtfNombreNuevo.getText();
+        String apellidoCliente = jtfApellidoNuevo.getText();
+        int telefonoCliente = Integer.parseInt(jtfTelefonoNuevo.getText());
+        int codPosPro = Integer.parseInt(jtfCodPosNuevo.getText());
+        String usuario = jtfUsuarioNuevo.getText();
+        String password = jtfContraseniaNuevo.getText();
+        int puntos = Integer.parseInt(jtfPuntosNuevo.getText());
+        try {
+            
+            cliente = new Cliente(cifCliente, nombreCliente, apellidoCliente, telefonoCliente, codPosPro, puntos, usuario, password);
+            cp.ingresarCliente(cliente);
+            JOptionPane.showMessageDialog(null, "Proveedor ingresado con éxito.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo proveedor.\nPruebe de nuevo.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ftfApellidoNuevo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAceptarCifEliminar;
     private javax.swing.JButton jbAceptarConsulta;
@@ -732,12 +826,13 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
     private javax.swing.JTextField jtfApellidoCliente;
+    private javax.swing.JTextField jtfApellidoNuevo;
     private javax.swing.JTextField jtfCPCliente;
     private javax.swing.JTextField jtfCifBuscador;
     private javax.swing.JTextField jtfCifCliente;
     private javax.swing.JTextField jtfCifClienteEliminar;
-    private javax.swing.JTextField jtfCifConsulta;
     private javax.swing.JTextField jtfCifNuevo;
+    private javax.swing.JTextField jtfCifiConsulta;
     private javax.swing.JTextField jtfCodPosNuevo;
     private javax.swing.JTextField jtfContrasemiaCliente;
     private javax.swing.JTextField jtfContraseniaNuevo;

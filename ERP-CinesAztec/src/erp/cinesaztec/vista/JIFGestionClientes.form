@@ -80,7 +80,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlCifConsulta" min="-2" pref="113" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfCifConsulta" max="32767" attributes="0"/>
+                                  <Component id="jtfCifiConsulta" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -99,7 +99,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCifConsulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfCifConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfCifiConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="90" max="-2" attributes="0"/>
@@ -123,7 +123,7 @@
                     <Property name="text" type="java.lang.String" value="CIF:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfCifConsulta">
+                <Component class="javax.swing.JTextField" name="jtfCifiConsulta">
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
@@ -579,7 +579,7 @@
                                               <EmptySpace min="111" pref="111" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="ftfApellidoNuevo" max="32767" attributes="0"/>
+                                      <Component id="jtfApellidoNuevo" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -603,7 +603,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlNombre1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="ftfApellidoNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfApellidoNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -658,7 +658,7 @@
                     <Property name="text" type="java.lang.String" value="CIF:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="ftfApellidoNuevo">
+                <Component class="javax.swing.JTextField" name="jtfApellidoNuevo">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccion">
                   <Properties>
