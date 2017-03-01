@@ -486,9 +486,9 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
             int idCine = sp.consultarIdCine(nombreCine);
             sala = new Sala(nombreNuevo, numeroButacas, idCine);
             sp.ingresarSala(sala);
-            JOptionPane.showMessageDialog(null, "Cine ingresado con éxito.");
+            JOptionPane.showMessageDialog(null, "Sala ingresada con éxito.");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo cine.\nPruebe de nuevo."+ex);
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar la nueva sala.\nPruebe de nuevo."+ex);
             System.out.println(ex);
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
@@ -511,7 +511,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
                     jtaConsulta.setValueAt(alSala.get(i).getId_cine(), i, 3);
                 }
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar ningún cine.\nPruebe de nuevo.");
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar ninguna sala.\nPruebe de nuevo.");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
             }
@@ -526,7 +526,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
                 jtaConsulta.setValueAt(sala.getNumero_butacas(), 0, 2);
                 jtaConsulta.setValueAt(sala.getId_cine(), 0, 3);
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la sala solicitada.\nPruebe de nuevo.");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
             }
@@ -556,11 +556,11 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
 
                     jbtSalaModificar.setEnabled(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "No existe el cine con el CIF seleccionado.\nPruebe de nuevo.");
+                    JOptionPane.showMessageDialog(null, "No existe la sala con el nombre seleccionado.\nPruebe de nuevo.");
                     jtfnombreBuscador.setText("");
                 }
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la sala solicitada.\nPruebe de nuevo.");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
             }
@@ -580,7 +580,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la sala solicitada.\nPruebe de nuevo.");
         }
 
     }
@@ -601,7 +601,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
                 jbComfirmarEliminar.setEnabled(true);
 
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la sala solicitada.\nPruebe de nuevo.");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
             }
@@ -619,7 +619,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
             sp.eliminarSala(sala.getId_sala());
             JOptionPane.showMessageDialog(null, "Sala eliminada con éxito.");
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el cine solicitado.\nPruebe de nuevo.");
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar la sala solicitada.\nPruebe de nuevo.");
         } catch (SQLException ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
