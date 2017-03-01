@@ -28,18 +28,20 @@ class EmpleadoPersistencia {
     private ArrayList<Empleado> alEmpleado = new ArrayList();
 
     public void ingresarEmpleado(Empleado empleado) throws SQLException, ClassNotFoundException {
-        gbd.conectarBBDD();
-
-        int filasAfectadas;
-
-        String sql = "insert into empleado values(" + empleado.getId_empleado() + ",'" + empleado.getDni_empleado() + "','"
-                + empleado.getNombre_empleado() + "','" + empleado.getApellidos_empleado() + "'," + empleado.getTelefono_empleado()
-                + ",'" + empleado.getFecha_inicio() + "','" + empleado.getCargo_empleado() + "'," + empleado.getId_cine() + "'," + empleado.getUsuario_empleado() + "'," + empleado.getPassword_empleado() + ")";
+  
+        String sql = "insert into empleado (dni_empleado, telefono_empleado, fecha_inicio, cargo_empleado, id_cine, usuario_empleado, password_empleado) values (?,?,?,?,?,?,?)";
         c = gbd.conectarBBDD();
         st = c.createStatement();
-
-        filasAfectadas = st.executeUpdate(sql);
-        System.out.println("filas afectadas: " + filasAfectadas);
+        ps = c.prepareStatement(sql);
+        ps.setString(1, empleado.getDni_empleado());
+        ps.setInt(2, empleado.getTelefono_empleado());
+        ps.setDate(3, empleado.getFecha_inicio());
+        ps.setString(4, empleado.getCargo_empleado());
+        ps.setInt(5, empleado.getId_cine());
+        ps.setString(6, empleado.getUsuario_empleado());
+        ps.setString(7, empleado.getPassword_empleado());
+        ps.executeUpdate();
+        st.executeUpdate(sql);
         gbd.cerrarConexionBBDD();
     }
 
@@ -49,7 +51,6 @@ class EmpleadoPersistencia {
         String sql = "select * from empleado";
         c = gbd.conectarBBDD();
         st = c.createStatement();
-
         rs = st.executeQuery(sql);
         System.out.println("Los empleados son: ");
         while (rs.next()) {

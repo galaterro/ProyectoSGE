@@ -47,6 +47,18 @@ public class Empleado {
         this.usuario_empleado = usuario_empleado;
         this.password_empleado = password_empleado;
     }
+
+    public Empleado(String dni_empleado, int telefono_empleado, Date fecha_inicio, String cargo_empleado, int id_cine, String usuario_empleado, String password_empleado) {
+        this.dni_empleado = dni_empleado;
+        this.telefono_empleado = telefono_empleado;
+        this.fecha_inicio = fecha_inicio;
+        this.cargo_empleado = cargo_empleado;
+        this.id_cine = id_cine;
+        this.usuario_empleado = usuario_empleado;
+        this.password_empleado = password_empleado;
+    }
+    
+    
     
     /* Getters y Setters. */
     
