@@ -616,33 +616,32 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jlEmpleadoAEliminar" alignment="0" min="-2" pref="602" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlCifCineEliminar" min="-2" pref="226" max="-2" attributes="0"/>
+                                  <Component id="jlCifCineEliminar" min="-2" pref="292" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfCifCineEliminar" min="-2" pref="358" max="-2" attributes="0"/>
+                                  <Component id="jtfDniEmpEliminar" min="-2" pref="358" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jbAceptarCifEliminar" min="-2" pref="126" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jlCineAEliminar" alignment="0" min="-2" pref="602" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="725" max="-2" attributes="0"/>
+                                  <Component id="jbConfirmarEliminarEmpleado" min="-2" pref="115" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlNombreCineAEliminar" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <Component id="jlDniEmpleadoAEliminar" min="-2" pref="133" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jlDireccionCineAELiminar" min="-2" pref="406" max="-2" attributes="0"/>
+                                  <Component id="jlNombreEmpleadoAEliminar" min="-2" pref="105" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jlPobCineAEliminar" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="jlApellidoEmpleadoAELiminar" min="-2" pref="135" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jlCodPosCineAEliminar" min="-2" pref="133" max="-2" attributes="0"/>
+                                  <Component id="jlTelefonoAEliminar" min="-2" pref="160" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="79" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jbConfirmarEliminar" min="-2" pref="115" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
+                          <EmptySpace pref="97" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -650,37 +649,31 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="jtfCifCineEliminar" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlCifCineEliminar" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="jbAceptarCifEliminar" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jlCifCineEliminar" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jtfDniEmpEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbAceptarCifEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jlCineAEliminar" min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jlEmpleadoAEliminar" min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jlNombreCineAEliminar" alignment="0" pref="25" max="32767" attributes="0"/>
-                                      <Component id="jlDireccionCineAELiminar" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jlTelefonoAEliminar" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                                  <Component id="jbConfirmarEliminarEmpleado" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="194" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jlCodPosCineAEliminar" alignment="0" pref="33" max="32767" attributes="0"/>
-                                      <Component id="jlPobCineAEliminar" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jlNombreEmpleadoAEliminar" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="jlDniEmpleadoAEliminar" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="jlApellidoEmpleadoAELiminar" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jbConfirmarEliminar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="257" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -688,15 +681,15 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jlCifCineEliminar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ingrese el CIF del cine que desee eliminar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el DNI del Empleado que desee eliminar:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfCifCineEliminar">
+                <Component class="javax.swing.JTextField" name="jtfDniEmpEliminar">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlCineAEliminar">
+                <Component class="javax.swing.JLabel" name="jlEmpleadoAEliminar">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Va a eliminar el siguiente cine:"/>
+                    <Property name="text" type="java.lang.String" value="Va a eliminar el siguiente empleado:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="jbAceptarCifEliminar">
@@ -707,21 +700,21 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAceptarCifEliminarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlNombreCineAEliminar">
+                <Component class="javax.swing.JLabel" name="jlNombreEmpleadoAEliminar">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlDireccionCineAELiminar">
+                <Component class="javax.swing.JLabel" name="jlApellidoEmpleadoAELiminar">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlPobCineAEliminar">
+                <Component class="javax.swing.JLabel" name="jlTelefonoAEliminar">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlCodPosCineAEliminar">
+                <Component class="javax.swing.JLabel" name="jlDniEmpleadoAEliminar">
                 </Component>
-                <Component class="javax.swing.JButton" name="jbConfirmarEliminar">
+                <Component class="javax.swing.JButton" name="jbConfirmarEliminarEmpleado">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbConfirmarEliminarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbConfirmarEliminarEmpleadoActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

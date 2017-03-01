@@ -66,7 +66,7 @@ public class EmpleadoPersistencia {
     public Empleado buscarEmpleado(String dni_aux) throws ClassNotFoundException, SQLException {
         gbd.conectarBBDD();
 
-        String sql = "select * from empleado WHERE dni_emp = '%" + dni_aux + "%'";
+        String sql = "select * from empleado WHERE dni_emp = '" + dni_aux + "'";
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
@@ -90,6 +90,14 @@ public class EmpleadoPersistencia {
         }
         gbd.cerrarConexionBBDD();
         return idCine;
+    }
+    
+    public void eliminarEmpleado(String dni) throws ClassNotFoundException, SQLException {
+        c = gbd.conectarBBDD();
+        String sql = "delete from empleado where dni_emp = '" + dni + "'";
+        st = c.createStatement();
+        st.executeUpdate(sql);
+        gbd.cerrarConexionBBDD();
     }
 
 }

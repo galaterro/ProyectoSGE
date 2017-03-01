@@ -112,14 +112,14 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         jtpEliminar = new javax.swing.JTabbedPane();
         jpFondoEliminar = new javax.swing.JPanel();
         jlCifCineEliminar = new javax.swing.JLabel();
-        jtfCifCineEliminar = new javax.swing.JTextField();
-        jlCineAEliminar = new javax.swing.JLabel();
+        jtfDniEmpEliminar = new javax.swing.JTextField();
+        jlEmpleadoAEliminar = new javax.swing.JLabel();
         jbAceptarCifEliminar = new javax.swing.JButton();
-        jlNombreCineAEliminar = new javax.swing.JLabel();
-        jlDireccionCineAELiminar = new javax.swing.JLabel();
-        jlPobCineAEliminar = new javax.swing.JLabel();
-        jlCodPosCineAEliminar = new javax.swing.JLabel();
-        jbConfirmarEliminar = new javax.swing.JButton();
+        jlNombreEmpleadoAEliminar = new javax.swing.JLabel();
+        jlApellidoEmpleadoAELiminar = new javax.swing.JLabel();
+        jlTelefonoAEliminar = new javax.swing.JLabel();
+        jlDniEmpleadoAEliminar = new javax.swing.JLabel();
+        jbConfirmarEliminarEmpleado = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -466,10 +466,10 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
 
         jtpFondo.addTab("Alta", jtpAltaCine);
 
-        jlCifCineEliminar.setText("Ingrese el CIF del cine que desee eliminar:");
+        jlCifCineEliminar.setText("Ingrese el DNI del Empleado que desee eliminar:");
 
-        jlCineAEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlCineAEliminar.setText("Va a eliminar el siguiente cine:");
+        jlEmpleadoAEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlEmpleadoAEliminar.setText("Va a eliminar el siguiente empleado:");
 
         jbAceptarCifEliminar.setText("Aceptar");
         jbAceptarCifEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -478,11 +478,11 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
             }
         });
 
-        jbConfirmarEliminar.setText("Eliminar");
-        jbConfirmarEliminar.setEnabled(false);
-        jbConfirmarEliminar.addActionListener(new java.awt.event.ActionListener() {
+        jbConfirmarEliminarEmpleado.setText("Eliminar");
+        jbConfirmarEliminarEmpleado.setEnabled(false);
+        jbConfirmarEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbConfirmarEliminarActionPerformed(evt);
+                jbConfirmarEliminarEmpleadoActionPerformed(evt);
             }
         });
 
@@ -493,54 +493,50 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
             .addGroup(jpFondoEliminarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlEmpleadoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpFondoEliminarLayout.createSequentialGroup()
-                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfDniEmpEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbAceptarCifEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpFondoEliminarLayout.createSequentialGroup()
-                        .addComponent(jlNombreCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(725, 725, 725)
+                        .addComponent(jbConfirmarEliminarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
+                        .addComponent(jlDniEmpleadoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jlDireccionCineAELiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlNombreEmpleadoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jlPobCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlApellidoEmpleadoAELiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(79, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEliminarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbConfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197))
+                        .addComponent(jlTelefonoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         jpFondoEliminarLayout.setVerticalGroup(
             jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoEliminarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jbAceptarCifEliminar)))
-                .addGap(18, 18, 18)
-                .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDniEmpEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbAceptarCifEliminar))
+                .addGap(20, 20, 20)
+                .addComponent(jlEmpleadoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoEliminarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlNombreCineAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                            .addComponent(jlDireccionCineAELiminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEliminarLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                            .addComponent(jlPobCineAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(18, 18, 18)
-                .addComponent(jbConfirmarEliminar)
-                .addContainerGap(257, Short.MAX_VALUE))
+                        .addComponent(jlTelefonoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)
+                        .addComponent(jbConfirmarEliminarEmpleado)
+                        .addContainerGap(194, Short.MAX_VALUE))
+                    .addGroup(jpFondoEliminarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlNombreEmpleadoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlDniEmpleadoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlApellidoEmpleadoAELiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jtpEliminar.addTab("", jpFondoEliminar);
@@ -594,10 +590,12 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAltaEmpleadoActionPerformed
 
     private void jbAceptarCifEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEliminarActionPerformed
+        mostrarEmpleadoEliminar();
     }//GEN-LAST:event_jbAceptarCifEliminarActionPerformed
 
-    private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
-    }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
+    private void jbConfirmarEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarEmpleadoActionPerformed
+        eliminarEmpleado();
+    }//GEN-LAST:event_jbConfirmarEliminarEmpleadoActionPerformed
 
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
 
@@ -674,8 +672,43 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO INSERTAR  EL EMPLEADO"+ex);
+            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO INSERTAR  EL EMPLEADO");
             ex.printStackTrace();
+        }
+    }
+    
+    public void mostrarEmpleadoEliminar(){
+    
+        String dniEmp = jtfDniEmpEliminar.getText();
+        
+        try {
+            empleado = ep.buscarEmpleado(dniEmp);
+            
+            jlDniEmpleadoAEliminar.setText(empleado.getDni_empleado());
+            jlNombreEmpleadoAEliminar.setText(empleado.getNombre_empleado());
+            jlApellidoEmpleadoAELiminar.setText(empleado.getApellidos_empleado());
+            jlTelefonoAEliminar.setText(String.valueOf(empleado.getTelefono_empleado()));
+            jbConfirmarEliminarEmpleado.setEnabled(true);
+            
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO ELIMINAR  EL EMPLEADO");
+            ex.printStackTrace();
+        }
+    }
+    
+    public void eliminarEmpleado(){
+        String dni = jtfDniEmpEliminar.getText();
+        try {
+            ep.eliminarEmpleado(dni);
+            JOptionPane.showMessageDialog(null, "Empleado eliminado con éxito.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el empleado solicitado.\nPruebe de nuevo.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
     }
 
@@ -685,17 +718,16 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbAceptarCifEliminar;
     private javax.swing.JButton jbAceptarConsulta;
     private javax.swing.JButton jbAltaEmpleado;
-    private javax.swing.JButton jbConfirmarEliminar;
+    private javax.swing.JButton jbConfirmarEliminarEmpleado;
     private javax.swing.JButton jbtBuscarCineModificar;
     private javax.swing.JButton jbtModificar;
+    private javax.swing.JLabel jlApellidoEmpleadoAELiminar;
     private javax.swing.JLabel jlCargo;
     private javax.swing.JLabel jlCifBuscador;
     private javax.swing.JLabel jlCifCine;
     private javax.swing.JLabel jlCifCineEliminar;
     private javax.swing.JLabel jlCifConsulta;
-    private javax.swing.JLabel jlCineAEliminar;
     private javax.swing.JLabel jlCineEmpleado;
-    private javax.swing.JLabel jlCodPosCineAEliminar;
     private javax.swing.JLabel jlCodPostal;
     private javax.swing.JLabel jlCodigoPostal;
     private javax.swing.JLabel jlCodigoPostalActual;
@@ -703,19 +735,20 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlDireccion;
     private javax.swing.JLabel jlDireccionActual;
     private javax.swing.JLabel jlDireccionCine;
-    private javax.swing.JLabel jlDireccionCineAELiminar;
     private javax.swing.JLabel jlDireccionResultado;
     private javax.swing.JLabel jlDni;
+    private javax.swing.JLabel jlDniEmpleadoAEliminar;
+    private javax.swing.JLabel jlEmpleadoAEliminar;
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlNombreActual;
     private javax.swing.JLabel jlNombreCine;
-    private javax.swing.JLabel jlNombreCineAEliminar;
+    private javax.swing.JLabel jlNombreEmpleadoAEliminar;
     private javax.swing.JLabel jlNombreResultado;
-    private javax.swing.JLabel jlPobCineAEliminar;
     private javax.swing.JLabel jlPoblacion;
     private javax.swing.JLabel jlPoblacionActual;
     private javax.swing.JLabel jlPoblacionCine;
     private javax.swing.JLabel jlPoblacionResultado;
+    private javax.swing.JLabel jlTelefonoAEliminar;
     private javax.swing.JLabel jlUsuario;
     private javax.swing.JPanel jpAltaCine;
     private javax.swing.JPanel jpConsulta;
@@ -726,12 +759,12 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfCIfCine;
     private javax.swing.JTextField jtfCargoNuevo;
     private javax.swing.JTextField jtfCifBuscador;
-    private javax.swing.JTextField jtfCifCineEliminar;
     private javax.swing.JTextField jtfCineNuevo;
     private javax.swing.JTextField jtfCodigoPostal;
     private javax.swing.JTextField jtfContrasenaNueva;
     private javax.swing.JTextField jtfDireccionCine;
     private javax.swing.JTextField jtfDniConsulta;
+    private javax.swing.JTextField jtfDniEmpEliminar;
     private javax.swing.JTextField jtfDniNuevo;
     private javax.swing.JTextField jtfFechaNuevo;
     private javax.swing.JTextField jtfNombreCine;
