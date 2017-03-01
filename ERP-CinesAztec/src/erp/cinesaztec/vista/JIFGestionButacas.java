@@ -29,7 +29,6 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
      */
     public JIFGestionButacas() {
         initComponents();
-        this.setSize(990, 700);
         vButaca.add("ID Butaca:");
         vButaca.add("Número Fila:");
         vButaca.add("Número Columna:");

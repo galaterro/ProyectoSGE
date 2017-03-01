@@ -8,12 +8,12 @@ package erp.cinesaztec.vista;
 import erp.cinesaztec.modelo.Sesion;
 import erp.cinesaztec.persistencia.SesionPersistencia;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import java.util.Locale;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -484,13 +484,14 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbtModificarActionPerformed
 
     private void crearSesion() {
-        try {
-
-            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+           
+            SimpleDateFormat format = new SimpleDateFormat("HH:MM:SS");
             int idPelicula = Integer.parseInt(jtfPeliculaAlta.getText());
-            Date horaSesion = format.parse(jtfHoraAlta.getText());
-            java.sql.Date hora = new java.sql.Date(horaSesion.getTime());
-
+            Date horaSesion;
+        try {
+            horaSesion = format.parse(jtfHoraAlta.getText());
+            java.sql.Time hora = new java.sql.Time(horaSesion.getTime());
+            
             int idSala = Integer.parseInt(jtfSalaAlta.getText());
 
             sesion = new Sesion(hora, idPelicula, idSala);
@@ -503,11 +504,10 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
             }
-
+            
         } catch (ParseException ex) {
-            Logger.getLogger(JIFGestionSesiones.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+             JOptionPane.showMessageDialog(null, "Formato de la hora incorrecto.\n ejemplo 18:30:50 \nPruebe de nuevo.");
+        }           
     }
 
     public void cargarSesion() {
@@ -519,7 +519,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
             for (Sesion sesion : alSesion) {
                 Integer id_sala = sesion.getId_sala();
                 Integer id_pelicula = sesion.getId_sesion();
-                Date hora_sesion = sesion.getHora_sesion();
+                Time hora_sesion = sesion.getHora_sesion();
 
                 jlPeliculaNueva.setText(id_sala.toString());
                 jlSalaNueva.setText(id_pelicula.toString());

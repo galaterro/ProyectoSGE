@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -30,12 +31,13 @@ public class SesionPersistencia {
 
     
      public void ingresarSesion(Sesion sesion) throws SQLException, ClassNotFoundException {
-        gbd.conectarBBDD();
         
-        String sql = "insert into sesion values(hora_sesion, id_pelicula, id_sala) VALUES (?,?,?)";
+        String sql = "insert into sesion (hora_sesion, id_pelicula,id_sala) values (?,?,?)";
         c = gbd.conectarBBDD();
+        st = c.createStatement();
+        
         ps = c.prepareStatement(sql);
-        ps.setDate(1, sesion.getHora_sesion());
+        ps.setTime(1, sesion.getHora_sesion());
         ps.setInt(2, sesion.getId_pelicula());
         ps.setInt(3, sesion.getId_sala());
         ps.executeUpdate();
@@ -51,7 +53,7 @@ public class SesionPersistencia {
         rs = st.executeQuery(sql);
         System.out.println("Las sesiones son: ");
         while (rs.next()) {
-            sesion = new Sesion(rs.getDate(2), rs.getInt(3), rs.getInt(4));
+            sesion = new Sesion(rs.getTime(2), rs.getInt(3), rs.getInt(4));
             alSesion.add(sesion);
         }
         gbd.cerrarConexionBBDD();
@@ -65,7 +67,7 @@ public class SesionPersistencia {
         st = c.createStatement();
         rs = st.executeQuery(sql);
         rs.next();
-        sesion = new Sesion( rs.getDate(2), rs.getInt(3), rs.getInt(4));
+        sesion = new Sesion( rs.getTime(2), rs.getInt(3), rs.getInt(4));
         gbd.cerrarConexionBBDD();
         return sesion;
     }

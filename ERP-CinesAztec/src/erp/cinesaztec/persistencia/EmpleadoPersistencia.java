@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author juanxxiii
  */
-class EmpleadoPersistencia {
+public class EmpleadoPersistencia {
 
     private GestorBBDD gbd = new GestorBBDD();
     private Statement st = null;//sentencia a ejecutar
@@ -52,7 +52,6 @@ class EmpleadoPersistencia {
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
-        System.out.println("Los empleados son: ");
         while (rs.next()) {
             empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
                     rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));
@@ -68,9 +67,7 @@ class EmpleadoPersistencia {
         String sql = "select * from empleado WHERE dni_emp = '%" + dni_aux + "%'";
         c = gbd.conectarBBDD();
         st = c.createStatement();
-
         rs = st.executeQuery(sql);
-        System.out.println("Los empleados son: ");
         while (rs.next()) {
             empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
                     rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));

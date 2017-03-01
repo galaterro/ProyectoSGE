@@ -1,6 +1,7 @@
 package erp.cinesaztec.modelo;
 
 import java.sql.Date;
+import java.sql.Time;
 
 
 
@@ -12,7 +13,7 @@ import java.sql.Date;
 public class Sesion {
     
     private int id_sesion;
-    private Date hora_sesion; /* Para recoger el tipo Date de SQL. */
+    private Time hora_sesion; /* Para recoger el tipo Date de SQL. */
     private int id_pelicula;
     private int id_sala;
 
@@ -20,12 +21,12 @@ public class Sesion {
     y otro sin ellos por ser claves foráneas, y así poder manejarlo dependiendo 
     de la necesidad. */
     
-    public Sesion(int id_sesion, Date hora_sesion) {
+    public Sesion(int id_sesion, Time hora_sesion) {
         this.id_sesion = id_sesion;
         this.hora_sesion = hora_sesion;
     }
 
-    public Sesion(Date hora_sesion, int id_pelicula, int id_sala) {
+    public Sesion(Time hora_sesion, int id_pelicula, int id_sala) {
 
         this.hora_sesion = hora_sesion;
         this.id_pelicula = id_pelicula;
@@ -42,11 +43,11 @@ public class Sesion {
         this.id_sesion = id_sesion;
     }
 
-    public Date getHora_sesion() {
+    public Time getHora_sesion() {
         return hora_sesion;
     }
 
-    public void setHora_sesion(Date hora_sesion) {
+    public void setHora_sesion(Time hora_sesion) {
         this.hora_sesion = hora_sesion;
     }
 

@@ -30,16 +30,9 @@ public class EntradaPersistencia {
     
     public void ingresarEntrada(Entrada entrada) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-
-        int filasAfectadas;
-
         String sql = "insert into entrada values(" + entrada.getId_entrada()+ "," + entrada.getPrecio_entrada() + "," + entrada.getId_pelicula() + ")";
-        
         c = gbd.conectarBBDD();
         st = c.createStatement();
-
-        filasAfectadas = st.executeUpdate(sql);
-        System.out.println("filas afectadas: " + filasAfectadas);
         gbd.cerrarConexionBBDD();
     }
     
