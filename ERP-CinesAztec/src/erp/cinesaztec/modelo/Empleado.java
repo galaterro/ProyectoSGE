@@ -16,9 +16,9 @@ public class Empleado {
     private int telefono_empleado;
     private Date fecha_inicio;  /* Para recoger el tipo Date de SQL. */
     private String cargo_empleado;
-    private int id_cine;
     private String usuario_empleado;
     private String password_empleado;
+    private int id_cine;
 
     /* Esta clase tiene 2 constructores distintos: uno con id_cine y otro sin él
     por ser clave foránea, y así poder manejarlo dependiendo de la necesidad. */
@@ -36,7 +36,7 @@ public class Empleado {
         this.password_empleado = password_empleado;
     }
 
-    public Empleado(int id_empleado, String dni_empleado, String nombre_empleado, String apellidos_empleado, int telefono_empleado, Date fecha_inicio, String cargo_empleado,String usuario_empleado, String password_empleado) {
+    public Empleado(int id_empleado, String dni_empleado, String nombre_empleado, String apellidos_empleado, int telefono_empleado, Date fecha_inicio, String cargo_empleado, String usuario_empleado, String password_empleado, int id_cine) {
         this.id_empleado = id_empleado;
         this.dni_empleado = dni_empleado;
         this.nombre_empleado = nombre_empleado;
@@ -46,7 +46,8 @@ public class Empleado {
         this.cargo_empleado = cargo_empleado;
         this.usuario_empleado = usuario_empleado;
         this.password_empleado = password_empleado;
-    }
+        this.id_cine = id_cine;
+    }  
 
     public Empleado(String dni_empleado, int telefono_empleado, Date fecha_inicio, String cargo_empleado, int id_cine, String usuario_empleado, String password_empleado) {
         this.dni_empleado = dni_empleado;
@@ -57,6 +58,20 @@ public class Empleado {
         this.usuario_empleado = usuario_empleado;
         this.password_empleado = password_empleado;
     }
+
+    public Empleado(String dni_empleado, String nombre_empleado, String apellidos_empleado, int telefono_empleado, Date fecha_inicio, String cargo_empleado, String usuario_empleado, String password_empleado, int id_cine) {
+        this.dni_empleado = dni_empleado;
+        this.nombre_empleado = nombre_empleado;
+        this.apellidos_empleado = apellidos_empleado;
+        this.telefono_empleado = telefono_empleado;
+        this.fecha_inicio = fecha_inicio;
+        this.cargo_empleado = cargo_empleado;
+        this.usuario_empleado = usuario_empleado;
+        this.password_empleado = password_empleado;
+        this.id_cine = id_cine;
+    }
+    
+    
     
     
     

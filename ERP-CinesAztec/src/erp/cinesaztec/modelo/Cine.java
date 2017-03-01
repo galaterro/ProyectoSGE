@@ -34,6 +34,10 @@ public class Cine {
         this.codPos_cine = codPos_cine;
     }
 
+    public Cine() {
+    }
+
+    
     
     /* Getters y Setters. */
     
