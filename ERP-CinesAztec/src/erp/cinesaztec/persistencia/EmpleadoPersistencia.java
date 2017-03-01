@@ -26,22 +26,24 @@ public class EmpleadoPersistencia {
     private Connection c;
     private Empleado empleado;
     private ArrayList<Empleado> alEmpleado = new ArrayList();
-
+    
+    
     public void ingresarEmpleado(Empleado empleado) throws SQLException, ClassNotFoundException {
+
   
-        String sql = "insert into empleado (dni_empleado, telefono_empleado, fecha_inicio, cargo_empleado, id_cine, usuario_empleado, password_empleado) values (?,?,?,?,?,?,?)";
+        String sql = "insert into empleado (dni_emp, nombre_emp, apellidos_emp, telefono_emp, fecha_inicio_emp, cargo_emp, usuario_empleado, contrasena_empleado, id_cineEmp) values (?,?,?,?,?,?,?,?,?)";
         c = gbd.conectarBBDD();
-        st = c.createStatement();
         ps = c.prepareStatement(sql);
         ps.setString(1, empleado.getDni_empleado());
-        ps.setInt(2, empleado.getTelefono_empleado());
-        ps.setDate(3, empleado.getFecha_inicio());
-        ps.setString(4, empleado.getCargo_empleado());
-        ps.setInt(5, empleado.getId_cine());
-        ps.setString(6, empleado.getUsuario_empleado());
-        ps.setString(7, empleado.getPassword_empleado());
+        ps.setString(2, empleado.getNombre_empleado());
+        ps.setString(3, empleado.getApellidos_empleado());
+        ps.setInt(4, empleado.getTelefono_empleado());
+        ps.setDate(5, empleado.getFecha_inicio());
+        ps.setString(6, empleado.getCargo_empleado());
+        ps.setString(7, empleado.getUsuario_empleado());
+        ps.setString(8, empleado.getPassword_empleado());
+        ps.setInt(9, empleado.getId_cine());
         ps.executeUpdate();
-        st.executeUpdate(sql);
         gbd.cerrarConexionBBDD();
     }
 
@@ -54,7 +56,7 @@ public class EmpleadoPersistencia {
         rs = st.executeQuery(sql);
         while (rs.next()) {
             empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
-                    rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));
+                    rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10));
             alEmpleado.add(empleado);
         }
         gbd.cerrarConexionBBDD();
@@ -70,10 +72,73 @@ public class EmpleadoPersistencia {
         rs = st.executeQuery(sql);
         while (rs.next()) {
             empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
-                    rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));
-
+                    rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10));
         }
         gbd.cerrarConexionBBDD();
         return empleado;
     }
+
+
+    public int buscarCine(String nombre) throws ClassNotFoundException, SQLException {
+        String sql = "SELECT id_cine FROM cine WHERE lower(nombre_cine) = lower('" +nombre+"')";
+        int idCine=0;
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        while (rs.next()) {
+            idCine = rs.getInt(1);
+        }
+        gbd.cerrarConexionBBDD();
+        return idCine;
+    }
+
+//    public void ingresarEmpleado(Empleado empleado) throws SQLException, ClassNotFoundException {
+//  
+//        String sql = "insert into empleado (dni_empleado, telefono_empleado, fecha_inicio, cargo_empleado, id_cine, usuario_empleado, password_empleado) values (?,?,?,?,?,?,?)";
+//        c = gbd.conectarBBDD();
+//        st = c.createStatement();
+//        ps = c.prepareStatement(sql);
+//        ps.setString(1, empleado.getDni_empleado());
+//        ps.setInt(2, empleado.getTelefono_empleado());
+//        ps.setDate(3, empleado.getFecha_inicio());
+//        ps.setString(4, empleado.getCargo_empleado());
+//        ps.setInt(5, empleado.getId_cine());
+//        ps.setString(6, empleado.getUsuario_empleado());
+//        ps.setString(7, empleado.getPassword_empleado());
+//        ps.executeUpdate();
+//        st.executeUpdate(sql);
+//        gbd.cerrarConexionBBDD();
+//    }
+//
+//    public ArrayList listarEmpleados() throws ClassNotFoundException, SQLException {
+//        gbd.conectarBBDD();
+//
+//        String sql = "select * from empleado";
+//        c = gbd.conectarBBDD();
+//        st = c.createStatement();
+//        rs = st.executeQuery(sql);
+//        while (rs.next()) {
+//            empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
+//                    rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));
+//            alEmpleado.add(empleado);
+//        }
+//        gbd.cerrarConexionBBDD();
+//        return alEmpleado;
+//    }
+//
+//    public Empleado buscarEmpleado(String dni_aux) throws ClassNotFoundException, SQLException {
+//        gbd.conectarBBDD();
+//
+//        String sql = "select * from empleado WHERE dni_emp = '%" + dni_aux + "%'";
+//        c = gbd.conectarBBDD();
+//        st = c.createStatement();
+//        rs = st.executeQuery(sql);
+//        while (rs.next()) {
+//            empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
+//                    rs.getString(7), rs.getInt(8), rs.getString(9), rs.getString(10));
+//
+//        }
+//        gbd.cerrarConexionBBDD();
+//        return empleado;
+//    }
 }

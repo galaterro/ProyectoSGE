@@ -657,7 +657,7 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         String cargo = jtfCargoNuevo.getText();
         String usuario = jtfUsuarioNuevo.getText();
         String contrasena = jtfContrasenaNueva.getText();
-        String nombreCineBusqueda = jtfNombreCine.getText();
+        String nombreCineBusqueda = jtfCineNuevo.getText();
         
         try {
             SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
