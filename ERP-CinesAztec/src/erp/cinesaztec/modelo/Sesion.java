@@ -20,11 +20,15 @@ public class Sesion {
     /* Esta clase tiene 2 constructores distintos: uno con id_pelicula e id_sala,
     y otro sin ellos por ser claves foráneas, y así poder manejarlo dependiendo 
     de la necesidad. */
-    
-    public Sesion(int id_sesion, Time hora_sesion) {
+
+    public Sesion(int id_sesion, Time hora_sesion, int id_pelicula, int id_sala) {
         this.id_sesion = id_sesion;
         this.hora_sesion = hora_sesion;
+        this.id_pelicula = id_pelicula;
+        this.id_sala = id_sala;
     }
+    
+
 
     public Sesion(Time hora_sesion, int id_pelicula, int id_sala) {
 

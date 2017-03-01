@@ -53,7 +53,7 @@ public class SesionPersistencia {
         rs = st.executeQuery(sql);
         System.out.println("Las sesiones son: ");
         while (rs.next()) {
-            sesion = new Sesion(rs.getTime(2), rs.getInt(3), rs.getInt(4));
+            sesion = new Sesion(rs.getInt(1), rs.getTime(2), rs.getInt(3), rs.getInt(4));
             alSesion.add(sesion);
         }
         gbd.cerrarConexionBBDD();
@@ -62,12 +62,12 @@ public class SesionPersistencia {
     
     public Sesion buscarSesiones(int id_aux) throws SQLException, ClassNotFoundException {
         gbd.conectarBBDD();
-        String sql = "SELECT * FROM SESION WHERE id_sesion= '" + id_aux + "'";
+        String sql = "SELECT * FROM sesion WHERE id_sesion= " + id_aux ;
         c = gbd.conectarBBDD();
         st = c.createStatement();
         rs = st.executeQuery(sql);
         rs.next();
-        sesion = new Sesion( rs.getTime(2), rs.getInt(3), rs.getInt(4));
+        sesion = new Sesion(rs.getInt(1), rs.getTime(2), rs.getInt(3), rs.getInt(4));
         gbd.cerrarConexionBBDD();
         return sesion;
     }

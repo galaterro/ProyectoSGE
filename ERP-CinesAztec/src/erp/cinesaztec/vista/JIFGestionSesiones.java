@@ -556,7 +556,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
 
     public void consultaSesiones() {
 
-        String cifBuscador = jtfCifBuscador.getText();
+        String cifBuscador = jtfIDConsulta.getText();
 
         if (cifBuscador.equals("")) {
             try {
@@ -587,7 +587,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "NO SE HAN PODIDO CARGAR LOS CINES");
+                JOptionPane.showMessageDialog(null, "NO SE HAN PODIDO CARGAR LOS CINES" + ex);
             }
         }
     }
