@@ -655,6 +655,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             /* Búsqueda general de cines. */
             try {
                 reiniciarCamposConsulta();
+                limpiarTabla();
                 alCine.clear();
                 alCine = cp.listarCines();
                 dtm.setRowCount(alCine.size());
@@ -674,6 +675,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             /* Búsqueda específica de cine por CIF. */
             try {
                 reiniciarCamposConsulta();
+                limpiarTabla();
                 cine = cp.buscarCine(cifBuscador);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(cine.getNombre_cine(), 0, 0);

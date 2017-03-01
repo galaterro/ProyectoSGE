@@ -476,7 +476,10 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         modificarSala();
     }//GEN-LAST:event_jbtSalaModificarActionPerformed
 
-    private void limpiarTablas() {
+    /**
+     * Método usado para limpiar las tablas de cara a una nueva consulta.
+     */
+    private void limpiarTabla() {
         jtaConsulta.setModel(dtm);
         dtm.setRowCount(0);
     }
@@ -507,7 +510,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
             /* Búsqueda general de salas. */
             try {
                 reiniciarCamposConsulta();
-                limpiarTablas();
+                limpiarTabla();
                 alSala.clear();
                 alSala = sp.listarSalas();
                 dtm.setRowCount(alSala.size());
@@ -525,7 +528,7 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         } else {
             try {
                 reiniciarCamposConsulta();
-                limpiarTablas();
+                limpiarTabla();
                 //int id_buscador = Integer.parseInt(nombreBuscador);
                 sala = sp.buscarSala(idBuscador);
                 dtm.setRowCount(1);

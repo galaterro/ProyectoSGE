@@ -11,6 +11,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 class JIFGestionButacas extends javax.swing.JInternalFrame {
 
     private ButacaPersistencia bp = new ButacaPersistencia();
-    private ArrayList<Butaca> alButaca;
+    private ArrayList<Butaca> alButaca = new ArrayList();
     private Butaca butaca;
     private Vector vButaca = new Vector();
     private DefaultTableModel dtm = new DefaultTableModel(vButaca, 0);
@@ -37,6 +40,19 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
         this.setSize(990, 700);
         this.setResizable(false);
         this.setTitle("Gestión Butacas");
+        
+        jtpFondo.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (e.getSource() instanceof JTabbedPane) {
+                    reiniciarCamposConsulta();
+                    reiniciarCamposModificar();
+                    reiniciarCamposAlta();
+                    reiniciarCamposEliminar();
+                }
+            }
+        });
     }
 
     /**
@@ -496,13 +512,23 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jtpFondoStateChanged
 
-     public void consultaButaca() {
+    /**
+     * Método usado para limpiar las tablas de cara a una nueva consulta.
+     */
+    private void limpiarTabla() {
+        jtaConsulta.setModel(dtm);
+        dtm.setRowCount(0);
+    }
+    
+    public void consultaButaca() {
         String idBuscador = jtfIdConsulta.getText();
 
         if (idBuscador.equals("")) {
             /* Búsqueda general de proveedores. */
             try {
-                //reiniciarCamposConsulta();
+                reiniciarCamposConsulta();
+                limpiarTabla();
+                alButaca.clear();
                 alButaca = bp.listarButacas();
                 dtm.setRowCount(alButaca.size());
                 for (int i = 0; i < alButaca.size(); i++) {
@@ -519,8 +545,9 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
         } else {
             /* Búsqueda específica de proveedor por CIF. */
             try {
-                //reiniciarCamposConsulta();
+                reiniciarCamposConsulta();
                 int idBuscar = Integer.parseInt(idBuscador);
+                limpiarTabla();
                 butaca = bp.buscarButaca(idBuscar);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(butaca.getId_butaca(), 0, 0);
@@ -540,12 +567,13 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
         int columna = Integer.parseInt(jtfNumeroColumnaNuevo.getText());
         String nombreSala = jtfNombreSalaNuevo.getText();
         try {
+            reiniciarCamposAlta();
             int idSala = bp.consultarIdSala(nombreSala);
             butaca = new Butaca(filas, columna, idSala);
             bp.ingresarButaca(butaca);
-            JOptionPane.showMessageDialog(null, "Butaca ingresado con éxito.");
+            JOptionPane.showMessageDialog(null, "Butaca ingresada con éxito.");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo butaca.\nPruebe de nuevo." + ex);
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar la nueva butaca.\nPruebe de nuevo." + ex);
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
         }
@@ -596,6 +624,7 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
             int idSala = bp.consultarIdSala(nombreSala);
             butaca = new Butaca(fila, columna, idSala);
             bp.actualizarButaca(butaca, idButaca);
+            reiniciarCamposModificar();
             JOptionPane.showMessageDialog(null, "Butaca actualizada con éxito.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." + ex);
@@ -638,6 +667,7 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
         try {
             int id = Integer.parseInt(idEliminar);
             bp.eliminarButaca(id);
+            reiniciarCamposEliminar();
             JOptionPane.showMessageDialog(null, "Butaca eliminada con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar la butaca solicitada.\nPruebe de nuevo.");
@@ -646,6 +676,60 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
     }
+    
+    /**
+     * Método usado para reiniciar los campos de la ventana Consulta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposConsulta() {
+        jtfIdConsulta.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
+    
+    /**
+     * Método usado para reiniciar los campos de la ventana Modificar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposModificar(){
+        jtfIdBuscador.setText("");
+        jtfNumeroFilaButaca.setText("");
+        jtfNumeroColumnaButaca.setText("");
+        jtfNombreSalaButaca.setText("");
+        
+        jlNumeroFilaResultado.setText("");
+        jlNumeroColumnaResultado.setText("");
+        jlNombreSalaResultado.setText("");
+        jlPoblacionResultado.setText("");
+        jlCodigoPostalResultado.setText("");
+        jbtModificar.setEnabled(false);
+    }
+    
+    /**
+     * Método usado para reiniciar los campos de la ventana Alta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposAlta() {
+        jtfNumeroFilaNuevo.setText("");
+        jtfNumeroColumnaNuevo.setText("");
+        jtfNombreSalaNuevo.setText("");
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Eliminar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposEliminar() {
+        jtfIDButacaEliminar.setText("");
+        jlIDButacaAEliminar.setText("");
+        jlNumeroFilaButacaAELiminar.setText("");
+        jlNumeroColumnaButacaAELiminar.setText("");
+        jlNombreSalaButacaAEliminar.setText("");
+        jbConfirmarEliminar.setEnabled(false);
+    }
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
