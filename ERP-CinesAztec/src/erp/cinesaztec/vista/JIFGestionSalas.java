@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
 class JIFGestionSalas extends javax.swing.JInternalFrame {
 
     private SalaPersistencia sp = new SalaPersistencia();
-    private ArrayList<Sala> alSala;
+    private ArrayList<Sala> alSala = new ArrayList();
     private Sala sala;
     private Vector vSala = new Vector();
     private DefaultTableModel dtm = new DefaultTableModel(vSala, 0);
@@ -476,6 +476,11 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         modificarSala();
     }//GEN-LAST:event_jbtSalaModificarActionPerformed
 
+    private void limpiarTablas() {
+        jtaConsulta.setModel(dtm);
+        dtm.setRowCount(0);
+    }
+    
     private void crearSala() {
 
         String nombreNuevo = jtfNombreNuevo.getText();
@@ -501,7 +506,9 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
         if (idBuscador.equals("")) {
             /* Búsqueda general de salas. */
             try {
-                //reiniciarCamposConsulta();
+                reiniciarCamposConsulta();
+                limpiarTablas();
+                alSala.clear();
                 alSala = sp.listarSalas();
                 dtm.setRowCount(alSala.size());
                 for (int i = 0; i < alSala.size(); i++) {
@@ -517,7 +524,8 @@ class JIFGestionSalas extends javax.swing.JInternalFrame {
             }
         } else {
             try {
-                //reiniciarCamposConsulta();
+                reiniciarCamposConsulta();
+                limpiarTablas();
                 //int id_buscador = Integer.parseInt(nombreBuscador);
                 sala = sp.buscarSala(idBuscador);
                 dtm.setRowCount(1);

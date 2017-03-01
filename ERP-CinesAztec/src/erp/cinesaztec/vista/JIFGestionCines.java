@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 class JIFGestionCines extends javax.swing.JInternalFrame {
 
     private CinePersistencia cp = new CinePersistencia();
-    private ArrayList<Cine> alCine;
+    private ArrayList<Cine> alCine = new ArrayList();
     private Cine cine;
     private Vector vCine = new Vector();
     private DefaultTableModel dtm = new DefaultTableModel(vCine, 0);
@@ -597,6 +597,14 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfNombreNuevoKeyPressed
 
     /**
+     * Método usado para limpiar las tablas de cara a una nueva consulta.
+     */
+    private void limpiarTabla() {
+        jtaConsulta.setModel(dtm);
+        dtm.setRowCount(0);
+    }
+    
+    /**
      * Método usado para ingresar un nuevo cine.
      */
     public void ingresarCine() {
@@ -647,6 +655,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             /* Búsqueda general de cines. */
             try {
                 reiniciarCamposConsulta();
+                alCine.clear();
                 alCine = cp.listarCines();
                 dtm.setRowCount(alCine.size());
                 for (int i = 0; i < alCine.size(); i++) {
