@@ -13,6 +13,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,11 +23,13 @@ import javax.swing.table.DefaultTableModel;
  * @author allen
  */
 class JIFGestionClientes extends javax.swing.JInternalFrame {
+
     private ClientePersistencia cp = new ClientePersistencia();
-    private ArrayList<Cliente> alCliente;
+    private ArrayList<Cliente> alCliente = new ArrayList();
     private Cliente cliente;
     private Vector vCliente = new Vector();
     private DefaultTableModel dtm = new DefaultTableModel(vCliente, 0);
+
     /**
      * Creates new form JIFGestionClientes
      */
@@ -42,6 +47,19 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
         jtaConsulta.setModel(dtm);
         this.setSize(990, 700);
         this.setTitle("Gestión Clientes");
+        
+        jtpFondo.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (e.getSource() instanceof JTabbedPane) {
+                    reiniciarCamposConsulta();
+                    reiniciarCamposModificar();
+                    reiniciarCamposAlta();
+                    reiniciarCamposEliminar();
+                }
+            }
+        });
     }
 
     /**
@@ -697,14 +715,23 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreNuevoActionPerformed
 
+    /**
+     * Método usado para limpiar las tablas de cara a una nueva consulta.
+     */
+    private void limpiarTabla() {
+        jtaConsulta.setModel(dtm);
+        dtm.setRowCount(0);
+    }
     
-     public void consultaCliente() {
+    public void consultaCliente() {
         String cifBuscador = jtfCifiConsulta.getText();
 
         if (cifBuscador.equals("")) {
             /* Búsqueda general de proveedores. */
             try {
-                //reiniciarCamposConsulta();
+                reiniciarCamposConsulta();
+                limpiarTabla();
+                alCliente.clear();
                 alCliente = cp.listarClientes();
                 dtm.setRowCount(alCliente.size());
                 for (int i = 0; i < alCliente.size(); i++) {
@@ -726,7 +753,8 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
         } else {
             /* Búsqueda específica de proveedor por CIF. */
             try {
-                //reiniciarCamposConsulta();
+                reiniciarCamposConsulta();
+                limpiarTabla();
                 cliente = cp.buscarCliente(cifBuscador);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(cliente.getId_cliente(), 0, 0);
@@ -746,8 +774,8 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
             }
         }
     }
-     
-    public void insertarCliente(){
+
+    public void insertarCliente() {
         String cifCliente = jtfCifNuevo.getText();
         String nombreCliente = jtfNombreNuevo.getText();
         String apellidoCliente = jtfApellidoNuevo.getText();
@@ -757,9 +785,10 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
         String password = jtfContraseniaNuevo.getText();
         int puntos = Integer.parseInt(jtfPuntosNuevo.getText());
         try {
-            
+
             cliente = new Cliente(cifCliente, nombreCliente, apellidoCliente, telefonoCliente, codPosPro, puntos, usuario, password);
             cp.ingresarCliente(cliente);
+            reiniciarCamposAlta();
             JOptionPane.showMessageDialog(null, "Proveedor ingresado con éxito.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo proveedor.\nPruebe de nuevo.");
@@ -767,8 +796,8 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
         }
     }
-    
-     public void cargarClienteModificar() {
+
+    public void cargarClienteModificar() {
         String cifBuscador = jtfCifBuscador.getText();
         boolean existe = false;
         if (cifBuscador.compareToIgnoreCase("") == 0) {
@@ -789,7 +818,6 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
                     jlContraseniaResultado.setText(cliente.getContraseña_cliente());
                     Integer puntos = cliente.getPuntos();
                     jlPuntosResultado.setText(puntos.toString());
-                    
 
                     jtfNombreCliente.setText(jlNombreResultado.getText());
                     jtfApellidoCliente.setText(jlApellidoResultado.getText());
@@ -801,18 +829,18 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
                     jtfCPCliente.setText(jlCPResultado.getText());
                     jbtModificar.setEnabled(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "No existe el cliente con el CIF seleccionado.\nPruebe de nuevo." );
+                    JOptionPane.showMessageDialog(null, "No existe el cliente con el CIF seleccionado.\nPruebe de nuevo.");
                     jtfCifBuscador.setText("");
                 }
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cliente solicitado.\nPruebe de nuevo." +ex);
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cliente solicitado.\nPruebe de nuevo." + ex);
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." +ex);
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." + ex);
             }
         }
     }
-     
-       public void modificarCliente() {
+
+    public void modificarCliente() {
         try {
             //Falta coger el cine
             String cif = jtfCifBuscador.getText();
@@ -823,14 +851,14 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
             String usuario = jtfUsuarioCliente.getText();
             String contraseña = jtfContrasemiaCliente.getText();
             String punto = jtfPuntosCliente.getText();
-            
-            
+
             int tlf = Integer.parseInt(telefono);
             int puntos = Integer.parseInt(punto);
             String codPos = jtfCPCliente.getText();
             int codigoPostal = Integer.parseInt(codPos);
             cliente = new Cliente(cifNuevo, nombreNuevo, apellidos, tlf, codigoPostal, puntos, usuario, contraseña);
             cp.actualizarCliente(cliente, cif);
+            reiniciarCamposModificar();
             JOptionPane.showMessageDialog(null, "Proveedor actualizado con éxito.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." + ex);
@@ -838,7 +866,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el cine solicitado.\nPruebe de nuevo.");
         }
     }
-       
+
     public void cargarClienteEliminar() {
         String cifBusca = jtfCifClienteEliminar.getText();
 
@@ -879,6 +907,7 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
         String cifEliminar = jtfCifClienteEliminar.getText();
         try {
             cp.eliminarCliente(cifEliminar);
+            reiniciarCamposEliminar();
             JOptionPane.showMessageDialog(null, "Cliente eliminado con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el cliente solicitado.\nPruebe de nuevo.");
@@ -887,8 +916,78 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
     }
-    
-     
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Consulta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposConsulta() {
+        jtfCifiConsulta.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Modificar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposModificar() {
+        jtfCifBuscador.setText("");
+        jtfNombreCliente.setText("");
+        jtfApellidoCliente.setText("");
+        jtfTelefonoCliente.setText("");
+        jtfCifCliente.setText("");
+        jtfCPCliente.setText("");
+        jtfUsuarioCliente.setText("");
+        jtfContrasemiaCliente.setText("");
+        jtfPuntosCliente.setText("");
+        
+        jlNombreResultado.setText("");
+        jlApellidoResultado.setText("");
+        jlTelefonoResultado.setText("");
+        jlCPResultado.setText("");
+        jlCifResultado.setText("");
+        jlUsruarioResultado.setText("");
+        jlUsruarioResultado.setText("");
+        jlContraseniaResultado.setText("");
+        jbtModificar.setEnabled(false);
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Alta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposAlta() {
+        jtfNombreNuevo.setText("");
+        jtfApellidoNuevo.setText("");
+        jtfTelefonoNuevo.setText("");
+        jtfCifNuevo.setText("");
+        jtfCodPosNuevo.setText("");
+        jtfPuntosNuevo.setText("");
+        jtfUsuarioNuevo.setText("");
+        jtfContraseniaNuevo.setText("");
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Eliminar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposEliminar() {
+        jtfCifClienteEliminar.setText("");
+        jlIdClienteAEliminar.setText("");
+        jlNombreClienteAEliminar.setText("");
+        jlApellidoClienteAEliminar.setText("");
+        jlTelefonoClienteAEliminar.setText("");
+        jlCifClienteAEliminar.setText("");
+        jlPuntosClienteAEliminar.setText("");
+        jlCPClienteAEliminar.setText("");
+        jlUsuarioClienteAEliminar1.setText("");
+        jlContraseniaClienteAEliminar1.setText("");
+        jbConfirmarEliminar.setEnabled(false);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
