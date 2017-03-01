@@ -1,5 +1,6 @@
 package erp.cinesaztec.persistencia;
 
+import erp.cinesaztec.modelo.Butaca;
 import erp.cinesaztec.modelo.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -60,7 +61,7 @@ public class ClientePersistencia {
     public Cliente buscarCliente(String dni_aux) throws ClassNotFoundException, SQLException {
         gbd.conectarBBDD();
 
-        String sql = "select * from cliente WHERE dni_cli = '%" + dni_aux + "%'";
+        String sql = "select * from cliente WHERE lower(dni_cli) = lower('" + dni_aux + "')";
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
@@ -72,5 +73,49 @@ public class ClientePersistencia {
         }
         gbd.cerrarConexionBBDD();
         return cliente;
+    }
+    
+    public void actualizarCliente(Cliente cliente, String cif) throws SQLException, ClassNotFoundException {
+
+        String sql = "update cliente set dni_cli = ?, nombre_cli= ?, apellidos_cli= ?, telefono_cli = ?, cp = ?, puntos = ?, usuario = ?, password = ? where lower(dni_cli)= lower('" + cif + "')";
+        c = gbd.conectarBBDD();
+        ps = c.prepareStatement(sql);
+
+        ps.setString(1, cliente.getDni_cliente());
+        ps.setString(2, cliente.getNombre_cliente());
+        ps.setString(3, cliente.getApellidos_cliente());
+        ps.setInt(4, cliente.getTelefono_cliente());
+        ps.setInt(5, cliente.getCodpos_cliente());
+        ps.setInt(6, cliente.getPuntos());
+        ps.setString(7, cliente.getUsuario_cliente());
+        ps.setString(8, cliente.getContraseña_cliente());
+        ps.executeUpdate();
+        ps.close();
+        gbd.cerrarConexionBBDD();
+    }
+    
+    public void eliminarCliente(String cif) throws ClassNotFoundException, SQLException {
+        c = gbd.conectarBBDD();
+        String sql = "delete from cliente where lower(dni_Cli) = ('" + cif +"')";
+        st = c.createStatement();
+        st.executeUpdate(sql);
+        gbd.cerrarConexionBBDD();
+    }
+    
+      /* Usado para analizar si existe un cliente con el id facilitado. */
+    public boolean existeCliente(String cif) throws SQLException, ClassNotFoundException {
+        boolean encontrado = false;
+        String sql = "select * from cliente where lower(dni_cli) = lower(?)";
+        c = gbd.conectarBBDD();
+        ps = (PreparedStatement) c.prepareStatement(sql);
+        ps.setString(1, cif);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            encontrado = true;
+        }
+        ps.close();
+        gbd.cerrarConexionBBDD();
+        return encontrado;
     }
 }

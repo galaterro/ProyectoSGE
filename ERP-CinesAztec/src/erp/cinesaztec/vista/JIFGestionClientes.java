@@ -674,10 +674,11 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAltaClienteActionPerformed
 
     private void jbAceptarCifEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEliminarActionPerformed
-        
+        cargarClienteEliminar();
     }//GEN-LAST:event_jbAceptarCifEliminarActionPerformed
 
     private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
+        eliminarCine();
     }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
 
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
@@ -685,11 +686,11 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtpFondoStateChanged
 
     private void jbtBuscarClienteModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarClienteModificarActionPerformed
-
+        cargarClienteModificar();
     }//GEN-LAST:event_jbtBuscarClienteModificarActionPerformed
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
-
+        modificarCliente();
     }//GEN-LAST:event_jbtModificarActionPerformed
 
     private void jtfNombreNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreNuevoActionPerformed
@@ -766,6 +767,128 @@ class JIFGestionClientes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
         }
     }
+    
+     public void cargarClienteModificar() {
+        String cifBuscador = jtfCifBuscador.getText();
+        boolean existe = false;
+        if (cifBuscador.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un CIF válido.");
+        } else {
+            try {
+                existe = cp.existeCliente(cifBuscador);
+                if (existe) {
+                    cliente = cp.buscarCliente(cifBuscador);
+                    jlNombreResultado.setText(cliente.getNombre_cliente());
+                    jlApellidoResultado.setText(cliente.getApellidos_cliente());
+                    Integer telefono = cliente.getTelefono_cliente();
+                    jlTelefonoResultado.setText(telefono.toString());
+                    Integer codPos = cliente.getCodpos_cliente();
+                    jlCPResultado.setText(codPos.toString());
+                    jlCifResultado.setText(cliente.getDni_cliente());
+                    jlUsruarioResultado.setText(cliente.getUsuario_cliente());
+                    jlContraseniaResultado.setText(cliente.getContraseña_cliente());
+                    Integer puntos = cliente.getPuntos();
+                    jlPuntosResultado.setText(puntos.toString());
+                    
+
+                    jtfNombreCliente.setText(jlNombreResultado.getText());
+                    jtfApellidoCliente.setText(jlApellidoResultado.getText());
+                    jtfCifCliente.setText(jtfCifBuscador.getText());
+                    jtfTelefonoCliente.setText(jlTelefonoResultado.getText());
+                    jtfUsuarioCliente.setText(jlUsruarioResultado.getText());
+                    jtfContrasemiaCliente.setText(jlContraseniaResultado.getText());
+                    jtfPuntosCliente.setText(jlPuntosResultado.getText());
+                    jtfCPCliente.setText(jlCPResultado.getText());
+                    jbtModificar.setEnabled(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existe el cliente con el CIF seleccionado.\nPruebe de nuevo." );
+                    jtfCifBuscador.setText("");
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cliente solicitado.\nPruebe de nuevo." +ex);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." +ex);
+            }
+        }
+    }
+     
+       public void modificarCliente() {
+        try {
+            //Falta coger el cine
+            String cif = jtfCifBuscador.getText();
+            String nombreNuevo = jtfNombreCliente.getText();
+            String apellidos = jtfApellidoCliente.getText();
+            String cifNuevo = jtfCifCliente.getText();
+            String telefono = jtfTelefonoCliente.getText();
+            String usuario = jtfUsuarioCliente.getText();
+            String contraseña = jtfContrasemiaCliente.getText();
+            String punto = jtfPuntosCliente.getText();
+            
+            
+            int tlf = Integer.parseInt(telefono);
+            int puntos = Integer.parseInt(punto);
+            String codPos = jtfCPCliente.getText();
+            int codigoPostal = Integer.parseInt(codPos);
+            cliente = new Cliente(cifNuevo, nombreNuevo, apellidos, tlf, codigoPostal, puntos, usuario, contraseña);
+            cp.actualizarCliente(cliente, cif);
+            JOptionPane.showMessageDialog(null, "Proveedor actualizado con éxito.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." + ex);
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el cine solicitado.\nPruebe de nuevo.");
+        }
+    }
+       
+    public void cargarClienteEliminar() {
+        String cifBusca = jtfCifClienteEliminar.getText();
+
+        if (cifBusca.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un CIF válido.");
+        } else {
+            try {
+                cliente = cp.buscarCliente(cifBusca);
+                Integer id = cliente.getId_cliente();
+                String idCliente = id.toString();
+                jlIdClienteAEliminar.setText("ID: " + idCliente);
+                jlNombreClienteAEliminar.setText("Nombre: " + cliente.getNombre_cliente());
+                jlApellidoClienteAEliminar.setText("Apellidos: " + cliente.getApellidos_cliente());
+                Integer telefonoCliente = cliente.getTelefono_cliente();
+                String telefono = telefonoCliente.toString();
+                jlTelefonoClienteAEliminar.setText("Telefono: " + telefono);
+                Integer codPos = cliente.getCodpos_cliente();
+                String codPostal = codPos.toString();
+                jlCPClienteAEliminar.setText("Código postal: " + codPostal);
+                jlCifClienteAEliminar.setText("CIF: " + cliente.getDni_cliente());
+                Integer puntos = cliente.getPuntos();
+                jlUsuarioClienteAEliminar1.setText("Usuario: " + cliente.getUsuario_cliente());
+                jlPuntosClienteAEliminar.setText("Puntos: " + puntos.toString());
+                jlContraseniaClienteAEliminar1.setText(cliente.getContraseña_cliente());
+                jbConfirmarEliminar.setEnabled(true);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cliente solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
+    }
+
+    /**
+     * Método usado para eliminar un cliente.
+     */
+    public void eliminarCine() {
+        String cifEliminar = jtfCifClienteEliminar.getText();
+        try {
+            cp.eliminarCliente(cifEliminar);
+            JOptionPane.showMessageDialog(null, "Cliente eliminado con éxito.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el cliente solicitado.\nPruebe de nuevo.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+        }
+    }
+    
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
