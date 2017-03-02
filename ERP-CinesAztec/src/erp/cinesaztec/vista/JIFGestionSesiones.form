@@ -414,14 +414,14 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jlNombre">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Pel&#xed;cula:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Pel&#xed;cula:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfPeliculaAlta">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCif">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Sala:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Sala:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfSalaAlta">

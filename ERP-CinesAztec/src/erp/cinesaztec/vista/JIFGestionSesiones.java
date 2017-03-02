@@ -285,9 +285,9 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
 
         jtpFondo.addTab("Modificar", jtpModificar);
 
-        jlNombre.setText("ID Película:");
+        jlNombre.setText("Nombre Película:");
 
-        jlCif.setText("ID Sala:");
+        jlCif.setText("Nombre Sala:");
 
         jlDireccion.setText("Hora Sesión:");
 
@@ -479,17 +479,18 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
 
     private void crearSesion() {
            
-            SimpleDateFormat format = new SimpleDateFormat("HH:MM:SS");
-            int idPelicula = Integer.parseInt(jtfPeliculaAlta.getText());
-            Date horaSesion;
         try {
-            horaSesion = format.parse(jtfHoraAlta.getText());
-            java.sql.Time hora = new java.sql.Time(horaSesion.getTime());
-            
-            int idSala = Integer.parseInt(jtfSalaAlta.getText());
-
-            sesion = new Sesion(hora, idPelicula, idSala);
             try {
+                DateFormat format = new SimpleDateFormat("HH:MM:SS");
+                Date horaSesion = (Date)format.parse(jtfHoraAlta.getText());
+                DateFormat dsf = new SimpleDateFormat("HH:MM:SS");
+                String timeFormat = dsf.format(horaSesion);
+                java.sql.Time hora = java.sql.Time.valueOf(timeFormat);
+
+                int idPelicula = sp.consultarIdPelicula(jtfPeliculaAlta.getText());
+                int idSala = sp.consultarIdSala(jtfSalaAlta.getText());
+
+                sesion = new Sesion(hora, idPelicula, idSala);
                 sp.ingresarSesion(sesion);
                 JOptionPane.showMessageDialog(null, "Sesion ingresado con éxito.");
             } catch (SQLException ex) {
@@ -546,9 +547,12 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
             try {
 
                 int idSesion = Integer.parseInt(jtfIdBuscador.getText());
-                SimpleDateFormat format = new SimpleDateFormat("HH:MM:SS");
-                Date horaSesion = format.parse(jtfHoraModificar.getText());
-                java.sql.Time hora = new java.sql.Time(horaSesion.getTime());
+                DateFormat format = new SimpleDateFormat("HH:MM:SS");
+                Date horaSesion = (Date)format.parse(jtfHoraModificar.getText());
+                DateFormat dsf = new SimpleDateFormat("HH:MM:SS");
+                String timeFormat = dsf.format(horaSesion);
+                java.sql.Time hora = java.sql.Time.valueOf(timeFormat);
+
                 
                 String nombreSala = jtfSalaModificar.getText();
                 String nombrePelicula = jtfPeliculaModificar.getText();
