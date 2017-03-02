@@ -39,7 +39,7 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         vEmpleado.add("Teléfono :");
         vEmpleado.add("Fecha inicio  :");
         vEmpleado.add("Cargo :");
-        vEmpleado.add("ID Cine:");
+        vEmpleado.add("Cine:");
         jtaConsulta.setModel(dtm);
         this.setSize(990, 700);
         this.setResizable(false);
@@ -66,28 +66,46 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         jbAceptarConsulta = new javax.swing.JButton();
         jtpModificar = new javax.swing.JTabbedPane();
         jpModificar = new javax.swing.JPanel();
-        jlNombreCine = new javax.swing.JLabel();
-        jlCifCine = new javax.swing.JLabel();
+        jlDniEmp = new javax.swing.JLabel();
+        jlNomEmp = new javax.swing.JLabel();
         jlCifBuscador = new javax.swing.JLabel();
-        jlDireccionCine = new javax.swing.JLabel();
-        jlPoblacionCine = new javax.swing.JLabel();
-        jlCodigoPostal = new javax.swing.JLabel();
-        jtfCifBuscador = new javax.swing.JTextField();
-        jtfNombreCine = new javax.swing.JTextField();
-        jtfCIfCine = new javax.swing.JTextField();
-        jtfDireccionCine = new javax.swing.JTextField();
-        jtfPoblacionCine = new javax.swing.JTextField();
-        jtfCodigoPostal = new javax.swing.JTextField();
+        jlApeEmp = new javax.swing.JLabel();
+        jlTelEmp = new javax.swing.JLabel();
+        jlFEchEmp = new javax.swing.JLabel();
+        jtfDniBuscadorModificar = new javax.swing.JTextField();
+        jtfDniEmpModificar = new javax.swing.JTextField();
+        jtfNomEmpModificar = new javax.swing.JTextField();
+        jtfApeEmpModificar = new javax.swing.JTextField();
+        jtfTelEmpModificar = new javax.swing.JTextField();
+        jtfFechaEmpModificar = new javax.swing.JTextField();
         jbtModificar = new javax.swing.JButton();
-        jbtBuscarCineModificar = new javax.swing.JButton();
+        jbtBuscarEmpleadoModificar = new javax.swing.JButton();
         jlNombreActual = new javax.swing.JLabel();
         jlDireccionActual = new javax.swing.JLabel();
         jlPoblacionActual = new javax.swing.JLabel();
         jlCodigoPostalActual = new javax.swing.JLabel();
+        jlDniResultado = new javax.swing.JLabel();
         jlNombreResultado = new javax.swing.JLabel();
-        jlDireccionResultado = new javax.swing.JLabel();
-        jlPoblacionResultado = new javax.swing.JLabel();
-        jlCodigoPostalResultado = new javax.swing.JLabel();
+        jlApellidoResultado = new javax.swing.JLabel();
+        jlTelefonoResultado = new javax.swing.JLabel();
+        jlFechaInicio = new javax.swing.JLabel();
+        jlFechaResultado = new javax.swing.JLabel();
+        jlbCargo = new javax.swing.JLabel();
+        jlCargoResultado = new javax.swing.JLabel();
+        jlUsuaEmp = new javax.swing.JLabel();
+        jlUsuarioResultado = new javax.swing.JLabel();
+        jlConEmp = new javax.swing.JLabel();
+        jlCinEmp = new javax.swing.JLabel();
+        jlContrasenaResultado = new javax.swing.JLabel();
+        jlCineEmpResultado = new javax.swing.JLabel();
+        jlCargoEmp = new javax.swing.JLabel();
+        jlUsuEmp = new javax.swing.JLabel();
+        jlContraEmp = new javax.swing.JLabel();
+        jlCineEmp = new javax.swing.JLabel();
+        jtfCargoEmpModificar = new javax.swing.JTextField();
+        jtfUsuEmpModificar = new javax.swing.JTextField();
+        jtfConEmpModificar = new javax.swing.JTextField();
+        jtfCineEmpModificar = new javax.swing.JTextField();
         jtpAltaCine = new javax.swing.JTabbedPane();
         jpAltaCine = new javax.swing.JPanel();
         jlNombre = new javax.swing.JLabel();
@@ -200,24 +218,24 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbAceptarConsulta)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
 
         jtpConsulta.addTab("", jpConsulta);
 
         jtpFondo.addTab("Consulta", jtpConsulta);
 
-        jlNombreCine.setText("Nombre:");
+        jlDniEmp.setText("DNI:");
 
-        jlCifCine.setText("CIF:");
+        jlNomEmp.setText("NOMBRE:");
 
-        jlCifBuscador.setText("Ingrese el CIF del cine que desea modificar:");
+        jlCifBuscador.setText("Ingrese el DNI del empleado que desea modificar:");
 
-        jlDireccionCine.setText("Dirección:");
+        jlApeEmp.setText("APELLIDOS:");
 
-        jlPoblacionCine.setText("Población:");
+        jlTelEmp.setText("TELÉFONO:");
 
-        jlCodigoPostal.setText("Código Postal:");
+        jlFEchEmp.setText("FECHA INICIO:");
 
         jbtModificar.setText("Modificar");
         jbtModificar.setEnabled(false);
@@ -227,70 +245,138 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
             }
         });
 
-        jbtBuscarCineModificar.setText("Buscar");
-        jbtBuscarCineModificar.addActionListener(new java.awt.event.ActionListener() {
+        jbtBuscarEmpleadoModificar.setText("Buscar");
+        jbtBuscarEmpleadoModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtBuscarCineModificarActionPerformed(evt);
+                jbtBuscarEmpleadoModificarActionPerformed(evt);
             }
         });
 
-        jlNombreActual.setText("Nombre Actual:");
+        jlNombreActual.setText("Dni :");
 
-        jlDireccionActual.setText("Dirección Actual:");
+        jlDireccionActual.setText("Nombre:");
 
-        jlPoblacionActual.setText("Población Actual:");
+        jlPoblacionActual.setText("Apellido:");
 
-        jlCodigoPostalActual.setText("Código postal Actual:");
+        jlCodigoPostalActual.setText("Teléfono:");
+
+        jlFechaInicio.setText("Fecha Inicio:");
+
+        jlbCargo.setText("Cargo:");
+
+        jlUsuaEmp.setText("Usuario:");
+
+        jlConEmp.setText("Contraseña:");
+
+        jlCinEmp.setText("Cine:");
+
+        jlCargoEmp.setText("CARGO:");
+
+        jlUsuEmp.setText("USUARIO:");
+
+        jlContraEmp.setText("CONTRASEÑA:");
+
+        jlCineEmp.setText("CINE:");
 
         javax.swing.GroupLayout jpModificarLayout = new javax.swing.GroupLayout(jpModificar);
         jpModificar.setLayout(jpModificarLayout);
         jpModificarLayout.setHorizontalGroup(
             jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(202, 202, 202))
+            .addGroup(jpModificarLayout.createSequentialGroup()
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlFEchEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addComponent(jlTelEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addComponent(jtfTelEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlCineEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfCineEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfFechaEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(203, Short.MAX_VALUE))
             .addGroup(jpModificarLayout.createSequentialGroup()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(126, 126, 126)
-                        .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlNombreResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlDireccionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jlPoblacionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jlCodigoPostalResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpModificarLayout.createSequentialGroup()
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlNombreActual, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                            .addComponent(jlDniResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlNombreResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfCIfCine, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jlApellidoResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlTelefonoResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(jlFechaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlCargoResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlbCargo, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jlUsuaEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlConEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlCinEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jlUsuarioResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlContrasenaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlCineEmpResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addComponent(jlCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbtBuscarCineModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addComponent(jlCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfDniBuscadorModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbtBuscarEmpleadoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addGap(367, 367, 367)
+                                .addComponent(jbtModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpModificarLayout.createSequentialGroup()
+                                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jlApeEmp, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                                    .addComponent(jlNomEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jlDniEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfApeEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jtfNomEmpModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                                        .addComponent(jtfDniEmpModificar)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jpModificarLayout.createSequentialGroup()
+                                        .addComponent(jlCargoEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtfCargoEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jpModificarLayout.createSequentialGroup()
+                                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jlContraEmp, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                                            .addComponent(jlUsuEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtfConEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jtfUsuEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jpModificarLayout.setVerticalGroup(
             jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,47 +384,67 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtBuscarCineModificar))
+                    .addComponent(jtfDniBuscadorModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtBuscarEmpleadoModificar))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlUsuaEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlConEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCinEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlCodigoPostalResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                            .addComponent(jlPoblacionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlDireccionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jlApellidoResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jlNombreResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jlDniResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpModificarLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlFechaResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlNombreResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                            .addComponent(jlTelefonoResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                            .addComponent(jlCargoResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlUsuarioResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlCineEmpResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlContrasenaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlDniEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDniEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCargoEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfCargoEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfCIfCine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlCifCine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNomEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlNomEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlUsuEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfUsuEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlApeEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfApeEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlContraEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfConEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfTelEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlTelEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCineEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfCineEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jlFEchEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfFechaEmpModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jbtModificar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(70, 70, 70))
         );
 
         jtpModificar.addTab("", jpModificar);
@@ -529,7 +635,7 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
                         .addComponent(jlTelefonoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(85, 85, 85)
                         .addComponent(jbConfirmarEliminarEmpleado)
-                        .addContainerGap(194, Short.MAX_VALUE))
+                        .addContainerGap(204, Short.MAX_VALUE))
                     .addGroup(jpFondoEliminarLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -547,9 +653,7 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jtpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 957, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jtpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 957, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -572,10 +676,12 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtpConsultaFocusLost
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
+        actualizarEmpleado();
     }//GEN-LAST:event_jbtModificarActionPerformed
 
-    private void jbtBuscarCineModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarCineModificarActionPerformed
-    }//GEN-LAST:event_jbtBuscarCineModificarActionPerformed
+    private void jbtBuscarEmpleadoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarEmpleadoModificarActionPerformed
+        cargarEmpleadoModificar();
+    }//GEN-LAST:event_jbtBuscarEmpleadoModificarActionPerformed
 
     private void jtfDniNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDniNuevoActionPerformed
 
@@ -617,7 +723,9 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
                     jtaConsulta.setValueAt(alEmpleado.get(i).getTelefono_empleado(), i, 4);
                     jtaConsulta.setValueAt(alEmpleado.get(i).getFecha_inicio(), i, 5);
                     jtaConsulta.setValueAt(alEmpleado.get(i).getCargo_empleado(), i, 6);
-                    jtaConsulta.setValueAt(alEmpleado.get(i).getId_cine(), i, 7);
+                    int id_cine = alEmpleado.get(i).getId_cine();
+                    String nombre = ep.buscarCinePorId(id_cine);
+                    jtaConsulta.setValueAt(nombre, i, 7);
                 }
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
@@ -637,7 +745,10 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
                 jtaConsulta.setValueAt(empleado.getTelefono_empleado(), 0, 4);
                 jtaConsulta.setValueAt(empleado.getFecha_inicio(), 0, 5);
                 jtaConsulta.setValueAt(empleado.getCargo_empleado(), 0, 6);
-                jtaConsulta.setValueAt(empleado.getId_cine(), 0, 7);
+                int id_cine = empleado.getId_cine();
+                String nombre = ep.buscarCinePorId(id_cine);
+                jtaConsulta.setValueAt(nombre, 0, 7);
+                
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
             } catch (SQLException ex) {
@@ -656,17 +767,17 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         String usuario = jtfUsuarioNuevo.getText();
         String contrasena = jtfContrasenaNueva.getText();
         String nombreCineBusqueda = jtfCineNuevo.getText();
-        
+
         try {
             SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
             Date fechaInicio = format.parse(jtfFechaNuevo.getText());
-            java.sql.Date fecha = new java.sql.Date(fechaInicio.getTime());   
-                  
-            idCine = ep.buscarCine(nombreCineBusqueda);   
-            empleado = new Empleado(dni, nombre, apellidos, telefono, fecha, cargo, usuario, contrasena, idCine); 
+            java.sql.Date fecha = new java.sql.Date(fechaInicio.getTime());
+
+            idCine = ep.buscarCine(nombreCineBusqueda);
+            empleado = new Empleado(dni, nombre, apellidos, telefono, fecha, cargo, usuario, contrasena, idCine);
             ep.ingresarEmpleado(empleado);
             JOptionPane.showMessageDialog(null, "EMPLEADO INGRESADO CON ÉXITO");
-            
+
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "FORMATO DE FECHA INCORRECTO \n EJEMPLO: 2017-12-31");
         } catch (ClassNotFoundException ex) {
@@ -676,20 +787,20 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }
-    
-    public void mostrarEmpleadoEliminar(){
-    
+
+    public void mostrarEmpleadoEliminar() {
+
         String dniEmp = jtfDniEmpEliminar.getText();
-        
+
         try {
             empleado = ep.buscarEmpleado(dniEmp);
-            
+
             jlDniEmpleadoAEliminar.setText(empleado.getDni_empleado());
             jlNombreEmpleadoAEliminar.setText(empleado.getNombre_empleado());
             jlApellidoEmpleadoAELiminar.setText(empleado.getApellidos_empleado());
             jlTelefonoAEliminar.setText(String.valueOf(empleado.getTelefono_empleado()));
             jbConfirmarEliminarEmpleado.setEnabled(true);
-            
+
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
             ex.printStackTrace();
@@ -698,8 +809,8 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }
-    
-    public void eliminarEmpleado(){
+
+    public void eliminarEmpleado() {
         String dni = jtfDniEmpEliminar.getText();
         try {
             ep.eliminarEmpleado(dni);
@@ -712,6 +823,83 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         }
     }
 
+    public void cargarEmpleadoModificar() {
+        String dniBuscador = jtfDniBuscadorModificar.getText();
+
+        if (dniBuscador.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un DNI válido.");
+        } else {
+            try {
+
+                empleado = ep.buscarEmpleado(dniBuscador);
+
+                jlDniResultado.setText(empleado.getDni_empleado());
+                jlNombreResultado.setText(empleado.getNombre_empleado());
+                jlApellidoResultado.setText(empleado.getApellidos_empleado());
+                jlTelefonoResultado.setText(String.valueOf(empleado.getTelefono_empleado()));
+                jlFechaResultado.setText(String.valueOf(empleado.getFecha_inicio()));
+                jlCargoResultado.setText(empleado.getCargo_empleado());
+                jlUsuarioResultado.setText(empleado.getUsuario_empleado());
+                jlContrasenaResultado.setText(empleado.getPassword_empleado());
+                int id_cine = empleado.getId_cine();
+                String nombreCine = ep.buscarCinePorId(id_cine);
+                jlCineEmpResultado.setText(nombreCine);
+
+                jtfDniEmpModificar.setText(empleado.getDni_empleado());
+                jtfNomEmpModificar.setText(empleado.getNombre_empleado());
+                jtfApeEmpModificar.setText(empleado.getApellidos_empleado());
+                jtfTelEmpModificar.setText(String.valueOf(empleado.getTelefono_empleado()));
+                jtfFechaEmpModificar.setText(String.valueOf(empleado.getFecha_inicio()));
+                jtfCargoEmpModificar.setText(empleado.getCargo_empleado());
+                jtfUsuEmpModificar.setText(empleado.getUsuario_empleado());
+                jtfConEmpModificar.setText(empleado.getPassword_empleado());
+                jtfCineEmpModificar.setText(nombreCine);
+                jbtModificar.setEnabled(true);
+
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido cargar el empleado solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
+    }
+
+    public void actualizarEmpleado() {
+
+        String dniBuscador = jtfDniBuscadorModificar.getText();
+        try {
+            String dni = jtfDniEmpModificar.getText();
+            String nombre = jtfNomEmpModificar.getText();
+            String apellidos = jtfApeEmpModificar.getText();
+            int telefono = Integer.parseInt(jtfTelEmpModificar.getText());
+
+            SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
+            Date fechaInicio = format.parse(jtfFechaEmpModificar.getText());
+            java.sql.Date fecha = new java.sql.Date(fechaInicio.getTime());
+
+            String cargo = jtfCargoEmpModificar.getText();
+            String usuario = jtfUsuEmpModificar.getText();
+            String contrasena = jtfCineEmpModificar.getText();
+            String nombreCine = jtfCineEmpModificar.getText();
+            try {
+                int id_cine = ep.buscarCine(nombreCine);
+
+                empleado = new Empleado(dni, nombre, apellidos, telefono, fecha, cargo, usuario, contrasena, id_cine);
+                ep.actualizarEmpleado(empleado, dniBuscador);
+                JOptionPane.showMessageDialog(null, "Empleado actualizado con éxito.");
+
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido cargar el empleado solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+                ex.printStackTrace();
+            }
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "FORMATO DE FECHA INCORRECTO \n EJEMPLO: 2017-12-31");
+        }
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jContrasenaNueva;
     private javax.swing.JScrollPane jScrollPane1;
@@ -719,58 +907,76 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbAceptarConsulta;
     private javax.swing.JButton jbAltaEmpleado;
     private javax.swing.JButton jbConfirmarEliminarEmpleado;
-    private javax.swing.JButton jbtBuscarCineModificar;
+    private javax.swing.JButton jbtBuscarEmpleadoModificar;
     private javax.swing.JButton jbtModificar;
+    private javax.swing.JLabel jlApeEmp;
     private javax.swing.JLabel jlApellidoEmpleadoAELiminar;
+    private javax.swing.JLabel jlApellidoResultado;
     private javax.swing.JLabel jlCargo;
+    private javax.swing.JLabel jlCargoEmp;
+    private javax.swing.JLabel jlCargoResultado;
     private javax.swing.JLabel jlCifBuscador;
-    private javax.swing.JLabel jlCifCine;
     private javax.swing.JLabel jlCifCineEliminar;
     private javax.swing.JLabel jlCifConsulta;
+    private javax.swing.JLabel jlCinEmp;
+    private javax.swing.JLabel jlCineEmp;
+    private javax.swing.JLabel jlCineEmpResultado;
     private javax.swing.JLabel jlCineEmpleado;
     private javax.swing.JLabel jlCodPostal;
-    private javax.swing.JLabel jlCodigoPostal;
     private javax.swing.JLabel jlCodigoPostalActual;
-    private javax.swing.JLabel jlCodigoPostalResultado;
+    private javax.swing.JLabel jlConEmp;
+    private javax.swing.JLabel jlContraEmp;
+    private javax.swing.JLabel jlContrasenaResultado;
     private javax.swing.JLabel jlDireccion;
     private javax.swing.JLabel jlDireccionActual;
-    private javax.swing.JLabel jlDireccionCine;
-    private javax.swing.JLabel jlDireccionResultado;
     private javax.swing.JLabel jlDni;
+    private javax.swing.JLabel jlDniEmp;
     private javax.swing.JLabel jlDniEmpleadoAEliminar;
+    private javax.swing.JLabel jlDniResultado;
     private javax.swing.JLabel jlEmpleadoAEliminar;
+    private javax.swing.JLabel jlFEchEmp;
+    private javax.swing.JLabel jlFechaInicio;
+    private javax.swing.JLabel jlFechaResultado;
+    private javax.swing.JLabel jlNomEmp;
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlNombreActual;
-    private javax.swing.JLabel jlNombreCine;
     private javax.swing.JLabel jlNombreEmpleadoAEliminar;
     private javax.swing.JLabel jlNombreResultado;
     private javax.swing.JLabel jlPoblacion;
     private javax.swing.JLabel jlPoblacionActual;
-    private javax.swing.JLabel jlPoblacionCine;
-    private javax.swing.JLabel jlPoblacionResultado;
+    private javax.swing.JLabel jlTelEmp;
     private javax.swing.JLabel jlTelefonoAEliminar;
+    private javax.swing.JLabel jlTelefonoResultado;
+    private javax.swing.JLabel jlUsuEmp;
+    private javax.swing.JLabel jlUsuaEmp;
     private javax.swing.JLabel jlUsuario;
+    private javax.swing.JLabel jlUsuarioResultado;
+    private javax.swing.JLabel jlbCargo;
     private javax.swing.JPanel jpAltaCine;
     private javax.swing.JPanel jpConsulta;
     private javax.swing.JPanel jpFondoEliminar;
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
+    private javax.swing.JTextField jtfApeEmpModificar;
     private javax.swing.JTextField jtfApellidosNuevo;
-    private javax.swing.JTextField jtfCIfCine;
+    private javax.swing.JTextField jtfCargoEmpModificar;
     private javax.swing.JTextField jtfCargoNuevo;
-    private javax.swing.JTextField jtfCifBuscador;
+    private javax.swing.JTextField jtfCineEmpModificar;
     private javax.swing.JTextField jtfCineNuevo;
-    private javax.swing.JTextField jtfCodigoPostal;
+    private javax.swing.JTextField jtfConEmpModificar;
     private javax.swing.JTextField jtfContrasenaNueva;
-    private javax.swing.JTextField jtfDireccionCine;
+    private javax.swing.JTextField jtfDniBuscadorModificar;
     private javax.swing.JTextField jtfDniConsulta;
     private javax.swing.JTextField jtfDniEmpEliminar;
+    private javax.swing.JTextField jtfDniEmpModificar;
     private javax.swing.JTextField jtfDniNuevo;
+    private javax.swing.JTextField jtfFechaEmpModificar;
     private javax.swing.JTextField jtfFechaNuevo;
-    private javax.swing.JTextField jtfNombreCine;
+    private javax.swing.JTextField jtfNomEmpModificar;
     private javax.swing.JTextField jtfNombreNuevo;
-    private javax.swing.JTextField jtfPoblacionCine;
+    private javax.swing.JTextField jtfTelEmpModificar;
     private javax.swing.JTextField jtfTelefonoNuevo;
+    private javax.swing.JTextField jtfUsuEmpModificar;
     private javax.swing.JTextField jtfUsuarioNuevo;
     private javax.swing.JTabbedPane jtpAltaCine;
     private javax.swing.JTabbedPane jtpConsulta;

@@ -25,10 +25,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jtpFondo" min="-2" pref="957" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jtpFondo" min="-2" pref="957" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -105,7 +102,7 @@
                           <Component id="jScrollPane1" min="-2" pref="90" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jbAceptarConsulta" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="193" max="32767" attributes="0"/>
+                          <EmptySpace pref="207" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -181,60 +178,130 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jbtModificar" min="-2" pref="84" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlNombreActual" min="-2" pref="131" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
-                                  <Component id="jlDireccionActual" min="-2" pref="316" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jlPoblacionActual" min="-2" pref="113" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jlCodigoPostalActual" min="-2" pref="140" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlNombreResultado" min="-2" pref="239" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jlDireccionResultado" min="-2" pref="316" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jlPoblacionResultado" min="-2" pref="113" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Component id="jlCodigoPostalResultado" min="-2" pref="115" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jlNombreCine" alignment="0" min="-2" pref="239" max="-2" attributes="0"/>
-                                      <Component id="jlCifCine" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                                      <Component id="jlDireccionCine" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                                      <Component id="jlPoblacionCine" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtfDireccionCine" alignment="0" min="-2" pref="510" max="-2" attributes="0"/>
-                                      <Component id="jtfCIfCine" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
-                                      <Component id="jtfNombreCine" alignment="0" min="-2" pref="403" max="-2" attributes="0"/>
-                                      <Component id="jtfPoblacionCine" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlCodigoPostal" min="-2" pref="243" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfCodigoPostal" min="-2" pref="110" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlCifBuscador" min="-2" pref="268" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfCifBuscador" min="-2" pref="136" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jbtBuscarCineModificar" min="-2" pref="91" max="-2" attributes="0"/>
+                              <Component id="jlFEchEmp" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jlTelEmp" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="85" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jtfTelEmpModificar" min="-2" pref="299" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jlCineEmp" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jtfCineEmpModificar" min="-2" pref="198" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jtfFechaEmpModificar" min="-2" pref="299" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="203" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jlNombreActual" pref="78" max="32767" attributes="0"/>
+                                      <Component id="jlDniResultado" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jlNombreResultado" min="-2" pref="93" max="-2" attributes="0"/>
+                                      <Component id="jlDireccionActual" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jlApellidoResultado" min="-2" pref="110" max="-2" attributes="0"/>
+                                      <Component id="jlPoblacionActual" min="-2" pref="98" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jlTelefonoResultado" max="32767" attributes="0"/>
+                                      <Component id="jlCodigoPostalActual" pref="91" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jlFechaInicio" pref="80" max="32767" attributes="0"/>
+                                      <Component id="jlFechaResultado" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jlCargoResultado" max="32767" attributes="0"/>
+                                      <Component id="jlbCargo" pref="73" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jlUsuaEmp" min="-2" pref="73" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jlConEmp" min="-2" pref="93" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jlCinEmp" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Component id="jlUsuarioResultado" min="-2" pref="73" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jlContrasenaResultado" min="-2" pref="93" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jlCineEmpResultado" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jlCifBuscador" min="-2" pref="353" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jtfDniBuscadorModificar" min="-2" pref="136" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jbtBuscarEmpleadoModificar" min="-2" pref="91" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="367" max="-2" attributes="0"/>
+                                          <Component id="jbtModificar" min="-2" pref="84" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jlApeEmp" pref="88" max="32767" attributes="0"/>
+                                              <Component id="jlNomEmp" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jlDniEmp" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jtfApeEmpModificar" alignment="0" min="-2" pref="299" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jtfNomEmpModificar" alignment="1" pref="299" max="32767" attributes="0"/>
+                                                  <Component id="jtfDniEmpModificar" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jlCargoEmp" min="-2" pref="105" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jtfCargoEmpModificar" min="-2" pref="198" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="jlContraEmp" pref="105" max="32767" attributes="0"/>
+                                                      <Component id="jlUsuEmp" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jtfConEmpModificar" min="-2" pref="198" max="-2" attributes="0"/>
+                                                      <Component id="jtfUsuEmpModificar" min="-2" pref="198" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -244,8 +311,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCifBuscador" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jtfCifBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbtBuscarCineModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfDniBuscadorModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbtBuscarEmpleadoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -253,95 +320,116 @@
                               <Component id="jlDireccionActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="jlPoblacionActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="jlCodigoPostalActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jlFechaInicio" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jlbCargo" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jlUsuaEmp" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jlConEmp" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jlCinEmp" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jlCodigoPostalResultado" alignment="1" pref="21" max="32767" attributes="0"/>
-                                      <Component id="jlPoblacionResultado" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jlDireccionResultado" alignment="1" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jlApellidoResultado" pref="21" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jlNombreResultado" max="32767" attributes="0"/>
+                                  <Component id="jlDniResultado" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jlFechaResultado" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jlNombreResultado" alignment="1" pref="21" max="32767" attributes="0"/>
+                                      <Component id="jlTelefonoResultado" alignment="1" pref="21" max="32767" attributes="0"/>
+                                      <Component id="jlCargoResultado" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jlUsuarioResultado" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jlCineEmpResultado" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jlContrasenaResultado" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlNombreCine" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfNombreCine" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlDniEmp" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jtfDniEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlCargoEmp" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jtfCargoEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtfCIfCine" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlCifCine" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jtfNomEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlNomEmp" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jlUsuEmp" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jtfUsuEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlDireccionCine" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfDireccionCine" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlApeEmp" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="jtfApeEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlContraEmp" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="jtfConEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtfPoblacionCine" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlPoblacionCine" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jtfTelEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlTelEmp" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jlCineEmp" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jtfCineEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlCodigoPostal" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfCodigoPostal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlFEchEmp" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jtfFechaEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jbtModificar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlNombreCine">
+                <Component class="javax.swing.JLabel" name="jlDniEmp">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                    <Property name="text" type="java.lang.String" value="DNI:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlCifCine">
+                <Component class="javax.swing.JLabel" name="jlNomEmp">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="CIF:"/>
+                    <Property name="text" type="java.lang.String" value="NOMBRE:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCifBuscador">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ingrese el CIF del cine que desea modificar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el DNI del empleado que desea modificar:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlDireccionCine">
+                <Component class="javax.swing.JLabel" name="jlApeEmp">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
+                    <Property name="text" type="java.lang.String" value="APELLIDOS:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlPoblacionCine">
+                <Component class="javax.swing.JLabel" name="jlTelEmp">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Poblaci&#xf3;n:"/>
+                    <Property name="text" type="java.lang.String" value="TEL&#xc9;FONO:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlCodigoPostal">
+                <Component class="javax.swing.JLabel" name="jlFEchEmp">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="C&#xf3;digo Postal:"/>
+                    <Property name="text" type="java.lang.String" value="FECHA INICIO:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfCifBuscador">
+                <Component class="javax.swing.JTextField" name="jtfDniBuscadorModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfNombreCine">
+                <Component class="javax.swing.JTextField" name="jtfDniEmpModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfCIfCine">
+                <Component class="javax.swing.JTextField" name="jtfNomEmpModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfDireccionCine">
+                <Component class="javax.swing.JTextField" name="jtfApeEmpModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfPoblacionCine">
+                <Component class="javax.swing.JTextField" name="jtfTelEmpModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfCodigoPostal">
+                <Component class="javax.swing.JTextField" name="jtfFechaEmpModificar">
                 </Component>
                 <Component class="javax.swing.JButton" name="jbtModificar">
                   <Properties>
@@ -352,41 +440,104 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtModificarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jbtBuscarCineModificar">
+                <Component class="javax.swing.JButton" name="jbtBuscarEmpleadoModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtBuscarCineModificarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtBuscarEmpleadoModificarActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlNombreActual">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nombre Actual:"/>
+                    <Property name="text" type="java.lang.String" value="Dni :"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccionActual">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Direcci&#xf3;n Actual:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlPoblacionActual">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Poblaci&#xf3;n Actual:"/>
+                    <Property name="text" type="java.lang.String" value="Apellido:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCodigoPostalActual">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="C&#xf3;digo postal Actual:"/>
+                    <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlDniResultado">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlNombreResultado">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlDireccionResultado">
+                <Component class="javax.swing.JLabel" name="jlApellidoResultado">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlPoblacionResultado">
+                <Component class="javax.swing.JLabel" name="jlTelefonoResultado">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlCodigoPostalResultado">
+                <Component class="javax.swing.JLabel" name="jlFechaInicio">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Fecha Inicio:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlFechaResultado">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlbCargo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cargo:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCargoResultado">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlUsuaEmp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Usuario:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlUsuarioResultado">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlConEmp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCinEmp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cine:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlContrasenaResultado">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCineEmpResultado">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCargoEmp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="CARGO:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlUsuEmp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="USUARIO:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlContraEmp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="CONTRASE&#xd1;A:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jlCineEmp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="CINE:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfCargoEmpModificar">
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfUsuEmpModificar">
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfConEmpModificar">
+                </Component>
+                <Component class="javax.swing.JTextField" name="jtfCineEmpModificar">
                 </Component>
               </SubComponents>
             </Container>
@@ -662,7 +813,7 @@
                                   <Component id="jlTelefonoAEliminar" min="-2" pref="25" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                                   <Component id="jbConfirmarEliminarEmpleado" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="194" max="32767" attributes="0"/>
+                                  <EmptySpace pref="204" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>

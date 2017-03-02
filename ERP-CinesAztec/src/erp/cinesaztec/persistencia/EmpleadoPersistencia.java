@@ -30,7 +30,6 @@ public class EmpleadoPersistencia {
     
     public void ingresarEmpleado(Empleado empleado) throws SQLException, ClassNotFoundException {
 
-  
         String sql = "insert into empleado (dni_emp, nombre_emp, apellidos_emp, telefono_emp, fecha_inicio_emp, cargo_emp, usuario_empleado, contrasena_empleado, id_cineEmp) values (?,?,?,?,?,?,?,?,?)";
         c = gbd.conectarBBDD();
         ps = c.prepareStatement(sql);
@@ -92,12 +91,61 @@ public class EmpleadoPersistencia {
         return idCine;
     }
     
+    public String buscarCinePorId(int  id) throws ClassNotFoundException, SQLException {
+        String sql = "SELECT nombre_cine FROM cine WHERE id_cine = " +id;
+        String nombre= "";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        while (rs.next()) {
+            nombre = rs.getString(1);
+        }
+        gbd.cerrarConexionBBDD();
+        return nombre;
+    }
+    
     public void eliminarEmpleado(String dni) throws ClassNotFoundException, SQLException {
         c = gbd.conectarBBDD();
         String sql = "delete from empleado where dni_emp = '" + dni + "'";
         st = c.createStatement();
         st.executeUpdate(sql);
         gbd.cerrarConexionBBDD();
+    }
+    
+    public void actualizarEmpleado(Empleado empleado, String dni) throws SQLException, ClassNotFoundException {
+
+        String sql = "update empleado set dni_emp = ?, nombre_emp = ?, apellidos_emp = ?, telefono_emp = ?, fecha_inicio_emp = ? , cargo_emp = ?, usuario_empleado = ?, contrasena_empleado = ?, id_cineEmp = ? where dni_emp = '" + dni + "'";
+        c = gbd.conectarBBDD();
+        ps = c.prepareStatement(sql);
+
+        ps.setString(1, empleado.getDni_empleado());
+        ps.setString(2, empleado.getNombre_empleado());
+        ps.setString(3, empleado.getApellidos_empleado());
+        ps.setInt(4, empleado.getTelefono_empleado());
+        ps.setDate(5, empleado.getFecha_inicio());
+        ps.setString(6, empleado.getCargo_empleado());
+        ps.setString(7, empleado.getUsuario_empleado());
+        ps.setString(8, empleado.getPassword_empleado());
+        ps.setInt(9, empleado.getId_cine());        
+
+        ps.executeUpdate();
+        ps.close();
+        gbd.cerrarConexionBBDD();
+    }
+    public boolean existeEmpleado(String dni) throws SQLException, ClassNotFoundException {
+        boolean encontrado = false;
+        String sql = "select * from empleado where dni_emp = ?";
+        c = gbd.conectarBBDD();
+        ps = (PreparedStatement) c.prepareStatement(sql);
+        ps.setString(1, dni);
+        rs = ps.executeQuery();
+
+        while (rs.next()) {
+            encontrado = true;
+        }
+        ps.close();
+        gbd.cerrarConexionBBDD();
+        return encontrado;
     }
 
 }
