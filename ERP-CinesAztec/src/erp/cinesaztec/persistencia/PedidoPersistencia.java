@@ -159,14 +159,13 @@ public class PedidoPersistencia {
 
     public void actualizarCuerpoPedido(CuerpoPedido cuerpoPedido, int id) throws SQLException, ClassNotFoundException {
 
-        String sql = "update cuerpo_pedido set descrip_producto = ?, cantidad= ?, id_producto= ?, id_cabecera_pedido= ? where id_cuerpo_pedido = " + id;
+        String sql = "update cuerpo_pedido set descrip_producto = ?, cantidad= ?,  where id_cabecera_pedido = " + id;
         c = gbd.conectarBBDD();
         ps = c.prepareStatement(sql);
 
         ps.setString(1, cuerpoPedido.getDescrip_producto());
         ps.setInt(2, cuerpoPedido.getCantidad());
-        ps.setInt(3, cuerpoPedido.getId_producto());
-        ps.setInt(4, cuerpoPedido.getId_cabecera_pedido());
+        
 
         ps.executeUpdate();
         ps.close();
