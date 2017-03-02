@@ -585,7 +585,7 @@ public void consultaReserva() {
 
         try {
             int idPelicula = rp.consultarIdPelicula(jtfPeliculaAlta.getText());
-            int idSesion = 
+//            int idSesion = 
 //            int idSala = bp.consultarIdSala(nombreSala);
 //            butaca = new Butaca(filas, columna, idSala);
 //            bp.ingresarButaca(butaca);

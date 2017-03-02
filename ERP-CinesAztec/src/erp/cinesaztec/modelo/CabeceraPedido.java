@@ -23,13 +23,19 @@ public class CabeceraPedido {
     }
 
     /* Constructor. */
-    public CabeceraPedido(int id_cabecera_pedido, Date fecha_pedido, float iva, float importe_total_sin_iva, float importe_total_con_iva) {
+    public CabeceraPedido(int id_cabecera_pedido, Date fecha_pedido, float importe_total_sin_iva, float iva, float importe_total_con_iva) {
         this.id_cabecera_pedido = id_cabecera_pedido;
         this.fecha_pedido = fecha_pedido;
-        this.iva = iva;
         this.importe_total_sin_iva = importe_total_sin_iva;
+        this.iva = iva;    
         this.importe_total_con_iva = importe_total_con_iva;
     }
+
+    public CabeceraPedido(Date fecha_pedido) {
+        this.fecha_pedido = fecha_pedido;
+    }
+    
+   
 
     /* Getters y Setters. */
     public int getId_cabecera_pedido() {

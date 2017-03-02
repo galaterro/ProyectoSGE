@@ -135,7 +135,7 @@ public class PedidoPersistencia {
 
     public void eliminarCuerpoPedido(int id) throws ClassNotFoundException, SQLException {
         c = gbd.conectarBBDD();
-        String sql = "delete from cuerpo_pedido where id_cuerpo_pedido = " + id;
+        String sql = "delete from cuerpo_pedido where id = " + id;
         st = c.createStatement();
         st.executeUpdate(sql);
         gbd.cerrarConexionBBDD();
@@ -143,34 +143,29 @@ public class PedidoPersistencia {
 
     public void actualizarCabeceraPedido(CabeceraPedido cabeceraPedido, int id) throws SQLException, ClassNotFoundException {
 
-        String sql = "update cabecera_pedido set fecha_pedido = ?, importe_total_sin_iva= ?, iva = ?, importe_total_con_iva= ? where id_cab_pedido = " + id;
+        String sql = "update cabecera_pedido set fecha_pedido = ? where id_cab_pedido = " + id;
         c = gbd.conectarBBDD();
         ps = c.prepareStatement(sql);
 
         ps.setDate(1, cabeceraPedido.getFecha_pedido());
-        ps.setFloat(2, cabeceraPedido.getImporte_total_sin_iva());
-        ps.setFloat(3, cabeceraPedido.getIVA());
-        ps.setFloat(4, cabeceraPedido.getImporte_total_con_iva());
+       
 
         ps.executeUpdate();
         ps.close();
         gbd.cerrarConexionBBDD();
     }
-
-    public void actualizarCuerpoPedido(CuerpoPedido cuerpoPedido, int id) throws SQLException, ClassNotFoundException {
-
-        String sql = "update cuerpo_pedido set descrip_producto = ?, cantidad= ?,  where id_cabecera_pedido = " + id;
+    
+    public int obtenerIdProducto(int id) throws ClassNotFoundException, SQLException{
+        String sql = "select id_producto from cuerpo_pedido where id_cabecera_pedido = "+ id;
+        int id_pro;
         c = gbd.conectarBBDD();
-        ps = c.prepareStatement(sql);
-
-        ps.setString(1, cuerpoPedido.getDescrip_producto());
-        ps.setInt(2, cuerpoPedido.getCantidad());
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        rs.next();
+        id_pro = rs.getInt(1);
         
-
-        ps.executeUpdate();
-        ps.close();
-        gbd.cerrarConexionBBDD();
-    }
+        return id_pro; 
+    } 
     
     public Producto buscarProductoPorId(int id_producto) throws SQLException, ClassNotFoundException {
         Producto producto = null;
@@ -197,26 +192,5 @@ public class PedidoPersistencia {
         gbd.cerrarConexionBBDD();
         return id;
     }
-    
-//     public void actualizarEmpleado(CabeceraPedido cabeceraPedido, int id) throws SQLException, ClassNotFoundException {
-//
-//        String sql = "update cabecera_pedido set dni_emp = ?, nombre_emp = ?, apellidos_emp = ?, telefono_emp = ?, fecha_inicio_emp = ? , cargo_emp = ?, usuario_empleado = ?, contrasena_empleado = ?, id_cineEmp = ? where dni_emp = '" + dni + "'";
-//        c = gbd.conectarBBDD();
-//        ps = c.prepareStatement(sql);
-//
-//        ps.setString(1, empleado.getDni_empleado());
-//        ps.setString(2, empleado.getNombre_empleado());
-//        ps.setString(3, empleado.getApellidos_empleado());
-//        ps.setInt(4, empleado.getTelefono_empleado());
-//        ps.setDate(5, empleado.getFecha_inicio());
-//        ps.setString(6, empleado.getCargo_empleado());
-//        ps.setString(7, empleado.getUsuario_empleado());
-//        ps.setString(8, empleado.getPassword_empleado());
-//        ps.setInt(9, empleado.getId_cine());        
-//
-//        ps.executeUpdate();
-//        ps.close();
-//        gbd.cerrarConexionBBDD();
-//    }
     
 }

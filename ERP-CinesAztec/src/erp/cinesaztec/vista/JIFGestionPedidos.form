@@ -183,13 +183,6 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jlIvaResul" min="-2" pref="243" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="itfIvaResultado" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jbtModificar" min="-2" pref="84" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlCifBuscador" min="-2" pref="268" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -231,21 +224,12 @@
                                       <Component id="jlIvaResultado" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jlCodigoPostal" max="32767" attributes="0"/>
-                                      <Component id="jlNombreCine" alignment="0" min="-2" pref="239" max="-2" attributes="0"/>
-                                      <Component id="jlCifCine" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                                      <Component id="jlDireccionCine" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                                      <Component id="jlPoblacionCine" alignment="1" pref="243" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jtfDescripProductoModificar" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                      <Component id="jtfFechaModificar" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtfImporteSinIvaModificar" alignment="0" pref="201" max="32767" attributes="0"/>
-                                      <Component id="jtfImporteConIvaModificar" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtfCantidadProductoModificar" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="jbtModificar" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jlNombreCine" min="-2" pref="239" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                      <Component id="jtfFechaModificar" min="-2" pref="201" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -299,33 +283,9 @@
                               <Component id="jlNombreCine" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               <Component id="jtfFechaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtfImporteSinIvaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlCifCine" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlDireccionCine" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfImporteConIvaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtfDescripProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlPoblacionCine" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlCodigoPostal" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfCantidadProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jbtModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlIvaResul" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="itfIvaResultado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="19" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="jbtModificar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="152" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -336,42 +296,14 @@
                     <Property name="text" type="java.lang.String" value="Fecha:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlCifCine">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Importe SIN/IVA:"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jlCifBuscador">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ingrese el id del pedido que desea modificar:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlDireccionCine">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Importe CON/IVA:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jlPoblacionCine">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Descripci&#xf3;n Producto:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jlCodigoPostal">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cantidad:"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JTextField" name="jtfIdBuscador">
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfFechaModificar">
-                </Component>
-                <Component class="javax.swing.JTextField" name="jtfImporteSinIvaModificar">
-                </Component>
-                <Component class="javax.swing.JTextField" name="jtfImporteConIvaModificar">
-                </Component>
-                <Component class="javax.swing.JTextField" name="jtfDescripProductoModificar">
-                </Component>
-                <Component class="javax.swing.JTextField" name="jtfCantidadProductoModificar">
                 </Component>
                 <Component class="javax.swing.JButton" name="jbtModificar">
                   <Properties>
@@ -431,13 +363,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlIvaResultado">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jlIvaResul">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="IVA:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="itfIvaResultado">
                 </Component>
               </SubComponents>
             </Container>
