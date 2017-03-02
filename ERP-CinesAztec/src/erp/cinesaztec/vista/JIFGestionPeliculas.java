@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
 class JIFGestionPeliculas extends javax.swing.JInternalFrame {
 
     private PeliculaPersistencia pp = new PeliculaPersistencia();
-    private ArrayList<Pelicula> alPelicula;
+    private ArrayList<Pelicula> alPelicula = new ArrayList();
     private Pelicula pelicula;
     private Vector vPelicula = new Vector();
     private DefaultTableModel dtm = new DefaultTableModel(vPelicula, 0);
@@ -51,9 +51,9 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
             public void stateChanged(ChangeEvent e) {
                 if (e.getSource() instanceof JTabbedPane) {
                     reiniciarCamposConsulta();
-//                    reiniciarCamposModificar();
-//                    reiniciarCamposAlta();
-//                    reiniciarCamposEliminar();
+                    reiniciarCamposModificar();
+                    reiniciarCamposAlta();
+                    reiniciarCamposEliminar();
                 }
             }
         });
@@ -87,7 +87,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
         jtfNombreBuscador = new javax.swing.JTextField();
         jtfNombrePeliculaModificar = new javax.swing.JTextField();
         jtfIdPeliculaModificar = new javax.swing.JTextField();
-        jtfDuraciónPeliculaModificar = new javax.swing.JTextField();
+        jtfDuracionPeliculaModificar = new javax.swing.JTextField();
         jtfEdadAccesoModificar = new javax.swing.JTextField();
         jbtModificar = new javax.swing.JButton();
         jbtBuscarPeliculaModificar = new javax.swing.JButton();
@@ -260,7 +260,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                                 .addComponent(jlEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfDuraciónPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfDuracionPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfIdPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfNombrePeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfEdadAccesoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -327,7 +327,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDuracionPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfDuraciónPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDuracionPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfEdadAccesoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -526,6 +526,14 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
 
     }//GEN-LAST:event_jtpFondoStateChanged
+    /**
+     * Método usado para limpiar las tablas de cara a una nueva consulta.
+     */
+    private void limpiarTabla() {
+        jtaConsulta.setModel(dtm);
+        dtm.setRowCount(0);
+    }
+    
     public void consultaPelicula() {
         String nombreBuscador = jtfINombreConsulta.getText();
 
@@ -533,6 +541,8 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
             /* Búsqueda general de peliculas. */
             try {
                 reiniciarCamposConsulta();
+                limpiarTabla();
+                alPelicula.clear();
                 alPelicula = pp.listarPelicula();
                 dtm.setRowCount(alPelicula.size());
                 for (int i = 0; i < alPelicula.size(); i++) {
@@ -550,26 +560,18 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
             /* Búsqueda específica de cine por CIF. */
             try {
                 reiniciarCamposConsulta();
+                limpiarTabla();
                 pelicula = pp.buscarPelicula(nombreBuscador);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(pelicula.getNombre_pelicula(), 0, 0);
                 jtaConsulta.setValueAt(pelicula.getId_pelicula(), 0, 1);
                 jtaConsulta.setValueAt(pelicula.getDur_pelicula(), 0, 2);
                 jtaConsulta.setValueAt(pelicula.getEdad_acceso(), 0, 3);
-
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la pelicaula solicitada.\nPruebe de nuevo.");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
             }
-        }
-    }
-
-    public void reiniciarCamposConsulta() {
-        jtfINombreConsulta.setText("");
-        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
-            dtm.removeRow(i);
-            i -= 1;
         }
     }
 
@@ -581,8 +583,8 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
 
             pelicula = new Pelicula(nombreNuevo, duracion, edadAcceso);
             pp.ingresarPelicula(pelicula);
+            reiniciarCamposAlta();
             JOptionPane.showMessageDialog(null, "Pelicula ingresado con éxito.");
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar la nueva pelicula.\nPruebe de nuevo.");
         } catch (ClassNotFoundException ex) {
@@ -596,6 +598,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
         try {
             pelicula = pp.buscarPelicula(nombre_pelicula_eliminar);
             pp.eliminarPelicula(pelicula.getId_pelicula());
+            reiniciarCamposEliminar();
             JOptionPane.showMessageDialog(null, "Pelicula eliminada con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
@@ -632,7 +635,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
 
             jtfNombrePeliculaModificar.setText(pelicula.getNombre_pelicula());
             jtfIdPeliculaModificar.setText(String.valueOf(pelicula.getId_pelicula()));
-            jtfDuraciónPeliculaModificar.setText(String.valueOf(pelicula.getDur_pelicula()));
+            jtfDuracionPeliculaModificar.setText(String.valueOf(pelicula.getDur_pelicula()));
             jtfEdadAccesoModificar.setText(String.valueOf(pelicula.getEdad_acceso()));
             jbtModificar.setEnabled(true);
         } catch (SQLException ex) {
@@ -645,18 +648,71 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     public void actualizarPelicula() {
 
         String nombreNuevo = jtfNombrePeliculaModificar.getText();
-        int duracionNueva = Integer.parseInt(jtfDuraciónPeliculaModificar.getText());
+        int duracionNueva = Integer.parseInt(jtfDuracionPeliculaModificar.getText());
         int edadAccesoNueva = Integer.parseInt(jtfEdadAccesoModificar.getText());
         int id_pelicula = Integer.parseInt(jtfIdPeliculaModificar.getText());
         pelicula = new Pelicula(id_pelicula, nombreNuevo, duracionNueva, edadAccesoNueva);
         try {
             pp.actualizarPelicula(pelicula);
+            reiniciarCamposModificar();
             JOptionPane.showMessageDialog(null, "Pelicula actualizada con éxito.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar la pelicula solicitada.\nPruebe de nuevo.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
         }
+    }
+    
+    /**
+     * Método usado para reiniciar los campos de la ventana Consulta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposConsulta() {
+        jtfINombreConsulta.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Modificar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposModificar() {
+        jtfNombreBuscador.setText("");
+        jtfNombrePeliculaModificar.setText("");
+        jtfIdPeliculaModificar.setText("");
+        jtfDuracionPeliculaModificar.setText("");
+        jtfEdadAccesoModificar.setText("");
+        
+        jlNombreResultado.setText("");
+        jlIdResultado.setText("");
+        jlDuracionResultado.setText("");
+        jlEdadAccesoResultado.setText("");
+        jbtModificar.setEnabled(false);
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Alta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposAlta() {
+        jtfNombreNuevoAltaPelicula.setText("");
+        jtfDuracionNuevoAltaPelicula.setText("");
+        jtfEdadAccesoNuevaAltaPelicula.setText("");
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Eliminar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposEliminar() {
+        jtfNombrePeliculaEliminar.setText("");
+        jlNombrePeliculaAEliminar.setText("");
+        jlDuracionPeliculaAELiminar.setText("");
+        jlEdadAccesoAEliminar.setText("");
+        jbConfirmarEliminar.setEnabled(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -695,7 +751,7 @@ class JIFGestionPeliculas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
     private javax.swing.JTextField jtfDuracionNuevoAltaPelicula;
-    private javax.swing.JTextField jtfDuraciónPeliculaModificar;
+    private javax.swing.JTextField jtfDuracionPeliculaModificar;
     private javax.swing.JTextField jtfEdadAccesoModificar;
     private javax.swing.JTextField jtfEdadAccesoNuevaAltaPelicula;
     private javax.swing.JTextField jtfINombreConsulta;

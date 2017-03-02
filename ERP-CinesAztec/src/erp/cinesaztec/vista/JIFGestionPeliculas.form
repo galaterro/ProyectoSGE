@@ -205,7 +205,7 @@
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtfDuraciónPeliculaModificar" alignment="0" min="-2" pref="510" max="-2" attributes="0"/>
+                                      <Component id="jtfDuracionPeliculaModificar" alignment="0" min="-2" pref="510" max="-2" attributes="0"/>
                                       <Component id="jtfIdPeliculaModificar" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
                                       <Component id="jtfNombrePeliculaModificar" alignment="0" min="-2" pref="403" max="-2" attributes="0"/>
                                       <Component id="jtfEdadAccesoModificar" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
@@ -293,7 +293,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlDuracionPelicula" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfDuraciónPeliculaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfDuracionPeliculaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -339,7 +339,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfIdPeliculaModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfDuraci&#xf3;nPeliculaModificar">
+                <Component class="javax.swing.JTextField" name="jtfDuracionPeliculaModificar">
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfEdadAccesoModificar">
                 </Component>
