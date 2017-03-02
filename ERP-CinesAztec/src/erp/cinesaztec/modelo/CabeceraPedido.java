@@ -4,21 +4,29 @@ import java.sql.Date;
 
 /**
  * Clase dedicada al modelo de Cabecera de Pedido.
- * 
+ *
  * @author Cine Aztec Team
  */
 public class CabeceraPedido {
-    
+
     private int id_cabecera_pedido = 0;
     private Date fecha_pedido = null;
-    private final float IVA = 1.21f;
+    private float iva;
     private float importe_total_sin_iva = 0f;
     private float importe_total_con_iva = 0f;
 
+    public CabeceraPedido(Date fecha_pedido, float importe_total_sin_iva, float iva, float importe_total_con_iva) {
+        this.fecha_pedido = fecha_pedido;
+        this.importe_total_sin_iva = importe_total_sin_iva;
+        this.iva = iva;
+        this.importe_total_con_iva = importe_total_con_iva;
+    }
+
     /* Constructor. */
-    public CabeceraPedido(int id_cabecera_pedido, Date fecha_pedido, float importe_total_sin_iva, float importe_total_con_iva) {
+    public CabeceraPedido(int id_cabecera_pedido, Date fecha_pedido, float iva, float importe_total_sin_iva, float importe_total_con_iva) {
         this.id_cabecera_pedido = id_cabecera_pedido;
         this.fecha_pedido = fecha_pedido;
+        this.iva = iva;
         this.importe_total_sin_iva = importe_total_sin_iva;
         this.importe_total_con_iva = importe_total_con_iva;
     }
@@ -54,9 +62,14 @@ public class CabeceraPedido {
 
     public void setImporte_total_con_iva(float importe_total_con_iva) {
         this.importe_total_con_iva = importe_total_con_iva;
-    } 
+    }
 
     public float getIVA() {
-        return IVA;
+        return iva;
     }
+
+    public void setIva(float iva) {
+        this.iva = iva;
+    }
+
 }

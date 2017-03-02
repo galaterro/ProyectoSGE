@@ -1,6 +1,18 @@
 package erp.cinesaztec.vista;
 
+import erp.cinesaztec.modelo.CabeceraPedido;
+import erp.cinesaztec.modelo.CuerpoPedido;
+import erp.cinesaztec.modelo.Producto;
+import erp.cinesaztec.persistencia.PedidoPersistencia;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -8,20 +20,33 @@ import javax.swing.table.DefaultTableModel;
  * @author Cine Aztec Team
  */
 class JIFGestionPedidos extends javax.swing.JInternalFrame {
-    
-//    private PedidoPersistencia cp = new PedidoPersistencia();
-//    private ArrayList<Cine> alCine;
-//    private Pedido pedido;
-    private Vector vCine = new Vector();
-    private DefaultTableModel dtm = new DefaultTableModel(vCine, 0);
-    private int contadorModificadosAlta = 0;
-    
+
+    private PedidoPersistencia pp = new PedidoPersistencia();
+    private ArrayList<CabeceraPedido> alCabeceraPedido;
+    private ArrayList<CuerpoPedido> alCuerpoPedido;
+    private CuerpoPedido cuerpoPedido;
+    private CabeceraPedido cabeceraPedido;
+    private Producto producto;
+    private Vector vPedidos = new Vector();
+    private DefaultTableModel dtm = new DefaultTableModel(vPedidos, 0);
+    private int iva = 21;
+
     public JIFGestionPedidos() {
         initComponents();
+        vPedidos.add("fecha:");
+        vPedidos.add("IVA:");
+        vPedidos.add("Importe SIN/IVA:");
+        vPedidos.add("Importe IVA/INC.:");
+        vPedidos.add("Producto:");
+        vPedidos.add("Descripcion Producto:");
+        vPedidos.add("CTD:");
+
+        jtaConsulta.setModel(dtm);
         this.setSize(990, 700);
+        this.setResizable(false);
         this.setTitle("Gestión Pedidos");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -31,7 +56,7 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
         jpConsulta = new javax.swing.JPanel();
         lbTitulo = new javax.swing.JLabel();
         jlCifConsulta = new javax.swing.JLabel();
-        jtfCifConsulta = new javax.swing.JTextField();
+        jtfIdConsulta = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaConsulta = new javax.swing.JTable();
         jbAceptarConsulta = new javax.swing.JButton();
@@ -62,16 +87,14 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
         jtpAltaCine = new javax.swing.JTabbedPane();
         jpAltaCine = new javax.swing.JPanel();
         jlNombre = new javax.swing.JLabel();
-        jtfNombreNuevo = new javax.swing.JTextField();
+        jtfFechaAltaPedido = new javax.swing.JTextField();
         jlCif = new javax.swing.JLabel();
-        jtfCifNuevo = new javax.swing.JTextField();
+        jtfImporSinIvaAltaPedido = new javax.swing.JTextField();
         jlDireccion = new javax.swing.JLabel();
-        jtfDireccionNueva = new javax.swing.JTextField();
+        jtfCantidadAltaPedido = new javax.swing.JTextField();
         jlPoblacion = new javax.swing.JLabel();
-        jtfPoblacionNueva = new javax.swing.JTextField();
-        jlCodPostal = new javax.swing.JLabel();
-        jtfCodPosNuevo = new javax.swing.JTextField();
-        jbAltaCine = new javax.swing.JButton();
+        jtfNombreAltaProductoPedido = new javax.swing.JTextField();
+        jbAltaPedido = new javax.swing.JButton();
         jtpEliminar = new javax.swing.JTabbedPane();
         jpFondoEliminar = new javax.swing.JPanel();
         jlCifCineEliminar = new javax.swing.JLabel();
@@ -107,10 +130,10 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
         });
 
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitulo.setText("Ingrese el CIF del cine o pulse Aceptar para búsqueda completar:");
+        lbTitulo.setText("Ingrese el ID del pedido o pulse Aceptar para  completar la búsqueda:");
 
         jlCifConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlCifConsulta.setText("CIF:");
+        jlCifConsulta.setText("ID:");
 
         jtaConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -144,7 +167,7 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
                     .addGroup(jpConsultaLayout.createSequentialGroup()
                         .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfCifConsulta))
+                        .addComponent(jtfIdConsulta))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jbAceptarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -158,7 +181,7 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCifConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfIdConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -308,31 +331,29 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
 
         jtpFondo.addTab("Modificar", jtpModificar);
 
-        jlNombre.setText("Nombre:");
+        jlNombre.setText("Fecha:");
 
-        jtfNombreNuevo.addActionListener(new java.awt.event.ActionListener() {
+        jtfFechaAltaPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfNombreNuevoActionPerformed(evt);
+                jtfFechaAltaPedidoActionPerformed(evt);
             }
         });
-        jtfNombreNuevo.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtfFechaAltaPedido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtfNombreNuevoKeyPressed(evt);
+                jtfFechaAltaPedidoKeyPressed(evt);
             }
         });
 
-        jlCif.setText("CIF:");
+        jlCif.setText("Importe SIN/IVA:");
 
-        jlDireccion.setText("Dirección:");
+        jlDireccion.setText("Cantidad:");
 
-        jlPoblacion.setText("Población:");
+        jlPoblacion.setText("Nombre Producto:");
 
-        jlCodPostal.setText("Código Postal:");
-
-        jbAltaCine.setText("Aceptar");
-        jbAltaCine.addActionListener(new java.awt.event.ActionListener() {
+        jbAltaPedido.setText("Aceptar");
+        jbAltaPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAltaCineActionPerformed(evt);
+                jbAltaPedidoActionPerformed(evt);
             }
         });
 
@@ -342,28 +363,26 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
             jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpAltaCineLayout.createSequentialGroup()
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
-                            .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jtfNombreNuevo))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
-                            .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jtfCifNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpAltaCineLayout.createSequentialGroup()
+                        .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlCif, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                            .addComponent(jlNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtfFechaAltaPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addComponent(jtfImporSinIvaAltaPedido)))
                     .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jbAltaCine)
-                        .addGroup(jpAltaCineLayout.createSequentialGroup()
-                            .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jlCodPostal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                                .addComponent(jlPoblacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jlDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(18, 18, 18)
-                            .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfDireccionNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfCodPosNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfPoblacionNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(268, Short.MAX_VALUE))
+                        .addComponent(jbAltaPedido)
+                        .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jpAltaCineLayout.createSequentialGroup()
+                                .addComponent(jlPoblacion, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfNombreAltaProductoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpAltaCineLayout.createSequentialGroup()
+                                .addComponent(jlDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfCantidadAltaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(596, Short.MAX_VALUE))
         );
         jpAltaCineLayout.setVerticalGroup(
             jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,26 +390,22 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfNombreNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfFechaAltaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCifNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfImporSinIvaAltaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfDireccionNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfCantidadAltaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfPoblacionNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlCodPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCodPosNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jbAltaCine)
-                .addContainerGap(113, Short.MAX_VALUE))
+                    .addComponent(jtfNombreAltaProductoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(jbAltaPedido)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         jtpAltaCine.addTab("", jpAltaCine);
@@ -488,14 +503,14 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtpFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+            .addComponent(jtpFondo)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
-       // consultaCine();
+        listarPedidos();
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jtpConsultaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpConsultaStateChanged
@@ -511,45 +526,127 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbtModificarActionPerformed
 
     private void jbtBuscarCineModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarCineModificarActionPerformed
-       // cargarCineModificar();
+        // cargarCineModificar();
     }//GEN-LAST:event_jbtBuscarCineModificarActionPerformed
 
-    private void jtfNombreNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreNuevoActionPerformed
-        if (jtfNombreNuevo.getText().compareToIgnoreCase("") != 0) {
-            contadorModificadosAlta++;
-        } else {
-            if (contadorModificadosAlta == 1) {
-                contadorModificadosAlta--;
-            }
-        }
-    }//GEN-LAST:event_jtfNombreNuevoActionPerformed
+    private void jtfFechaAltaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfFechaAltaPedidoActionPerformed
+//        if (jtfNombreNuevo.getText().compareToIgnoreCase("") != 0) {
+//            contadorModificadosAlta++;
+//        } else {
+//            if (contadorModificadosAlta == 1) {
+//                contadorModificadosAlta--;
+//            }
+//        }
+    }//GEN-LAST:event_jtfFechaAltaPedidoActionPerformed
 
-    private void jtfNombreNuevoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreNuevoKeyPressed
+    private void jtfFechaAltaPedidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfFechaAltaPedidoKeyPressed
 
-    }//GEN-LAST:event_jtfNombreNuevoKeyPressed
+    }//GEN-LAST:event_jtfFechaAltaPedidoKeyPressed
 
-    private void jbAltaCineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaCineActionPerformed
-        //ingresarCine();
-    }//GEN-LAST:event_jbAltaCineActionPerformed
+    private void jbAltaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaPedidoActionPerformed
+        ingresarPedidos();
+    }//GEN-LAST:event_jbAltaPedidoActionPerformed
 
     private void jbAceptarCifEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEliminarActionPerformed
-       // cargarCineEliminar();
+        // cargarCineEliminar();
     }//GEN-LAST:event_jbAceptarCifEliminarActionPerformed
 
     private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
-       // eliminarCine();
+        // eliminarCine();
     }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
 
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
 
     }//GEN-LAST:event_jtpFondoStateChanged
 
+    public void listarPedidos() {
+        String idBuscador = jtfIdConsulta.getText();
+
+        if (idBuscador.trim().equals("")) {
+            try {
+
+                alCabeceraPedido = pp.listarCabeceraPedidos();
+
+                alCuerpoPedido = pp.listarCuerpoPedidos();
+
+                int total = alCabeceraPedido.size() + alCuerpoPedido.size();
+                dtm.setRowCount(7);
+                for (int i = 0; i < total; i++) {
+                    producto = pp.buscarProductoPorId(alCuerpoPedido.get(i).getId_producto());
+                    jtaConsulta.setValueAt(alCabeceraPedido.get(i).getFecha_pedido(), i, 0);
+                    jtaConsulta.setValueAt(alCabeceraPedido.get(i).getImporte_total_sin_iva(), i, 1);
+                    jtaConsulta.setValueAt(alCabeceraPedido.get(i).getIVA(), i, 2);
+                    jtaConsulta.setValueAt(alCabeceraPedido.get(i).getImporte_total_con_iva(), i, 3);
+                    jtaConsulta.setValueAt(producto.getNombre_producto(), i, 4);
+                    jtaConsulta.setValueAt(producto.getDesc_producto(), i, 5);
+                    jtaConsulta.setValueAt(alCuerpoPedido.get(i).getCantidad(), i, 6);
+
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "NO SE HAN PODIDO CARGAR LOS PEDIDOS");
+            }
+
+        } else {
+            try {
+                int id = Integer.parseInt(idBuscador);
+                cabeceraPedido = pp.buscarCabeceraPedido(id);
+                cuerpoPedido = pp.buscarCuerpoPedido(cabeceraPedido.getId_cabecera_pedido());
+                producto = pp.buscarProductoPorId(cuerpoPedido.getId_producto());
+                dtm.setRowCount(1);
+                jtaConsulta.setValueAt(cabeceraPedido.getFecha_pedido(), 0, 0);
+                jtaConsulta.setValueAt(cabeceraPedido.getImporte_total_sin_iva(), 0, 1);
+                jtaConsulta.setValueAt(cabeceraPedido.getIVA(), 0, 2);
+                jtaConsulta.setValueAt(cabeceraPedido.getImporte_total_con_iva(), 0, 3);
+                jtaConsulta.setValueAt(producto.getNombre_producto(), 0, 4);
+                jtaConsulta.setValueAt(producto.getDesc_producto(), 0, 5);
+                jtaConsulta.setValueAt(cuerpoPedido.getCantidad(), 0, 6);
+
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "NO SE HAN PODIDO CARGAR LOS PEDIDOS");
+            }
+        }
+    }
+
+    public void ingresarPedidos() {
+        try {
+            
+            SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
+            Date fechaInicio = format.parse(jtfFechaAltaPedido.getText());
+            java.sql.Date fecha = new java.sql.Date(fechaInicio.getTime());
+            
+            Float importeSinIva = Float.parseFloat(jtfImporSinIvaAltaPedido.getText());
+            Float importeConIva = importeSinIva * iva;
+            String nompreProducto = jtfNombreAltaProductoPedido.getText();
+            int id = pp.buscarProductoPorNombre(nompreProducto);
+            producto = pp.buscarProductoPorId(id);
+            int ctd = Integer.parseInt(jtfCantidadAltaPedido.getText());
+            
+            cabeceraPedido = new CabeceraPedido(fecha, importeSinIva, iva, importeConIva);
+            pp.ingresarCabeceraPedido(cabeceraPedido);
+            cuerpoPedido = new CuerpoPedido(producto.getDesc_producto(), ctd, producto.getId_producto(),cabeceraPedido.getId_cabecera_pedido() );
+            pp.ingresarCuerpoPedido(cuerpoPedido);
+            JOptionPane.showMessageDialog(null, "PEDIDO INGRESADO CON ÉXITO.");
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "FORMATO DE FECHA INCORRECTO \n EJEMPLO: 2017-12-31");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "NO SE HA PODIDO INGRESAR EL PEDIDO");
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAceptarCifEliminar;
     private javax.swing.JButton jbAceptarConsulta;
-    private javax.swing.JButton jbAltaCine;
+    private javax.swing.JButton jbAltaPedido;
     private javax.swing.JButton jbConfirmarEliminar;
     private javax.swing.JButton jbtBuscarCineModificar;
     private javax.swing.JButton jbtModificar;
@@ -560,7 +657,6 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCifConsulta;
     private javax.swing.JLabel jlCineAEliminar;
     private javax.swing.JLabel jlCodPosCineAEliminar;
-    private javax.swing.JLabel jlCodPostal;
     private javax.swing.JLabel jlCodigoPostal;
     private javax.swing.JLabel jlCodigoPostalActual;
     private javax.swing.JLabel jlCodigoPostalResultado;
@@ -585,18 +681,17 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
     private javax.swing.JTextField jtfCIfCine;
+    private javax.swing.JTextField jtfCantidadAltaPedido;
     private javax.swing.JTextField jtfCifBuscador;
     private javax.swing.JTextField jtfCifCineEliminar;
-    private javax.swing.JTextField jtfCifConsulta;
-    private javax.swing.JTextField jtfCifNuevo;
-    private javax.swing.JTextField jtfCodPosNuevo;
     private javax.swing.JTextField jtfCodigoPostal;
     private javax.swing.JTextField jtfDireccionCine;
-    private javax.swing.JTextField jtfDireccionNueva;
+    private javax.swing.JTextField jtfFechaAltaPedido;
+    private javax.swing.JTextField jtfIdConsulta;
+    private javax.swing.JTextField jtfImporSinIvaAltaPedido;
+    private javax.swing.JTextField jtfNombreAltaProductoPedido;
     private javax.swing.JTextField jtfNombreCine;
-    private javax.swing.JTextField jtfNombreNuevo;
     private javax.swing.JTextField jtfPoblacionCine;
-    private javax.swing.JTextField jtfPoblacionNueva;
     private javax.swing.JTabbedPane jtpAltaCine;
     private javax.swing.JTabbedPane jtpConsulta;
     private javax.swing.JTabbedPane jtpEliminar;

@@ -349,25 +349,31 @@
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlDniEmp" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfDniEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jlCargoEmp" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfCargoEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jlDniEmp" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jtfDniEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jtfCargoEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtfNomEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlNomEmp" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jlUsuEmp" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jtfUsuEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jtfNomEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlNomEmp" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="jtfUsuEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlApeEmp" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfApeEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jlContraEmp" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfConEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jlApeEmp" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="jtfApeEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jtfConEmpModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">

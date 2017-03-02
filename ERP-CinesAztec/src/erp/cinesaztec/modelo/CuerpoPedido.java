@@ -10,15 +10,26 @@ public class CuerpoPedido {
     private int id_cuerpo_pedido = 0;
     private int id_producto = 0;
     private String descrip_producto = null;
+    private int id_cabecera_pedido =0;
     private int cantidad = 0;
     
     /* Constructor. */
-    public CuerpoPedido(int id_cuerpo_pedido, int id_producto, String descrip_producto, int cantidad) {
+    public CuerpoPedido(int id_cuerpo_pedido, String descrip_producto, int cantidad, int id_producto, int id_cabecera_pedido) {
         this.id_cuerpo_pedido = id_cuerpo_pedido;
-        this.id_producto = id_producto;
         this.descrip_producto = descrip_producto;
         this.cantidad = cantidad;
+        this.id_producto = id_producto;
+        this.id_cabecera_pedido = id_cabecera_pedido;
     }
+
+    public CuerpoPedido( String descrip_producto, int cantidad, int id_producto, int id_cabecera_pedido) {
+        this.descrip_producto = descrip_producto;
+        this.cantidad = cantidad;
+        this.id_producto = id_producto;
+        this.id_cabecera_pedido = id_cabecera_pedido;
+    }
+    
+    
     
     /* Getters y setters. */
     public int getId_cuerpo_pedido() {
@@ -52,5 +63,14 @@ public class CuerpoPedido {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    public int getId_cabecera_pedido() {
+        return id_cabecera_pedido;
+    }
+
+    public void setId_cabecera_pedido(int id_cabecera_pedido) {
+        this.id_cabecera_pedido = id_cabecera_pedido;
+    }
+    
     
 }

@@ -33,7 +33,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jtpFondo" alignment="0" pref="414" max="32767" attributes="0"/>
+          <Component id="jtpFondo" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -80,7 +80,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlCifConsulta" min="-2" pref="113" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfCifConsulta" max="32767" attributes="0"/>
+                                  <Component id="jtfIdConsulta" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -99,7 +99,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCifConsulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfCifConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfIdConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="90" max="-2" attributes="0"/>
@@ -114,16 +114,16 @@
                 <Component class="javax.swing.JLabel" name="lbTitulo">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Ingrese el CIF del cine o pulse Aceptar para b&#xfa;squeda completar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el ID del pedido o pulse Aceptar para  completar la b&#xfa;squeda:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCifConsulta">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="CIF:"/>
+                    <Property name="text" type="java.lang.String" value="ID:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfCifConsulta">
+                <Component class="javax.swing.JTextField" name="jtfIdConsulta">
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
@@ -415,38 +415,36 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jlNombre" min="-2" pref="222" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jtfNombreNuevo" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jlCif" pref="127" max="32767" attributes="0"/>
+                                      <Component id="jlNombre" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jlCif" min="-2" pref="221" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jtfCifNuevo" min="-2" pref="296" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jtfFechaAltaPedido" pref="206" max="32767" attributes="0"/>
+                                      <Component id="jtfImporSinIvaAltaPedido" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="jbAltaCine" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jlCodPostal" alignment="0" pref="221" max="32767" attributes="0"/>
-                                          <Component id="jlPoblacion" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jlDireccion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jbAltaPedido" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jlPoblacion" pref="127" max="32767" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jtfNombreAltaProductoPedido" min="-2" pref="206" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jtfDireccionNueva" alignment="0" min="-2" pref="440" max="-2" attributes="0"/>
-                                          <Component id="jtfCodPosNuevo" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                                          <Component id="jtfPoblacionNueva" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jlDireccion" max="32767" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jtfCantidadAltaPedido" min="-2" pref="206" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="268" max="32767" attributes="0"/>
+                          <EmptySpace pref="596" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -456,31 +454,26 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlNombre" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfNombreNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfFechaAltaPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCif" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfCifNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfImporSinIvaAltaPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlDireccion" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jtfDireccionNueva" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfCantidadAltaPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlPoblacion" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfPoblacionNueva" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfNombreAltaProductoPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlCodPostal" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfCodPosNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jbAltaCine" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="113" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="jbAltaPedido" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="137" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -488,49 +481,42 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jlNombre">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                    <Property name="text" type="java.lang.String" value="Fecha:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfNombreNuevo">
+                <Component class="javax.swing.JTextField" name="jtfFechaAltaPedido">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfNombreNuevoActionPerformed"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfNombreNuevoKeyPressed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfFechaAltaPedidoActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfFechaAltaPedidoKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCif">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="CIF:"/>
+                    <Property name="text" type="java.lang.String" value="Importe SIN/IVA:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfCifNuevo">
+                <Component class="javax.swing.JTextField" name="jtfImporSinIvaAltaPedido">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccion">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
+                    <Property name="text" type="java.lang.String" value="Cantidad:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfDireccionNueva">
+                <Component class="javax.swing.JTextField" name="jtfCantidadAltaPedido">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlPoblacion">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Poblaci&#xf3;n:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Producto:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfPoblacionNueva">
+                <Component class="javax.swing.JTextField" name="jtfNombreAltaProductoPedido">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlCodPostal">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="C&#xf3;digo Postal:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jtfCodPosNuevo">
-                </Component>
-                <Component class="javax.swing.JButton" name="jbAltaCine">
+                <Component class="javax.swing.JButton" name="jbAltaPedido">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Aceptar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAltaCineActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAltaPedidoActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
