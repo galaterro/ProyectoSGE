@@ -187,7 +187,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jlDireccionActual" min="-2" pref="107" max="-2" attributes="0"/>
-                              <Component id="jlIDPeliculaResultado" pref="108" max="32767" attributes="0"/>
+                              <Component id="jlPeliculaResultado" pref="108" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
@@ -196,23 +196,23 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jlIDSesionResultado" max="32767" attributes="0"/>
+                                  <Component id="jlSesionResultado" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jlIDButacaResultado" max="32767" attributes="0"/>
+                              <Component id="jlButacaResultado" max="32767" attributes="0"/>
                               <Component id="jlCodigoPostalActual" min="-2" pref="140" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jlIDClienteResultado" max="32767" attributes="0"/>
+                              <Component id="jlClienteResultado" max="32767" attributes="0"/>
                               <Component id="jlCodigoPostalActual1" pref="140" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jlCodigoPostalActual2" pref="140" max="32767" attributes="0"/>
-                              <Component id="jlIDSalaResultado" max="32767" attributes="0"/>
+                              <Component id="jlSalaResultado" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                       </Group>
@@ -227,16 +227,16 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jtfIDSesionModificar" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtfIDPeliculaModificar" alignment="0" pref="403" max="32767" attributes="0"/>
-                                      <Component id="jtfIDButacaModificar" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtfIDClienteModificar" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jtfSesionModificar" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jtfPeliculaModificar" alignment="0" pref="403" max="32767" attributes="0"/>
+                                      <Component id="jtfButacaModificar" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jtfClienteModificar" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlCodigoPostal" min="-2" pref="243" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfIDSalaModificar" max="32767" attributes="0"/>
+                                  <Component id="jtfSalaModificar" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlIDBuscador" min="-2" pref="268" max="-2" attributes="0"/>
@@ -260,54 +260,56 @@
                               <Component id="jbtBuscarReservaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlNombreActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jlDireccionActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jlPoblacionActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jlCodigoPostalActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jlCodigoPostalActual2" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jlCodigoPostalActual1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jlNombreActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="jlDireccionActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="jlPoblacionActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="jlCodigoPostalActual" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="jlCodigoPostalActual1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="jlIDSalaResultado" pref="21" max="32767" attributes="0"/>
+                                  <Component id="jlSalaResultado" pref="21" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jlIDReservaResultado" max="32767" attributes="0"/>
-                                      <Component id="jlIDPeliculaResultado" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jlIDSesionResultado" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jlIDClienteResultado" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jlIDButacaResultado" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jlPeliculaResultado" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jlSesionResultado" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jlClienteResultado" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jlButacaResultado" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlNombreCine" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfIDPeliculaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfPeliculaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtfIDSesionModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfSesionModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlCifCine" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlDireccionCine" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfIDButacaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfButacaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtfIDClienteModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfClienteModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jlPoblacionCine" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCodigoPostal" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfIDSalaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfSalaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jbtModificar" min="-2" max="-2" attributes="0"/>
@@ -319,12 +321,12 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jlNombreCine">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Pel&#xed;cula:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Pel&#xed;cula:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCifCine">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Sesi&#xf3;n:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Sesi&#xf3;n:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlIDBuscador">
@@ -334,30 +336,30 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccionCine">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Butaca:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Butaca:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlPoblacionCine">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Cliente:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Cliente:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCodigoPostal">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Sala:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Sala:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfIDBuscador">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDPeliculaModificar">
+                <Component class="javax.swing.JTextField" name="jtfPeliculaModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDSesionModificar">
+                <Component class="javax.swing.JTextField" name="jtfSesionModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDButacaModificar">
+                <Component class="javax.swing.JTextField" name="jtfButacaModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDClienteModificar">
+                <Component class="javax.swing.JTextField" name="jtfClienteModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDSalaModificar">
+                <Component class="javax.swing.JTextField" name="jtfSalaModificar">
                 </Component>
                 <Component class="javax.swing.JButton" name="jbtModificar">
                   <Properties>
@@ -379,40 +381,40 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccionActual">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Pel&#xed;cula Actual:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Pel&#xed;cula:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlPoblacionActual">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Sesi&#xf3;n Actual:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Sesi&#xf3;n:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCodigoPostalActual">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Butaca Actual:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Butaca:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlIDReservaResultado">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlIDSalaResultado">
+                <Component class="javax.swing.JLabel" name="jlSalaResultado">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCodigoPostalActual1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Cliente Actual:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Cliente:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCodigoPostalActual2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Sala Actual:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Sala:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlIDPeliculaResultado">
+                <Component class="javax.swing.JLabel" name="jlPeliculaResultado">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlIDSesionResultado">
+                <Component class="javax.swing.JLabel" name="jlSesionResultado">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlIDClienteResultado">
+                <Component class="javax.swing.JLabel" name="jlClienteResultado">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlIDButacaResultado">
+                <Component class="javax.swing.JLabel" name="jlButacaResultado">
                 </Component>
               </SubComponents>
             </Container>
@@ -447,12 +449,12 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jlNombre" min="-2" pref="222" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jtfIDPeliculaAlta" max="32767" attributes="0"/>
+                                      <Component id="jtfPeliculaAlta" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jlCif" min="-2" pref="221" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jtfIDSesionAlta" min="-2" pref="296" max="-2" attributes="0"/>
+                                      <Component id="jtfSesionAlta" min="-2" pref="296" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
@@ -465,9 +467,9 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jtfIDButacaAlta" alignment="0" min="-2" pref="440" max="-2" attributes="0"/>
-                                          <Component id="jtfIDSalaAlta" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                                          <Component id="jtfIDClienteAlta" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
+                                          <Component id="jtfButacaAlta" alignment="0" min="-2" pref="440" max="-2" attributes="0"/>
+                                          <Component id="jtfSalaAlta" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+                                          <Component id="jtfClienteAlta" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -482,27 +484,27 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlNombre" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfIDPeliculaAlta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfPeliculaAlta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCif" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfIDSesionAlta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfSesionAlta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlDireccion" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jtfIDButacaAlta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfButacaAlta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlPoblacion" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfIDClienteAlta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfClienteAlta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCodPostal" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jtfIDSalaAlta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfSalaAlta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jbAltaReserva" min="-2" max="-2" attributes="0"/>
@@ -514,38 +516,38 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jlNombre">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Pel&#xed;cula:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Pel&#xed;cula:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDPeliculaAlta">
+                <Component class="javax.swing.JTextField" name="jtfPeliculaAlta">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCif">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Sesi&#xf3;n:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Sesi&#xf3;n:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDSesionAlta">
+                <Component class="javax.swing.JTextField" name="jtfSesionAlta">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccion">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Butaca:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Butaca:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDButacaAlta">
+                <Component class="javax.swing.JTextField" name="jtfButacaAlta">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlPoblacion">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Cliente:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Cliente:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDClienteAlta">
+                <Component class="javax.swing.JTextField" name="jtfClienteAlta">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCodPostal">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Sala:"/>
+                    <Property name="text" type="java.lang.String" value="Nombre Sala:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfIDSalaAlta">
+                <Component class="javax.swing.JTextField" name="jtfSalaAlta">
                 </Component>
                 <Component class="javax.swing.JButton" name="jbAltaReserva">
                   <Properties>
@@ -593,13 +595,13 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jlIDReservaEliminar1" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jlIDPeliculaEliminar" min="-2" pref="105" max="-2" attributes="0"/>
+                                                  <Component id="jlPeliculaEliminar" min="-2" pref="105" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jlIDSesionEliminar" min="-2" pref="105" max="-2" attributes="0"/>
+                                                  <Component id="jlSesionEliminar" min="-2" pref="105" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jlIDButacaEliminar" min="-2" pref="105" max="-2" attributes="0"/>
+                                                  <Component id="jlButacaEliminar" min="-2" pref="105" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jlIDClienteEliminar" min="-2" pref="105" max="-2" attributes="0"/>
+                                                  <Component id="jlClienteEliminar" min="-2" pref="105" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -608,7 +610,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jbComfirmarEliminar" min="-2" pref="115" max="-2" attributes="0"/>
-                                      <Component id="jlIDSalaEliminar" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                      <Component id="jlSalaEliminar" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -646,14 +648,14 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jlIDPeliculaEliminar" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jlPeliculaEliminar" min="-2" pref="25" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jlIDReservaEliminar" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="jlIDSesionEliminar" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="jlSesionEliminar" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jlIDButacaEliminar" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jlIDClienteEliminar" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jlIDSalaEliminar" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jlButacaEliminar" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jlClienteEliminar" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jlSalaEliminar" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="jbComfirmarEliminar" min="-2" max="-2" attributes="0"/>
@@ -696,15 +698,15 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlIDReservaEliminar1">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlIDSesionEliminar">
+                <Component class="javax.swing.JLabel" name="jlSesionEliminar">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlIDButacaEliminar">
+                <Component class="javax.swing.JLabel" name="jlButacaEliminar">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlIDSalaEliminar">
+                <Component class="javax.swing.JLabel" name="jlSalaEliminar">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlIDClienteEliminar">
+                <Component class="javax.swing.JLabel" name="jlClienteEliminar">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jlIDPeliculaEliminar">
+                <Component class="javax.swing.JLabel" name="jlPeliculaEliminar">
                 </Component>
               </SubComponents>
             </Container>

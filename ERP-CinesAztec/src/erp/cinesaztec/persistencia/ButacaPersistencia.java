@@ -29,10 +29,8 @@ public class ButacaPersistencia {
         ps.setInt(1, butaca.getNumero_fila());
         ps.setInt(2, butaca.getNumero_columna());
         ps.setInt(3, butaca.getId_sala());
-        
         ps.executeUpdate();
         ps.close();
-
         gbd.cerrarConexionBBDD();
     }
 

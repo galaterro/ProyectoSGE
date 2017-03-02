@@ -13,18 +13,26 @@ public class Reserva {
     private int id_sesion;
     private int id_butaca;
     private int id_cliente;
-    private int id_sala;
+    
 
     /* Constructor. */
     
-    public Reserva(int id_reserva, int id_pelicula, int id_sesion, int id_butaca, int id_cliente, int id_sala) {
+    public Reserva(int id_reserva, int id_pelicula, int id_sesion, int id_butaca, int id_cliente) {
         this.id_reserva = id_reserva;
         this.id_pelicula = id_pelicula;
         this.id_sesion = id_sesion;
         this.id_butaca = id_butaca;
         this.id_cliente = id_cliente;
-        this.id_sala = id_sala;
     }
+
+    public Reserva(int id_pelicula, int id_sesion, int id_butaca, int id_cliente) {
+        this.id_pelicula = id_pelicula;
+        this.id_sesion = id_sesion;
+        this.id_butaca = id_butaca;
+        this.id_cliente = id_cliente;
+    }
+    
+    
 
     /* Getters y Setters. */
     
@@ -68,11 +76,4 @@ public class Reserva {
         this.id_cliente = id_cliente;
     }
 
-    public int getId_sala() {
-        return id_sala;
-    }
-
-    public void setId_sala(int id_sala) {
-        this.id_sala = id_sala;
-    } 
 }
