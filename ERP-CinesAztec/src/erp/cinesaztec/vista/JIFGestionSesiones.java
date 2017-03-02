@@ -481,9 +481,9 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
            
         try {
             try {
-                DateFormat format = new SimpleDateFormat("HH:MM:SS");
+                DateFormat format = new SimpleDateFormat("HH:mm:ss");
                 Date horaSesion = (Date)format.parse(jtfHoraAlta.getText());
-                DateFormat dsf = new SimpleDateFormat("HH:MM:SS");
+                DateFormat dsf = new SimpleDateFormat("HH:mm:ss");
                 String timeFormat = dsf.format(horaSesion);
                 java.sql.Time hora = java.sql.Time.valueOf(timeFormat);
 
@@ -547,9 +547,9 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
             try {
 
                 int idSesion = Integer.parseInt(jtfIdBuscador.getText());
-                DateFormat format = new SimpleDateFormat("HH:MM:SS");
+                DateFormat format = new SimpleDateFormat("HH:mm:ss");
                 Date horaSesion = (Date)format.parse(jtfHoraModificar.getText());
-                DateFormat dsf = new SimpleDateFormat("HH:MM:SS");
+                DateFormat dsf = new SimpleDateFormat("HH:mm:ss");
                 String timeFormat = dsf.format(horaSesion);
                 java.sql.Time hora = java.sql.Time.valueOf(timeFormat);
 
