@@ -133,13 +133,13 @@ public class PedidoPersistencia {
         gbd.cerrarConexionBBDD();
     }
 
-    public void eliminarCuerpoPedido(int id) throws ClassNotFoundException, SQLException {
-        c = gbd.conectarBBDD();
-        String sql = "delete from cuerpo_pedido where id = " + id;
-        st = c.createStatement();
-        st.executeUpdate(sql);
-        gbd.cerrarConexionBBDD();
-    }
+//    public void eliminarCuerpoPedido(int id) throws ClassNotFoundException, SQLException {
+//        c = gbd.conectarBBDD();
+//        String sql = "delete from cuerpo_pedido where id_cabecera_pedido = " + id;
+//        st = c.createStatement();
+//        st.executeUpdate(sql);
+//        gbd.cerrarConexionBBDD();
+//    }
 
     public void actualizarCabeceraPedido(CabeceraPedido cabeceraPedido, int id) throws SQLException, ClassNotFoundException {
 
