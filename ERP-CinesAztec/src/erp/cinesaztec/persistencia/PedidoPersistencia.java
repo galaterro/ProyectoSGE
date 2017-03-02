@@ -99,6 +99,18 @@ public class PedidoPersistencia {
         return cabeceraPedido;
     }
 
+    public int buscarUltimoId() throws ClassNotFoundException, SQLException{
+       int id_cab_pedido; 
+       String  sql = "SELECT MAX(id_cab_pedido) FROM cabecera_pedido";
+        c = gbd.conectarBBDD();
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        rs.next();
+        id_cab_pedido = rs.getInt(1);
+        
+        return id_cab_pedido++;    
+    }
+    
     public CuerpoPedido buscarCuerpoPedido(int id) throws ClassNotFoundException, SQLException {
 
         String sql = "select * from cuerpo_pedido where id_cabecera_pedido= " + id;
@@ -186,5 +198,26 @@ public class PedidoPersistencia {
         gbd.cerrarConexionBBDD();
         return id;
     }
+    
+//     public void actualizarEmpleado(CabeceraPedido cabeceraPedido, int id) throws SQLException, ClassNotFoundException {
+//
+//        String sql = "update cabecera_pedido set dni_emp = ?, nombre_emp = ?, apellidos_emp = ?, telefono_emp = ?, fecha_inicio_emp = ? , cargo_emp = ?, usuario_empleado = ?, contrasena_empleado = ?, id_cineEmp = ? where dni_emp = '" + dni + "'";
+//        c = gbd.conectarBBDD();
+//        ps = c.prepareStatement(sql);
+//
+//        ps.setString(1, empleado.getDni_empleado());
+//        ps.setString(2, empleado.getNombre_empleado());
+//        ps.setString(3, empleado.getApellidos_empleado());
+//        ps.setInt(4, empleado.getTelefono_empleado());
+//        ps.setDate(5, empleado.getFecha_inicio());
+//        ps.setString(6, empleado.getCargo_empleado());
+//        ps.setString(7, empleado.getUsuario_empleado());
+//        ps.setString(8, empleado.getPassword_empleado());
+//        ps.setInt(9, empleado.getId_cine());        
+//
+//        ps.executeUpdate();
+//        ps.close();
+//        gbd.cerrarConexionBBDD();
+//    }
     
 }

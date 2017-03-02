@@ -229,9 +229,9 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlCifBuscador" min="-2" pref="268" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfCifBuscador" min="-2" pref="136" max="-2" attributes="0"/>
+                                  <Component id="jtfIdBuscador" min="-2" pref="136" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jbtBuscarCineModificar" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="jbtBuscarPedidoModificar" min="-2" pref="91" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="85" max="32767" attributes="0"/>
@@ -244,8 +244,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlCifBuscador" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jtfCifBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbtBuscarCineModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfIdBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbtBuscarPedidoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -313,7 +313,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlCifBuscador">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ingrese el CIF del cine que desea modificar:"/>
+                    <Property name="text" type="java.lang.String" value="Ingrese el id del pedido que desea modificar:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccionCine">
@@ -331,7 +331,7 @@
                     <Property name="text" type="java.lang.String" value="C&#xf3;digo Postal:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jtfCifBuscador">
+                <Component class="javax.swing.JTextField" name="jtfIdBuscador">
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfNombreCine">
                 </Component>
@@ -352,12 +352,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtModificarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jbtBuscarCineModificar">
+                <Component class="javax.swing.JButton" name="jbtBuscarPedidoModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtBuscarCineModificarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtBuscarPedidoModificarActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlNombreActual">
@@ -418,15 +418,9 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jlCif" pref="127" max="32767" attributes="0"/>
-                                      <Component id="jlNombre" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jlNombre" min="-2" pref="127" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jtfFechaAltaPedido" pref="206" max="32767" attributes="0"/>
-                                      <Component id="jtfImporSinIvaAltaPedido" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jtfFechaAltaPedido" min="-2" pref="206" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                   <Component id="jbAltaPedido" min="-2" max="-2" attributes="0"/>
@@ -458,11 +452,6 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlCif" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="jtfImporSinIvaAltaPedido" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jlDireccion" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="jtfCantidadAltaPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -471,9 +460,9 @@
                               <Component id="jlPoblacion" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="jtfNombreAltaProductoPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                           <Component id="jbAltaPedido" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="137" max="32767" attributes="0"/>
+                          <EmptySpace pref="148" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -489,13 +478,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfFechaAltaPedidoActionPerformed"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfFechaAltaPedidoKeyPressed"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jlCif">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Importe SIN/IVA:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jtfImporSinIvaAltaPedido">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccion">
                   <Properties>

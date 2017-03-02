@@ -8,6 +8,7 @@ package erp.cinesaztec.vista;
 import erp.cinesaztec.modelo.Empleado;
 import erp.cinesaztec.persistencia.EmpleadoPersistencia;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -751,7 +752,7 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
                 int id_cine = empleado.getId_cine();
                 String nombre = ep.buscarCinePorId(id_cine);
                 jtaConsulta.setValueAt(nombre, 0, 7);
-                
+
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");
             } catch (SQLException ex) {
@@ -772,9 +773,11 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         String nombreCineBusqueda = jtfCineNuevo.getText();
 
         try {
-            SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
-            Date fechaInicio = format.parse(jtfFechaNuevo.getText());
-            java.sql.Date fecha = new java.sql.Date(fechaInicio.getTime());
+            DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+            Date fechaInicio = (Date)format.parse(jtfFechaNuevo.getText());
+            DateFormat dsf = new SimpleDateFormat("yyyy-mm-dd");
+            String fechaPedido = dsf.format(fechaInicio);
+            java.sql.Date fecha = java.sql.Date.valueOf(fechaPedido);
 
             idCine = ep.buscarCine(nombreCineBusqueda);
             empleado = new Empleado(dni, nombre, apellidos, telefono, fecha, cargo, usuario, contrasena, idCine);
@@ -870,15 +873,18 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
     public void actualizarEmpleado() {
 
         String dniBuscador = jtfDniBuscadorModificar.getText();
+
         try {
             String dni = jtfDniEmpModificar.getText();
             String nombre = jtfNomEmpModificar.getText();
             String apellidos = jtfApeEmpModificar.getText();
             int telefono = Integer.parseInt(jtfTelEmpModificar.getText());
 
-            SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
-            Date fechaInicio = format.parse(jtfFechaEmpModificar.getText());
-            java.sql.Date fecha = new java.sql.Date(fechaInicio.getTime());
+            DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+            Date fechaInicio = (Date)format.parse(jtfFechaEmpModificar.getText());
+            DateFormat dsf = new SimpleDateFormat("yyyy-mm-dd");
+            String fechaPedido = dsf.format(fechaInicio);
+            java.sql.Date fecha = java.sql.Date.valueOf(fechaPedido);
 
             String cargo = jtfCargoEmpModificar.getText();
             String usuario = jtfUsuEmpModificar.getText();
