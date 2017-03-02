@@ -505,7 +505,7 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAceptarIDEliminarActionPerformed
 
     private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
-        eliminarCine();
+        eliminarButaca();
     }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
 
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
@@ -662,7 +662,7 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
     /**
      * Método usado para eliminar un cine.
      */
-    public void eliminarCine() {
+    public void eliminarButaca() {
         String idEliminar = jtfIDButacaEliminar.getText();
         try {
             int id = Integer.parseInt(idEliminar);

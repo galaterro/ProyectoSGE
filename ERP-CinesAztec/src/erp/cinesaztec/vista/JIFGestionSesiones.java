@@ -72,7 +72,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         jlCifCine = new javax.swing.JLabel();
         jlCIfBuscador = new javax.swing.JLabel();
         jlDireccionCine = new javax.swing.JLabel();
-        jtfCifBuscador = new javax.swing.JTextField();
+        jtfIdBuscador = new javax.swing.JTextField();
         jtfPeliculaModificar = new javax.swing.JTextField();
         jtfSalaModificar = new javax.swing.JTextField();
         jtfHoraModificar = new javax.swing.JTextField();
@@ -97,13 +97,13 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         jpFondoEleminar = new javax.swing.JPanel();
         jlCifCineEliminar = new javax.swing.JLabel();
-        jtfCifCineEliminar = new javax.swing.JTextField();
+        jtfIdSesionEliminar = new javax.swing.JTextField();
         jlCineAEliminar = new javax.swing.JLabel();
         jbAceptarCifEleiminar = new javax.swing.JButton();
         jlIDSesionEliminar = new javax.swing.JLabel();
         jlHoraEliminar = new javax.swing.JLabel();
-        jlPeliculaEliminar = new javax.swing.JLabel();
-        jlCodPosCineAEliminar = new javax.swing.JLabel();
+        jlPeliculaSesionEliminar = new javax.swing.JLabel();
+        jlSalaSesionEliminar = new javax.swing.JLabel();
         jbComfirmarEliminar = new javax.swing.JButton();
 
         setClosable(true);
@@ -168,19 +168,19 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbAceptarConsulta)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(438, Short.MAX_VALUE))
         );
 
         jtpConsultar.addTab("", jpConsulta);
 
         jtpFondo.addTab("Consultar", jtpConsultar);
 
-        jlNombreCine.setText("ID Película:");
+        jlNombreCine.setText("Nombre Película:");
 
-        jlCifCine.setText("ID Sala:");
+        jlCifCine.setText("Nombre Sala:");
         jlCifCine.setToolTipText("");
 
-        jlCIfBuscador.setText("Ingrese el CIF de la sesión que desea modificar:");
+        jlCIfBuscador.setText("Ingrese el ID de la sesión que desea modificar:");
 
         jlDireccionCine.setText("Hora Sesión:");
 
@@ -198,9 +198,9 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
             }
         });
 
-        jlNombreActual.setText("ID Película Actual:");
+        jlNombreActual.setText("Nombre Película Actual:");
 
-        jlDireccionActual.setText("ID Sala Actual:");
+        jlDireccionActual.setText("Nombre Sala Actual:");
 
         jlPoblacionActual.setText("Hora Sesión Actual:");
 
@@ -225,7 +225,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addComponent(jlCIfBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbtBuscarModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -248,7 +248,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCIfBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCifBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIdBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtBuscarModificar))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -278,7 +278,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
                     .addComponent(jtfHoraModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jbtModificar)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
 
         jtpModificar.addTab("", jpModificar);
@@ -338,14 +338,14 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
                     .addComponent(jtfHoraAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(97, 97, 97)
                 .addComponent(jbAltaCine)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(425, Short.MAX_VALUE))
         );
 
         jtpAlta.addTab("", jpAltaCine);
 
         jtpFondo.addTab("Alta", jtpAlta);
 
-        jlCifCineEliminar.setText("Ingrese el CIF de la sesión que desee eliminar:");
+        jlCifCineEliminar.setText("Ingrese el ID de la sesión que desee eliminar:");
 
         jlCineAEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCineAEliminar.setText("Va a eliminar la siguiente sesión:");
@@ -368,54 +368,48 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         jpFondoEleminar.setLayout(jpFondoEleminarLayout);
         jpFondoEleminarLayout.setHorizontalGroup(
             jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbAceptarCifEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                        .addComponent(jlIDSesionEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlHoraEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(191, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEleminarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbComfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(197, 197, 197))
+            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jlIDSesionEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlHoraEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlPeliculaSesionEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlSalaSesionEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfIdSesionEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbAceptarCifEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(153, Short.MAX_VALUE))
+            .addComponent(jlCineAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpFondoEleminarLayout.setVerticalGroup(
             jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jbAceptarCifEleiminar)))
-                .addGap(18, 18, 18)
-                .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                        .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfIdSesionEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbAceptarCifEleiminar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlIDSesionEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                            .addComponent(jlHoraEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlPeliculaEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEleminarLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jlCodPosCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                            .addComponent(jlPeliculaSesionEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlSalaSesionEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlHoraEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jlIDSesionEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(338, 338, 338)
                 .addComponent(jbComfirmarEliminar)
                 .addContainerGap(202, Short.MAX_VALUE))
         );
@@ -433,7 +427,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 369, Short.MAX_VALUE)
+            .addGap(0, 666, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -441,7 +435,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jtpEliminar.addTab("tab1", jPanel4);
+        jtpEliminar.addTab("", jPanel4);
 
         jtpFondo.addTab("Eliminar", jtpEliminar);
 
@@ -460,11 +454,11 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAceptarCifEleiminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEleiminarActionPerformed
-
+        cargarSesionEliminar();
     }//GEN-LAST:event_jbAceptarCifEleiminarActionPerformed
 
     private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
-        // TODO add your handling code here:
+        eliminarSesion();
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
 
     private void jbAceptarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarConsultaActionPerformed
@@ -472,7 +466,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jbtBuscarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarModificarActionPerformed
-        cargarSesion();
+        cargarButacasModificar();
     }//GEN-LAST:event_jbtBuscarModificarActionPerformed
 
     private void jbAltaCineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaCineActionPerformed
@@ -510,42 +504,61 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         }           
     }
 
-    public void cargarSesion() {
-        int idSesionBuscador = Integer.parseInt(jtfCifBuscador.getText());
-
-        try {
-            sesion = sp.buscarSesiones(idSesionBuscador);
-
-            for (Sesion sesion : alSesion) {
-                Integer id_sala = sesion.getId_sala();
-                Integer id_pelicula = sesion.getId_sesion();
-                Time hora_sesion = sesion.getHora_sesion();
-
-                jlPeliculaNueva.setText(id_sala.toString());
-                jlSalaNueva.setText(id_pelicula.toString());
-                jlHoraNueva.setText(hora_sesion.toString());
+   public void cargarButacasModificar() {
+        String idBuscador = jtfIdBuscador.getText();
+        boolean existe = false;
+        if (idBuscador.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un CIF válido.");
+        } else {
+            try {
+                int idSesion = Integer.parseInt(idBuscador);
+                existe = sp.existeSesion(idSesion);
+                if (existe) {
+                    sesion = sp.buscarSesiones(idSesion);
+                    String nombrePelicula = sp.buscarNombrePelicula(sesion.getId_pelicula());
+                    String nombreSala = sp.buscarNombreSala(sesion.getId_sala());
+                    jlSalaNueva.setText(nombreSala);
+                    jlPeliculaNueva.setText(nombrePelicula);
+                    jlHoraNueva.setText(sesion.getHora_sesion().toString());
+                    
+                    jtfPeliculaModificar.setText(nombrePelicula);
+                    jtfSalaModificar.setText(nombreSala);
+                    jtfHoraModificar.setText(sesion.getHora_sesion().toString());
+                    
+                    jbtModificar.setEnabled(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existe la sesion con el ID seleccionado.\nPruebe de nuevo." );
+                    jtfIdBuscador.setText("");
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la butaca solicitado.\nPruebe de nuevo." +ex);
+                
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." +ex);
             }
-
-        } catch (ClassNotFoundException ex) {
-            System.out.println("aqui");
-        } catch (SQLException ex) {
-            System.out.println("2");
-        }
-
+       }
     }
+   
+                
 
     public void modificarSesion() {
-
         try {
-            int id_sala = Integer.parseInt(jtfSalaModificar.getText());
-            int id_pelicula = Integer.parseInt(jtfPeliculaModificar.getText());
-            String hora_sesion = jtfHoraModificar.getText();
-            SimpleDateFormat parser = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy");
-            Date date = parser.parse(hora_sesion);
-
-            //  sesion = new Sesion(date, id_pelicula, id_sala);
             try {
-                sp.ingresarSesion(sesion);
+
+                int idSesion = Integer.parseInt(jtfIdBuscador.getText());
+                SimpleDateFormat format = new SimpleDateFormat("HH:MM:SS");
+                Date horaSesion = format.parse(jtfHoraModificar.getText());
+                java.sql.Time hora = new java.sql.Time(horaSesion.getTime());
+                
+                String nombreSala = jtfSalaModificar.getText();
+                String nombrePelicula = jtfPeliculaModificar.getText();
+                int idPelicula = sp.consultarIdPelicula(nombrePelicula);
+                int idSala = sp.consultarIdSala(nombreSala);
+                
+                sesion = new Sesion(hora, idPelicula, idSala);
+                sp.actualizarSesion(sesion,idSesion);
+                JOptionPane.showMessageDialog(null, "Sesión actualizada con éxito.");
+            
             } catch (SQLException | ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error al modificar la sesión", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
@@ -592,6 +605,46 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         }
     }
 
+     public void cargarSesionEliminar() {
+         String idBusca = jtfIdSesionEliminar.getText();
+
+        if (idBusca.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
+        } else {
+            try {
+                int idSesion = Integer.parseInt(idBusca);
+                sesion = sp.buscarSesiones(idSesion);
+                jlIDSesionEliminar.setText("ID: " + idBusca);
+                jlHoraEliminar.setText("Hora Sesión: " + sesion.getHora_sesion().toString());
+                String nombrePelicula = sp.buscarNombrePelicula(sesion.getId_pelicula());
+                String nombreSala = sp.buscarNombreSala(sesion.getId_sala());
+                jlPeliculaSesionEliminar.setText("Nombre pelicula:" + nombrePelicula);
+                jlSalaSesionEliminar.setText("Nombre sala" + nombreSala);
+                jbComfirmarEliminar.setEnabled(true);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la sesión solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
+    }
+
+    /**
+     * Método usado para eliminar un cine.
+     */
+    public void eliminarSesion() {
+        String idEliminar = jtfIdSesionEliminar.getText();
+        try {
+            int id = Integer.parseInt(idEliminar);
+            sp.eliminarSesion(id);
+            JOptionPane.showMessageDialog(null, "Sesión eliminada con éxito.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar la sesión solicitada.\nPruebe de nuevo.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel4;
@@ -607,7 +660,6 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCifCine;
     private javax.swing.JLabel jlCifCineEliminar;
     private javax.swing.JLabel jlCineAEliminar;
-    private javax.swing.JLabel jlCodPosCineAEliminar;
     private javax.swing.JLabel jlDireccion;
     private javax.swing.JLabel jlDireccionActual;
     private javax.swing.JLabel jlDireccionCine;
@@ -618,20 +670,21 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlNombreActual;
     private javax.swing.JLabel jlNombreCine;
     private javax.swing.JLabel jlNombreConsulta;
-    private javax.swing.JLabel jlPeliculaEliminar;
     private javax.swing.JLabel jlPeliculaNueva;
+    private javax.swing.JLabel jlPeliculaSesionEliminar;
     private javax.swing.JLabel jlPoblacionActual;
     private javax.swing.JLabel jlSalaNueva;
+    private javax.swing.JLabel jlSalaSesionEliminar;
     private javax.swing.JPanel jpAltaCine;
     private javax.swing.JPanel jpConsulta;
     private javax.swing.JPanel jpFondoEleminar;
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
-    private javax.swing.JTextField jtfCifBuscador;
-    private javax.swing.JTextField jtfCifCineEliminar;
     private javax.swing.JTextField jtfHoraAlta;
     private javax.swing.JTextField jtfHoraModificar;
     private javax.swing.JTextField jtfIDConsulta;
+    private javax.swing.JTextField jtfIdBuscador;
+    private javax.swing.JTextField jtfIdSesionEliminar;
     private javax.swing.JTextField jtfPeliculaAlta;
     private javax.swing.JTextField jtfPeliculaModificar;
     private javax.swing.JTextField jtfSalaAlta;
