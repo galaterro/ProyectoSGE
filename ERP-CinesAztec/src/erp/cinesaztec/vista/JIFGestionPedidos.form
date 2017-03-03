@@ -324,7 +324,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlNombreActual">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Fechal:"/>
+                    <Property name="text" type="java.lang.String" value="Fecha:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlDireccionActual">

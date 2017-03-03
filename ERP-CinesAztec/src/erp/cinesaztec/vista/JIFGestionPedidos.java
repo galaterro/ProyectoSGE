@@ -14,6 +14,9 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,8 +26,8 @@ import javax.swing.table.DefaultTableModel;
 class JIFGestionPedidos extends javax.swing.JInternalFrame {
 
     private PedidoPersistencia pp = new PedidoPersistencia();
-    private ArrayList<CabeceraPedido> alCabeceraPedido;
-    private ArrayList<CuerpoPedido> alCuerpoPedido;
+    private ArrayList<CabeceraPedido> alCabeceraPedido = new ArrayList();
+    private ArrayList<CuerpoPedido> alCuerpoPedido = new ArrayList();
     private CuerpoPedido cuerpoPedido;
     private CabeceraPedido cabeceraPedido;
     private Producto producto;
@@ -46,6 +49,19 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
         this.setSize(990, 700);
         this.setResizable(false);
         this.setTitle("Gestión Pedidos");
+        
+        jtpFondo.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (e.getSource() instanceof JTabbedPane) {
+                    reiniciarCamposConsulta();
+                    reiniciarCamposModificar();
+                    reiniciarCamposAlta();
+                    reiniciarCamposEliminar();
+                }
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -209,7 +225,7 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
             }
         });
 
-        jlNombreActual.setText("Fechal:");
+        jlNombreActual.setText("Fecha:");
 
         jlDireccionActual.setText("Importe SIN/IVA:");
 
@@ -532,11 +548,24 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
         actualizarPedido();
     }//GEN-LAST:event_jbtModificarActionPerformed
 
+     /**
+     * Método usado para limpiar las tablas de cara a una nueva consulta.
+     */
+    private void limpiarTabla() {
+        jtaConsulta.setModel(dtm);
+        dtm.setRowCount(0);
+    }
+    
     public void listarPedidos() {
         String idBuscador = jtfIdConsulta.getText();
 
         if (idBuscador.trim().equals("")) {
             try {
+                reiniciarCamposConsulta();
+                limpiarTabla();
+                alCabeceraPedido.clear();
+                alCuerpoPedido.clear();
+                
                 alCabeceraPedido = pp.listarCabeceraPedidos();
                 alCuerpoPedido = pp.listarCuerpoPedidos();
                 dtm.setRowCount(alCabeceraPedido.size());
@@ -560,6 +589,8 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
         } else {
             try {
                 int id = Integer.parseInt(idBuscador);
+                reiniciarCamposConsulta();
+                limpiarTabla();
                 cabeceraPedido = pp.buscarCabeceraPedido(id);
                 cuerpoPedido = pp.buscarCuerpoPedido(cabeceraPedido.getId_cabecera_pedido());
                 producto = pp.buscarProductoPorId(cuerpoPedido.getId_producto());
@@ -606,6 +637,7 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
             cabeceraPedido = pp.buscarCabeceraPedido(id);
             cuerpoPedido = new CuerpoPedido(producto.getDesc_producto(), ctd, producto.getId_producto(), siguienteID);
             pp.ingresarCuerpoPedido(cuerpoPedido);
+            reiniciarCamposAlta();
             JOptionPane.showMessageDialog(null, "PEDIDO INGRESADO CON ÉXITO.");
 
         } catch (ParseException ex) {
@@ -660,7 +692,7 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
 
             cabeceraPedido = new CabeceraPedido(fecha);
             pp.actualizarCabeceraPedido(cabeceraPedido, Integer.parseInt(idBuscador));
-
+            reiniciarCamposModificar();
             JOptionPane.showMessageDialog(null, "PEDIDO ACTUALIZADO CON ÉXITO");
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "FORMATO DE FECHA INCORRECTO \n EJEMPLO: 2017-12-31");
@@ -708,6 +740,7 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
         try {
             int id = Integer.parseInt(idEliminar);
             pp.eliminarCabeceraPedido(id);
+            reiniciarCamposEliminar();
             JOptionPane.showMessageDialog(null, "Butaca eliminada con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar la butaca solicitada.\nPruebe de nuevo.");
@@ -715,6 +748,62 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
+    }
+    
+    /**
+     * Método usado para reiniciar los campos de la ventana Consulta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposConsulta() {
+        jtfIdConsulta.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Modificar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposModificar() {
+        jtfIdBuscador.setText("");
+        jtfFechaModificar.setText("");
+        
+        jlFechaResultado.setText("");
+        jlImporteSinIvaResultado.setText("");
+        jlimporteConIvaResultado.setText("");
+        jlDescProductoResultado.setText("");
+        jlCtdResultado.setText("");
+        jlIvaResultado.setText("");
+        
+        jbtModificar.setEnabled(false);
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Alta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposAlta() {
+        jtfFechaAltaPedido.setText("");
+        jtfCantidadAltaPedido.setText("");
+        jtfNombreAltaProductoPedido.setText("");
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Eliminar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposEliminar() {
+        jtfIdPedidoEliminar.setText("");
+        
+        jlFechaPedidoAEliminar.setText("");
+        jlImportotalSinIvaAELiminar.setText("");
+        jlImporteTotalConIvaAEliminar.setText("");
+        jlDescripcionAEliminar.setText("");
+        jlNombreProductEliminar.setText("");
+        jlCtdtEliminar.setText("");
+        jbConfirmarEliminar.setEnabled(false);
     }
 
     
