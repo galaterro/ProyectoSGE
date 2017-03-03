@@ -505,9 +505,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlCifCineEliminar" min="-2" pref="226" max="-2" attributes="0"/>
+                                  <Component id="jlCifCineEliminar" min="-2" pref="281" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jtfIDButacaEliminar" min="-2" pref="358" max="-2" attributes="0"/>
+                                  <Component id="jtfIDButacaEliminar" min="-2" pref="303" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jbAceptarIDEliminar" min="-2" pref="126" max="-2" attributes="0"/>
                               </Group>
@@ -558,7 +558,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jbConfirmarEliminar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="203" max="32767" attributes="0"/>
+                          <EmptySpace pref="207" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
