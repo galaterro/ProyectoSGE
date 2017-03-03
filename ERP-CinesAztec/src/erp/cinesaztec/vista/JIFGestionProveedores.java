@@ -11,6 +11,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 class JIFGestionProveedores extends javax.swing.JInternalFrame {
 
     private ProveedorPersistencia pp = new ProveedorPersistencia();
-    private ArrayList<Proveedor> alproveedor;
+    private ArrayList<Proveedor> alproveedor = new ArrayList();
     private Proveedor proveedor;
     private Vector vProveedor = new Vector();
     private DefaultTableModel dtm = new DefaultTableModel(vProveedor, 0);
@@ -39,6 +42,19 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
         this.setSize(990, 700);
         this.setResizable(false);
         this.setTitle("Gestión Proveedores");
+        /* Se añade un Listener para analizar cuándo se recibe algún cambio de ventana en esta ventana. */
+        jtpFondo.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (e.getSource() instanceof JTabbedPane) {
+                    reiniciarCamposConsulta();
+                    reiniciarCamposModificar();
+                    reiniciarCamposAlta();
+                    reiniciarCamposEliminar();
+                }
+            }
+        });
     }
 
     /**
@@ -603,6 +619,15 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
         modificarProveedor();
     }//GEN-LAST:event_jbtModificarActionPerformed
+    
+    /**
+     * Método usado para limpiar las tablas de cara a una nueva consulta.
+     */
+    private void limpiarTabla() {
+        jtaConsulta.setModel(dtm);
+        dtm.setRowCount(0);
+    }
+    
     public void consultaProveedor() {
         String cifBuscador = jtfCifConsulta.getText();
 
@@ -610,6 +635,8 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
             /* Búsqueda general de proveedores. */
             try {
                 //reiniciarCamposConsulta();
+                limpiarTabla();
+                alproveedor.clear();
                 alproveedor = pp.listarProveedores();
                 dtm.setRowCount(alproveedor.size());
                 for (int i = 0; i < alproveedor.size(); i++) {
