@@ -18,6 +18,9 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -44,6 +47,19 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
         jtaConsulta.setModel(dtm);
         this.setSize(990, 700);
         this.setTitle("Gestión Reservas");
+        /* Se añade un Listener para analizar cuándo se recibe algún cambio de ventana en esta ventana. */
+        jtpFondo.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (e.getSource() instanceof JTabbedPane) {
+                    reiniciarCamposConsulta();
+                    reiniciarCamposModificar();
+                    reiniciarCamposAlta();
+                    reiniciarCamposEliminar();
+                }
+            }
+        });
     }
 
     /**
@@ -575,12 +591,24 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
         modificarReserva();
     }//GEN-LAST:event_jbtModificarActionPerformed
 
+    
+    /**
+     * Método usado para limpiar las tablas de cara a una nueva consulta.
+     */
+    private void limpiarTabla() {
+        jtaConsulta.setModel(dtm);
+        dtm.setRowCount(0);
+    }
+    
 public void consultaReserva() {
         String idBuscador = jtfIDConsulta.getText();
 
         if (idBuscador.equals("")) {
             /* Búsqueda general de proveedores. */
             try {
+                reiniciarCamposConsulta();
+                limpiarTabla();
+                alReserva.clear();
                 alReserva = rp.listarReservas();
                 dtm.setRowCount(alReserva.size());
                 for (int i = 0; i < alReserva.size(); i++) {
@@ -600,7 +628,8 @@ public void consultaReserva() {
         } else {
             /* Búsqueda específica de proveedor por CIF. */
             try {
-
+                reiniciarCamposConsulta();
+                limpiarTabla();
                 int idBuscar = Integer.parseInt(idBuscador);
                 reserva = rp.buscarReserva(idBuscar);
                 dtm.setRowCount(1);
@@ -637,6 +666,7 @@ public void consultaReserva() {
             int idCliente = rp.consultaIdCliente(dniCliente);
             reserva = new Reserva(idPelicula, idSesion, idButaca, idCliente);
             rp.ingresarReserva(reserva);
+            reiniciarCamposAlta();
             JOptionPane.showMessageDialog(null, "Reserva ingresada con éxito.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar la nueva butaca.\nPruebe de nuevo." + ex);
@@ -718,6 +748,7 @@ public void consultaReserva() {
             int idCliente = rp.consultaIdCliente(dni);
             reserva = new Reserva(idPelicula, idSesion, idButaca, idCliente);
             rp.actualizarReserva(reserva, idReserva);
+            reiniciarCamposModificar();
             JOptionPane.showMessageDialog(null, "Reserva actualizada con éxito.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." + ex);
@@ -728,7 +759,7 @@ public void consultaReserva() {
         }
     }
     
-     public void cargarReservaEliminar() {
+    public void cargarReservaEliminar() {
         String idBusca = jtfIDReservaEliminar.getText();
 
         if (idBusca.compareToIgnoreCase("") == 0) {
@@ -769,6 +800,7 @@ public void consultaReserva() {
         try {
             int id = Integer.parseInt(idEliminar);
             rp.eliminarReserva(id);
+            reiniciarCamposEliminar();
             JOptionPane.showMessageDialog(null, "Reserva eliminada con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar la reserva solicitada.\nPruebe de nuevo.");
@@ -777,6 +809,71 @@ public void consultaReserva() {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
     }
+    
+    
+    
+    /**
+     * Método usado para reiniciar los campos de la ventana Consulta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposConsulta() {
+        jtfIDConsulta.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Modificar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposModificar() {
+        jtfIDBuscador.setText("");
+        jtfPeliculaModificar.setText("");
+        jtfSesionModificar.setText("");
+        jtfFilaModificar.setText("");
+        jtfColumnaModificar.setText("");
+        jtfDNIModificar.setText("");
+        
+        jlIDReservaResultado.setText("");
+        jlPeliculaResultado.setText("");
+        jlSesionResultado.setText("");
+        jlFilaResultado.setText("");
+        jlColumnaResultado.setText("");
+        jlNombreSalaResultado.setText("");
+        jbtModificar.setEnabled(false);
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Alta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposAlta() {
+        jtfPeliculaAlta.setText("");
+        jtfHoraSesionAlta.setText("");
+        jtfFilaButacaAlta.setText("");
+        jtfColumnaButacaAlta.setText("");
+        jtfNombreSalaAlta.setText("");
+        jtfDniClienteAlta.setText("");
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Eliminar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposEliminar() {
+        jtfIDReservaEliminar.setText("");
+        jlIDReservaEliminar.setText("");
+        jlHoraSesionEliminar.setText("");
+        jlFilaButacaEliminar.setText("");
+        jlColumnaButacaEliminar.setText("");
+        jlDniClienteEliminar.setText("");
+        jlNombrePeliculaEliminar.setText("");
+        jbComfirmarEliminar.setEnabled(false);
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAceptarCifEleiminar;
