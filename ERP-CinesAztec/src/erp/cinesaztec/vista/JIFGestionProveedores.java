@@ -634,7 +634,7 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
         if (cifBuscador.equals("")) {
             /* Búsqueda general de proveedores. */
             try {
-                //reiniciarCamposConsulta();
+                reiniciarCamposConsulta();
                 limpiarTabla();
                 alproveedor.clear();
                 alproveedor = pp.listarProveedores();
@@ -657,7 +657,8 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
         } else {
             /* Búsqueda específica de proveedor por CIF. */
             try {
-                //reiniciarCamposConsulta();
+                reiniciarCamposConsulta();
+                limpiarTabla();
                 proveedor = pp.buscarProveedor(cifBuscador);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(proveedor.getId_proveedor(), 0, 0);
@@ -689,6 +690,7 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
             int id_cine = pp.consultarIdCine(nombreCine);
             proveedor = new Proveedor(cifProveedor, nombreProveedor, apellidoProveedor, telefonoProveedor, pobProveedor, codPosPro, id_cine);
             pp.ingresarProveedor(proveedor);
+            reiniciarCamposAlta();
             JOptionPane.showMessageDialog(null, "Proveedor ingresado con éxito.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo proveedor.\nPruebe de nuevo.");
@@ -759,6 +761,7 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
             int codigoPostal = Integer.parseInt(codPos);
             proveedor = new Proveedor(cifNuevo, nombreNuevo, apellidos, tlf, poblacion, codigoPostal, idCine);
             pp.actualizarProveedor(proveedor, cif);
+            reiniciarCamposModificar();
             JOptionPane.showMessageDialog(null, "Proveedor actualizado con éxito.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." + ex);
@@ -806,6 +809,7 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
         String cifEliminar = jtfCifProveedorEliminar.getText();
         try {
             pp.eliminarProveedor(cifEliminar);
+            reiniciarCamposEliminar();
             JOptionPane.showMessageDialog(null, "Proveedor eliminado con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el cine solicitado.\nPruebe de nuevo.");
@@ -813,6 +817,70 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
+    }
+    
+    /**
+     * Método usado para reiniciar los campos de la ventana Consulta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposConsulta() {
+        jtfCifConsulta.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Modificar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposModificar() {
+        jtfCifBuscador.setText("");
+        jtfNombreProveedor.setText("");
+        jtfApellidosProveedor.setText("");
+        jtfCIFProveedor.setText("");
+        jtfPoblacionProveedor.setText("");
+        jtfNombreCineModificar.setText("");
+        jtfTelefonoProveedor.setText("");
+        jtfCodigoPostal.setText("");
+        
+        jlNombreResultado.setText("");
+        jlApellidosResultado.setText("");
+        jlTelefonoResultado.setText("");
+        jlPoblacionResultado.setText("");
+        jlCodigoPostalResultado.setText("");
+        jbtModificar.setEnabled(false);
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Alta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposAlta() {
+        jtfNombreNuevo.setText("");
+        jtfApellidosNuevo.setText("");
+        jtfCifNuevo.setText("");
+        jtfTelefonoNuevo.setText("");
+        jtfPoblacionNueva.setText("");
+        jtfCodPosNuevo.setText("");
+        jtfNombreCineNuevo.setText("");
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Eliminar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposEliminar() {
+        jtfCifProveedorEliminar.setText("");
+        jlIdProveedorAEliminar.setText("");
+        jlNombreProveedorAEliminar.setText("");
+        jlApellidoProveedorEliminar.setText("");
+        jlTelefonoProveedorEliminar.setText("");
+        jlPobProveedorAEliminar.setText("");
+        jlCodPosProveedorEliminar.setText("");
+        jlNombreCineEliminar.setText("");
+        jbComfirmarEliminar.setEnabled(false);
     }
     
     public void deshabilitar(){
