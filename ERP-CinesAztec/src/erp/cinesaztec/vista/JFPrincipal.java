@@ -332,6 +332,9 @@ class JFPrincipal extends javax.swing.JFrame {
                 jifGestionCines.deshabilitar();
                 jifGestionEmpleados.deshabilitar();
                 jifGestionProveedores.deshabilitar();
+                JOptionPane.showMessageDialog(null,"BIENVENIDO A CINE AZTEC ERP \n "+ emple.getNombre_empleado()+" " +emple.getApellidos_empleado());
+            }else{
+                JOptionPane.showMessageDialog(null,"BIENVENIDO DON: "+emple.getNombre_empleado()+" "+emple.getApellidos_empleado()+"\n TIENES TODOS LOS PERMISOS DE \n CINE AZTEC ERP");
             }
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null,"NO SE HA PODIDO CONECTAR A LA BASE DE DATOS");
