@@ -40,10 +40,11 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
     public JIFGestionReservas() {
         initComponents();
         vReserva.add("ID Reserva:");
-        vReserva.add("ID Pelicula:");
-        vReserva.add("ID Sesión:");
-        vReserva.add("ID Butaca:");
-        vReserva.add("ID Cliente:");
+        vReserva.add("Pelicula:");
+        vReserva.add("Hora Sesión:");
+        vReserva.add("Fila Butaca:");
+        vReserva.add("Columna Butaca:");
+        vReserva.add("Dni Cliente:");
         jtaConsulta.setModel(dtm);
         this.setSize(990, 700);
         this.setTitle("Gestión Reservas");
@@ -606,42 +607,51 @@ public void consultaReserva() {
         if (idBuscador.equals("")) {
             /* Búsqueda general de proveedores. */
             try {
-                reiniciarCamposConsulta();
-                limpiarTabla();
-                alReserva.clear();
                 alReserva = rp.listarReservas();
                 dtm.setRowCount(alReserva.size());
                 for (int i = 0; i < alReserva.size(); i++) {
                     jtaConsulta.setValueAt(alReserva.get(i).getId_reserva(), i, 0);
-                    jtaConsulta.setValueAt(alReserva.get(i).getId_pelicula(), i, 1);
-                    jtaConsulta.setValueAt(alReserva.get(i).getId_sesion(), i, 2);
-                    jtaConsulta.setValueAt(alReserva.get(i).getId_butaca(), i, 3);
-                    jtaConsulta.setValueAt(alReserva.get(i).getId_cliente(), i, 4);
+                    String nombrePelicula = rp.buscarNombrePelicula(alReserva.get(i).getId_pelicula());
+                    jtaConsulta.setValueAt(nombrePelicula, i, 1);
+                    Time hora = rp.consultarHoraSesion(alReserva.get(i).getId_sesion());
+                    jtaConsulta.setValueAt(String.valueOf(hora), i, 2);
+                    int fila = rp.consultarFilaButaca(alReserva.get(i).getId_butaca());
+                    int columna = rp.consultarColumnaButaca(alReserva.get(i).getId_butaca());
+                    jtaConsulta.setValueAt(String.valueOf(fila), i, 3);
+                    jtaConsulta.setValueAt(String.valueOf(columna), i, 4);
+                    String dni = rp.consultarDniCliente(alReserva.get(i).getId_cliente());
+                    jtaConsulta.setValueAt(dni, i, 5);
                 }
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar ninguna reserva.\nPruebe de nuevo.");
                 ex.printStackTrace();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+                JOptionPane.showMessageDialog(null, "El ID NO EXISTE.");
                 ex.printStackTrace();
             }
         } else {
             /* Búsqueda específica de proveedor por CIF. */
             try {
-                reiniciarCamposConsulta();
-                limpiarTabla();
+
                 int idBuscar = Integer.parseInt(idBuscador);
                 reserva = rp.buscarReserva(idBuscar);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(reserva.getId_reserva(), 0, 0);
-                jtaConsulta.setValueAt(reserva.getId_pelicula(), 0, 1);
-                jtaConsulta.setValueAt(reserva.getId_sesion(), 0, 2);
-                jtaConsulta.setValueAt(reserva.getId_butaca(), 0, 3);
-                jtaConsulta.setValueAt(reserva.getId_cliente(), 0, 4);
+                String nombrePelicula = rp.buscarNombrePelicula(reserva.getId_pelicula());
+                jtaConsulta.setValueAt(nombrePelicula, 0, 1);
+                Time hora = rp.consultarHoraSesion(reserva.getId_sesion());
+                jtaConsulta.setValueAt(String.valueOf(hora), 0, 2);
+                int fila = rp.consultarFilaButaca(reserva.getId_butaca());
+                int columna = rp.consultarColumnaButaca(reserva.getId_butaca());
+                jtaConsulta.setValueAt(String.valueOf(fila), 0, 3);
+                jtaConsulta.setValueAt(String.valueOf(columna), 0, 4);
+                String dni = rp.consultarDniCliente(reserva.getId_cliente());
+                jtaConsulta.setValueAt(dni, 0, 5);
+
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la reserva solicitada.\nPruebe de nuevo.");
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+                JOptionPane.showMessageDialog(null, "El ID NO EXISTE.");
                 ex.printStackTrace();
             }
         }
