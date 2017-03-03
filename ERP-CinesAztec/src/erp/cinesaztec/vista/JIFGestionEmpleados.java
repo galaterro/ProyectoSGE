@@ -14,8 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -906,6 +904,13 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "FORMATO DE FECHA INCORRECTO \n EJEMPLO: 2017-12-31");
         }
+
+    }
+    
+    public void deshabilitar(){
+        jtpFondo.setEnabledAt(1, false);
+        jtpFondo.setEnabledAt(2, false);
+        jtpFondo.setEnabledAt(3, false);
 
     }
 

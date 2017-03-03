@@ -10,8 +10,6 @@ import erp.cinesaztec.persistencia.ProveedorPersistencia;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -788,6 +786,12 @@ class JIFGestionProveedores extends javax.swing.JInternalFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
+    }
+    
+    public void deshabilitar(){
+        jtpFondo.setEnabledAt(1, false);
+        jtpFondo.setEnabledAt(2, false);
+        jtpFondo.setEnabledAt(3, false);
     }
     
 

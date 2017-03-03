@@ -848,6 +848,13 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         jlCodPosCineAEliminar.setText("");
         jbConfirmarEliminar.setEnabled(false);
     }
+    
+    public void deshabilitar(){
+        jtpFondo.setEnabledAt(1, false);
+        jtpFondo.setEnabledAt(2, false);
+        jtpFondo.setEnabledAt(3, false);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

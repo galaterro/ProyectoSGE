@@ -148,4 +148,18 @@ public class EmpleadoPersistencia {
         return encontrado;
     }
 
+    public Empleado buscarEmpleado(String usuario, String password) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM empleado WHERE usuario_empleado = '" + usuario + "' AND contrasena_empleado = '" + password + "'";
+        c = gbd.conectarBBDD();
+        empleado = null;
+        st = c.createStatement();
+        rs = st.executeQuery(sql);
+        while (rs.next()) {
+            empleado = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6),
+                    rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10));
+        }
+        gbd.cerrarConexionBBDD();
+        return empleado;
+    }
+
 }

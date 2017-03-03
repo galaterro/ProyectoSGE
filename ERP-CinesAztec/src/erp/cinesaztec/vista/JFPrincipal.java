@@ -5,8 +5,12 @@
  */
 package erp.cinesaztec.vista;
 
+import erp.cinesaztec.modelo.Empleado;
+import erp.cinesaztec.persistencia.EmpleadoPersistencia;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -27,6 +31,8 @@ class JFPrincipal extends javax.swing.JFrame {
     private JIFGestionSalas jifGestionSalas = new JIFGestionSalas();
     private JIFGestionProductos jifGestionProductos = new JIFGestionProductos();
     private JIFGestionButacas jifGestionButacas = new JIFGestionButacas();
+    private EmpleadoPersistencia emp = new EmpleadoPersistencia();
+    private Empleado emple;
 
     /**
      * Creates new form JFPrincipal
@@ -39,6 +45,7 @@ class JFPrincipal extends javax.swing.JFrame {
         this.add(jdpEscritorio);
         this.setResizable(false);
         this.setVisible(true);
+        comprobarDatos();
     }
 
     /**
@@ -284,6 +291,28 @@ class JFPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void comprobarDatos(){
+        try {
+            String usuario =  JOptionPane.showInputDialog("Por favor, intruduzca su usuario: ");
+            String password = JOptionPane.showInputDialog("Introduzca su contraseña: ");
+            emple = emp.buscarEmpleado(usuario, password);
+            String cargo = emple.getCargo_empleado();
+            System.out.println(cargo);
+            if(!cargo.equalsIgnoreCase("administrador")){
+                jifGestionPedidos.deshabilitar();
+                jifGestionCines.deshabilitar();
+                jifGestionEmpleados.deshabilitar();
+                jifGestionProveedores.deshabilitar();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu2;

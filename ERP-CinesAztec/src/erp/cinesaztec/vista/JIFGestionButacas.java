@@ -729,6 +729,10 @@ class JIFGestionButacas extends javax.swing.JInternalFrame {
         jlNombreSalaButacaAEliminar.setText("");
         jbConfirmarEliminar.setEnabled(false);
     }
+    
+    public void desactivar(){
+        
+    }
 
     
 

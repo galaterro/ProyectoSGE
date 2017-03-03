@@ -674,6 +674,10 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
         }
     
     }
+    
+    public void deshabilitar(){
+        jtpFondo.setEnabledAt(3, false);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
