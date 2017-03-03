@@ -13,6 +13,9 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
 class JIFGestionProductos extends javax.swing.JInternalFrame {
 
     private ProductoPersistencia pp = new ProductoPersistencia();
-    private ArrayList<Producto> alProducto;
+    private ArrayList<Producto> alProducto = new ArrayList();
     private Producto producto;
     private Vector vPelicula = new Vector();
     private DefaultTableModel dtm = new DefaultTableModel(vPelicula, 0);
@@ -38,6 +41,20 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         jtaConsulta.setModel(dtm);
         this.setSize(990, 700);
         this.setResizable(false);
+        
+        jtpFondo.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (e.getSource() instanceof JTabbedPane) {
+                    reiniciarCamposConsulta();
+                    reiniciarCamposModificar();
+                    reiniciarCamposAlta();
+                    reiniciarCamposEliminar();
+                }
+            }
+        });
+        
     }
 
     /**
@@ -507,6 +524,14 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreBuscadorProductoModificarActionPerformed
 
+    /**
+     * Método usado para limpiar las tablas de cara a una nueva consulta.
+     */
+    private void limpiarTabla() {
+        jtaConsulta.setModel(dtm);
+        dtm.setRowCount(0);
+    }
+    
     public void consultaPedidos() {
         String NombreBuscador = jtfNombreConsultaPedidos.getText();
 
@@ -514,6 +539,8 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             /* Búsqueda general de Productos. */
             try {
                 reiniciarCamposConsulta();
+                limpiarTabla();
+                alProducto.clear();
                 alProducto = pp.listarProducto();
                 dtm.setRowCount(alProducto.size());
                 for (int i = 0; i < alProducto.size(); i++) {
@@ -531,6 +558,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             /* Búsqueda específica de prodcuto por id. */
             try {
                 reiniciarCamposConsulta();
+                limpiarTabla();
                 producto = pp.buscarProducto(NombreBuscador);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(producto.getNombre_producto(), 0, 0);
@@ -546,14 +574,6 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         }
     }
 
-    public void reiniciarCamposConsulta() {
-        jtfNombreConsultaPedidos.setText("");
-        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
-            dtm.removeRow(i);
-            i -= 1;
-        }
-    }
-
     public void ingresarProducto() {
         String descripcion = jtfDescripcionNuevaProducto.getText();
         float precio_producto = Float.parseFloat(jtfPrecioNuevoProducto.getText());
@@ -561,6 +581,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         String nombre = jtfNombreNuevoProducto.getText();
 
         producto = new Producto(descripcion, precio_producto, precio_venta, nombre);
+        reiniciarCamposAlta();
         JOptionPane.showMessageDialog(null, "Producto ingresado con éxito.");
         try {
             pp.ingresarProducto(producto);
@@ -594,6 +615,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
         try {
             producto = pp.buscarProducto(nombreEliminar);
             pp.eliminarProducto(producto.getId_producto());
+            reiniciarCamposEliminar();
             JOptionPane.showMessageDialog(null, "Prodcuto eliminada con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
@@ -635,6 +657,7 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             int id_prodcuto = pp.buscarIdPorNombre(nombreProductoActualizar);
             producto = new Producto(id_prodcuto, descripcionProductoActualizar, precioProductoActualizar, precioVentaActualizar, nombreProductoActualizar);
             pp.actualizarProducto(producto);
+            reiniciarCamposModificar();
             JOptionPane.showMessageDialog(null, "Producto actualizado con éxito.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el producto solicitado.\nPruebe de nuevo.");
@@ -642,6 +665,65 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
         }
     }
+    
+    
+    /**
+     * Método usado para reiniciar los campos de la ventana Consulta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposConsulta() {
+        jtfNombreConsultaPedidos.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Modificar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposModificar() {
+        jtfNombreBuscadorProductoModificar.setText("");
+        jtfNombreProductoModificar.setText("");
+        jtfDescripcionProductoModificar.setText("");
+        jtfPrecioProductoModificar.setText("");
+        jtfVentaProductoModificar.setText("");
+        
+        jlNombreProductoResultado.setText("");
+        jlDescripcionProductoResultado.setText("");
+        jlPrecioProductoResultado.setText("");
+        jlPrecioVentaResultado.setText("");
+        
+        jbtModificarProducto.setEnabled(false);
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Alta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposAlta() {
+        jtfNombreNuevoProducto.setText("");
+        jtfDescripcionNuevaProducto.setText("");
+        jtfPrecioNuevoProducto.setText("");
+        jtfPrecioVentaNuevaProducto.setText("");
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Eliminar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposEliminar() {
+        jtfNombreProductoEliminar.setText("");
+        
+        jlIDProductoAEliminar.setText("");
+        jlNombreProductoAEliminar.setText("");
+        jlPrecioProductoAEliminar.setText("");
+        jlPrecioVentaProductoAEliminar.setText("");
+        jlDescripcionProductoAEliminar.setText("");
+        jbComfirmarEliminar.setEnabled(false);
+    }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
