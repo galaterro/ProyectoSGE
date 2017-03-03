@@ -572,12 +572,12 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
                 for (int i = 0; i < alCabeceraPedido.size(); i++) {
                     producto = pp.buscarProductoPorId(alCuerpoPedido.get(i).getId_producto());
                     jtaConsulta.setValueAt(alCabeceraPedido.get(i).getFecha_pedido(), i, 0);
-                    jtaConsulta.setValueAt(alCabeceraPedido.get(i).getImporte_total_sin_iva(), i, 1);
+                    jtaConsulta.setValueAt(alCabeceraPedido.get(i).getImporte_total_sin_iva()+" €", i, 1);
                     jtaConsulta.setValueAt(alCabeceraPedido.get(i).getIVA(), i, 2);
-                    jtaConsulta.setValueAt(alCabeceraPedido.get(i).getImporte_total_con_iva(), i, 3);
+                    jtaConsulta.setValueAt(alCabeceraPedido.get(i).getImporte_total_con_iva()+" €", i, 3);
                     jtaConsulta.setValueAt(producto.getNombre_producto(), i, 4);
                     jtaConsulta.setValueAt(producto.getDesc_producto(), i, 5);
-                    jtaConsulta.setValueAt(alCuerpoPedido.get(i).getCantidad(), i, 6);
+                    jtaConsulta.setValueAt(alCuerpoPedido.get(i).getCantidad()+" Unidades.", i, 6);
 
                 }
             } catch (ClassNotFoundException ex) {
@@ -596,12 +596,12 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
                 producto = pp.buscarProductoPorId(cuerpoPedido.getId_producto());
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(cabeceraPedido.getFecha_pedido(), 0, 0);
-                jtaConsulta.setValueAt(cabeceraPedido.getImporte_total_sin_iva(), 0, 1);
+                jtaConsulta.setValueAt(cabeceraPedido.getImporte_total_sin_iva()+" €", 0, 1);
                 jtaConsulta.setValueAt(cabeceraPedido.getIVA(), 0, 2);
-                jtaConsulta.setValueAt(cabeceraPedido.getImporte_total_con_iva(), 0, 3);
+                jtaConsulta.setValueAt(cabeceraPedido.getImporte_total_con_iva()+" €", 0, 3);
                 jtaConsulta.setValueAt(producto.getNombre_producto(), 0, 4);
                 jtaConsulta.setValueAt(producto.getDesc_producto(), 0, 5);
-                jtaConsulta.setValueAt(cuerpoPedido.getCantidad(), 0, 6);
+                jtaConsulta.setValueAt(cuerpoPedido.getCantidad()+" Unidades.", 0, 6);
 
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR EN LA APLICACIÓN");

@@ -327,7 +327,6 @@ class JFPrincipal extends javax.swing.JFrame {
             String password = JOptionPane.showInputDialog("Introduzca su contraseña: ");
             emple = emp.buscarEmpleado(usuario, password);
             String cargo = emple.getCargo_empleado();
-            System.out.println(cargo);
             if(!cargo.equalsIgnoreCase("administrador")){
                 jifGestionPedidos.deshabilitar();
                 jifGestionCines.deshabilitar();
@@ -335,9 +334,9 @@ class JFPrincipal extends javax.swing.JFrame {
                 jifGestionProveedores.deshabilitar();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null,"NO SE HA PODIDO CONECTAR A LA BASE DE DATOS");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"ERROR EN LA APLICACIÓN \n INTENTELO MÁS TARDE");
         }
     }
     

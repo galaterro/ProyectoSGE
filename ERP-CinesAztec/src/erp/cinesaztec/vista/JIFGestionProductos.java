@@ -546,8 +546,8 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                 for (int i = 0; i < alProducto.size(); i++) {
                     jtaConsulta.setValueAt(alProducto.get(i).getNombre_producto(), i, 0);
                     jtaConsulta.setValueAt(alProducto.get(i).getDesc_producto(), i, 1);
-                    jtaConsulta.setValueAt(alProducto.get(i).getPrecio_producto(), i, 2);
-                    jtaConsulta.setValueAt(alProducto.get(i).getPrecio_venta(), i, 3);
+                    jtaConsulta.setValueAt(alProducto.get(i).getPrecio_producto()+" €", i, 2);
+                    jtaConsulta.setValueAt(alProducto.get(i).getPrecio_venta()+" €", i, 3);
                 }
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar ningún producto.\nPruebe de nuevo.");
@@ -563,8 +563,8 @@ class JIFGestionProductos extends javax.swing.JInternalFrame {
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(producto.getNombre_producto(), 0, 0);
                 jtaConsulta.setValueAt(producto.getDesc_producto(), 0, 1);
-                jtaConsulta.setValueAt(producto.getPrecio_producto(), 0, 2);
-                jtaConsulta.setValueAt(producto.getPrecio_venta(), 0, 3);
+                jtaConsulta.setValueAt(producto.getPrecio_producto()+" €", 0, 2);
+                jtaConsulta.setValueAt(producto.getPrecio_venta()+" €", 0, 3);
 
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el producto solicitado.\nPruebe de nuevo.");
