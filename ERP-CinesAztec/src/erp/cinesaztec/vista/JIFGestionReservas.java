@@ -8,8 +8,15 @@ package erp.cinesaztec.vista;
 import erp.cinesaztec.modelo.Reserva;
 import erp.cinesaztec.persistencia.ReservaPersistencia;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -68,9 +75,9 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
         jtfIDBuscador = new javax.swing.JTextField();
         jtfPeliculaModificar = new javax.swing.JTextField();
         jtfSesionModificar = new javax.swing.JTextField();
-        jtfButacaModificar = new javax.swing.JTextField();
-        jtfClienteModificar = new javax.swing.JTextField();
-        jtfSalaModificar = new javax.swing.JTextField();
+        jtfFilaModificar = new javax.swing.JTextField();
+        jtfColumnaModificar = new javax.swing.JTextField();
+        jtfDNIModificar = new javax.swing.JTextField();
         jbtModificar = new javax.swing.JButton();
         jbtBuscarReservaModificar = new javax.swing.JButton();
         jlNombreActual = new javax.swing.JLabel();
@@ -78,26 +85,30 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
         jlPoblacionActual = new javax.swing.JLabel();
         jlCodigoPostalActual = new javax.swing.JLabel();
         jlIDReservaResultado = new javax.swing.JLabel();
-        jlSalaResultado = new javax.swing.JLabel();
+        jlDNIResultado = new javax.swing.JLabel();
         jlCodigoPostalActual1 = new javax.swing.JLabel();
         jlCodigoPostalActual2 = new javax.swing.JLabel();
         jlPeliculaResultado = new javax.swing.JLabel();
         jlSesionResultado = new javax.swing.JLabel();
-        jlClienteResultado = new javax.swing.JLabel();
-        jlButacaResultado = new javax.swing.JLabel();
+        jlColumnaResultado = new javax.swing.JLabel();
+        jlFilaResultado = new javax.swing.JLabel();
+        jlCodigoPostalActual3 = new javax.swing.JLabel();
+        jlNombreSalaResultado = new javax.swing.JLabel();
         jtpAltaCine = new javax.swing.JTabbedPane();
         jpAltaCine = new javax.swing.JPanel();
         jlNombre = new javax.swing.JLabel();
         jtfPeliculaAlta = new javax.swing.JTextField();
         jlCif = new javax.swing.JLabel();
-        jtfSesionAlta = new javax.swing.JTextField();
+        jtfHoraSesionAlta = new javax.swing.JTextField();
         jlDireccion = new javax.swing.JLabel();
-        jtfButacaAlta = new javax.swing.JTextField();
+        jtfFilaButacaAlta = new javax.swing.JTextField();
         jlPoblacion = new javax.swing.JLabel();
-        jtfClienteAlta = new javax.swing.JTextField();
-        jlCodPostal = new javax.swing.JLabel();
-        jtfSalaAlta = new javax.swing.JTextField();
+        jtfColumnaButacaAlta = new javax.swing.JTextField();
         jbAltaReserva = new javax.swing.JButton();
+        jlPoblacion1 = new javax.swing.JLabel();
+        jtfNombreSalaAlta = new javax.swing.JTextField();
+        jlPoblacion2 = new javax.swing.JLabel();
+        jtfDniClienteAlta = new javax.swing.JTextField();
         jtpEliminar = new javax.swing.JTabbedPane();
         jpFondoEleminar = new javax.swing.JPanel();
         jlCifCineEliminar = new javax.swing.JLabel();
@@ -107,11 +118,11 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
         jlIDReservaEliminar = new javax.swing.JLabel();
         jbComfirmarEliminar = new javax.swing.JButton();
         jlIDReservaEliminar1 = new javax.swing.JLabel();
-        jlSesionEliminar = new javax.swing.JLabel();
-        jlButacaEliminar = new javax.swing.JLabel();
-        jlSalaEliminar = new javax.swing.JLabel();
-        jlClienteEliminar = new javax.swing.JLabel();
-        jlPeliculaEliminar = new javax.swing.JLabel();
+        jlHoraSesionEliminar = new javax.swing.JLabel();
+        jlFilaButacaEliminar = new javax.swing.JLabel();
+        jlDniClienteEliminar = new javax.swing.JLabel();
+        jlColumnaButacaEliminar = new javax.swing.JLabel();
+        jlNombrePeliculaEliminar = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -175,7 +186,7 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbAceptarConsulta)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
 
         jtpConsulta.addTab("", jpConsulta);
@@ -184,17 +195,22 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
 
         jlNombreCine.setText("Nombre Película:");
 
-        jlCifCine.setText("Nombre Sesión:");
+        jlCifCine.setText("Hora  Sesión:");
 
         jlIDBuscador.setText("Ingrese el ID de la reserva que desea modificar:");
 
-        jlDireccionCine.setText("Nombre Butaca:");
+        jlDireccionCine.setText("Fila Butaca:");
 
-        jlPoblacionCine.setText("Nombre Cliente:");
+        jlPoblacionCine.setText("Columna Butaca:");
 
-        jlCodigoPostal.setText("Nombre Sala:");
+        jlCodigoPostal.setText("DNI Cliente");
 
         jbtModificar.setText("Modificar");
+        jbtModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtModificarActionPerformed(evt);
+            }
+        });
 
         jbtBuscarReservaModificar.setText("Buscar");
         jbtBuscarReservaModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -207,13 +223,15 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
 
         jlDireccionActual.setText("Nombre Película:");
 
-        jlPoblacionActual.setText("Nombre Sesión:");
+        jlPoblacionActual.setText("Hora Sesión:");
 
-        jlCodigoPostalActual.setText("Nombre Butaca:");
+        jlCodigoPostalActual.setText("Fila Butaca:");
 
-        jlCodigoPostalActual1.setText("Nombre Cliente:");
+        jlCodigoPostalActual1.setText("Columna Butaca:");
 
-        jlCodigoPostalActual2.setText("Nombre Sala:");
+        jlCodigoPostalActual2.setText("DNI Cliente:");
+
+        jlCodigoPostalActual3.setText("Nombre Sala:");
 
         javax.swing.GroupLayout jpModificarLayout = new javax.swing.GroupLayout(jpModificar);
         jpModificar.setLayout(jpModificarLayout);
@@ -230,7 +248,7 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlPeliculaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                    .addComponent(jlPeliculaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
@@ -240,17 +258,21 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                         .addComponent(jlSesionResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlButacaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlFilaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jlClienteResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlColumnaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jlCodigoPostalActual1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jlCodigoPostalActual2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(jlSalaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(86, 86, 86))
+                    .addComponent(jlCodigoPostalActual2, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                    .addComponent(jlDNIResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlCodigoPostalActual3, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                    .addComponent(jlNombreSalaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(92, 92, 92))
             .addGroup(jpModificarLayout.createSequentialGroup()
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpModificarLayout.createSequentialGroup()
@@ -263,19 +285,19 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                         .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtfSesionModificar)
                             .addComponent(jtfPeliculaModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-                            .addComponent(jtfButacaModificar)
-                            .addComponent(jtfClienteModificar)))
+                            .addComponent(jtfFilaModificar)
+                            .addComponent(jtfColumnaModificar)))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addComponent(jlCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfSalaModificar))
+                        .addComponent(jtfDNIModificar))
                     .addGroup(jpModificarLayout.createSequentialGroup()
                         .addComponent(jlIDBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jtfIDBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbtBuscarReservaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 364, Short.MAX_VALUE))
         );
         jpModificarLayout.setVerticalGroup(
             jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,26 +309,25 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                     .addComponent(jbtBuscarReservaModificar))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlCodigoPostalActual2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlCodigoPostalActual2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlCodigoPostalActual3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jlNombreActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jlDireccionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jlPoblacionActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jlCodigoPostalActual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jlCodigoPostalActual1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jlSalaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
-                    .addGroup(jpModificarLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlIDReservaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlPeliculaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlSesionResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlClienteResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlButacaResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
+                .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlIDReservaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlPeliculaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlSesionResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlFilaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlColumnaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlDNIResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlNombreSalaResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombreCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfPeliculaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -317,18 +338,18 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDireccionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfButacaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfFilaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfClienteModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfColumnaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlPoblacionCine, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfSalaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDNIModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbtModificar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jtpModificar.addTab("", jpModificar);
@@ -337,13 +358,11 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
 
         jlNombre.setText("Nombre Película:");
 
-        jlCif.setText("Nombre Sesión:");
+        jlCif.setText("Hora Sesión:");
 
-        jlDireccion.setText("Nombre Butaca:");
+        jlDireccion.setText("Fila Butaca:");
 
-        jlPoblacion.setText("Nombre Cliente:");
-
-        jlCodPostal.setText("Nombre Sala:");
+        jlPoblacion.setText("Columna Butaca:");
 
         jbAltaReserva.setText("Aceptar");
         jbAltaReserva.addActionListener(new java.awt.event.ActionListener() {
@@ -351,6 +370,10 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                 jbAltaReservaActionPerformed(evt);
             }
         });
+
+        jlPoblacion1.setText("Nombre Sala:");
+
+        jlPoblacion2.setText("DNI Cliente:");
 
         javax.swing.GroupLayout jpAltaCineLayout = new javax.swing.GroupLayout(jpAltaCine);
         jpAltaCine.setLayout(jpAltaCineLayout);
@@ -366,19 +389,22 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAltaCineLayout.createSequentialGroup()
                             .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jtfSesionAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfHoraSesionAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jbAltaReserva)
                         .addGroup(jpAltaCineLayout.createSequentialGroup()
                             .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jlCodPostal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                                .addComponent(jlPoblacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jlDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jlPoblacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                                .addComponent(jlDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jlPoblacion1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                                .addComponent(jlPoblacion2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
                             .addGap(18, 18, 18)
-                            .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfButacaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfSalaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfClienteAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jtfColumnaButacaAlta, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                                .addComponent(jtfFilaButacaAlta)
+                                .addComponent(jtfNombreSalaAlta, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                                .addComponent(jtfDniClienteAlta, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
+                            .addGap(145, 145, 145))))
                 .addContainerGap(268, Short.MAX_VALUE))
         );
         jpAltaCineLayout.setVerticalGroup(
@@ -391,22 +417,26 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCif, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfSesionAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfHoraSesionAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfButacaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfFilaButacaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlPoblacion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfClienteAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfColumnaButacaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlCodPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfSalaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNombreSalaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlPoblacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jpAltaCineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfDniClienteAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlPoblacion2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(136, 136, 136)
                 .addComponent(jbAltaReserva)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jtpAltaCine.addTab("", jpAltaCine);
@@ -440,6 +470,13 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfIDReservaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbAceptarCifEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
                         .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jpFondoEleminarLayout.createSequentialGroup()
                                 .addComponent(jlIDReservaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -447,25 +484,22 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                                 .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlIDReservaEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                                        .addComponent(jlPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jlNombrePeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jlSesionEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jlHoraSesionEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jlButacaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jlClienteEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jlFilaButacaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbComfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlSalaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jpFondoEleminarLayout.createSequentialGroup()
-                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfIDReservaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbAceptarCifEleiminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(191, Short.MAX_VALUE))
+                            .addGroup(jpFondoEleminarLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jbComfirmarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoEleminarLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                                .addComponent(jlColumnaButacaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlDniClienteEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(75, 75, 75))))))
         );
         jpFondoEleminarLayout.setVerticalGroup(
             jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,13 +519,13 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
                     .addComponent(jlIDReservaEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jlPeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlNombrePeliculaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpFondoEleminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jlIDReservaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlSesionEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jlButacaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlClienteEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlSalaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlHoraSesionEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlFilaButacaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlColumnaButacaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlDniClienteEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(jbComfirmarEliminar)
                 .addContainerGap())
@@ -522,20 +556,24 @@ class JIFGestionReservas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAceptarConsultaActionPerformed
 
     private void jbtBuscarReservaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarReservaModificarActionPerformed
-
+        cargarReservaModificar();
     }//GEN-LAST:event_jbtBuscarReservaModificarActionPerformed
 
     private void jbAltaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaReservaActionPerformed
-        // TODO add your handling code here:
+        insertarReserva();
     }//GEN-LAST:event_jbAltaReservaActionPerformed
 
     private void jbComfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComfirmarEliminarActionPerformed
-
+        eliminarReserva();
     }//GEN-LAST:event_jbComfirmarEliminarActionPerformed
 
     private void jbAceptarCifEleiminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarCifEleiminarActionPerformed
-
+        cargarReservaEliminar();
     }//GEN-LAST:event_jbAceptarCifEleiminarActionPerformed
+
+    private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
+        modificarReserva();
+    }//GEN-LAST:event_jbtModificarActionPerformed
 
 public void consultaReserva() {
         String idBuscador = jtfIDConsulta.getText();
@@ -562,9 +600,8 @@ public void consultaReserva() {
         } else {
             /* Búsqueda específica de proveedor por CIF. */
             try {
-                
+
                 int idBuscar = Integer.parseInt(idBuscador);
-                
                 reserva = rp.buscarReserva(idBuscar);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(reserva.getId_reserva(), 0, 0);
@@ -582,18 +619,162 @@ public void consultaReserva() {
     }
 
     public void insertarReserva(){
-
         try {
             int idPelicula = rp.consultarIdPelicula(jtfPeliculaAlta.getText());
-//            int idSesion = 
-//            int idSala = bp.consultarIdSala(nombreSala);
-//            butaca = new Butaca(filas, columna, idSala);
-//            bp.ingresarButaca(butaca);
-//            JOptionPane.showMessageDialog(null, "Butaca ingresada con éxito.");
+            int fila = Integer.parseInt(jtfFilaButacaAlta.getText());
+            int columna = Integer.parseInt(jtfColumnaButacaAlta.getText());
+            DateFormat format = new SimpleDateFormat("HH:mm:ss");
+            Date horaSesion = (Date)format.parse(jtfHoraSesionAlta.getText());
+            DateFormat dsf = new SimpleDateFormat("HH:mm:ss");
+            String timeFormat = dsf.format(horaSesion);
+            java.sql.Time hora = java.sql.Time.valueOf(timeFormat); 
+            String nombreSala = jtfNombreSalaAlta.getText();
+            String dniCliente = jtfDniClienteAlta.getText();
+            int idSala = rp.consultarIDSala(nombreSala);
+            System.out.println("Sala: "+ idSala +"fila: "+fila + "columna: " + columna + "hora: " + hora.toString());
+            int idButaca = rp.consultarIDButaca(fila, columna, idSala);
+            int idSesion = rp.consultarIDSesion(hora, idPelicula, idSala);
+            int idCliente = rp.consultaIdCliente(dniCliente);
+            reserva = new Reserva(idPelicula, idSesion, idButaca, idCliente);
+            rp.ingresarReserva(reserva);
+            JOptionPane.showMessageDialog(null, "Reserva ingresada con éxito.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar la nueva butaca.\nPruebe de nuevo." + ex);
+            ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
+        } catch (ParseException ex) {
+            Logger.getLogger(JIFGestionReservas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void cargarReservaModificar() {
+        String idBuscador = jtfIDBuscador.getText();
+        boolean existe = false;
+        if (idBuscador.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
+        } else {
+            try {
+                int idReserva = Integer.parseInt(idBuscador);
+                existe = rp.existeReserva(idReserva);
+                if (existe) {
+                    reserva = rp.buscarReserva(idReserva);
+                    Integer idPelicula = reserva.getId_pelicula();
+                    Integer idSesion = reserva.getId_sesion();
+                    Integer idButaca = reserva.getId_butaca();
+                    Integer idCliente = reserva.getId_cliente();
+                    
+                    String nombrePelicula = rp.buscarNombrePelicula(idPelicula);
+                    int fila = rp.consultarFilaButaca(idButaca);
+                    int columna = rp.consultarColumnaButaca(idButaca);
+                    Time horaSesion = rp.consultarHoraSesion(idSesion);
+                    String dniCliente = rp.consultarDniCliente(idCliente);
+                    
+                    jlFilaResultado.setText(String.valueOf(fila));
+                    jlColumnaResultado.setText(String.valueOf(columna));
+                    jlSesionResultado.setText(horaSesion.toString());
+                    jlPeliculaResultado.setText(nombrePelicula);
+                    jlDNIResultado.setText(dniCliente);
+                    jlIDReservaResultado.setText(String.valueOf(idReserva));
+                    jlNombreSalaResultado.setText(rp.consultarNombreSala(nombrePelicula));
+                    
+                    jtfPeliculaModificar.setText(nombrePelicula);
+                    jtfFilaModificar.setText(String.valueOf(fila));
+                    jtfColumnaModificar.setText(String.valueOf(columna));
+                    jtfSesionModificar.setText(horaSesion.toString());
+                    jtfDNIModificar.setText(dniCliente);
+                    
+                    jbtModificar.setEnabled(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existe la butaca con el ID seleccionado.\nPruebe de nuevo." );
+                    jtfIDBuscador.setText("");
+                }
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la butaca solicitado.\nPruebe de nuevo." +ex);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." +ex);
+            }
+        }
+    }
+    
+    public void modificarReserva() {
+        try {
+            int idReserva = Integer.parseInt(jtfIDBuscador.getText());
+            //Falta coger el cine
+            int fila = Integer.parseInt(jtfFilaModificar.getText());
+            int columna = Integer.parseInt(jtfColumnaModificar.getText());
+            String dni = jtfDNIModificar.getText();
+            String pelicula = jtfPeliculaModificar.getText();
+            DateFormat format = new SimpleDateFormat("HH:mm:ss");
+            Date horaSesion = (Date)format.parse(jtfSesionModificar.getText());
+            DateFormat dsf = new SimpleDateFormat("HH:mm:ss");
+            String timeFormat = dsf.format(horaSesion);
+            java.sql.Time hora = java.sql.Time.valueOf(timeFormat);
+            String nombreSala = jlNombreSalaResultado.getText();
+            int idSala = rp.consultarIDSala(nombreSala);
+            int idPelicula = rp.consultarIDPelicula(pelicula, idSala);
+            int idSesion = rp.consultarIDSesion(hora, idPelicula, idSala);
+            int idButaca = rp.consultarIDButaca(fila, columna, idSala);
+            int idCliente = rp.consultaIdCliente(dni);
+            reserva = new Reserva(idPelicula, idSesion, idButaca, idCliente);
+            rp.actualizarReserva(reserva, idReserva);
+            JOptionPane.showMessageDialog(null, "Reserva actualizada con éxito.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." + ex);
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar la reserva solicitado.\nPruebe de nuevo.");
+        } catch (ParseException ex) {
+            Logger.getLogger(JIFGestionReservas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+     public void cargarReservaEliminar() {
+        String idBusca = jtfIDReservaEliminar.getText();
+
+        if (idBusca.compareToIgnoreCase("") == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
+        } else {
+            try {
+                int idReserva = Integer.parseInt(idBusca);
+                reserva = rp.buscarReserva(idReserva);
+                 Integer idPelicula = reserva.getId_pelicula();
+                    Integer idSesion = reserva.getId_sesion();
+                    Integer idButaca = reserva.getId_butaca();
+                    Integer idCliente = reserva.getId_cliente();
+                    
+                    String nombrePelicula = rp.buscarNombrePelicula(idPelicula);
+                    int fila = rp.consultarFilaButaca(idButaca);
+                    int columna = rp.consultarColumnaButaca(idButaca);
+                    Time horaSesion = rp.consultarHoraSesion(idSesion);
+                    String dniCliente = rp.consultarDniCliente(idCliente);
+                    
+                    jlFilaButacaEliminar.setText("Fila: " + String.valueOf(fila));
+                    jlColumnaButacaEliminar.setText("Columna: " + String.valueOf(columna));
+                    jlHoraSesionEliminar.setText("Hora: " + horaSesion.toString());
+                    jlNombrePeliculaEliminar.setText("Pelicula: " + nombrePelicula);
+                    jlDniClienteEliminar.setText("DNI: " + dniCliente);
+                    jlIDReservaEliminar.setText("ID Reserva: " + String.valueOf(idReserva));
+                    
+                    jbComfirmarEliminar.setEnabled(true);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la reserva solicitado.\nPruebe de nuevo.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            }
+        }
+    }
+     
+    public void eliminarReserva(){
+        String idEliminar = jtfIDReservaEliminar.getText();
+        try {
+            int id = Integer.parseInt(idEliminar);
+            rp.eliminarReserva(id);
+            JOptionPane.showMessageDialog(null, "Reserva eliminada con éxito.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar la reserva solicitada.\nPruebe de nuevo.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -604,23 +785,26 @@ public void consultaReserva() {
     private javax.swing.JButton jbComfirmarEliminar;
     private javax.swing.JButton jbtBuscarReservaModificar;
     private javax.swing.JButton jbtModificar;
-    private javax.swing.JLabel jlButacaEliminar;
-    private javax.swing.JLabel jlButacaResultado;
     private javax.swing.JLabel jlCif;
     private javax.swing.JLabel jlCifCine;
     private javax.swing.JLabel jlCifCineEliminar;
     private javax.swing.JLabel jlCifConsulta;
     private javax.swing.JLabel jlCineAEliminar;
-    private javax.swing.JLabel jlClienteEliminar;
-    private javax.swing.JLabel jlClienteResultado;
-    private javax.swing.JLabel jlCodPostal;
     private javax.swing.JLabel jlCodigoPostal;
     private javax.swing.JLabel jlCodigoPostalActual;
     private javax.swing.JLabel jlCodigoPostalActual1;
     private javax.swing.JLabel jlCodigoPostalActual2;
+    private javax.swing.JLabel jlCodigoPostalActual3;
+    private javax.swing.JLabel jlColumnaButacaEliminar;
+    private javax.swing.JLabel jlColumnaResultado;
+    private javax.swing.JLabel jlDNIResultado;
     private javax.swing.JLabel jlDireccion;
     private javax.swing.JLabel jlDireccionActual;
     private javax.swing.JLabel jlDireccionCine;
+    private javax.swing.JLabel jlDniClienteEliminar;
+    private javax.swing.JLabel jlFilaButacaEliminar;
+    private javax.swing.JLabel jlFilaResultado;
+    private javax.swing.JLabel jlHoraSesionEliminar;
     private javax.swing.JLabel jlIDBuscador;
     private javax.swing.JLabel jlIDReservaEliminar;
     private javax.swing.JLabel jlIDReservaEliminar1;
@@ -628,32 +812,33 @@ public void consultaReserva() {
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlNombreActual;
     private javax.swing.JLabel jlNombreCine;
-    private javax.swing.JLabel jlPeliculaEliminar;
+    private javax.swing.JLabel jlNombrePeliculaEliminar;
+    private javax.swing.JLabel jlNombreSalaResultado;
     private javax.swing.JLabel jlPeliculaResultado;
     private javax.swing.JLabel jlPoblacion;
+    private javax.swing.JLabel jlPoblacion1;
+    private javax.swing.JLabel jlPoblacion2;
     private javax.swing.JLabel jlPoblacionActual;
     private javax.swing.JLabel jlPoblacionCine;
-    private javax.swing.JLabel jlSalaEliminar;
-    private javax.swing.JLabel jlSalaResultado;
-    private javax.swing.JLabel jlSesionEliminar;
     private javax.swing.JLabel jlSesionResultado;
     private javax.swing.JPanel jpAltaCine;
     private javax.swing.JPanel jpConsulta;
     private javax.swing.JPanel jpFondoEleminar;
     private javax.swing.JPanel jpModificar;
     private javax.swing.JTable jtaConsulta;
-    private javax.swing.JTextField jtfButacaAlta;
-    private javax.swing.JTextField jtfButacaModificar;
-    private javax.swing.JTextField jtfClienteAlta;
-    private javax.swing.JTextField jtfClienteModificar;
+    private javax.swing.JTextField jtfColumnaButacaAlta;
+    private javax.swing.JTextField jtfColumnaModificar;
+    private javax.swing.JTextField jtfDNIModificar;
+    private javax.swing.JTextField jtfDniClienteAlta;
+    private javax.swing.JTextField jtfFilaButacaAlta;
+    private javax.swing.JTextField jtfFilaModificar;
+    private javax.swing.JTextField jtfHoraSesionAlta;
     private javax.swing.JTextField jtfIDBuscador;
     private javax.swing.JTextField jtfIDConsulta;
     private javax.swing.JTextField jtfIDReservaEliminar;
+    private javax.swing.JTextField jtfNombreSalaAlta;
     private javax.swing.JTextField jtfPeliculaAlta;
     private javax.swing.JTextField jtfPeliculaModificar;
-    private javax.swing.JTextField jtfSalaAlta;
-    private javax.swing.JTextField jtfSalaModificar;
-    private javax.swing.JTextField jtfSesionAlta;
     private javax.swing.JTextField jtfSesionModificar;
     private javax.swing.JTabbedPane jtpAltaCine;
     private javax.swing.JTabbedPane jtpConsulta;

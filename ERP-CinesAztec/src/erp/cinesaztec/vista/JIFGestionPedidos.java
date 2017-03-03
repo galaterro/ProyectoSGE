@@ -517,7 +517,7 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAceptaridEliminarActionPerformed
 
     private void jbConfirmarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEliminarActionPerformed
-        // eliminarCine();
+        eliminarPedido();
     }//GEN-LAST:event_jbConfirmarEliminarActionPerformed
 
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
@@ -700,10 +700,20 @@ class JIFGestionPedidos extends javax.swing.JInternalFrame {
     }
     
     public void eliminarPedido(){
-        
+        String idEliminar = jtfIdPedidoEliminar.getText();
+        try {
+            int id = Integer.parseInt(idEliminar);
+            pp.eliminarCabeceraPedido(id);
+            JOptionPane.showMessageDialog(null, "Butaca eliminada con éxito.");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar la butaca solicitada.\nPruebe de nuevo.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+        }
     }
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAceptarConsulta;
