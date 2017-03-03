@@ -44,6 +44,7 @@ class JFPrincipal extends javax.swing.JFrame {
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/icon.png"));
         setIconImage(icon);
         this.setSize(1000, 700);
+        this.setLocation(180, 0);
         this.setTitle("Cines Aztec ERP");
         this.add(jdpEscritorio);
         this.setResizable(false);
