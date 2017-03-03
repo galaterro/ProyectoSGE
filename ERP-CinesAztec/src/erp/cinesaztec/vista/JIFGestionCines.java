@@ -482,9 +482,9 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpFondoEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoEliminarLayout.createSequentialGroup()
-                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfCifCineEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jbAceptarCifEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jlCineAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -528,7 +528,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
                             .addComponent(jlPobCineAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
                 .addComponent(jbConfirmarEliminar)
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         jtpEliminar.addTab("", jpFondoEliminar);
@@ -539,9 +539,10 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jtpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 957, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -724,6 +725,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar el cine solicitado.\nPruebe de nuevo.");
             } catch (SQLException ex) {
+                ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
             }
         }
@@ -746,6 +748,7 @@ class JIFGestionCines extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Cine actualizado con éxito.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
+            ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido modificar el cine solicitado.\nPruebe de nuevo.");
         }

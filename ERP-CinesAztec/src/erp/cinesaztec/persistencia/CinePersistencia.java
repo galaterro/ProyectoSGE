@@ -60,7 +60,7 @@ public class CinePersistencia {
     /* Usado para buscar un Cine específico por su CIF. */
     public Cine buscarCine(String cif) throws ClassNotFoundException, SQLException {
 
-        String sql = "select * from cine where cif_cine = " + cif;
+        String sql = "select * from cine where lower(cif_cine) = lower('" + cif+"')";
         c = gbd.conectarBBDD();
         st = c.createStatement();
 
@@ -76,7 +76,7 @@ public class CinePersistencia {
     /* Usado para modificar los datos de un Cine existente. */
     public void actualizarCine(Cine cine, String cif) throws SQLException, ClassNotFoundException {
 
-        String sql = "update cine set nombre_cine = ?, cif_cine = ?, direccion_cine = ?, poblacion_cine = ?, cp_cine = ? where cif_cine = '" + cif + "'";
+        String sql = "update cine set nombre_cine = ?, cif_cine = ?, direccion_cine = ?, poblacion_cine = ?, cp_cine = ? where lower(cif_cine) = ?";
         c = gbd.conectarBBDD();
         ps = c.prepareStatement(sql);
 
@@ -85,6 +85,7 @@ public class CinePersistencia {
         ps.setString(3, cine.getDir_cine());
         ps.setString(4, cine.getPob_cine());
         ps.setInt(5, cine.getCodPos_cine());
+        ps.setString(6, cif);
 
         ps.executeUpdate();
         ps.close();

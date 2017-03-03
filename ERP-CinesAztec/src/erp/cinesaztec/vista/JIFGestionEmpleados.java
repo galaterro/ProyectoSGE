@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -43,6 +46,19 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         this.setSize(990, 700);
         this.setResizable(false);
         this.setTitle("Gestión Empleados");
+        
+        jtpFondo.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (e.getSource() instanceof JTabbedPane) {
+                    reiniciarCamposConsulta();
+                    reiniciarCamposModificar();
+                    reiniciarCamposAlta();
+                    reiniciarCamposEliminar();
+                }
+            }
+        });
     }
 
     /**
@@ -708,13 +724,23 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
     private void jtpFondoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtpFondoStateChanged
 
     }//GEN-LAST:event_jtpFondoStateChanged
-
+                                         
+    /**
+     * Método usado para limpiar las tablas de cara a una nueva consulta.
+     */
+    private void limpiarTabla() {
+        jtaConsulta.setModel(dtm);
+        dtm.setRowCount(0);
+    }
+    
     public void listarEmpleados() {
         String dniBuscador = jtfDniConsulta.getText();
 
         if (dniBuscador.trim().equals("")) {
             try {
-
+                reiniciarCamposConsulta();
+                limpiarTabla();
+                alEmpleado.clear();
                 alEmpleado = ep.listarEmpleados();
                 dtm.setRowCount(alEmpleado.size());
                 for (int i = 0; i < alEmpleado.size(); i++) {
@@ -738,6 +764,8 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         } else {
             try {
                 String dni = dniBuscador;
+                reiniciarCamposConsulta();
+                limpiarTabla();
                 empleado = ep.buscarEmpleado(dni);
                 dtm.setRowCount(1);
                 jtaConsulta.setValueAt(empleado.getId_empleado(), 0, 0);
@@ -780,6 +808,7 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
             idCine = ep.buscarCine(nombreCineBusqueda);
             empleado = new Empleado(dni, nombre, apellidos, telefono, fecha, cargo, usuario, contrasena, idCine);
             ep.ingresarEmpleado(empleado);
+            reiniciarCamposAlta();
             JOptionPane.showMessageDialog(null, "EMPLEADO INGRESADO CON ÉXITO");
 
         } catch (ParseException ex) {
@@ -818,6 +847,7 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         String dni = jtfDniEmpEliminar.getText();
         try {
             ep.eliminarEmpleado(dni);
+            reiniciarCamposEliminar();
             JOptionPane.showMessageDialog(null, "Empleado eliminado con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar el empleado solicitado.\nPruebe de nuevo.");
@@ -893,6 +923,7 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
 
                 empleado = new Empleado(dni, nombre, apellidos, telefono, fecha, cargo, usuario, contrasena, id_cine);
                 ep.actualizarEmpleado(empleado, dniBuscador);
+                reiniciarCamposModificar();
                 JOptionPane.showMessageDialog(null, "Empleado actualizado con éxito.");
 
             } catch (ClassNotFoundException ex) {
@@ -904,7 +935,75 @@ class JIFGestionEmpleados extends javax.swing.JInternalFrame {
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "FORMATO DE FECHA INCORRECTO \n EJEMPLO: 2017-12-31");
         }
+    }
+        
+    /**
+     * Método usado para reiniciar los campos de la ventana Consulta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposConsulta() {
+        jtfDniConsulta.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
 
+    /**
+     * Método usado para reiniciar los campos de la ventana Modificar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposModificar() {
+        jtfDniBuscadorModificar.setText("");
+        jtfDniEmpModificar.setText("");
+        jtfNomEmpModificar.setText("");
+        jtfApeEmpModificar.setText("");
+        jtfTelEmpModificar.setText("");
+        jtfFechaEmpModificar.setText("");
+        jtfCargoEmpModificar.setText("");
+        jtfUsuEmpModificar.setText("");
+        jtfConEmpModificar.setText("");
+        jtfCineEmpModificar.setText("");
+        
+        jlDniResultado.setText("");
+        jlNombreResultado.setText("");
+        jlApellidoResultado.setText("");
+        jlTelefonoResultado.setText("");
+        jlFechaResultado.setText("");
+        jlCargoResultado.setText("");
+        jlUsuarioResultado.setText("");
+        jlContrasenaResultado.setText("");
+        jlCineEmpResultado.setText("");
+        jbtModificar.setEnabled(false);
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Alta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposAlta() {
+        jtfDniNuevo.setText("");
+        jtfNombreNuevo.setText("");
+        jtfApellidosNuevo.setText("");
+        jtfTelefonoNuevo.setText("");
+        jtfFechaNuevo.setText("");
+        jtfCargoNuevo.setText("");
+        jtfUsuarioNuevo.setText("");
+        jtfContrasenaNueva.setText("");
+        jtfCineNuevo.setText("");
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Eliminar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposEliminar() {
+        jtfDniEmpEliminar.setText("");
+        jlDniEmpleadoAEliminar.setText("");
+        jlNombreEmpleadoAEliminar.setText("");
+        jlApellidoEmpleadoAELiminar.setText("");
+        jlTelefonoAEliminar.setText("");
+        jbConfirmarEliminarEmpleado.setEnabled(false);
     }
     
     public void deshabilitar(){
