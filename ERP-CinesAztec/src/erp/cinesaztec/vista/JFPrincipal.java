@@ -7,6 +7,7 @@ package erp.cinesaztec.vista;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -64,7 +65,8 @@ class JFPrincipal extends javax.swing.JFrame {
         jmiGestionSalas = new javax.swing.JMenuItem();
         jmiGestionProductos = new javax.swing.JMenuItem();
         jmiGestionButacas = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jmInfo = new javax.swing.JMenu();
+        jmiInfo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,8 +175,22 @@ class JFPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jmModulos);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jmInfo.setText("Info");
+        jmInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmInfoActionPerformed(evt);
+            }
+        });
+
+        jmiInfo.setText("Información");
+        jmiInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiInfoActionPerformed(evt);
+            }
+        });
+        jmInfo.add(jmiInfo);
+
+        jMenuBar1.add(jmInfo);
 
         setJMenuBar(jMenuBar1);
 
@@ -240,6 +256,16 @@ class JFPrincipal extends javax.swing.JFrame {
         jifGestionButacas.show();
     }//GEN-LAST:event_jmiGestionButacasActionPerformed
 
+    private void jmInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmInfoActionPerformed
+        
+    }//GEN-LAST:event_jmInfoActionPerformed
+
+    private void jmiInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInfoActionPerformed
+        JOptionPane.showMessageDialog(null,"ERP CINE ASTEC \n Creada por Sergio De La Paz \n Víctor Allende \n "
+                + "Adrián De La Gala \n Kevin Castillo \n Para la asignatura de SGE "
+                + "\n Copyright@CineAztecErp.2017");
+    }//GEN-LAST:event_jmiInfoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,9 +312,9 @@ class JFPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JDesktopPane jdpEscritorio;
+    private javax.swing.JMenu jmInfo;
     private javax.swing.JMenu jmModulos;
     private javax.swing.JMenuItem jmiGestionButacas;
     private javax.swing.JMenuItem jmiGestionCines;
@@ -301,5 +327,6 @@ class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiGestionReservas;
     private javax.swing.JMenuItem jmiGestionSalas;
     private javax.swing.JMenuItem jmiGestionSesiones;
+    private javax.swing.JMenuItem jmiInfo;
     // End of variables declaration//GEN-END:variables
 }
