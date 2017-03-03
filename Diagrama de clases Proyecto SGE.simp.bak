@@ -35,7 +35,7 @@
       </counter>
       <counter>
         <item-type type-id="" type="AbstractElementGroup" />
-        <value>13</value>
+        <value>2</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -75,8 +75,8 @@
       <type-set file="UmlTypes.xml" />
     </type-sets>
     <custom-types>
-      <type id="float" tid="" name="float" description="" />
-      <type id="_sesion DateTime" tid="" name="_sesion DateTime" description="" />
+      <type id="float" tid="" name="float" description="" nullable="false" />
+      <type id="_sesion DateTime" tid="" name="_sesion DateTime" description="" nullable="false" />
     </custom-types>
   </types>
   <filters />
@@ -126,7 +126,7 @@
           </authors>
           <description />
           <creation-date>12/07/2016 16:03:44</creation-date>
-          <change-date>01/13/2017 17:19:38</change-date>
+          <change-date>03/03/2017 16:49:35</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
@@ -478,20 +478,6 @@
               <end-role id="" name="" navigability="" association-type="association" visibility="private" attribute-ref="a5c338843facf46b28881d8913cdfb0a386" />
             </relation>
           </item>
-          <item id="di853507633669062854" cid="C016" type="class" name="Entrada" style-class="" visibility="package" change-tracking-state="added" creator="Pb85841da6d584cc08c6759f29873a177" creation-date="12/07/2016 17:54:49">
-            <style class="default" />
-            <attributes>
-              <attribute id="a19d1cdff5ce2479ba1016fdae80d72ce792" cid="ELEM077" name="id_entrada" type="Integer" type-id="Uml.Integer" visibility="private">
-                <style class="default" />
-              </attribute>
-              <attribute id="ab269d2267f88434682ebd25b58d37de2416" cid="ELEM078" name="precio" type="float" type-id="float" visibility="private">
-                <style class="default" />
-              </attribute>
-              <attribute id="ac78ce8ac8caf4233a2a82b8814f412e9775" cid="ELEM079" name="id_pelicula" type="Integer" type-id="Uml.Integer" visibility="private">
-                <style class="default" />
-              </attribute>
-            </attributes>
-          </item>
           <item id="di289647008647234311" cid="C017" type="class" name="Cabecera_factura_cliente" style-class="" visibility="package" change-tracking-state="added" creator="Pb85841da6d584cc08c6759f29873a177" creation-date="12/07/2016 18:05:24">
             <style class="default" />
             <attributes>
@@ -514,13 +500,6 @@
                 <style class="default" />
               </attribute>
             </attributes>
-          </item>
-          <item id="di779183412899874406" cid="REL017" type="relationship" name="fk" style-class="" visibility="package" change-tracking-state="added" creator="Pb85841da6d584cc08c6759f29873a177" creation-date="12/07/2016 17:58:08" from="di853751100590148359" to="di853507633669062854">
-            <style class="default" />
-            <relation from="di853751100590148359" to="di853507633669062854">
-              <start-role id="" name="" navigability="" association-type="association" visibility="private" />
-              <end-role id="" name="" navigability="" association-type="association" visibility="private" attribute-ref="ac78ce8ac8caf4233a2a82b8814f412e9775" />
-            </relation>
           </item>
           <item id="di347363618140474657" cid="REL018" type="relationship" name="fk" style-class="" visibility="package" change-tracking-state="added" creator="Pb85841da6d584cc08c6759f29873a177" creation-date="12/07/2016 18:00:45" from="di403264239138581873" to="di469866347488094831">
             <style class="default" />
@@ -693,19 +672,6 @@
           <item id="di223890679538146369" iid="21097fa691f74cc6ba660782dd3f4f97" creation-date="12/07/2016 17:17:17" order-index="25" type="entity">
             <layout ax="868.5" ay="426" awidth="209" aheight="160" x="868.5" y="426" width="209" height="160" />
             <class />
-          </item>
-          <item id="di853507633669062854" iid="2d8bcf67d6e44e1aa0ca6c736ed9b84e" creation-date="12/07/2016 17:54:49" order-index="27" type="entity">
-            <layout ax="955" ay="986" awidth="140" aheight="160" x="955" y="986" width="140" height="160" />
-            <class />
-          </item>
-          <item id="di779183412899874406" iid="185ba8a001d44a3a873f1e87a50650b9" creation-date="12/07/2016 17:58:08" order-index="29" type="relation">
-            <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="true" auto-path="" x1="-21" y1="863" x2="955" y2="1058" start-border-pos="0" end-border-pos="0.88828125" name-position="0,0">
-              <points>
-                <point x="-21" y="863" />
-                <point x="955" y="1058" />
-              </points>
-            </layout>
-            <relation from="di853751100590148359" from-iid="159e2dbeb262442da9616fbbd5d9b310" to="di853507633669062854" to-iid="2d8bcf67d6e44e1aa0ca6c736ed9b84e" to-field="ac78ce8ac8caf4233a2a82b8814f412e9775" />
           </item>
           <item id="di347363618140474657" iid="8d219a8c75564e5ea2675a34a3b8d5a5" creation-date="12/07/2016 18:00:45" order-index="30" type="relation">
             <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="567" y1="637" x2="615" y2="862" start-border-pos="0.831521739130435" end-border-pos="0" name-position="0,0">
