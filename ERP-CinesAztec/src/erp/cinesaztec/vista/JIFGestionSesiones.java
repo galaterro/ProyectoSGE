@@ -19,6 +19,9 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -46,6 +49,19 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         jtaConsulta.setModel(dtm);
         this.setSize(990, 700);
         this.setTitle("Gestión Sesiones");
+        /* Se añade un Listener para analizar cuándo se recibe algún cambio de ventana en esta ventana. */
+        jtpFondo.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (e.getSource() instanceof JTabbedPane) {
+                    reiniciarCamposConsulta();
+                    reiniciarCamposModificar();
+                    reiniciarCamposAlta();
+                    reiniciarCamposEliminar();
+                }
+            }
+        });
     }
 
     /**
@@ -477,12 +493,20 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         modificarSesion();
     }//GEN-LAST:event_jbtModificarActionPerformed
 
+    /**
+     * Método usado para limpiar las tablas de cara a una nueva consulta.
+     */
+    private void limpiarTabla() {
+        jtaConsulta.setModel(dtm);
+        dtm.setRowCount(0);
+    }
+
     private void crearSesion() {
-           
+
         try {
             try {
                 DateFormat format = new SimpleDateFormat("HH:mm:ss");
-                Date horaSesion = (Date)format.parse(jtfHoraAlta.getText());
+                Date horaSesion = (Date) format.parse(jtfHoraAlta.getText());
                 DateFormat dsf = new SimpleDateFormat("HH:mm:ss");
                 String timeFormat = dsf.format(horaSesion);
                 java.sql.Time hora = java.sql.Time.valueOf(timeFormat);
@@ -492,6 +516,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
 
                 sesion = new Sesion(hora, idPelicula, idSala);
                 sp.ingresarSesion(sesion);
+                reiniciarCamposAlta();
                 JOptionPane.showMessageDialog(null, "Sesion ingresado con éxito.");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nNo se ha podido ingresar el nuevo cine.\nPruebe de nuevo.");
@@ -499,13 +524,13 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la aplicación.\nPruebe de nuevo.");
             }
-            
+
         } catch (ParseException ex) {
-             JOptionPane.showMessageDialog(null, "Formato de la hora incorrecto.\n ejemplo 18:30:50 \nPruebe de nuevo.");
-        }           
+            JOptionPane.showMessageDialog(null, "Formato de la hora incorrecto.\n ejemplo 18:30:50 \nPruebe de nuevo.");
+        }
     }
 
-   public void cargarButacasModificar() {
+    public void cargarButacasModificar() {
         String idBuscador = jtfIdBuscador.getText();
         boolean existe = false;
         if (idBuscador.compareToIgnoreCase("") == 0) {
@@ -521,26 +546,24 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
                     jlSalaNueva.setText(nombreSala);
                     jlPeliculaNueva.setText(nombrePelicula);
                     jlHoraNueva.setText(sesion.getHora_sesion().toString());
-                    
+
                     jtfPeliculaModificar.setText(nombrePelicula);
                     jtfSalaModificar.setText(nombreSala);
                     jtfHoraModificar.setText(sesion.getHora_sesion().toString());
-                    
+
                     jbtModificar.setEnabled(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "No existe la sesion con el ID seleccionado.\nPruebe de nuevo." );
+                    JOptionPane.showMessageDialog(null, "No existe la sesion con el ID seleccionado.\nPruebe de nuevo.");
                     jtfIdBuscador.setText("");
                 }
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la butaca solicitado.\nPruebe de nuevo." +ex);
-                
+                JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido consultar la butaca solicitado.\nPruebe de nuevo." + ex);
+
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." +ex);
+                JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo." + ex);
             }
-       }
+        }
     }
-   
-                
 
     public void modificarSesion() {
         try {
@@ -548,21 +571,21 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
 
                 int idSesion = Integer.parseInt(jtfIdBuscador.getText());
                 DateFormat format = new SimpleDateFormat("HH:mm:ss");
-                Date horaSesion = (Date)format.parse(jtfHoraModificar.getText());
+                Date horaSesion = (Date) format.parse(jtfHoraModificar.getText());
                 DateFormat dsf = new SimpleDateFormat("HH:mm:ss");
                 String timeFormat = dsf.format(horaSesion);
                 java.sql.Time hora = java.sql.Time.valueOf(timeFormat);
 
-                
                 String nombreSala = jtfSalaModificar.getText();
                 String nombrePelicula = jtfPeliculaModificar.getText();
                 int idPelicula = sp.consultarIdPelicula(nombrePelicula);
                 int idSala = sp.consultarIdSala(nombreSala);
-                
+
                 sesion = new Sesion(hora, idPelicula, idSala);
-                sp.actualizarSesion(sesion,idSesion);
+                sp.actualizarSesion(sesion, idSesion);
+                reiniciarCamposModificar();
                 JOptionPane.showMessageDialog(null, "Sesión actualizada con éxito.");
-            
+
             } catch (SQLException | ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error al modificar la sesión", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
@@ -577,6 +600,9 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
 
         if (cifBuscador.equals("")) {
             try {
+                reiniciarCamposConsulta();
+                limpiarTabla();
+                alSesion.clear();
                 alSesion = sp.listarSesion();
                 dtm.setRowCount(alSesion.size());
                 for (int i = 0; i < alSesion.size(); i++) {
@@ -609,8 +635,8 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         }
     }
 
-     public void cargarSesionEliminar() {
-         String idBusca = jtfIdSesionEliminar.getText();
+    public void cargarSesionEliminar() {
+        String idBusca = jtfIdSesionEliminar.getText();
 
         if (idBusca.compareToIgnoreCase("") == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
@@ -641,6 +667,7 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
         try {
             int id = Integer.parseInt(idEliminar);
             sp.eliminarSesion(id);
+            reiniciarCamposEliminar();
             JOptionPane.showMessageDialog(null, "Sesión eliminada con éxito.");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error en la aplicación.\nNo se ha podido eliminar la sesión solicitada.\nPruebe de nuevo.");
@@ -648,6 +675,58 @@ class JIFGestionSesiones extends javax.swing.JInternalFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error de conexión con la BD.\nPruebe de nuevo.");
         }
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Consulta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposConsulta() {
+        jtfIDConsulta.setText("");
+        for (int i = 0; i < jtaConsulta.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i -= 1;
+        }
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Modificar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposModificar() {
+        jtfIdBuscador.setText("");
+        jtfPeliculaModificar.setText("");
+        jtfSalaModificar.setText("");
+        jtfHoraModificar.setText("");
+
+        jlPeliculaNueva.setText("");
+        jlSalaNueva.setText("");
+        jlHoraNueva.setText("");
+        jbtModificar.setEnabled(false);
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Alta cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposAlta() {
+        jtfPeliculaAlta.setText("");
+        jtfSalaAlta.setText("");
+        jtfHoraAlta.setText("");
+    }
+
+    /**
+     * Método usado para reiniciar los campos de la ventana Eliminar cuando se
+     * produce un cambio de ventana.
+     */
+    public void reiniciarCamposEliminar() {
+        jtfIdSesionEliminar.setText("");
+
+        jlIDSesionEliminar.setText("");
+        jlHoraEliminar.setText("");
+        jlPeliculaSesionEliminar.setText("");
+        jlSalaSesionEliminar.setText("");
+        jbComfirmarEliminar.setEnabled(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
