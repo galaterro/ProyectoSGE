@@ -7,6 +7,8 @@ package erp.cinesaztec.vista;
 
 import erp.cinesaztec.modelo.Empleado;
 import erp.cinesaztec.persistencia.EmpleadoPersistencia;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,7 +41,8 @@ class JFPrincipal extends javax.swing.JFrame {
      */
     JFPrincipal() {
         initComponents();
-        //this.setSize(800, 700);
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/icon.png"));
+        setIconImage(icon);
         this.setSize(1000, 700);
         this.setTitle("Cines Aztec ERP");
         this.add(jdpEscritorio);
